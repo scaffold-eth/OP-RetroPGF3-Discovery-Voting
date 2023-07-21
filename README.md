@@ -1,3 +1,17 @@
+# Badgeholders (voters in RetroPGF) need to be able to discover and vote on nominated projects. A good voting experience is core to supporting the work of badgeholders and ensuring an accurate RetroPGF process. 
+
+#
+
+[RFP: RetroPGF 3 Discovery & Voting ](https://github.com/ethereum-optimism/ecosystem-contributions/issues/104)
+
+[Contributors Guide](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md)
+
+[Extra Reading](https://docs.google.com/document/d/1ZjjJkVIhOMgEDVRN24uvxVEOREFQeJCQp4I1XPX2_8k/edit)
+
+#
+#
+
+
 # 🏗 Scaffold-ETH 2
 
 🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
