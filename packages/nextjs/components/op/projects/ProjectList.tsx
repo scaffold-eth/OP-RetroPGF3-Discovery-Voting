@@ -1,4 +1,5 @@
 import React from "react";
+import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 
 interface IProjectData {
   name: string;
@@ -15,9 +16,13 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
           <span>100k OP allocated</span>
         </h3>
         <div className="grid grid-flow-col gap-6">
-          <button className="btn rounded-lg border-[#d3dde7] btn-outline text-[#4d4f52]">Edit distribution</button>
+          <button className="btn rounded-lg border-[#d3dde7] btn-outline text-[#4d4f52]">
+            <AdjustmentsHorizontalIcon className="w-5 h-5" />
+            <span className="pl-2">Edit distribution</span>
+          </button>
           <button className="btn bg-[#ff0000] rounded-lg border-[#ff0000] btn-outline text-[#ffffff]">
-            Add to ballot
+            <SquaresPlusIcon className="w-5 h-5" />
+            <span className="pl-2">Add to ballot</span>
           </button>
         </div>
       </div>

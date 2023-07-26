@@ -77,7 +77,7 @@ module.exports = {
           info: "#93BBFB",
           success: "#34EEB6",
           warning: "#FFCF72",
-          error: "#FF8863",
+          error: "#FF0000",
 
           "--rounded-btn": "9999rem",
 
