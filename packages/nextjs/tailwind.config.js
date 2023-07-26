@@ -8,7 +8,7 @@ module.exports = {
     themes: [
       {
         scaffoldEth: {
-          primary: "#FF0320", // Shows as OP red #FF0420
+          primary: "#FF0420",
           "primary-content": "#ffffff",
           secondary: "#ffffff",
           "secondary-content": "#212638",
