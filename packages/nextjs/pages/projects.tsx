@@ -31,6 +31,25 @@ const userList = [
     image: "/assets/gradient-bg.png",
     op: "12, 416",
   },
+  {
+    name: "DefiLlama",
+    handle: "defillama",
+
+    image: "/assets/gradient-bg.png",
+    op: "20, 416",
+  },
+  {
+    name: "L2BEAT",
+    handle: "l2beat",
+    image: "/assets/gradient-bg.png",
+    op: "15, 416 ",
+  },
+  {
+    name: "Polynya",
+    handle: "polynya",
+    image: "/assets/gradient-bg.png",
+    op: "12, 416",
+  },
 ];
 const Project = () => {
   const [likedModal, setLikedModal] = React.useState(false);
