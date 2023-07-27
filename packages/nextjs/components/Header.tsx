@@ -1,27 +1,28 @@
 import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
-// const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-//   const router = useRouter();
-//   const isActive = router.pathname === href;
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const router = useRouter();
+  const isActive = router.pathname === href;
 
-//   return (
-//     <Link
-//       href={href}
-//       passHref
-//       className={`${
-//         isActive ? "bg-secondary shadow-md" : ""
-//       } hover:bg-secondary hover:shadow-md focus:bg-secondary py-1.5 px-3 text-sm rounded-full gap-2`}
-//     >
-//       {children}
-//     </Link>
-//   );
-// };
+  return (
+    <Link
+      href={href}
+      passHref
+      className={`${
+        isActive ? "text-black" : "text-neutral"
+      } hover:bg-secondary focus:bg-secondary py-1.5 px-3 text-sm gap-2`}
+    >
+      {children}
+      {isActive ? <span className="active-nav"></span> : ""}
+    </Link>
+  );
+};
 
 /**
  * Site header
@@ -36,27 +37,12 @@ export const Header = () => {
 
   const navLinks = (
     <>
-      {/* <li>
-        <NavLink href="/">Home</NavLink>
+      <li>
+        <NavLink href="/">Projects</NavLink>
       </li>
       <li>
-        <NavLink href="/debug">
-          <BugAntIcon className="h-4 w-4" />
-          Debug Contracts
-        </NavLink>
+        <NavLink href="/lists">Lists</NavLink>
       </li>
-      <li>
-        <NavLink href="/example-ui">
-          <SparklesIcon className="h-4 w-4" />
-          Example UI
-        </NavLink>
-      </li>
-      <li>
-        <NavLink href="/blockexplorer">
-          <MagnifyingGlassIcon className="h-4 w-4" />
-          Block Explorer
-        </NavLink>
-      </li> */}
     </>
   );
 
@@ -86,8 +72,8 @@ export const Header = () => {
           )}
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6">
-          <div className="flex relative w-12 h-12">
-            <Image alt="OP logo" className="cursor-pointer" fill src="/logo.svg" />
+          <div className="flex relative">
+            <Image alt="OP logo" className="cursor-pointer" height={22} width={160} src="/optimismLogo.png" />
           </div>
           {/* <div className="flex flex-col">
             <span className="font-bold leading-tight">Scaffold-eth</span>
