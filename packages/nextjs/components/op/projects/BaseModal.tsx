@@ -1,10 +1,10 @@
 import React from "react";
 
-interface IModal {
+interface IBaseModal {
   onClose: () => void;
   children: React.ReactNode;
 }
-const Modal: React.FC<IModal> = ({ onClose, children }) => {
+const BaseModal: React.FC<IBaseModal> = ({ onClose, children }) => {
   const handleOnClose = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target instanceof HTMLDivElement && e.target.id === "custom-modal-dialog") {
       onClose();
@@ -22,4 +22,4 @@ const Modal: React.FC<IModal> = ({ onClose, children }) => {
   );
 };
 
-export default Modal;
+export default BaseModal;
