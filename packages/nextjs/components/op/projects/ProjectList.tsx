@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 import Modal from "./BaseModal";
 import LoadingModal from "./LoadingModal";
@@ -59,7 +60,13 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
           >
             <div className="grid  grid-flow-col gap-4">
               <div className="w-[80px]">
-                <img src="/assets/gradient-bg.png" className="w-full rounded-xl" />
+                <Image
+                  alt="project list  "
+                  height={"80"}
+                  width={"80"}
+                  src="/assets/gradient-bg.png"
+                  className="w-full rounded-xl"
+                />
               </div>
               <div className="">
                 <h3 className="font-bold text-lg">{project.name}</h3>
@@ -98,7 +105,13 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
                 >
                   <div className="grid  grid-flow-col items-center gap-4">
                     <div className="w-[60px]">
-                      <img src="/assets/gradient-bg.png" className="w-full rounded-xl" />
+                      <Image
+                        alt="project list  "
+                        height={"80"}
+                        width={"80"}
+                        src="/assets/gradient-bg.png"
+                        className="w-full rounded-xl"
+                      />
                     </div>
                     <div className="">
                       <h3 className="font-bold text-lg">{project.name}</h3>
