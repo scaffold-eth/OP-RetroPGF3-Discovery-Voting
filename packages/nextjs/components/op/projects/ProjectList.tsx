@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 import Modal from "./BaseModal";
 import LoadingModal from "./LoadingModal";
+import ProjectListCard from "./ProjectListCard";
 import SuccessModal from "./SuccessModal";
 import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 
-interface IProjectData {
+export interface IProjectData {
   name: string;
-  handle: string;
+  handle?: string;
   image: string;
   op: string;
 }
@@ -16,6 +16,44 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
   const [addBallot, setAddBallot] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const projectDataHandle = [
+    {
+      name: "DefiLlama",
+
+      image: "/assets/gradient-bg.png",
+      op: "20, 416",
+    },
+    {
+      name: "L2BEAT",
+
+      image: "/assets/gradient-bg.png",
+      op: "15, 416 ",
+    },
+    {
+      name: "Polynya",
+
+      image: "/assets/gradient-bg.png",
+      op: "12, 416",
+    },
+    {
+      name: "DefiLlama",
+
+      image: "/assets/gradient-bg.png",
+      op: "20, 416",
+    },
+    {
+      name: "L2BEAT",
+
+      image: "/assets/gradient-bg.png",
+      op: "15, 416 ",
+    },
+    {
+      name: "Polynya",
+
+      image: "/assets/gradient-bg.png",
+      op: "12, 416",
+    },
+  ];
 
   const handleAddBallot = () => {
     setAddBallot(false);
@@ -51,31 +89,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
       >
-        {projectData.map((project: IProjectData, index: number) => (
-          <div
-            key={index}
-            className={`border-[#ccd2db] py-6 ${
-              index === projectData.length - 1 ? "" : "border-b-2"
-            }  grid grid-flow-col items-center justify-between `}
-          >
-            <div className="grid  grid-flow-col gap-4">
-              <div className="w-[80px]">
-                <Image
-                  alt="project list  "
-                  height={"80"}
-                  width={"80"}
-                  src="/assets/gradient-bg.png"
-                  className="w-full rounded-xl"
-                />
-              </div>
-              <div className="">
-                <h3 className="font-bold text-lg">{project.name}</h3>
-                <p className="mt-0 text-[1.1rem] text-[#7f97b0]">@{project.handle}</p>
-              </div>
-            </div>
-            <p className="text-lg">{project.op} OP</p>
-          </div>
-        ))}
+        <ProjectListCard projectData={projectData} />
       </div>
       <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
@@ -96,30 +110,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             scrollbar-thumb-rounded-full
             scrollbar-thumb-[#E2E8F0]"
             >
-              {projectData.map((project: IProjectData, index: number) => (
-                <div
-                  key={index}
-                  className={`border-[#ccd2db] py-4 ${
-                    index === projectData.length - 1 ? "" : "border-b-2"
-                  }  grid grid-flow-col items-center justify-between `}
-                >
-                  <div className="grid  grid-flow-col items-center gap-4">
-                    <div className="w-[60px]">
-                      <Image
-                        alt="project list  "
-                        height={"80"}
-                        width={"80"}
-                        src="/assets/gradient-bg.png"
-                        className="w-full rounded-xl"
-                      />
-                    </div>
-                    <div className="">
-                      <h3 className="font-bold text-lg">{project.name}</h3>
-                    </div>
-                  </div>
-                  <p className="text-lg">{project.op} OP</p>
-                </div>
-              ))}
+              <ProjectListCard projectData={projectDataHandle} />
             </div>
             <div className="mt-4 rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
               <p>Total</p>
