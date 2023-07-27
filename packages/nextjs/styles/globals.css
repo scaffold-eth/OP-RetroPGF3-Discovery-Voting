@@ -23,6 +23,7 @@ p {
   margin: 1rem 0;
 }
 
+
 .btn {
   @apply shadow-md;
 }
@@ -45,3 +46,4 @@ p {
   }
 }
 /* grid md:grid-flow-col justify-between */
+
