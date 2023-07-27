@@ -30,3 +30,18 @@ p {
 .btn.btn-ghost {
   @apply shadow-none;
 }
+
+.project__header-container {
+  container: projectlist / inline-size;
+}
+.project__header-container--content {
+  display: grid;
+  gap: 1rem;
+}
+
+@container projectlist (min-width: 668px) {
+  .project__header-container--content {
+    grid-auto-flow: column;
+  }
+}
+/* grid md:grid-flow-col justify-between */
