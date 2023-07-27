@@ -22,3 +22,25 @@ h4 {
 p {
   margin: 1rem 0;
 }
+
+.btn {
+  @apply shadow-md;
+}
+
+.btn.btn-ghost {
+  @apply shadow-none;
+}
+
+.project__header-container {
+  container: projectlist / inline-size;
+}
+.project__header-container--content {
+  display: grid;
+  gap: 1rem;
+}
+
+@container projectlist (min-width: 668px) {
+  .project__header-container--content {
+    grid-auto-flow: column;
+  }
+}

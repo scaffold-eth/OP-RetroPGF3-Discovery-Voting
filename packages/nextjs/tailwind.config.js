@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./utils/**/*.{js,ts,jsx,tsx}"],
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("tailwind-scrollbar")({ nocompatible: true })],
   darkTheme: "scaffoldEthDark",
   // DaisyUI theme colors
   daisyui: {
@@ -66,6 +66,7 @@ module.exports = {
           primary: "#000000",
           "primary-content": "#ffffff",
           secondary: "#FF6644",
+          "secondary-op": "#ff0000",
           "secondary-content": "#212638",
           accent: "#93BBFB",
           "accent-content": "#212638",
@@ -78,7 +79,7 @@ module.exports = {
           info: "#93BBFB",
           success: "#34EEB6",
           warning: "#FFCF72",
-          error: "#FF8863",
+          error: "#FF0000",
 
           "--rounded-btn": "9999rem",
 
