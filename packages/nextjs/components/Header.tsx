@@ -2,8 +2,9 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Bars3Icon } from "@heroicons/react/24/outline";
-import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { SwitchTheme } from "./SwitchTheme";
+import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
@@ -15,7 +16,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
       href={href}
       passHref
       className={`${
-        isActive ? "text-black" : "text-neutral"
+        isActive ? "text-black" : "text-slate-400"
       } hover:bg-secondary focus:bg-secondary py-1.5 px-3 text-sm gap-2`}
     >
       {children}
@@ -47,8 +48,8 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
-      <div className="navbar-start w-auto lg:w-1/2">
+    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2">
+      <div className="navbar-start w-1/3 ">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
             tabIndex={0}
@@ -82,9 +83,19 @@ export const Header = () => {
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
-      <div className="navbar-end flex-grow mr-4">
+      <div className="navbar-center w-1/3 flex-grow">
+        <label className="w-full">
+          <MagnifyingGlassIcon className="pointer-events-none absolute mr-2 w-8 h-6 top-4 pl-2 text-slate-400" />
+          <input
+            type="text"
+            placeholder="Search projects or lists"
+            className="input input-info input-bordered bg-secondary border-slate-200 w-full min-w-full pl-10 rounded-md h-10"
+          />
+        </label>
+      </div>
+      <div className="navbar-end w-1/3 flex-grow mr-4">
         <RainbowKitCustomConnectButton />
-        <FaucetButton />
+        <SwitchTheme className="pointer-events-auto" />
       </div>
     </div>
   );
