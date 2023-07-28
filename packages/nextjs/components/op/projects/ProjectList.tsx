@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import CustomProjectButton from "../btn/CustomProjectButton";
-import Modal from "./BaseModal";
-import LoadingModal from "./LoadingModal";
+import Modal from "../modals/BaseModal";
+import LoadingModal from "../modals/LoadingModal";
+import SuccessModal from "../modals/SuccessModal";
 import ProjectListCard from "./ProjectListCard";
-import SuccessModal from "./SuccessModal";
 import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 
 export interface IProjectData {
