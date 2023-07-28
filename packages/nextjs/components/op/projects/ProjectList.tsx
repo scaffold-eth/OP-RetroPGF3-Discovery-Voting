@@ -69,14 +69,17 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             <span className="text-center rounded-full bg-black w-2 h-2"></span> <span>100k OP allocated</span>
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
-            <CustomProjectButton text="Edit distribution" customClassName="border-[#d3dde7] border-2 text-[#4d4f52]">
+            <CustomProjectButton
+              text="Edit distribution"
+              customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+            >
               <AdjustmentsHorizontalIcon className="w-5 h-5" />
             </CustomProjectButton>
 
             <CustomProjectButton
               onClick={() => setAddBallot(true)}
               text="Add to ballot"
-              customClassName=" bg-[#ff0000] rounded-lg border-[#ff0000]  text-[#ffffff]"
+              customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
             >
               <SquaresPlusIcon className="w-5 h-5" />
             </CustomProjectButton>
@@ -117,14 +120,17 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
               <p>30,000,000 OP</p>
             </div>
             <div className="mt-6 grid sm:grid-flow-col gap-3 sm:gap-6">
-              <CustomProjectButton text="Edit distribution" customClassName="border-[#d3dde7] border-2 text-[#4d4f52]">
+              <CustomProjectButton
+                text="Edit distribution"
+                customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+              >
                 <AdjustmentsHorizontalIcon className="w-5 h-5" />
               </CustomProjectButton>
 
               <CustomProjectButton
                 onClick={handleAddBallot}
                 text="Add to ballot"
-                customClassName=" bg-[#ff0000] rounded-lg border-[#ff0000]  text-[#ffffff]"
+                customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
               >
                 <SquaresPlusIcon className="w-5 h-5" />
               </CustomProjectButton>
@@ -133,7 +139,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         </Modal>
       )}
       {isAdding && <LoadingModal message="Add list to ballot" />}
-      {isSuccess && <SuccessModal message="list added to ballot" onClose={() => setIsSuccess(false)} />}
+      {isSuccess && <SuccessModal message="Added successfully" onClose={() => setIsSuccess(false)} />}
     </div>
   );
 };
