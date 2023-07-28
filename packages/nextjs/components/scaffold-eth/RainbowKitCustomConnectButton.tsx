@@ -24,7 +24,11 @@ export const RainbowKitCustomConnectButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button className="btn btn-primary rounded-lg" onClick={openConnectModal} type="button">
+                  <button
+                    className="btn btn-sm btn-primary h-10 mr-2 rounded-full"
+                    onClick={openConnectModal}
+                    type="button"
+                  >
                     Connect wallet
                   </button>
                 );
@@ -66,15 +70,15 @@ export const RainbowKitCustomConnectButton = () => {
                     <button
                       // onClick={/* TBD*/}
                       type="button"
-                      className="btn btn-secondary rounded-lg btn-md pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-100"
+                      className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-100"
                     >
                       View ballot
-                      <div className="badge badge-neutral ml-2 rounded-sm px-1.5">0</div>
+                      <div className="badge badge-neutral ml-2 rounded-full px-2 py-3">0</div>
                     </button>
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="btn btn-secondary rounded-lg btn-md pl-2 pr-2 border-2 border-slate-200 hover:bg-slate-100"
+                      className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 border-slate-200 hover:bg-slate-100"
                     >
                       <BlockieAvatar address={account.address} size={7} ensImage={account.ensAvatar} />
                       <span className="ml-2 mr-1">{account.displayName}</span>
