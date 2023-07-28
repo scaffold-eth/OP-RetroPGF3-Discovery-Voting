@@ -10,10 +10,10 @@ const CustomProjectButton: React.FC<ICustomProjectButton> = ({ text, customClass
   return (
     <button
       onClick={onClick}
-      className={` grid grid-flow-col items-center p-2  justify-center rounded-lg ${customClassName} `}
+      className={` grid grid-flow-col items-center   justify-center rounded-xl ${customClassName} `}
     >
       {children}
-      <span className="pl-2">{text}</span>
+      <span className={`${children && "pl-2"}`}>{text}</span>
     </button>
   );
 };

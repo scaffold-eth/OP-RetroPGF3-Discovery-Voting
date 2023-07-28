@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
-import Modal from "./BaseModal";
-import LoadingModal from "./LoadingModal";
-import SuccessModal from "./SuccessModal";
+import Modal from "../modals/BaseModal";
+import LoadingModal from "../modals/LoadingModal";
+import SuccessModal from "../modals/SuccessModal";
+import ProjectListCard from "./ProjectListCard";
 import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 
-interface IProjectData {
+export interface IProjectData {
   name: string;
-  handle: string;
+  handle?: string;
   image: string;
   op: string;
 }
@@ -16,10 +16,48 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
   const [addBallot, setAddBallot] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const projectDataHandle = [
+    {
+      name: "DefiLlama",
+
+      image: "/assets/gradient-bg.png",
+      op: "20, 416",
+    },
+    {
+      name: "L2BEAT",
+
+      image: "/assets/gradient-bg.png",
+      op: "15, 416 ",
+    },
+    {
+      name: "Polynya",
+
+      image: "/assets/gradient-bg.png",
+      op: "12, 416",
+    },
+    {
+      name: "DefiLlama",
+
+      image: "/assets/gradient-bg.png",
+      op: "20, 416",
+    },
+    {
+      name: "L2BEAT",
+
+      image: "/assets/gradient-bg.png",
+      op: "15, 416 ",
+    },
+    {
+      name: "Polynya",
+
+      image: "/assets/gradient-bg.png",
+      op: "12, 416",
+    },
+  ];
 
   const handleAddBallot = () => {
     setAddBallot(false);
-    setIsAdding(!true);
+
     setIsSuccess(true);
   };
   return (
@@ -31,14 +69,18 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             <span className="text-center rounded-full bg-black w-2 h-2"></span> <span>100k OP allocated</span>
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
-            <CustomProjectButton text="Edit distribution" customClassName="border-[#d3dde7] border-2 text-[#4d4f52]">
+            <CustomProjectButton
+              onClick={() => setIsAdding(true)}
+              text="Edit distribution"
+              customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+            >
               <AdjustmentsHorizontalIcon className="w-5 h-5" />
             </CustomProjectButton>
 
             <CustomProjectButton
               onClick={() => setAddBallot(true)}
               text="Add to ballot"
-              customClassName=" bg-[#ff0000] rounded-lg border-[#ff0000]  text-[#ffffff]"
+              customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
             >
               <SquaresPlusIcon className="w-5 h-5" />
             </CustomProjectButton>
@@ -51,31 +93,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
       >
-        {projectData.map((project: IProjectData, index: number) => (
-          <div
-            key={index}
-            className={`border-[#ccd2db] py-6 ${
-              index === projectData.length - 1 ? "" : "border-b-2"
-            }  grid grid-flow-col items-center justify-between `}
-          >
-            <div className="grid  grid-flow-col gap-4">
-              <div className="w-[80px]">
-                <Image
-                  alt="project list  "
-                  height={"80"}
-                  width={"80"}
-                  src="/assets/gradient-bg.png"
-                  className="w-full rounded-xl"
-                />
-              </div>
-              <div className="">
-                <h3 className="font-bold text-lg">{project.name}</h3>
-                <p className="mt-0 text-[1.1rem] text-[#7f97b0]">@{project.handle}</p>
-              </div>
-            </div>
-            <p className="text-lg">{project.op} OP</p>
-          </div>
-        ))}
+        <ProjectListCard projectData={projectData} />
       </div>
       <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
@@ -96,44 +114,24 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             scrollbar-thumb-rounded-full
             scrollbar-thumb-[#E2E8F0]"
             >
-              {projectData.map((project: IProjectData, index: number) => (
-                <div
-                  key={index}
-                  className={`border-[#ccd2db] py-4 ${
-                    index === projectData.length - 1 ? "" : "border-b-2"
-                  }  grid grid-flow-col items-center justify-between `}
-                >
-                  <div className="grid  grid-flow-col items-center gap-4">
-                    <div className="w-[60px]">
-                      <Image
-                        alt="project list  "
-                        height={"80"}
-                        width={"80"}
-                        src="/assets/gradient-bg.png"
-                        className="w-full rounded-xl"
-                      />
-                    </div>
-                    <div className="">
-                      <h3 className="font-bold text-lg">{project.name}</h3>
-                    </div>
-                  </div>
-                  <p className="text-lg">{project.op} OP</p>
-                </div>
-              ))}
+              <ProjectListCard projectData={projectDataHandle} />
             </div>
             <div className="mt-4 rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
               <p>Total</p>
               <p>30,000,000 OP</p>
             </div>
             <div className="mt-6 grid sm:grid-flow-col gap-3 sm:gap-6">
-              <CustomProjectButton text="Edit distribution" customClassName="border-[#d3dde7] border-2 text-[#4d4f52]">
+              <CustomProjectButton
+                text="Edit distribution"
+                customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+              >
                 <AdjustmentsHorizontalIcon className="w-5 h-5" />
               </CustomProjectButton>
 
               <CustomProjectButton
                 onClick={handleAddBallot}
                 text="Add to ballot"
-                customClassName=" bg-[#ff0000] rounded-lg border-[#ff0000]  text-[#ffffff]"
+                customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
               >
                 <SquaresPlusIcon className="w-5 h-5" />
               </CustomProjectButton>
@@ -142,7 +140,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         </Modal>
       )}
       {isAdding && <LoadingModal message="Add list to ballot" />}
-      {isSuccess && <SuccessModal message="list added to ballot" onClose={() => setIsSuccess(false)} />}
+      {isSuccess && <SuccessModal message="List added successfully" onClose={() => setIsSuccess(false)} />}
     </div>
   );
 };

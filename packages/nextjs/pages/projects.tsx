@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import ProjectList from "~~/components/op/projects/ProjectList";
+import YourBallot from "~~/components/op/projects/YourBallot";
 import { Address } from "~~/components/scaffold-eth";
 
 const userList = [
@@ -52,54 +53,15 @@ const userList = [
   },
 ];
 const Project = () => {
-  const [likedModal, setLikedModal] = React.useState(false);
+  const [openLikedModal, setopenLikedModal] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
   return (
     <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
+      <YourBallot />
       <div className="">
-        <h3 className="text-[#47556a]">YOUR BALLOT</h3>
-        <div className="mt-5">
-          <p className="p-0 m-0 text-sm text-[#7f97b0] ">Voting ends in</p>
-          <span className="font-bold text-lg">3d:12h:30m:24s</span>
-        </div>
-        <div className="mt-5">
-          <p className="p-0 m-0 text-sm text-[#7f97b0]">Projects added</p>
-          <p className="p-0 m-0">
-            <span className="font-bold text-lg">15</span>
-            <span className="text-[#7f97b0]">/200</span>
-          </p>
-        </div>
-        <div className="mt-5">
-          <div className="grid grid-cols-2 justify-between">
-            <p className="p-0 m-0 text-sm text-[#7f97b0]">OP allocated </p>
-            <span className="font-bold text-end ">330,136 OP</span>
-          </div>
-          <div>
-            <progress className="progress progress-error  w-full" value="40" max="100"></progress>
-          </div>
-          <div className="grid grid-cols-2 justify-between text-[#7f97b0]">
-            <p className="p-0 m-0 text-sm ">Total</p>
-            <span className=" text-end text-[#7f97b0]">30,000,000 OP</span>
-          </div>
-        </div>
-        <div className="mt-5">
-          <button disabled className=" py-3 w-full rounded-lg bg-[#E2E8F0] text-[#A9B9CC]">
-            No Projects added yet
-          </button>
-        </div>
-        <div className="divider "></div>
-        <div className="mt-7 text-[#47556a]">
-          <p className="text-sm">Some instructional copy for the connected viewers :)</p>
-          <div className="text-[#2173DF] grid grid-flow-col justify-start items-center gap-2">
-            <p className="text-bold ">Voting guideline</p>
-            <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-          </div>
-        </div>
-      </div>
-      <div className="">
-        <div className="grid grid-flow-col items-center">
+        <div className="grid mb-3 sm:grid-flow-col items-center">
           <h3 className="text-2xl font-bold">Solarpunk Utopia Dream</h3>
-          <div className="grid grid-flow-col gap-4 justify-end relative">
+          <div className="grid grid-flow-col gap-4 w-fit sm:w-full sm:justify-end relative">
             <div className=" flex items-center gap-1 rounded-xl p-4 border-[1px] border-[#CBD5E0]">
               <span>12</span>
               {isLiked ? (
@@ -110,14 +72,16 @@ const Project = () => {
             </div>
             <button
               onClick={() => {
-                setLikedModal(!likedModal);
+                setopenLikedModal(!openLikedModal);
               }}
-              className="flex items-center rounded-xl p-4 border-[1px] border-[#CBD5E0]"
+              className={` ${
+                openLikedModal && "bg-gray-200"
+              }  flex items-center rounded-xl p-4 border-[1px] border-[#CBD5E0]`}
             >
               <EllipsisHorizontalIcon className="w-6 h-6 " />
             </button>
-            {likedModal && (
-              <div className="absolute  bg-gray-200 rounded-xl top-16 right-0 w-[200px] py-3 px-8  border-2 border-[#CBD5E0]">
+            {openLikedModal && (
+              <div className="absolute  bg-white rounded-xl top-16 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
                 <button onClick={() => setIsLiked(!isLiked)} className="flex gap-4 items-center">
                   {isLiked ? (
                     <HeartIcon className="w-6 h-6 text-[#68778D]" />
