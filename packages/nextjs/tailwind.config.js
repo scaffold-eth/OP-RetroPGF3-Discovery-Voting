@@ -93,6 +93,13 @@ module.exports = {
   theme: {
     // Extend Tailwind classes (e.g. font-bai-jamjuree, animate-grow)
     extend: {
+      colors: {
+        lightGray: "#68778D",
+        lightBlack: "#202327",
+        customGray: "#4A5568",
+        customWhite: "#E2E8F0",
+        customGrayBtn: "#323A43",
+      },
       fontFamily: {
         "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
       },
