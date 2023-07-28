@@ -53,15 +53,15 @@ const userList = [
   },
 ];
 const Project = () => {
-  const [likedModal, setLikedModal] = React.useState(false);
+  const [openLikedModal, setopenLikedModal] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
   return (
     <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
       <YourBallot />
       <div className="">
-        <div className="grid grid-flow-col items-center">
+        <div className="grid mb-3 sm:grid-flow-col items-center">
           <h3 className="text-2xl font-bold">Solarpunk Utopia Dream</h3>
-          <div className="grid grid-flow-col gap-4 justify-end relative">
+          <div className="grid grid-flow-col gap-4 w-fit sm:w-full sm:justify-end relative">
             <div className=" flex items-center gap-1 rounded-xl p-4 border-[1px] border-[#CBD5E0]">
               <span>12</span>
               {isLiked ? (
@@ -72,14 +72,16 @@ const Project = () => {
             </div>
             <button
               onClick={() => {
-                setLikedModal(!likedModal);
+                setopenLikedModal(!openLikedModal);
               }}
-              className="flex items-center rounded-xl p-4 border-[1px] border-[#CBD5E0]"
+              className={` ${
+                openLikedModal && "bg-gray-200"
+              }  flex items-center rounded-xl p-4 border-[1px] border-[#CBD5E0]`}
             >
               <EllipsisHorizontalIcon className="w-6 h-6 " />
             </button>
-            {likedModal && (
-              <div className="absolute  bg-gray-200 rounded-xl top-16 right-0 w-[200px] py-3 px-8  border-2 border-[#CBD5E0]">
+            {openLikedModal && (
+              <div className="absolute  bg-white rounded-xl top-16 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
                 <button onClick={() => setIsLiked(!isLiked)} className="flex gap-4 items-center">
                   {isLiked ? (
                     <HeartIcon className="w-6 h-6 text-[#68778D]" />

@@ -5,10 +5,8 @@ import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 // Import a custom button component
 import BaseModal from "./BaseModal";
-// Import the BaseModal component
-import { SquaresPlusIcon } from "@heroicons/react/20/solid";
 
-// Import the SquaresPlusIcon from the Heroicons library
+// Import the BaseModal component
 
 // Define an interface for the props that VoteModal component receives
 interface IVoteModal {
@@ -57,12 +55,9 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose }) => {
         <div className="w-full">
           {/* Render a custom button to add the project to the ballot */}
           <CustomProjectButton
-            text="Add to ballot" // Button text
+            text="Save" // Button text
             customClassName="bg-[#ff0000] py-4 rounded-lg border-[#ff0000] w-full text-[#ffffff]"
-          >
-            {/* Render the SquaresPlusIcon inside the custom button */}
-            <SquaresPlusIcon className="w-5 h-5" />
-          </CustomProjectButton>
+          ></CustomProjectButton>
         </div>
       </div>
     </BaseModal>

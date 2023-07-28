@@ -57,7 +57,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
 
   const handleAddBallot = () => {
     setAddBallot(false);
-    setIsAdding(!true);
+
     setIsSuccess(true);
   };
   return (
@@ -70,6 +70,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
+              onClick={() => setIsAdding(true)}
               text="Edit distribution"
               customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
             >
@@ -139,7 +140,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         </Modal>
       )}
       {isAdding && <LoadingModal message="Add list to ballot" />}
-      {isSuccess && <SuccessModal message="Added successfully" onClose={() => setIsSuccess(false)} />}
+      {isSuccess && <SuccessModal message="List added successfully" onClose={() => setIsSuccess(false)} />}
     </div>
   );
 };

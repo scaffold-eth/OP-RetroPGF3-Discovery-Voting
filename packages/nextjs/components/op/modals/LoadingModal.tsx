@@ -19,10 +19,12 @@ const LoadingModal: React.FC<ILoadingModal> = ({ message }) => {
       }}
     >
       <div className="w-fit md:w-[400px] flex flex-col gap-5 items-center justify-center bg-white rounded-xl p-6">
-        <div className="p-2 w-fit rounded-xl bg-[#D7E6F9]">
+        <div className="p-3 w-16 h-16 rounded-xl bg-[#D7E6F9]">
           {/* Render a loading spinner with the class "loading-lg" and the text color "text-info" */}
-          {/* Note: the spinner only works for an updated version of daisyUI */}
-          <span className="loading loading-spinner loading-lg text-info"></span>
+          <div
+            className="w-full h-full rounded-full animate-spin
+                    border-4 border-solid border-[#527fba] border-t-transparent"
+          ></div>
         </div>
         <h3 className="text-lg font-bold ">{message}</h3> {/* Render the loading message */}
       </div>

@@ -22,7 +22,7 @@ const YourBallot = () => {
           <span className="font-bold text-end ">330,136 OP</span>
         </div>
         <div>
-          <progress className="progress progress-error  w-full" value="40" max="100"></progress>
+          <progress className="progress custom__progress  w-full" value="40" max="100"></progress>
         </div>
         <div className="grid grid-cols-2 justify-between text-[#7f97b0]">
           <p className="p-0 m-0 text-sm ">Total</p>

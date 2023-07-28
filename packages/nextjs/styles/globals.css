@@ -44,3 +44,13 @@ p {
     grid-auto-flow: column;
   }
 }
+
+.custom__progress::-moz-progress-bar {
+  background: red !important;
+}
+.custom__progress::-webkit-progress-value {
+  background: red !important;
+}
+.custom__progress {
+  color: red !important;
+}
