@@ -50,7 +50,11 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
             ✕
           </button>
         </div>
-        <CustomProjectButton text="Reset distribution" onClick={resetDistribution} customClassName="text-primary mb-2">
+        <CustomProjectButton
+          text="Reset distribution"
+          onClick={resetDistribution}
+          customClassName="text-primary bg-secondary border-none shadow-none"
+        >
           <ArrowPathIcon className="h-3 w-3" />
         </CustomProjectButton>
         <div
@@ -77,7 +81,7 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
             text="Cancel"
             onClick={edit}
             customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
-          ></CustomProjectButton>
+          />
 
           <CustomProjectButton
             onClick={handleSaveBallot}
@@ -86,7 +90,7 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
               "bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]" + showError ? " btn-disabled" : ""
             }
             disabled={showError}
-          ></CustomProjectButton>
+          />
         </div>
       </div>
     </BaseModal>

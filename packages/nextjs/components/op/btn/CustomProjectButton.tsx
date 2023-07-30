@@ -17,7 +17,7 @@ const CustomProjectButton: React.FC<ICustomProjectButton> = ({
   return (
     <button
       onClick={onClick}
-      className={` grid grid-flow-col items-center   justify-center rounded-xl ${customClassName} `}
+      className={`bg-secondary grid grid-flow-col items-center justify-center btn ${customClassName}`}
       disabled={disabled}
     >
       {children}

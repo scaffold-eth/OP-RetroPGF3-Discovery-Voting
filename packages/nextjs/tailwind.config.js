@@ -27,7 +27,7 @@ module.exports = {
 
           "--btn-text-case": "none",
 
-          "--rounded-btn": "8px",
+          "--rounded-btn": "0.75rem",
 
           ".tooltip": {
             "--tooltip-tail": "6px",
@@ -53,7 +53,7 @@ module.exports = {
           warning: "#FFCF72",
           error: "#FF8863",
 
-          "--rounded-btn": "9999rem",
+          "--rounded-btn": "0.75rem",
 
           ".tooltip": {
             "--tooltip-tail": "6px",
