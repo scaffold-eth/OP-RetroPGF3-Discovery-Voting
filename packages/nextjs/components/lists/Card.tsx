@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { HeartIcon } from "@heroicons/react/24/outline";
 
 const Card = ({ project }: any) => {
@@ -9,7 +10,9 @@ const Card = ({ project }: any) => {
       <div className="border rounded-lg border-gray-300  p-4 ">
         <div className="flex items-center">
           <div className="flex-1">
-            <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
+            <Link href="/list">
+              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
+            </Link>
 
             <div className="flex items-center">
               <Image width={22} height={22} className="mr-2" src={user_avatar} alt="Avatar" />

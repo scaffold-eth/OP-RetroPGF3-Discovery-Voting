@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomProjectButton from "../btn/CustomProjectButton";
-import Modal from "../modals/BaseModal";
+import AddListToBallotModal from "../modals/AddListToBallotModal";
+import EditDistributionModal from "../modals/EditDistributionModal";
 import LoadingModal from "../modals/LoadingModal";
 import SuccessModal from "../modals/SuccessModal";
 import ProjectListCard from "./ProjectListCard";
@@ -10,56 +11,92 @@ export interface IProjectData {
   name: string;
   handle?: string;
   image: string;
-  op: string;
+  op: number;
 }
 const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
   const [addBallot, setAddBallot] = useState(false);
-  const [isAdding, setIsAdding] = useState(false);
+  const [editBallot, setEditBallot] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const userData = { totalOP: 100000 };
   const projectDataHandle = [
     {
       name: "DefiLlama",
 
       image: "/assets/gradient-bg.png",
-      op: "20, 416",
+      op: 20416,
     },
     {
       name: "L2BEAT",
 
       image: "/assets/gradient-bg.png",
-      op: "15, 416 ",
+      op: 15416,
     },
     {
       name: "Polynya",
 
       image: "/assets/gradient-bg.png",
-      op: "12, 416",
+      op: 12416,
     },
     {
       name: "DefiLlama",
 
       image: "/assets/gradient-bg.png",
-      op: "20, 416",
+      op: 20416,
     },
     {
       name: "L2BEAT",
 
       image: "/assets/gradient-bg.png",
-      op: "15, 416 ",
+      op: 15416,
     },
     {
       name: "Polynya",
 
       image: "/assets/gradient-bg.png",
-      op: "12, 416",
+      op: 12416,
     },
   ];
 
   const handleAddBallot = () => {
+    setLoadingMessage("Adding selection to ballot");
+    setSuccessMessage("Selection added successfully");
     setAddBallot(false);
-
-    setIsSuccess(true);
+    setIsLoading(true);
+    setTimeout(() => {
+      // Spoofed API request to add to ballot
+      setIsLoading(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        // Spoofed response from api
+        setIsSuccess(false);
+      }, 2000);
+    }, 1000);
   };
+
+  const handleSaveBallot = () => {
+    setLoadingMessage("Saving distribution");
+    setSuccessMessage("Distribution changed successfully");
+    setEditBallot(false);
+    setIsLoading(true);
+    setTimeout(() => {
+      // Spoofed API request to save ballot
+      setIsLoading(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        // Spoofed response from api
+        setIsSuccess(false);
+      }, 2000);
+    }, 1000);
+  };
+
+  const handleAddOrEditModal = (close: boolean, edit = false) => {
+    setEditBallot(!close && edit);
+    setAddBallot(!close && !edit);
+  };
+
   return (
     <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
       <div className="project__header-container min-w-[320px]">
@@ -70,7 +107,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
-              onClick={() => setIsAdding(true)}
+              onClick={() => handleAddOrEditModal(false, true)}
               text="Edit distribution"
               customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
             >
@@ -78,7 +115,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             </CustomProjectButton>
 
             <CustomProjectButton
-              onClick={() => setAddBallot(true)}
+              onClick={() => handleAddOrEditModal(false, false)}
               text="Add to ballot"
               customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
             >
@@ -97,50 +134,28 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
       </div>
       <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
-        <p>30,000,000 OP</p>
+        <p>{userData.totalOP.toLocaleString()} OP</p>
       </div>
       {addBallot && (
-        <Modal onClose={() => setAddBallot(false)}>
-          <div className=" w-fit md:w-[600px] lg:w-[800px] bg-white rounded-xl p-6">
-            <div className="grid gap-6  grid-flow-col items-center justify-between">
-              <h3 className="text-lg font-bold ">Add Solrpunk utopia Dream to your ballot</h3>
-              <button onClick={() => setAddBallot(false)} className="text-lg btn btn-sm btn-circle btn-ghost">
-                ✕
-              </button>
-            </div>
-            <div
-              className="max-h-[400px] pr-2 overflow-y-auto 
-            scrollbar-thin
-            scrollbar-thumb-rounded-full
-            scrollbar-thumb-[#E2E8F0]"
-            >
-              <ProjectListCard projectData={projectDataHandle} />
-            </div>
-            <div className="mt-4 rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
-              <p>Total</p>
-              <p>30,000,000 OP</p>
-            </div>
-            <div className="mt-6 grid sm:grid-flow-col gap-3 sm:gap-6">
-              <CustomProjectButton
-                text="Edit distribution"
-                customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
-              >
-                <AdjustmentsHorizontalIcon className="w-5 h-5" />
-              </CustomProjectButton>
-
-              <CustomProjectButton
-                onClick={handleAddBallot}
-                text="Add to ballot"
-                customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
-              >
-                <SquaresPlusIcon className="w-5 h-5" />
-              </CustomProjectButton>
-            </div>
-          </div>
-        </Modal>
+        <AddListToBallotModal
+          onClose={() => handleAddOrEditModal(true)}
+          handleAddBallot={handleAddBallot}
+          userTotal={userData.totalOP}
+          projectList={projectDataHandle}
+          edit={() => handleAddOrEditModal(false, true)}
+        />
       )}
-      {isAdding && <LoadingModal message="Add list to ballot" />}
-      {isSuccess && <SuccessModal message="List added successfully" onClose={() => setIsSuccess(false)} />}
+      {editBallot && (
+        <EditDistributionModal
+          onClose={() => handleAddOrEditModal(true)}
+          handleSaveBallot={handleSaveBallot}
+          userTotal={userData.totalOP}
+          projectList={projectDataHandle}
+          edit={() => handleAddOrEditModal(false, true)}
+        />
+      )}
+      {isLoading && <LoadingModal message={loadingMessage} />}
+      {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
     </div>
   );
 };
