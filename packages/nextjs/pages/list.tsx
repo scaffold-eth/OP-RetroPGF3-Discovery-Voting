@@ -11,6 +11,7 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import ProjectList from "~~/components/op/projects/ProjectList";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import { Address } from "~~/components/scaffold-eth";
+import SuggestProjects from "~~/components/shared/SuggestProjects";
 
 const projectData = [
   {
@@ -134,6 +135,7 @@ const Project = () => {
 
         <div className="mt-16">
           <ProjectList projectData={projectData} />
+          <SuggestProjects />
         </div>
       </div>
     </div>
