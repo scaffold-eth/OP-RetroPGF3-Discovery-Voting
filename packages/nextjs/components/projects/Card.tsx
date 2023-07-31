@@ -4,7 +4,7 @@ import Image from "next/image";
 const Card = ({ project, display }: any) => {
   const { name, banner, logo, username, description, category } = project;
   return (
-    <div className="w-full">
+    <div className="">
       {display === "grids" ? (
         <div className="border rounded-[1.5rem] border-gray-300  p-4 ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
