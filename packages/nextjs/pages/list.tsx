@@ -12,44 +12,44 @@ import ProjectList from "~~/components/op/projects/ProjectList";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import { Address } from "~~/components/scaffold-eth";
 
-const userList = [
+const projectData = [
   {
     name: "DefiLlama",
     handle: "defillama",
 
     image: "/assets/gradient-bg.png",
-    op: "20, 416",
+    op: 20416,
   },
   {
     name: "L2BEAT",
     handle: "l2beat",
     image: "/assets/gradient-bg.png",
-    op: "15, 416 ",
+    op: 15416,
   },
   {
     name: "Polynya",
     handle: "polynya",
     image: "/assets/gradient-bg.png",
-    op: "12, 416",
+    op: 12416,
   },
   {
     name: "DefiLlama",
     handle: "defillama",
 
     image: "/assets/gradient-bg.png",
-    op: "20, 416",
+    op: 20416,
   },
   {
     name: "L2BEAT",
     handle: "l2beat",
     image: "/assets/gradient-bg.png",
-    op: "15, 416 ",
+    op: 15416,
   },
   {
     name: "Polynya",
     handle: "polynya",
     image: "/assets/gradient-bg.png",
-    op: "12, 416",
+    op: 12416,
   },
 ];
 const Project = () => {
@@ -118,7 +118,7 @@ const Project = () => {
           </p>
         </div>
         <div className="mt-8">
-          <h4 className="text-[#68778D] text-lg">📊 IMPACAT EVALUATION</h4>
+          <h4 className="text-[#68778D] text-lg">📊 IMPACT EVALUATION</h4>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda hic soluta provident alias nostrum in
             aspernatur modi, ipsam atque aperiam?
@@ -133,7 +133,7 @@ const Project = () => {
         </div>
 
         <div className="mt-16">
-          <ProjectList projectData={userList} />
+          <ProjectList projectData={projectData} />
         </div>
       </div>
     </div>
