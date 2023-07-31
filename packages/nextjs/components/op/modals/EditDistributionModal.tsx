@@ -66,7 +66,7 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
           <ProjectListCardEditable projectData={projectList} emitTotal={checkTotal} />
         </div>
         {showError ? (
-          <div className="mt-4 rounded-2xl bg-[#F7EAE1] px-5 grid grid-flow-col justify-between items-center">
+          <div className="mt-4 rounded-2xl bg-warning text-warning-content px-5 grid grid-flow-col justify-between items-center">
             <p>{errorMessage}</p>
             <p>{userTotal.toLocaleString()} OP</p>
           </div>

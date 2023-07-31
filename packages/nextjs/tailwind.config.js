@@ -22,7 +22,8 @@ module.exports = {
           "base-content": "#212638",
           info: "#93BBFB",
           success: "#34EEB6",
-          warning: "#FFCF72",
+          warning: "#F7EAE1",
+          "warning-content": "#DD6B20",
           error: "#FF8863",
 
           "--btn-text-case": "none",

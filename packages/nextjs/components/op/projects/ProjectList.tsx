@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomProjectButton from "../btn/CustomProjectButton";
-import AddListToBallotModal from "../modals/AddListToBallotModal";
+import AlreadyOnBallotConflictModal from "../modals/AlreadyOnBallotConflictModal";
+// import AddListToBallotModal from "../modals/AddListToBallotModal";
 import EditDistributionModal from "../modals/EditDistributionModal";
 import LoadingModal from "../modals/LoadingModal";
 import SuccessModal from "../modals/SuccessModal";
@@ -136,11 +137,19 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         <p>Total</p>
         <p>{userData.totalOP.toLocaleString()} OP</p>
       </div>
-      {addBallot && (
+      {/* {addBallot && (
         <AddListToBallotModal
           onClose={() => handleAddOrEditModal(true)}
           handleAddBallot={handleAddBallot}
           userTotal={userData.totalOP}
+          projectList={projectDataHandle}
+          edit={() => handleAddOrEditModal(false, true)}
+        />
+      )} */}
+      {addBallot && (
+        <AlreadyOnBallotConflictModal
+          onClose={() => handleAddOrEditModal(true)}
+          handleAddBallot={handleAddBallot}
           projectList={projectDataHandle}
           edit={() => handleAddOrEditModal(false, true)}
         />

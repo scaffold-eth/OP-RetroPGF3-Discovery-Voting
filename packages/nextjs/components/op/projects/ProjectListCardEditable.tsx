@@ -6,8 +6,9 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 
 const ProjectListCardEditable: React.FC<{
   projectData: IProjectData[];
+  listAllocation?: IProjectData[];
   emitTotal: (total: number) => void;
-}> = ({ projectData, emitTotal }) => {
+}> = ({ projectData, emitTotal, listAllocation = [] }) => {
   const handleChange = (index: number, value: number) => {
     const total = projectData.reduce((a, b) => a + Number(b.op), 0);
     const newTotal = total - Number(projectData[index].op) + value;
@@ -42,6 +43,20 @@ const ProjectListCardEditable: React.FC<{
             </div>
           </div>
           <div className="flex flex-row">
+            {listAllocation[index] ? (
+              <OPInput
+                index={index}
+                value={listAllocation[index].op}
+                handleChange={() => {
+                  return;
+                }}
+                customClassesGroup="mr-2 pointer-events-none"
+                customClassesInput="pointer-events-none text-[#8496AE] bg-[#E2E8F0] border-neutral cursor-default"
+                customClassesSpan="bg-[#E2E8F0] text-[#8496AE] border-neutral pointer-events-none"
+              />
+            ) : (
+              ""
+            )}
             <OPInput index={index} value={project.op} handleChange={handleChange} />
             <button
               onClick={() => {
