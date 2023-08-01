@@ -9,7 +9,7 @@ function ListHeader({ displayList, titleHeader, display }: any) {
 
   return (
     <div>
-      <div className="flex justify-between py-[40px] px-4">
+      <div className="flex justify-between px-4">
         <h1 className="font-bold text-2xl leading-8 ">{titleHeader}</h1>
         <div className="flex gap-2 items-center">
           <div
@@ -38,7 +38,7 @@ function ListHeader({ displayList, titleHeader, display }: any) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 px-4">
+      <div className="flex flex-wrap items-center gap-3 px-4 pt-8">
         {titleHeader === "Lists" && (
           <>
             <button

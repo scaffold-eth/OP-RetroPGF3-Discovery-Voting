@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ListHeader from "~~/components/lists/ListHeader";
 import Pagination from "~~/components/lists/Pagination";
 import Card from "~~/components/projects/Card";
+import Sidebar from "~~/components/shared/Sidebar";
 
 const data = [
   {
@@ -127,12 +128,13 @@ const Projects = () => {
     setDisplay(option);
   };
   return (
-    <div className="">
+    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+      <Sidebar />
       <div className="">
         <ListHeader displayList={displayList} titleHeader="Projects" display={display} />
         <div
           className={`px-4 grid pt-8 gap-4 ${
-            display == "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
+            display === "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
           } `}
         >
           {data.map(project => (
