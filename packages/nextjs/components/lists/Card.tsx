@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
 
-const Card = ({ project }: any) => {
-  const { name, user_avatar, username, likes, description, tags } = project;
+const Card = ({ project, onLike }: any) => {
+  const { id, name, user_avatar, username, likes, description, tags, liked } = project;
   return (
     <div className="w-full">
       <div className="border rounded-lg border-gray-300  p-4 ">
@@ -22,7 +23,14 @@ const Card = ({ project }: any) => {
 
           <div className="flex items-center">
             <p className="text-lightGray text-sm leading-4 font-normal text-right  mr-2">{likes}</p>
-            <HeartIcon className="w-6 h-6" />
+            {/*  <HeartIcon className={`w-6 h-6 cursor-pointer ${liked ? "bg-red-500" : ""}`} onClick={() => onLike(id)} /> */}
+            <button onClick={() => onLike(id)}>
+              {liked ? (
+                <HeartFilledIcon className="w-6 h-6   text-[#ff0000]" />
+              ) : (
+                <HeartIcon className="w-6 h-6 text-[#68778D] " />
+              )}
+            </button>
           </div>
         </div>
 
