@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
 
-function ListHeader({ displayList, titleHeader, display }: any) {
+function ListHeader({ displayList, titleHeader, display, onCategoryChange }: any) {
   const [active, setActive] = useState("all");
   const handleButtonClick = (options: string) => {
     setActive(options);
+    onCategoryChange(options);
   };
 
   return (

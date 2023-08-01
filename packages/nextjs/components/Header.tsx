@@ -48,7 +48,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2">
+    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2 py-4">
       <div className="navbar-start w-1/3 ">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
