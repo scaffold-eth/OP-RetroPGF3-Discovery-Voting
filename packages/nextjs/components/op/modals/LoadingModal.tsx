@@ -19,7 +19,7 @@ const LoadingModal: React.FC<ILoadingModal> = ({ message }) => {
       }}
     >
       <div className="w-fit md:w-[400px] flex flex-col gap-5 items-center justify-center bg-white rounded-xl p-6">
-        <div className="p-3 w-16 h-16 rounded-xl bg-[#D7E6F9]">
+        <div className="p-3 w-12 h-12 rounded-xl bg-[#D7E6F9]">
           {/* Render a loading spinner with the class "loading-lg" and the text color "text-info" */}
           <div
             className="w-full h-full rounded-full animate-spin

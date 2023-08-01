@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
 
-function ListHeader({ displayList }: any) {
+function ListHeader({ displayList, titleHeader, display }: any) {
   const [active, setActive] = useState("all");
   const handleButtonClick = (options: string) => {
     setActive(options);
@@ -10,16 +10,20 @@ function ListHeader({ displayList }: any) {
   return (
     <div>
       <div className="flex justify-between py-[40px] px-4">
-        <h1 className="font-bold text-2xl leading-8 ">Lists</h1>
+        <h1 className="font-bold text-2xl leading-8 ">{titleHeader}</h1>
         <div className="flex gap-2 items-center">
           <div
-            className="w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite"
+            className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
+              display === "colums" ? "bg-customWhite text-black" : ""
+            }`}
             onClick={() => displayList("colums")}
           >
             <ListBulletIcon className="w-[24px] h-[24px]" />
           </div>
           <div
-            className="w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite "
+            className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
+              display === "grids" ? "bg-customWhite text-black" : ""
+            }`}
             onClick={() => displayList("grids")}
           >
             <Squares2X2Icon className="w-[24px] h-[24px]" />
@@ -33,27 +37,35 @@ function ListHeader({ displayList }: any) {
           </button>
         </div>
       </div>
-      <div className="flex items-center gap-3 px-4">
-        <button
-          onClick={() => handleButtonClick("all")}
-          className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-            active == "all" ? "bg-secondary-content text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
-          }`}
-        >
-          All
-        </button>
-        <button
-          onClick={() => handleButtonClick("liked")}
-          className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-            active == "liked" ? "bg-secondary-content text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
-          }`}
-        >
-          <span className="flex">
-            <HeartIcon className="w-4 mr-2" />
-            Liked
-          </span>
-        </button>
-        <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
+
+      <div className="flex flex-wrap items-center gap-3 px-4">
+        {titleHeader === "Lists" && (
+          <>
+            <button
+              onClick={() => handleButtonClick("all")}
+              className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
+                active == "all" ? "bg-secondary-content text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
+              }`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => handleButtonClick("liked")}
+              className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
+                active == "liked"
+                  ? "bg-secondary-content text-white dark:bg-black"
+                  : "bg-customWhite text-customGrayBtn"
+              }`}
+            >
+              <span className="flex">
+                <HeartIcon className="w-4 mr-2" />
+                Liked
+              </span>
+            </button>
+            <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
+          </>
+        )}
+
         <button
           onClick={() => handleButtonClick("OP Stack")}
           className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${

@@ -15,7 +15,7 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
           <div className={`${!project.handle && "items-center"} grid  grid-flow-col gap-4`}>
             <div className={` ${project.handle ? "w-[80px]" : "w-[60px]"}`}>
               <Image
-                alt="project list  "
+                alt="project list"
                 height={"80"}
                 width={"80"}
                 src="/assets/gradient-bg.png"
@@ -27,7 +27,7 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
               {project.handle && <p className="mt-0 text-[1.1rem] text-[#7f97b0]">@{project.handle}</p>}
             </div>
           </div>
-          <p className="text-lg">{project.op} OP</p>
+          <p className="text-lg">{project.op.toLocaleString()} OP</p>
         </div>
       ))}
     </div>
