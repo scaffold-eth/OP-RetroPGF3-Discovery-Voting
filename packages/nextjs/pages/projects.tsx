@@ -1,179 +1,149 @@
-import React from "react";
-import {
-  ArrowTopRightOnSquareIcon,
-  ArrowUturnRightIcon,
-  DocumentIcon,
-  EllipsisHorizontalIcon,
-  FlagIcon,
-  HeartIcon as HeartFilledIcon,
-} from "@heroicons/react/20/solid";
-import { HeartIcon } from "@heroicons/react/24/outline";
-import ProjectList from "~~/components/op/projects/ProjectList";
-import { Address } from "~~/components/scaffold-eth";
+import React, { useState } from "react";
+import ListHeader from "~~/components/lists/ListHeader";
+import Pagination from "~~/components/lists/Pagination";
+import Card from "~~/components/projects/Card";
 
-const userList = [
+const data = [
   {
+    id: 1,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "WalletConnect",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Collective Governance",
+  },
+  {
+    id: 2,
+    banner: "/assets/projects/Img (1).png",
+    logo: "/assets/projects/Logo_2.png",
     name: "DefiLlama",
-    handle: "defillama",
-
-    image: "/assets/gradient-bg.png",
-    op: "20, 416",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
   },
   {
-    name: "L2BEAT",
-    handle: "l2beat",
-    image: "/assets/gradient-bg.png",
-    op: "15, 416 ",
+    id: 3,
+    banner: "/assets/projects/Img (2).png",
+    logo: "/assets/projects/Logo34.png",
+    name: "Cryptotesters",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "End User Experience and Adoption",
   },
   {
-    name: "Polynya",
-    handle: "polynya",
-    image: "/assets/gradient-bg.png",
-    op: "12, 416",
+    id: 4,
+    banner: "/assets/projects/Img (3).png",
+    logo: "/assets/Logo.png",
+    name: "Hardhat",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "End User Experience and Adoption",
   },
   {
-    name: "DefiLlama",
-    handle: "defillama",
-
-    image: "/assets/gradient-bg.png",
-    op: "20, 416",
+    id: 5,
+    banner: "/assets/projects/Img (4).png",
+    logo: "/assets/Logo.png",
+    name: "Lattice",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
   },
   {
-    name: "L2BEAT",
-    handle: "l2beat",
-    image: "/assets/gradient-bg.png",
-    op: "15, 416 ",
+    id: 6,
+    banner: "/assets/projects/Img (5).png",
+    logo: "/assets/Logo.png",
+    name: "polynya",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Collective Governance",
   },
   {
-    name: "Polynya",
-    handle: "polynya",
-    image: "/assets/gradient-bg.png",
-    op: "12, 416",
+    id: 7,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "Hardhat",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
+  },
+  {
+    id: 8,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "Lattice",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
+  },
+  {
+    id: 9,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "polynya",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
+  },
+  {
+    id: 10,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "WalletConnect",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
+  },
+  {
+    id: 11,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "WalletConnect",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
+  },
+  {
+    id: 12,
+    banner: "/assets/projects/Img.png",
+    logo: "/assets/Logo.png",
+    name: "WalletConnect",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ...",
+    category: "Developer Ecosystem",
   },
 ];
-const Project = () => {
-  const [likedModal, setLikedModal] = React.useState(false);
-  const [isLiked, setIsLiked] = React.useState(false);
+
+const Projects = () => {
+  const [display, setDisplay] = useState("grids");
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 5;
+
+  const handlePageChange = (pageNumber: any) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const displayList = (option: string) => {
+    setDisplay(option);
+  };
   return (
-    <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
+    <div className="">
       <div className="">
-        <h3 className="text-[#47556a]">YOUR BALLOT</h3>
-        <div className="mt-5">
-          <p className="p-0 m-0 text-sm text-[#7f97b0] ">Voting ends in</p>
-          <span className="font-bold text-lg">3d:12h:30m:24s</span>
-        </div>
-        <div className="mt-5">
-          <p className="p-0 m-0 text-sm text-[#7f97b0]">Projects added</p>
-          <p className="p-0 m-0">
-            <span className="font-bold text-lg">15</span>
-            <span className="text-[#7f97b0]">/200</span>
-          </p>
-        </div>
-        <div className="mt-5">
-          <div className="grid grid-cols-2 justify-between">
-            <p className="p-0 m-0 text-sm text-[#7f97b0]">OP allocated </p>
-            <span className="font-bold text-end ">330,136 OP</span>
-          </div>
-          <div>
-            <progress className="progress progress-error  w-full" value="40" max="100"></progress>
-          </div>
-          <div className="grid grid-cols-2 justify-between text-[#7f97b0]">
-            <p className="p-0 m-0 text-sm ">Total</p>
-            <span className=" text-end text-[#7f97b0]">30,000,000 OP</span>
-          </div>
-        </div>
-        <div className="mt-5">
-          <button disabled className=" py-3 w-full rounded-lg bg-[#E2E8F0] text-[#A9B9CC]">
-            No Projects added yet
-          </button>
-        </div>
-        <div className="divider "></div>
-        <div className="mt-7 text-[#47556a]">
-          <p className="text-sm">Some instructional copy for the connected viewers :)</p>
-          <div className="text-[#2173DF] grid grid-flow-col justify-start items-center gap-2">
-            <p className="text-bold ">Voting guideline</p>
-            <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-          </div>
-        </div>
-      </div>
-      <div className="">
-        <div className="grid grid-flow-col items-center">
-          <h3 className="text-2xl font-bold">Solarpunk Utopia Dream</h3>
-          <div className="grid grid-flow-col gap-4 justify-end relative">
-            <div className=" flex items-center gap-1 rounded-xl p-4 border-[1px] border-[#CBD5E0]">
-              <span>12</span>
-              {isLiked ? (
-                <HeartIcon className="w-6 h-6  text-[#68778D]" />
-              ) : (
-                <HeartFilledIcon className="w-6 h-6 text-[#ff0000] " />
-              )}
-            </div>
-            <button
-              onClick={() => {
-                setLikedModal(!likedModal);
-              }}
-              className="flex items-center rounded-xl p-4 border-[1px] border-[#CBD5E0]"
-            >
-              <EllipsisHorizontalIcon className="w-6 h-6 " />
-            </button>
-            {likedModal && (
-              <div className="absolute  bg-gray-200 rounded-xl top-16 right-0 w-[200px] py-3 px-8  border-2 border-[#CBD5E0]">
-                <button onClick={() => setIsLiked(!isLiked)} className="flex gap-4 items-center">
-                  {isLiked ? (
-                    <HeartIcon className="w-6 h-6 text-[#68778D]" />
-                  ) : (
-                    <HeartFilledIcon className="w-6 h-6 text-[#ff0000] " />
-                  )}
-                  <p>Like</p>
-                </button>
-                <button className="flex gap-4 items-center">
-                  <ArrowUturnRightIcon className="w-6 h-6 text-[#68778D]" />
-                  <p>Share</p>
-                </button>
-                <button className="flex gap-4 items-center">
-                  <FlagIcon className="w-6 h-6 text-[#68778D]" />
-                  <p>Report</p>
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="flex gap-2 ">
-          <span className="text-[#47556a]">created by</span>
-          <Address address="0xf4030DdD79fc7Fd49b25C976C5021D07568B4F91" />
-        </div>
-        <div className="mt-8">
-          <h4 className="text-[#68778D] text-lg">🧑‍💻 ABOUT</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda hic soluta provident alias nostrum in
-            aspernatur modi, ipsam atque aperiam?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda hic soluta provident alias nostrum in
-            aspernatur modi, ipsam atque aperiam?
-          </p>
-        </div>
-        <div className="mt-8">
-          <h4 className="text-[#68778D] text-lg">📊 IMPACAT EVALUATION</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda hic soluta provident alias nostrum in
-            aspernatur modi, ipsam atque aperiam?
-          </p>
-          <button className="grid grid-flow-col w-fit items-center rounded-full px-4 gap-2 border-[1px] border-[#CBD5E0] ">
-            <div className="rounded-full p-1 bg-[#E2E8F0]">
-              <DocumentIcon className="w-6 h-6 text-[#68778D]" />
-            </div>
-            <p className=" ">impact Evaluation</p>
-            <ArrowTopRightOnSquareIcon className="text-[#68778D] w-6 h-6" />
-          </button>
+        <ListHeader displayList={displayList} titleHeader="Projects" display={display} />
+        <div
+          className={`px-4 grid pt-8 gap-4 ${
+            display == "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
+          } `}
+        >
+          {data.map(project => (
+            <Card key={project.id} project={project} display={display} />
+          ))}
         </div>
 
-        <div className="mt-16">
-          <ProjectList projectData={userList} />
-        </div>
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </div>
     </div>
   );
 };
 
-export default Project;
+export default Projects;

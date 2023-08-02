@@ -5,15 +5,23 @@ interface ICustomProjectButton {
   customClassName?: string;
   children?: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
-const CustomProjectButton: React.FC<ICustomProjectButton> = ({ text, customClassName, children, onClick }) => {
+const CustomProjectButton: React.FC<ICustomProjectButton> = ({
+  text,
+  customClassName,
+  children,
+  onClick,
+  disabled,
+}) => {
   return (
     <button
       onClick={onClick}
-      className={` grid grid-flow-col items-center p-2  justify-center rounded-lg ${customClassName} `}
+      className={`bg-secondary grid grid-flow-col items-center justify-center btn ${customClassName}`}
+      disabled={disabled}
     >
       {children}
-      <span className="pl-2">{text}</span>
+      <span className={`${children && "pl-2"}`}>{text}</span>
     </button>
   );
 };

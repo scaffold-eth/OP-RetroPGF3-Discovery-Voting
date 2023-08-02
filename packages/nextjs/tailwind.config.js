@@ -22,12 +22,13 @@ module.exports = {
           "base-content": "#212638",
           info: "#93BBFB",
           success: "#34EEB6",
-          warning: "#FFCF72",
+          warning: "#F7EAE1",
+          "warning-content": "#DD6B20",
           error: "#FF8863",
 
           "--btn-text-case": "none",
 
-          "--rounded-btn": "9999rem",
+          "--rounded-btn": "0.75rem",
 
           ".tooltip": {
             "--tooltip-tail": "6px",
@@ -53,7 +54,7 @@ module.exports = {
           warning: "#FFCF72",
           error: "#FF8863",
 
-          "--rounded-btn": "9999rem",
+          "--rounded-btn": "0.75rem",
 
           ".tooltip": {
             "--tooltip-tail": "6px",
@@ -93,6 +94,13 @@ module.exports = {
   theme: {
     // Extend Tailwind classes (e.g. font-bai-jamjuree, animate-grow)
     extend: {
+      colors: {
+        lightGray: "#68778D",
+        lightBlack: "#202327",
+        customGray: "#4A5568",
+        customWhite: "#E2E8F0",
+        customGrayBtn: "#323A43",
+      },
       fontFamily: {
         "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
       },
