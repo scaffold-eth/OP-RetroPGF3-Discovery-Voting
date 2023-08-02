@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 
 function Sidebar() {
   return (
@@ -26,7 +26,7 @@ function Sidebar() {
 
         <div className="flex items-center cursor-pointer">
           <p className="font-semibold mt-4 mr-4">Voting guideline</p>
-          <ArrowUpRightIcon className="w-[20px] h-[20px]" />
+          <ArrowTopRightOnSquareIcon className="w-[20px] h-[20px]" />
         </div>
         <Image
           width={120}

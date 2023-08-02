@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 import ListHeader from "~~/components/lists/ListHeader";
 import Pagination from "~~/components/lists/Pagination";
+import YourBallot from "~~/components/op/projects/YourBallot";
 import Card from "~~/components/projects/Card";
 import Sidebar from "~~/components/shared/Sidebar";
 
@@ -116,6 +118,8 @@ const data = [
 ];
 
 const Projects = () => {
+  const { isDisconnected } = useAccount();
+  const [wallet, setWallet] = useState<boolean | false>(false);
   const [display, setDisplay] = useState("grids");
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 5;
@@ -127,9 +131,14 @@ const Projects = () => {
   const displayList = (option: string) => {
     setDisplay(option);
   };
+
+  useEffect(() => {
+    setWallet(isDisconnected);
+  }, [isDisconnected]);
+
   return (
     <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
-      <Sidebar />
+      {!wallet ? <YourBallot /> : <Sidebar />}
       <div className="">
         <ListHeader displayList={displayList} titleHeader="Projects" display={display} />
         <div
