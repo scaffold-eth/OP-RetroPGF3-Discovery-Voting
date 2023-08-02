@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 import Card from "~~/components/lists/Card";
 import ListHeader from "~~/components/lists/ListHeader";
 import Pagination from "~~/components/lists/Pagination";
+import YourBallot from "~~/components/op/projects/YourBallot";
+import Sidebar from "~~/components/shared/Sidebar";
 
 const data = [
   {
@@ -117,6 +120,8 @@ const data = [
 ];
 
 const Lists = () => {
+  const { isDisconnected } = useAccount();
+  const [wallet, setWallet] = useState<boolean | false>(false);
   const [display, setDisplay] = useState("grids");
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 5;
@@ -128,19 +133,27 @@ const Lists = () => {
   const displayList = (option: string) => {
     setDisplay(option);
   };
+
+  useEffect(() => {
+    setWallet(isDisconnected);
+  }, [isDisconnected]);
+
   return (
-    <div className="">
-      <ListHeader displayList={displayList} titleHeader="Lists" display={display} />
-      <div
-        className={`px-4 grid pt-8 gap-4 ${
-          display === "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
-        } `}
-      >
-        {data.map(project => (
-          <Card key={project.id} project={project} />
-        ))}
+    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+      {!wallet ? <YourBallot /> : <Sidebar />}
+      <div className="">
+        <ListHeader displayList={displayList} titleHeader="Lists" display={display} />
+        <div
+          className={`px-4 grid pt-8 gap-4 ${
+            display === "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
+          } `}
+        >
+          {data.map(project => (
+            <Card key={project.id} project={project} />
+          ))}
+        </div>
+        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
     </div>
   );
 };
