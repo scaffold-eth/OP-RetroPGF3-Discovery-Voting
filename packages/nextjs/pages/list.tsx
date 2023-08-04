@@ -53,6 +53,7 @@ const projectData = [
     op: 12416,
   },
 ];
+
 const Project = () => {
   const [openLikedModal, setopenLikedModal] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);

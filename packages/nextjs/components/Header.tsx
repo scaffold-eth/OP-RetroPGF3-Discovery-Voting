@@ -6,6 +6,7 @@ import { SwitchTheme } from "./SwitchTheme";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
+import BallotComponent from "./ballot/Ballot";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
@@ -94,6 +95,14 @@ export const Header = () => {
         </label>
       </div>
       <div className="navbar-end w-1/3 flex-grow mr-4">
+        {/* <button
+          type="button"
+          className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-100"
+        >
+          View ballot
+          <div className="badge badge-neutral ml-2 rounded-full px-2 py-3">0</div>
+        </button> */}
+        <BallotComponent />
         <RainbowKitCustomConnectButton />
         <SwitchTheme className="pointer-events-auto" />
       </div>

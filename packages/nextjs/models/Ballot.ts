@@ -8,7 +8,7 @@ class Ballot {
   public createdBy?: string;
 
   @prop()
-  public about?: string;
+  public about?: string; 
 
   @prop()
   public impactEvaluation?: string;

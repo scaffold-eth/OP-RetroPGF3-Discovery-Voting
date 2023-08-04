@@ -1,5 +1,6 @@
 import _mongoose, { connect } from "mongoose";
-import { importSeed } from "~~/local_database/importSeed";
+// import { seedDatabase } from "~~/local_database/importSeed";
+
 
 declare global {
   // eslint-disable-next-line no-var
@@ -27,7 +28,8 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  importSeed();
+  // seedDatabase();
+  console.log("Connecting...");
   if (cached.conn) {
     return cached.conn;
   }

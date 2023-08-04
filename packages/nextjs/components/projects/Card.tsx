@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import logo from "~~/public/assets/Logo.png";
+
+// import banner from "~~/public/assets/gradient-bg.png";
 
 const Card = ({ project, display }: any) => {
-  const { name, banner, logo, username, description, category } = project;
+  const { name, username, banner, description, category } = project;
   return (
     <div className="">
       {display === "grids" ? (

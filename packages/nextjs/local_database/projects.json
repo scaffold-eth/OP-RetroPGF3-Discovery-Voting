@@ -20,7 +20,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x941D8Cd7378432Bc4952bA0Dcc9e120C18C92975",
       "coverImageKey": "retropgf/project/cover/0x941D8Cd7378432Bc4952bA0Dcc9e120C18C92975",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x00409fC839a2Ec2e6d12305423d37Cd011279C09",
@@ -41,7 +41,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x00409fC839a2Ec2e6d12305423d37Cd011279C09",
       "coverImageKey": "retropgf/project/cover/0x00409fC839a2Ec2e6d12305423d37Cd011279C09",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x005241438cAF3eaCb05bB6543151f7AF894C5B58",
@@ -62,7 +62,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x005241438cAF3eaCb05bB6543151f7AF894C5B58",
       "coverImageKey": "retropgf/project/cover/0x005241438cAF3eaCb05bB6543151f7AF894C5B58",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x03143EE031AA7bD7b6846750d066A27f18D39edd",
@@ -103,7 +103,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x036C545Ae4f68059b4C83f7E3814429d4c73c089",
       "coverImageKey": "retropgf/project/cover/0x036C545Ae4f68059b4C83f7E3814429d4c73c089",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x04cc6b487566B1C821bEa04d7ac0d23CEDe05cC9",
@@ -124,7 +124,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x04cc6b487566B1C821bEa04d7ac0d23CEDe05cC9",
       "coverImageKey": "retropgf/project/cover/0x04cc6b487566B1C821bEa04d7ac0d23CEDe05cC9",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x062a07cBf4848fdA67292A96a5E02C97E402233F",
@@ -145,7 +145,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x062a07cBf4848fdA67292A96a5E02C97E402233F",
       "coverImageKey": "retropgf/project/cover/0x062a07cBf4848fdA67292A96a5E02C97E402233F",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0693401dF5CbAE158be6bbAdDD69d52283a8076E",
@@ -166,7 +166,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0693401dF5CbAE158be6bbAdDD69d52283a8076E",
       "coverImageKey": "retropgf/project/cover/0x0693401dF5CbAE158be6bbAdDD69d52283a8076E",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x07Aeeb7E544A070a2553e142828fb30c214a1F86",
@@ -187,7 +187,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x07Aeeb7E544A070a2553e142828fb30c214a1F86",
       "coverImageKey": "retropgf/project/cover/0x07Aeeb7E544A070a2553e142828fb30c214a1F86",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x07bF3CDA34aA78d92949bbDce31520714AB5b228",
@@ -208,7 +208,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x07bF3CDA34aA78d92949bbDce31520714AB5b228",
       "coverImageKey": "retropgf/project/cover/0x07bF3CDA34aA78d92949bbDce31520714AB5b228",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x080f08076e8EAdC66006C3CbFEd28a34918A1fA6",
@@ -229,7 +229,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x080f08076e8EAdC66006C3CbFEd28a34918A1fA6",
       "coverImageKey": "retropgf/project/cover/0x080f08076e8EAdC66006C3CbFEd28a34918A1fA6",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x08290908a251119a1C75bb9C36A7A41e9BF2f1E3",
@@ -250,7 +250,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x08290908a251119a1C75bb9C36A7A41e9BF2f1E3",
       "coverImageKey": "retropgf/project/cover/0x08290908a251119a1C75bb9C36A7A41e9BF2f1E3",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x09a5943a6d10919571eE2C9F63380aEA747ECA97",
@@ -271,7 +271,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x09a5943a6d10919571eE2C9F63380aEA747ECA97",
       "coverImageKey": "retropgf/project/cover/0x09a5943a6d10919571eE2C9F63380aEA747ECA97",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x09c41efc1C7E2C2A11Bb153eF39AFFeaFf2CeDcD",
@@ -292,7 +292,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x09c41efc1C7E2C2A11Bb153eF39AFFeaFf2CeDcD",
       "coverImageKey": "retropgf/project/cover/0x09c41efc1C7E2C2A11Bb153eF39AFFeaFf2CeDcD",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0AB7C4123e84c975008fcfcb14f07152bb711F82",
@@ -313,7 +313,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0AB7C4123e84c975008fcfcb14f07152bb711F82",
       "coverImageKey": "retropgf/project/cover/0x0AB7C4123e84c975008fcfcb14f07152bb711F82",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0B27BFb649919bE208F62244E4a09A41b0f962D0",
@@ -334,7 +334,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0B27BFb649919bE208F62244E4a09A41b0f962D0",
       "coverImageKey": "retropgf/project/cover/0x0B27BFb649919bE208F62244E4a09A41b0f962D0",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0BE55326919F08Af4D14A42aAfb3B68F95738355",
@@ -355,7 +355,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0BE55326919F08Af4D14A42aAfb3B68F95738355",
       "coverImageKey": "retropgf/project/cover/0x0BE55326919F08Af4D14A42aAfb3B68F95738355",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0F9Bd2a9E0D30f121c525DB5419A07b08Fce8440",
@@ -376,7 +376,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0F9Bd2a9E0D30f121c525DB5419A07b08Fce8440",
       "coverImageKey": "retropgf/project/cover/0x0F9Bd2a9E0D30f121c525DB5419A07b08Fce8440",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0a09cd09B0107Bb98a83f211704F036ECa94B92e",
@@ -397,7 +397,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0a09cd09B0107Bb98a83f211704F036ECa94B92e",
       "coverImageKey": "retropgf/project/cover/0x0a09cd09B0107Bb98a83f211704F036ECa94B92e",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x0a6CD04Ca9Ce730c709276C6868D9F2C4D9Ef1D6",
@@ -418,7 +418,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x0a6CD04Ca9Ce730c709276C6868D9F2C4D9Ef1D6",
       "coverImageKey": "retropgf/project/cover/0x0a6CD04Ca9Ce730c709276C6868D9F2C4D9Ef1D6",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x10850762bAc0dc6660630c1EfFe188A7cbFDdc88",
@@ -439,7 +439,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x10850762bAc0dc6660630c1EfFe188A7cbFDdc88",
       "coverImageKey": "retropgf/project/cover/0x10850762bAc0dc6660630c1EfFe188A7cbFDdc88",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x112E372bb5EC17c1ea6b1d679EA72aFBD2A94404",
@@ -520,7 +520,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x151EF20A3ADe1CC1161391594f8a32461389a54e",
       "coverImageKey": "retropgf/project/cover/0x151EF20A3ADe1CC1161391594f8a32461389a54e",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x1F5D295778796a8b9f29600A585Ab73D452AcB1c",
@@ -561,7 +561,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x1F7b953113f4dFcBF56a1688529CC812865840e1",
       "coverImageKey": "retropgf/project/cover/0x1F7b953113f4dFcBF56a1688529CC812865840e1",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x1F9E7984eDdb135ab6D6f354E229970bB332dCC4",
@@ -582,7 +582,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x1F9E7984eDdb135ab6D6f354E229970bB332dCC4",
       "coverImageKey": "retropgf/project/cover/0x1F9E7984eDdb135ab6D6f354E229970bB332dCC4",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x1d921dff757610FbDB0073479e12c0a07d382677",
@@ -603,7 +603,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x1d921dff757610FbDB0073479e12c0a07d382677",
       "coverImageKey": "retropgf/project/cover/0x1d921dff757610FbDB0073479e12c0a07d382677",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x2117085E7e4eE35825A9C71bbE46AAd8c01789f3",
@@ -624,7 +624,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x2117085E7e4eE35825A9C71bbE46AAd8c01789f3",
       "coverImageKey": "retropgf/project/cover/0x2117085E7e4eE35825A9C71bbE46AAd8c01789f3",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x245cE6de47A5D44E5B73f923F1aDA4cc1688D22b",
@@ -645,7 +645,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x245cE6de47A5D44E5B73f923F1aDA4cc1688D22b",
       "coverImageKey": "retropgf/project/cover/0x245cE6de47A5D44E5B73f923F1aDA4cc1688D22b",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x24b0529c7226AE66968B9A8b521b266A2cA4a898",
@@ -666,7 +666,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x24b0529c7226AE66968B9A8b521b266A2cA4a898",
       "coverImageKey": "retropgf/project/cover/0x24b0529c7226AE66968B9A8b521b266A2cA4a898",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x25a2dF1d1310da75e8BC115cc797673E777B7e27",
@@ -687,7 +687,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x25a2dF1d1310da75e8BC115cc797673E777B7e27",
       "coverImageKey": "retropgf/project/cover/0x25a2dF1d1310da75e8BC115cc797673E777B7e27",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x25df6DA2f4e5C178DdFF45038378C0b08E0Bce54",
@@ -708,7 +708,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x25df6DA2f4e5C178DdFF45038378C0b08E0Bce54",
       "coverImageKey": "retropgf/project/cover/0x25df6DA2f4e5C178DdFF45038378C0b08E0Bce54",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x281BA4E9B7e28982d6CB53EE3836865f1453e12F",
@@ -729,7 +729,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x281BA4E9B7e28982d6CB53EE3836865f1453e12F",
       "coverImageKey": "retropgf/project/cover/0x281BA4E9B7e28982d6CB53EE3836865f1453e12F",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x283266045Ab2aB0793a62CADC21D55f685636Ae0",
@@ -750,7 +750,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x283266045Ab2aB0793a62CADC21D55f685636Ae0",
       "coverImageKey": "retropgf/project/cover/0x283266045Ab2aB0793a62CADC21D55f685636Ae0",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x2Ae8c972fB2E6c00ddED8986E2dc672ED190DA06",
@@ -771,7 +771,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x2Ae8c972fB2E6c00ddED8986E2dc672ED190DA06",
       "coverImageKey": "retropgf/project/cover/0x2Ae8c972fB2E6c00ddED8986E2dc672ED190DA06",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x2B1Bfc5dCD4E21CeAA5F512e350b00c585dAE894",
@@ -792,7 +792,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x2B1Bfc5dCD4E21CeAA5F512e350b00c585dAE894",
       "coverImageKey": "retropgf/project/cover/0x2B1Bfc5dCD4E21CeAA5F512e350b00c585dAE894",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x2ba1aebA3fBd69aa74944F17326Bfdc229fD986E",
@@ -813,7 +813,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x2ba1aebA3fBd69aa74944F17326Bfdc229fD986E",
       "coverImageKey": "retropgf/project/cover/0x2ba1aebA3fBd69aa74944F17326Bfdc229fD986E",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x2cd0ac587Fc0E6FBcF8A47A449971649E7dab835",
@@ -834,7 +834,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x2cd0ac587Fc0E6FBcF8A47A449971649E7dab835",
       "coverImageKey": "retropgf/project/cover/0x2cd0ac587Fc0E6FBcF8A47A449971649E7dab835",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x33D66941465ac776C38096cb1bc496C673aE7390",
@@ -855,7 +855,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x33D66941465ac776C38096cb1bc496C673aE7390",
       "coverImageKey": "retropgf/project/cover/0x33D66941465ac776C38096cb1bc496C673aE7390",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x33DB27C21E0f7a2f3351A4C6DDceDFB9F713410b",
@@ -876,7 +876,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x33DB27C21E0f7a2f3351A4C6DDceDFB9F713410b",
       "coverImageKey": "retropgf/project/cover/0x33DB27C21E0f7a2f3351A4C6DDceDFB9F713410b",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x34aA3F359A9D614239015126635CE7732c18fDF3",
@@ -897,7 +897,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x34aA3F359A9D614239015126635CE7732c18fDF3",
       "coverImageKey": "retropgf/project/cover/0x34aA3F359A9D614239015126635CE7732c18fDF3",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x358fdcCDE25e0aae7fBA01F088Da89b08aBF61DB",
@@ -918,7 +918,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x358fdcCDE25e0aae7fBA01F088Da89b08aBF61DB",
       "coverImageKey": "retropgf/project/cover/0x358fdcCDE25e0aae7fBA01F088Da89b08aBF61DB",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x36F322fC85B24aB13263CFE9217B28f8E2b38381",
@@ -939,7 +939,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x36F322fC85B24aB13263CFE9217B28f8E2b38381",
       "coverImageKey": "retropgf/project/cover/0x36F322fC85B24aB13263CFE9217B28f8E2b38381",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x3754a10c1cA723961068B2653109E6201982Dd9c",
@@ -960,7 +960,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x3754a10c1cA723961068B2653109E6201982Dd9c",
       "coverImageKey": "retropgf/project/cover/0x3754a10c1cA723961068B2653109E6201982Dd9c",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x3B1E17b3FC8B2B2c5FBb995Fb3E1dE95a4D7cF7D",
@@ -981,7 +981,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x3B1E17b3FC8B2B2c5FBb995Fb3E1dE95a4D7cF7D",
       "coverImageKey": "retropgf/project/cover/0x3B1E17b3FC8B2B2c5FBb995Fb3E1dE95a4D7cF7D",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x3B3980936707A8299AFb5424Fa807c1CBac37cCb",
@@ -1002,7 +1002,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x3B3980936707A8299AFb5424Fa807c1CBac37cCb",
       "coverImageKey": "retropgf/project/cover/0x3B3980936707A8299AFb5424Fa807c1CBac37cCb",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x3b036793Ea6dD8D9b352847f32818FA253eB759d",
@@ -1023,7 +1023,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x3b036793Ea6dD8D9b352847f32818FA253eB759d",
       "coverImageKey": "retropgf/project/cover/0x3b036793Ea6dD8D9b352847f32818FA253eB759d",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x3b067Af83F540cB827825a6Ee5480441a4237E77",
@@ -1044,7 +1044,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x3b067Af83F540cB827825a6Ee5480441a4237E77",
       "coverImageKey": "retropgf/project/cover/0x3b067Af83F540cB827825a6Ee5480441a4237E77",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x400aBc3DAE98Ec5aEEF2681b40D4CEd0A5aff934",
@@ -1065,7 +1065,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x400aBc3DAE98Ec5aEEF2681b40D4CEd0A5aff934",
       "coverImageKey": "retropgf/project/cover/0x400aBc3DAE98Ec5aEEF2681b40D4CEd0A5aff934",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x40bbF4468495197b919591Dae8cb5d3fE2F52e7E",
@@ -1086,7 +1086,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x40bbF4468495197b919591Dae8cb5d3fE2F52e7E",
       "coverImageKey": "retropgf/project/cover/0x40bbF4468495197b919591Dae8cb5d3fE2F52e7E",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x429F9aDA43e9F345CbB85EC88681BB70Df808892",
@@ -1107,7 +1107,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x429F9aDA43e9F345CbB85EC88681BB70Df808892",
       "coverImageKey": "retropgf/project/cover/0x429F9aDA43e9F345CbB85EC88681BB70Df808892",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4413E96F6b46e59326a7695eF871FA902Ff7935d",
@@ -1128,7 +1128,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4413E96F6b46e59326a7695eF871FA902Ff7935d",
       "coverImageKey": "retropgf/project/cover/0x4413E96F6b46e59326a7695eF871FA902Ff7935d",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x45755F5e7d3b1cdB1AaF1Fe786c415e47Bed2f43",
@@ -1169,7 +1169,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x47A6a1B6492B6dF811606B8294A02b4268e86dAD",
       "coverImageKey": "retropgf/project/cover/0x47A6a1B6492B6dF811606B8294A02b4268e86dAD",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4856e043a1F2CAA8aCEfd076328b4981Aca91000",
@@ -1190,7 +1190,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4856e043a1F2CAA8aCEfd076328b4981Aca91000",
       "coverImageKey": "retropgf/project/cover/0x4856e043a1F2CAA8aCEfd076328b4981Aca91000",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4879DF2Ba195a69C178133F44E278c0f64797Ca5",
@@ -1211,7 +1211,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4879DF2Ba195a69C178133F44E278c0f64797Ca5",
       "coverImageKey": "retropgf/project/cover/0x4879DF2Ba195a69C178133F44E278c0f64797Ca5",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x48A63097E1Ac123b1f5A8bbfFafA4afa8192FaB0",
@@ -1232,7 +1232,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x48A63097E1Ac123b1f5A8bbfFafA4afa8192FaB0",
       "coverImageKey": "retropgf/project/cover/0x48A63097E1Ac123b1f5A8bbfFafA4afa8192FaB0",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4BAa1fcAe9Ba8F9e1247b5CFD71e2463e85b2284",
@@ -1253,7 +1253,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4BAa1fcAe9Ba8F9e1247b5CFD71e2463e85b2284",
       "coverImageKey": "retropgf/project/cover/0x4BAa1fcAe9Ba8F9e1247b5CFD71e2463e85b2284",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4C0a466DF0628FE8699051b3Ac6506653191cc21",
@@ -1294,7 +1294,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4c6E3610a222E4518cc7ef3d8826Ee8640995c5C",
       "coverImageKey": "retropgf/project/cover/0x4c6E3610a222E4518cc7ef3d8826Ee8640995c5C",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4d2F0Efdb2AD1d709d8522E7b5aa9f5181563617",
@@ -1315,7 +1315,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4d2F0Efdb2AD1d709d8522E7b5aa9f5181563617",
       "coverImageKey": "retropgf/project/cover/0x4d2F0Efdb2AD1d709d8522E7b5aa9f5181563617",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4d5Dd4d81D773c05cE27AbA03e2f3E346c3F8E54",
@@ -1336,7 +1336,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4d5Dd4d81D773c05cE27AbA03e2f3E346c3F8E54",
       "coverImageKey": "retropgf/project/cover/0x4d5Dd4d81D773c05cE27AbA03e2f3E346c3F8E54",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4d85e4F760fb58E380f02657AE5Aafb8bd010601",
@@ -1357,7 +1357,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4d85e4F760fb58E380f02657AE5Aafb8bd010601",
       "coverImageKey": "retropgf/project/cover/0x4d85e4F760fb58E380f02657AE5Aafb8bd010601",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4e3D9399C28c724293dd545225Ec843Ac4c9e953",
@@ -1378,7 +1378,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4e3D9399C28c724293dd545225Ec843Ac4c9e953",
       "coverImageKey": "retropgf/project/cover/0x4e3D9399C28c724293dd545225Ec843Ac4c9e953",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x4f41877773e44F2275dA1942FEe898556821bf66",
@@ -1399,7 +1399,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x4f41877773e44F2275dA1942FEe898556821bf66",
       "coverImageKey": "retropgf/project/cover/0x4f41877773e44F2275dA1942FEe898556821bf66",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x523d007855B3543797E0d3D462CB44B601274819",
@@ -1440,7 +1440,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5265Bde27F57E738bE6c1F6AB3544e82cdc92a8f",
       "coverImageKey": "retropgf/project/cover/0x5265Bde27F57E738bE6c1F6AB3544e82cdc92a8f",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x5401745963974c22F8f8254a2A904Ea5f54ddc22",
@@ -1461,7 +1461,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5401745963974c22F8f8254a2A904Ea5f54ddc22",
       "coverImageKey": "retropgf/project/cover/0x5401745963974c22F8f8254a2A904Ea5f54ddc22",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x56262562506967a08Bf60a5aC5a5cEEAc02BECD2",
@@ -1482,7 +1482,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x56262562506967a08Bf60a5aC5a5cEEAc02BECD2",
       "coverImageKey": "retropgf/project/cover/0x56262562506967a08Bf60a5aC5a5cEEAc02BECD2",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x57B02589d6e24203FC43e442ce9A4803E290293b",
@@ -1523,7 +1523,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5874D5D530D1f969FD962579c445A0f3A8682D48",
       "coverImageKey": "retropgf/project/cover/0x5874D5D530D1f969FD962579c445A0f3A8682D48",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x587e9cbc67Af10a9d95F3e38836943667b331392",
@@ -1544,7 +1544,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x587e9cbc67Af10a9d95F3e38836943667b331392",
       "coverImageKey": "retropgf/project/cover/0x587e9cbc67Af10a9d95F3e38836943667b331392",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x59E6Ca75DFb201BAFF565303CA52A3113DD6F223",
@@ -1565,7 +1565,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x59E6Ca75DFb201BAFF565303CA52A3113DD6F223",
       "coverImageKey": "retropgf/project/cover/",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x59cc06BF5CF5e07790432599060B7D402F9d2cA8",
@@ -1586,7 +1586,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x59cc06BF5CF5e07790432599060B7D402F9d2cA8",
       "coverImageKey": "retropgf/project/cover/0x59cc06BF5CF5e07790432599060B7D402F9d2cA8",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x5A930B098Ed8D58dD4590577af85a8E864A8F6fE",
@@ -1607,7 +1607,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5A930B098Ed8D58dD4590577af85a8E864A8F6fE",
       "coverImageKey": "retropgf/project/cover/0x5A930B098Ed8D58dD4590577af85a8E864A8F6fE",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x5C04E7808455ee0e22c2773328C151d0DD79dC62",
@@ -1628,7 +1628,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5C04E7808455ee0e22c2773328C151d0DD79dC62",
       "coverImageKey": "retropgf/project/cover/0x5C04E7808455ee0e22c2773328C151d0DD79dC62",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x5EfF4B8c042AA6003cBDA6E32C4aA23657d3b6AF",
@@ -1649,7 +1649,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5EfF4B8c042AA6003cBDA6E32C4aA23657d3b6AF",
       "coverImageKey": "retropgf/project/cover/0x5EfF4B8c042AA6003cBDA6E32C4aA23657d3b6AF",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x5eEeB9F8a2050533BBEd20F87d445Dcf309a5eA7",
@@ -1670,7 +1670,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x5eEeB9F8a2050533BBEd20F87d445Dcf309a5eA7",
       "coverImageKey": "retropgf/project/cover/0x5eEeB9F8a2050533BBEd20F87d445Dcf309a5eA7",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x5fC34D03cFdf145Db5f3c5B5558e39a4164AAa30",
@@ -1711,7 +1711,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6084fBE2Aa96Bb131D6Bc7Bd3BE786882cfA250F",
       "coverImageKey": "retropgf/project/cover/0x6084fBE2Aa96Bb131D6Bc7Bd3BE786882cfA250F",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x60A5dcB2fC804874883b797f37CbF1b0582ac2dD",
@@ -1732,7 +1732,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x60A5dcB2fC804874883b797f37CbF1b0582ac2dD",
       "coverImageKey": "retropgf/project/cover/0x60A5dcB2fC804874883b797f37CbF1b0582ac2dD",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x60AdC0F89a41AF237ce73554EDe170D733ec14E0",
@@ -1753,7 +1753,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x60AdC0F89a41AF237ce73554EDe170D733ec14E0",
       "coverImageKey": "retropgf/project/cover/0x60AdC0F89a41AF237ce73554EDe170D733ec14E0",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x61d10BFDa1aa5010795985FD9a49F21Fb7570982",
@@ -1774,7 +1774,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x61d10BFDa1aa5010795985FD9a49F21Fb7570982",
       "coverImageKey": "retropgf/project/cover/0x61d10BFDa1aa5010795985FD9a49F21Fb7570982",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x62a43123FE71f9764f26554b3F5017627996816a",
@@ -1795,7 +1795,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x62a43123FE71f9764f26554b3F5017627996816a",
       "coverImageKey": "retropgf/project/cover/0x62a43123FE71f9764f26554b3F5017627996816a",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x64249ED5Ef7a004d268A508092851e987482a175",
@@ -1816,7 +1816,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x64249ED5Ef7a004d268A508092851e987482a175",
       "coverImageKey": "retropgf/project/cover/0x64249ED5Ef7a004d268A508092851e987482a175",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x69aa21403244889832609963B0028e337a834953",
@@ -1837,7 +1837,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x69aa21403244889832609963B0028e337a834953",
       "coverImageKey": "retropgf/project/cover/0x69aa21403244889832609963B0028e337a834953",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x6EdA5aCafF7F5964E1EcC3FD61C62570C186cA0C",
@@ -1858,7 +1858,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6EdA5aCafF7F5964E1EcC3FD61C62570C186cA0C",
       "coverImageKey": "retropgf/project/cover/0x6EdA5aCafF7F5964E1EcC3FD61C62570C186cA0C",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x6Fa4C420E9567203Aa65eB38da5DBe361fD61ff2",
@@ -1879,7 +1879,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6Fa4C420E9567203Aa65eB38da5DBe361fD61ff2",
       "coverImageKey": "retropgf/project/cover/0x6Fa4C420E9567203Aa65eB38da5DBe361fD61ff2",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x6e4E55A49a8C8938BD8D8668E18DE95962740Fe1",
@@ -1900,7 +1900,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6e4E55A49a8C8938BD8D8668E18DE95962740Fe1",
       "coverImageKey": "retropgf/project/cover/0x6e4E55A49a8C8938BD8D8668E18DE95962740Fe1",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x6ef87E0Aaadb2c3d07fD98a098Af5FaD0aD45811",
@@ -1921,7 +1921,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6ef87E0Aaadb2c3d07fD98a098Af5FaD0aD45811",
       "coverImageKey": "retropgf/project/cover/0x6ef87E0Aaadb2c3d07fD98a098Af5FaD0aD45811",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x6f9BB7e454f5B3eb2310343f0E99269dC2BB8A1d",
@@ -1942,7 +1942,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6f9BB7e454f5B3eb2310343f0E99269dC2BB8A1d",
       "coverImageKey": "retropgf/project/cover/0x6f9BB7e454f5B3eb2310343f0E99269dC2BB8A1d",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x6fF5723435b7dfC2371B57Fb5cB4c373E5995C78",
@@ -1963,7 +1963,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x6fF5723435b7dfC2371B57Fb5cB4c373E5995C78",
       "coverImageKey": "retropgf/project/cover/0x6fF5723435b7dfC2371B57Fb5cB4c373E5995C78",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x701E37643DADa13DE79e66A74E7d6187FC48faD2",
@@ -1984,7 +1984,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x701E37643DADa13DE79e66A74E7d6187FC48faD2",
       "coverImageKey": "retropgf/project/cover/0x701E37643DADa13DE79e66A74E7d6187FC48faD2",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x761d584f1C2d43cBc3F42ECd739701a36dFFAa31",
@@ -2005,7 +2005,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x761d584f1C2d43cBc3F42ECd739701a36dFFAa31",
       "coverImageKey": "retropgf/project/cover/0x761d584f1C2d43cBc3F42ECd739701a36dFFAa31",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x7a48A728d9Fd2d5a55c545c4378E5bA909349E90",
@@ -2046,7 +2046,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x7b4c5F852AA6b44Bd01F9252C3F93Ae1aa1c63e9",
       "coverImageKey": "retropgf/project/cover/0x7b4c5F852AA6b44Bd01F9252C3F93Ae1aa1c63e9",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x7c929EfA9a8A2A1524BA90aBc2B70801413fFD4c",
@@ -2087,7 +2087,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x7f9D4208D404d86396F856C4f3db0195bB677f17",
       "coverImageKey": "retropgf/project/cover/0x7f9D4208D404d86396F856C4f3db0195bB677f17",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x816a684f40b8B4B060A4Df7A10caD589Ef64E95e",
@@ -2148,7 +2148,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x82D54397B88CE80Ea2Df9aD049213ACb47dc2523",
       "coverImageKey": "retropgf/project/cover/0x82D54397B88CE80Ea2Df9aD049213ACb47dc2523",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x892Ff98a46e5bd141E2D12618f4B2Fe6284debac",
@@ -2169,7 +2169,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x892Ff98a46e5bd141E2D12618f4B2Fe6284debac",
       "coverImageKey": "retropgf/project/cover/0x892Ff98a46e5bd141E2D12618f4B2Fe6284debac",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x8B93910594e2a09c30D7e97883f6d35d8772801d",
@@ -2190,7 +2190,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x8B93910594e2a09c30D7e97883f6d35d8772801d",
       "coverImageKey": "retropgf/project/cover/0x8B93910594e2a09c30D7e97883f6d35d8772801d",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x8E72a24221517E51502f20f387415a06b27A5b51",
@@ -2211,7 +2211,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x8E72a24221517E51502f20f387415a06b27A5b51",
       "coverImageKey": "retropgf/project/cover/0x8E72a24221517E51502f20f387415a06b27A5b51",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x8ba1f109551bD432803012645Ac136ddd64DBA72",
@@ -2232,7 +2232,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x8ba1f109551bD432803012645Ac136ddd64DBA72",
       "coverImageKey": "retropgf/project/cover/0x8ba1f109551bD432803012645Ac136ddd64DBA72",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x8dc640a257DE18857F8d24e1Ae2645F8bBa1E034",
@@ -2273,7 +2273,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x8f5906963Ae276E1631EFA8Ff1a9CaE6499EC5E3",
       "coverImageKey": "retropgf/project/cover/0x8f5906963Ae276E1631EFA8Ff1a9CaE6499EC5E3",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x90B005a9C7B19E1E962178deA63c1becc409B90f",
@@ -2294,7 +2294,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x90B005a9C7B19E1E962178deA63c1becc409B90f",
       "coverImageKey": "retropgf/project/cover/0x90B005a9C7B19E1E962178deA63c1becc409B90f",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9531C059098e3d194fF87FebB587aB07B30B1306",
@@ -2315,7 +2315,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9531C059098e3d194fF87FebB587aB07B30B1306",
       "coverImageKey": "retropgf/project/cover/0x9531C059098e3d194fF87FebB587aB07B30B1306",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x958c20A43F5206F186B0195cCB61Acb724b2EE1E",
@@ -2336,7 +2336,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x958c20A43F5206F186B0195cCB61Acb724b2EE1E",
       "coverImageKey": "retropgf/project/cover/0x958c20A43F5206F186B0195cCB61Acb724b2EE1E",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x96Cd3AC1e5c2E4FB021B97dA3a6D57e8e665EDc3",
@@ -2377,7 +2377,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9D20893054afC4A74b856089c44F9A09d1C38Db0",
       "coverImageKey": "retropgf/project/cover/0x9D20893054afC4A74b856089c44F9A09d1C38Db0",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9D31e30003f253563Ff108BC60B16Fdf2c93abb5",
@@ -2398,7 +2398,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9D31e30003f253563Ff108BC60B16Fdf2c93abb5",
       "coverImageKey": "retropgf/project/cover/0x9D31e30003f253563Ff108BC60B16Fdf2c93abb5",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9D727911B54C455B0071A7B682FcF4Bc444B5596",
@@ -2419,7 +2419,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9D727911B54C455B0071A7B682FcF4Bc444B5596",
       "coverImageKey": "retropgf/project/cover/0x9D727911B54C455B0071A7B682FcF4Bc444B5596",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9F87C1aCaF3Afc6a5557c58284D9F8609470b571",
@@ -2440,7 +2440,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9F87C1aCaF3Afc6a5557c58284D9F8609470b571",
       "coverImageKey": "retropgf/project/cover/0x9F87C1aCaF3Afc6a5557c58284D9F8609470b571",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9FD0C742D81B6f08817F3eF11D09Cb4a9f54eE5f",
@@ -2461,7 +2461,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9FD0C742D81B6f08817F3eF11D09Cb4a9f54eE5f",
       "coverImageKey": "retropgf/project/cover/0x9FD0C742D81B6f08817F3eF11D09Cb4a9f54eE5f",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9cce47E9cF12C6147c9844adBB81fE85880c4df4",
@@ -2482,7 +2482,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9cce47E9cF12C6147c9844adBB81fE85880c4df4",
       "coverImageKey": "retropgf/project/cover/0x9cce47E9cF12C6147c9844adBB81fE85880c4df4",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9d6d3b09F8AC8615805bd82e53B80D956F451CFa",
@@ -2503,7 +2503,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9d6d3b09F8AC8615805bd82e53B80D956F451CFa",
       "coverImageKey": "retropgf/project/cover/0x9d6d3b09F8AC8615805bd82e53B80D956F451CFa",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0x9ebC8E61f87A301fF25a606d7C06150f856F24E2",
@@ -2524,7 +2524,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x9ebC8E61f87A301fF25a606d7C06150f856F24E2",
       "coverImageKey": "retropgf/project/cover/0x9ebC8E61f87A301fF25a606d7C06150f856F24E2",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xA47669cBc53985333423e4d3D00188f4049fB695",
@@ -2545,7 +2545,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xA47669cBc53985333423e4d3D00188f4049fB695",
       "coverImageKey": "retropgf/project/cover/0xA47669cBc53985333423e4d3D00188f4049fB695",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xA6826463a53bBe3d673f7e61E94a6099581FfC7d",
@@ -2566,7 +2566,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xA6826463a53bBe3d673f7e61E94a6099581FfC7d",
       "coverImageKey": "retropgf/project/cover/0xA6826463a53bBe3d673f7e61E94a6099581FfC7d",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xAA6042aa65eb93C6439cDaeBC27B3bd09c5DFe94",
@@ -2587,7 +2587,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xAA6042aa65eb93C6439cDaeBC27B3bd09c5DFe94",
       "coverImageKey": "retropgf/project/cover/0xAA6042aa65eb93C6439cDaeBC27B3bd09c5DFe94",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xAA857AC645733FbF3105b0406417d35BA1576ff8",
@@ -2608,7 +2608,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xAA857AC645733FbF3105b0406417d35BA1576ff8",
       "coverImageKey": "retropgf/project/cover/0xAA857AC645733FbF3105b0406417d35BA1576ff8",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xAC4DDaf8FBfFba0f1e8c7619720335FD4f03EaCD",
@@ -2629,7 +2629,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xAC4DDaf8FBfFba0f1e8c7619720335FD4f03EaCD",
       "coverImageKey": "retropgf/project/cover/0xAC4DDaf8FBfFba0f1e8c7619720335FD4f03EaCD",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xAbfA48BCc0F96Fc70be7a4156b0a74Ea350167fD",
@@ -2650,7 +2650,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xAbfA48BCc0F96Fc70be7a4156b0a74Ea350167fD",
       "coverImageKey": "retropgf/project/cover/0xAbfA48BCc0F96Fc70be7a4156b0a74Ea350167fD",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xB30dD1198Feed1e22EC969f61EEd04cB75937adf",
@@ -2691,7 +2691,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xB352bB4E2A4f27683435f153A259f1B207218b1b",
       "coverImageKey": "retropgf/project/cover/0xB352bB4E2A4f27683435f153A259f1B207218b1b",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xBEC643BD5b7F5e9190617CA4187ef0455950C51C",
@@ -2732,7 +2732,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xBF430a49C4d85AeeD3908619D5387A1fbF8E74A9",
       "coverImageKey": "retropgf/project/cover/0xBF430a49C4d85AeeD3908619D5387A1fbF8E74A9",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xC0aC93ABb5539769Edac951D9EbD5BCbFB854b0f",
@@ -2753,7 +2753,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xC0aC93ABb5539769Edac951D9EbD5BCbFB854b0f",
       "coverImageKey": "retropgf/project/cover/0xC0aC93ABb5539769Edac951D9EbD5BCbFB854b0f",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xC1FDB60CFB2FbbD6EDc9b445D9B508Da2dBF2c9b",
@@ -2774,7 +2774,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xC1FDB60CFB2FbbD6EDc9b445D9B508Da2dBF2c9b",
       "coverImageKey": "retropgf/project/cover/0xC1FDB60CFB2FbbD6EDc9b445D9B508Da2dBF2c9b",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xC2842A7653b9c2272F424a18DFf468C32d1f874D",
@@ -2795,7 +2795,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xC2842A7653b9c2272F424a18DFf468C32d1f874D",
       "coverImageKey": "retropgf/project/cover/0xC2842A7653b9c2272F424a18DFf468C32d1f874D",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xC4FC57Dedd2463314A3fD2DBadB86B4404C257e5",
@@ -2816,7 +2816,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xC4FC57Dedd2463314A3fD2DBadB86B4404C257e5",
       "coverImageKey": "retropgf/project/cover/0xC4FC57Dedd2463314A3fD2DBadB86B4404C257e5",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xC5A756D63C5fe67b438acBE468aA62a52093fDEf",
@@ -2857,7 +2857,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xC728DEa8B2972E6e07493BE8DC2F0314F7dC3E98",
       "coverImageKey": "retropgf/project/cover/0xC728DEa8B2972E6e07493BE8DC2F0314F7dC3E98",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xD06CaC3a900Dd34FE9CCd32F15DCC75E2423b816",
@@ -2878,7 +2878,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xD06CaC3a900Dd34FE9CCd32F15DCC75E2423b816",
       "coverImageKey": "retropgf/project/cover/0xD06CaC3a900Dd34FE9CCd32F15DCC75E2423b816",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xD131F1BcDd547e067Af447dD3C36C99d6be9FdEB",
@@ -2899,7 +2899,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xD131F1BcDd547e067Af447dD3C36C99d6be9FdEB",
       "coverImageKey": "retropgf/project/cover/0xD131F1BcDd547e067Af447dD3C36C99d6be9FdEB",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xD5Abb5086E5d18b6BdB8F0943b7786f2a0Af7Df2",
@@ -2920,7 +2920,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xD5Abb5086E5d18b6BdB8F0943b7786f2a0Af7Df2",
       "coverImageKey": "retropgf/project/cover/0xD5Abb5086E5d18b6BdB8F0943b7786f2a0Af7Df2",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xD8ce5Ae15E2A9C8528FDce195AD43015782C5079",
@@ -2961,7 +2961,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xDCfe20E6C1d14c26930a28B1f92fB981CDa26884",
       "coverImageKey": "retropgf/project/cover/0xDCfe20E6C1d14c26930a28B1f92fB981CDa26884",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xE0D76bDF0Dcf83685dc41570Dd4536649119D304",
@@ -2982,7 +2982,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xE0D76bDF0Dcf83685dc41570Dd4536649119D304",
       "coverImageKey": "retropgf/project/cover/0xE0D76bDF0Dcf83685dc41570Dd4536649119D304",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xE2d2Ac26Cb9dE9a8BBc6d2698CC40b154fAc920d",
@@ -3003,7 +3003,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xE2d2Ac26Cb9dE9a8BBc6d2698CC40b154fAc920d",
       "coverImageKey": "retropgf/project/cover/0xE2d2Ac26Cb9dE9a8BBc6d2698CC40b154fAc920d",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xEFEdaf9c07E6eB56BB8F82f30018e4461B1c5F4c",
@@ -3024,7 +3024,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xEFEdaf9c07E6eB56BB8F82f30018e4461B1c5F4c",
       "coverImageKey": "retropgf/project/cover/0xEFEdaf9c07E6eB56BB8F82f30018e4461B1c5F4c",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xEc087478B0bC2F1a18Ff01717e381f44B791114A",
@@ -3045,7 +3045,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xEc087478B0bC2F1a18Ff01717e381f44B791114A",
       "coverImageKey": "retropgf/project/cover/0xEc087478B0bC2F1a18Ff01717e381f44B791114A",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xF78cD306b23031dE9E739A5BcDE61764e82AD5eF",
@@ -3066,7 +3066,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xF78cD306b23031dE9E739A5BcDE61764e82AD5eF",
       "coverImageKey": "retropgf/project/cover/0xF78cD306b23031dE9E739A5BcDE61764e82AD5eF",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xF86BaD4E03D731de4d67B4f3943743f0B4C2084c",
@@ -3107,7 +3107,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xF96Aa4A25fDe246d9dD498B145F52Fab0eAd29f3",
       "coverImageKey": "retropgf/project/cover/0xF96Aa4A25fDe246d9dD498B145F52Fab0eAd29f3",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xFC10A71B1E7974401D840fd15ceBf08Ed7E115Cc",
@@ -3168,7 +3168,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xFF7B65dDc2Ffb7f6AC527b4C2F048946B3A5eaF3",
       "coverImageKey": "retropgf/project/cover/0xFF7B65dDc2Ffb7f6AC527b4C2F048946B3A5eaF3",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xFc756d8632A19CEbd76560CE0A6967279E32131b",
@@ -3249,7 +3249,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xa30189949cD8F662582b10eB6E353374419EDf67",
       "coverImageKey": "retropgf/project/cover/0xa30189949cD8F662582b10eB6E353374419EDf67",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xa5b4f91FDE4E35Be891eA97C47D1052D8a4D75f7",
@@ -3290,7 +3290,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xab12931a2c0C519a62794C24105E2f66eE35CFE7",
       "coverImageKey": "retropgf/project/cover/0xab12931a2c0C519a62794C24105E2f66eE35CFE7",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xab4f5A7fcd1Bb66C8c5f01bB77F6142759f46107",
@@ -3311,7 +3311,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xab4f5A7fcd1Bb66C8c5f01bB77F6142759f46107",
       "coverImageKey": "retropgf/project/cover/0xab4f5A7fcd1Bb66C8c5f01bB77F6142759f46107",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xb6F5414bAb8d5ad8F33E37591C02f7284E974FcB",
@@ -3332,7 +3332,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xb6F5414bAb8d5ad8F33E37591C02f7284E974FcB",
       "coverImageKey": "retropgf/project/cover/0xb6F5414bAb8d5ad8F33E37591C02f7284E974FcB",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xb7D6937F3aa9E09817C045b7d5b5Fb5064370671",
@@ -3353,7 +3353,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xb7D6937F3aa9E09817C045b7d5b5Fb5064370671",
       "coverImageKey": "retropgf/project/cover/0xb7D6937F3aa9E09817C045b7d5b5Fb5064370671",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xb89e800719a96c609dB746397b7d2c3B917694e0",
@@ -3374,7 +3374,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xb89e800719a96c609dB746397b7d2c3B917694e0",
       "coverImageKey": "retropgf/project/cover/0xb89e800719a96c609dB746397b7d2c3B917694e0",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xbb105E3c6D6406A3F0aAB98cD8D0E3a127bD6436",
@@ -3395,7 +3395,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xbb105E3c6D6406A3F0aAB98cD8D0E3a127bD6436",
       "coverImageKey": "retropgf/project/cover/0xbb105E3c6D6406A3F0aAB98cD8D0E3a127bD6436",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xbe0fc34488CaA2766C3225B56ade0c1E409c0De7",
@@ -3416,7 +3416,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xbe0fc34488CaA2766C3225B56ade0c1E409c0De7",
       "coverImageKey": "retropgf/project/cover/0xbe0fc34488CaA2766C3225B56ade0c1E409c0De7",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xc0017405E287476443Ab1B342B86f2ea92Ef9F73",
@@ -3437,7 +3437,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xc0017405E287476443Ab1B342B86f2ea92Ef9F73",
       "coverImageKey": "retropgf/project/cover/0xc0017405E287476443Ab1B342B86f2ea92Ef9F73",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xc152Cc22488f1383E675f5738dF9a4244fB113a5",
@@ -3458,7 +3458,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xc152Cc22488f1383E675f5738dF9a4244fB113a5",
       "coverImageKey": "retropgf/project/cover/0xc152Cc22488f1383E675f5738dF9a4244fB113a5",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xc1a69F906Ce4366C0C77e0219b3132FeA0969231",
@@ -3479,7 +3479,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xc1a69F906Ce4366C0C77e0219b3132FeA0969231",
       "coverImageKey": "retropgf/project/cover/0xc1a69F906Ce4366C0C77e0219b3132FeA0969231",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xc967dEdcF086b7FE1eAB492F2EB2b74F1E5947b8",
@@ -3500,7 +3500,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xc967dEdcF086b7FE1eAB492F2EB2b74F1E5947b8",
       "coverImageKey": "retropgf/project/cover/0xc967dEdcF086b7FE1eAB492F2EB2b74F1E5947b8",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xcE36608441F24E2d5642932F2A511D98BBBC06A9",
@@ -3521,7 +3521,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xcE36608441F24E2d5642932F2A511D98BBBC06A9",
       "coverImageKey": "retropgf/project/cover/0xcE36608441F24E2d5642932F2A511D98BBBC06A9",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xd2135CfB216b74109775236E36d4b433F1DF507B",
@@ -3542,7 +3542,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xd2135CfB216b74109775236E36d4b433F1DF507B",
       "coverImageKey": "retropgf/project/cover/0xd2135CfB216b74109775236E36d4b433F1DF507B",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xd31b671F1a398B519222FdAba5aB5464B9F2a3Fa",
@@ -3563,7 +3563,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xd31b671F1a398B519222FdAba5aB5464B9F2a3Fa",
       "coverImageKey": "retropgf/project/cover/0xd31b671F1a398B519222FdAba5aB5464B9F2a3Fa",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xd35E119782059A27FEAd4EddA8B555f393650BC8",
@@ -3584,7 +3584,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xd35E119782059A27FEAd4EddA8B555f393650BC8",
       "coverImageKey": "retropgf/project/cover/0xd35E119782059A27FEAd4EddA8B555f393650BC8",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xd7BDE01888B8A2a97924444009E31C8d8c2391F3",
@@ -3625,7 +3625,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xd923CA098dBBFb0d24677a3150fa3aA97be461b5",
       "coverImageKey": "retropgf/project/cover/0xd923CA098dBBFb0d24677a3150fa3aA97be461b5",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xd9ED89A0f4cfbC1be4b7b1aA744b5bd25ACA9979",
@@ -3646,7 +3646,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xd9ED89A0f4cfbC1be4b7b1aA744b5bd25ACA9979",
       "coverImageKey": "retropgf/project/cover/0xd9ED89A0f4cfbC1be4b7b1aA744b5bd25ACA9979",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xdb5781a835b60110298fF7205D8ef9678Ff1f800",
@@ -3667,7 +3667,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xdb5781a835b60110298fF7205D8ef9678Ff1f800",
       "coverImageKey": "retropgf/project/cover/0xdb5781a835b60110298fF7205D8ef9678Ff1f800",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xdbE38D1d3631a04875d3FAd945D0dFcb2C20f91c",
@@ -3688,7 +3688,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xdbE38D1d3631a04875d3FAd945D0dFcb2C20f91c",
       "coverImageKey": "retropgf/project/cover/0xdbE38D1d3631a04875d3FAd945D0dFcb2C20f91c",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xdc0090f8aDD5DB06De0897A54e753af143668668",
@@ -3709,7 +3709,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xdc0090f8aDD5DB06De0897A54e753af143668668",
       "coverImageKey": "retropgf/project/cover/0xdc0090f8aDD5DB06De0897A54e753af143668668",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xe126b3E5d052f1F575828f61fEBA4f4f2603652a",
@@ -3730,7 +3730,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xe126b3E5d052f1F575828f61fEBA4f4f2603652a",
       "coverImageKey": "retropgf/project/cover/0xe126b3E5d052f1F575828f61fEBA4f4f2603652a",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xe4Eb51D709D22FE02C42F68A0483fa70A772e984",
@@ -3771,7 +3771,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xe8a17e2f1bd4bFcBfBecb8a90be08780949a0cac",
       "coverImageKey": "retropgf/project/cover/0xe8a17e2f1bd4bFcBfBecb8a90be08780949a0cac",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xe993486B257Cd1481aef74b3B909A2627Fc8d305",
@@ -3792,7 +3792,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xe993486B257Cd1481aef74b3B909A2627Fc8d305",
       "coverImageKey": "retropgf/project/cover/0xe993486B257Cd1481aef74b3B909A2627Fc8d305",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xeB67e286faf667A047e435EC90107122b0bC2C01",
@@ -3853,7 +3853,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xf23F9C10D1559885dABEE67c59c4554E6152697b",
       "coverImageKey": "retropgf/project/cover/0xf23F9C10D1559885dABEE67c59c4554E6152697b",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xf503017D7baF7FBC0fff7492b751025c6A78179b",
@@ -3874,7 +3874,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xf503017D7baF7FBC0fff7492b751025c6A78179b",
       "coverImageKey": "retropgf/project/cover/0xf503017D7baF7FBC0fff7492b751025c6A78179b",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xf9551c66995eD3Ff9bb05C9Fd7ff148Bd75dc99a",
@@ -3895,7 +3895,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0xf9551c66995eD3Ff9bb05C9Fd7ff148Bd75dc99a",
       "coverImageKey": "retropgf/project/cover/0xf9551c66995eD3Ff9bb05C9Fd7ff148Bd75dc99a",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/0xff95a2f9bf8fe8019d1f705B5b1e3cb8a8F223C0",
@@ -3936,7 +3936,7 @@
       },
       "profileImageKey": "retropgf/project/profile/0x13ebd3443fa5575F0Eb173e323D8419F7452CfB1",
       "coverImageKey": "retropgf/project/cover/0x13ebd3443fa5575F0Eb173e323D8419F7452CfB1",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/ambassadors",
@@ -3957,7 +3957,7 @@
       },
       "profileImageKey": "retropgf/project/profile/ambassadors",
       "coverImageKey": "retropgf/project/cover/ambassadors",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/eip-4844",
@@ -3978,7 +3978,7 @@
       },
       "profileImageKey": "retropgf/project/profile/eip-4844",
       "coverImageKey": "retropgf/project/cover/eip-4844",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/goerli",
@@ -4020,7 +4020,7 @@
       },
       "profileImageKey": "retropgf/project/profile/monorepo-dependencies",
       "coverImageKey": "retropgf/project/cover/monorepo-dependencies",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/support-nerds",
@@ -4041,7 +4041,7 @@
       },
       "profileImageKey": "retropgf/project/profile/support-nerds",
       "coverImageKey": "retropgf/project/cover/support-nerds",
-      "accepted": "true"
+      "accepted": true
     },
     {
       "profile": "retropgf/project/metadata/translators",
@@ -4062,7 +4062,7 @@
       },
       "profileImageKey": "retropgf/project/profile/translators",
       "coverImageKey": "retropgf/project/cover/translators",
-      "accepted": "true"
+      "accepted": true
     }
   ]
 }
