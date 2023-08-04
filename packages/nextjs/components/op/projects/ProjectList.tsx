@@ -126,7 +126,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         </div>
       </div>
       <div
-        className="max-h-[500px] pr-2 overflow-y-auto 
+        className="max-h-[500px] pr-2 overflow-y-auto
       scrollbar-thin
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
