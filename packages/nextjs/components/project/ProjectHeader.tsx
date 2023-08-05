@@ -123,9 +123,9 @@ export const ProjectHeader = () => {
       <div className="flex justify-between">
         <div className="ml-[30px] flex items-center flex-wrap">
           <Image
-            width={1000}
-            height={1000}
-            className=" mt-[-20px] w-[134px] h-[134px] rounded-lg shadow-md "
+            width={500}
+            height={500}
+            className=" mt-[-20px] w-[134px] h-[134px] rounded-lg shadow-md  "
             src="/assets/project/image 4.png"
             alt="project image"
           />
