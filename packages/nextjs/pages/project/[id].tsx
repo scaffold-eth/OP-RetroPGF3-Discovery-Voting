@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { IoMdOpen } from "react-icons/Io";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
+import { IoMdOpen } from "react-icons/io";
 import { useAccount } from "wagmi";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import YourBallot from "~~/components/op/projects/YourBallot";
