@@ -3642,6 +3642,7 @@ __metadata:
     "@heroicons/react": ^2.0.11
     "@rainbow-me/rainbowkit": ^1.0.4
     "@trivago/prettier-plugin-sort-imports": ^4.1.1
+    "@types/canvas-confetti": ^1.6.0
     "@types/node": ^17.0.35
     "@types/react": ^18.0.9
     "@types/react-blockies": ^1.4.1
@@ -3650,6 +3651,7 @@ __metadata:
     "@uniswap/sdk-core": ^4.0.1
     "@uniswap/v2-sdk": ^3.0.1
     autoprefixer: ^10.4.12
+    canvas-confetti: ^1.6.0
     daisyui: ^2.31.0
     eslint: ^8.15.0
     eslint-config-next: ^13.1.6
@@ -3665,7 +3667,6 @@ __metadata:
     react-dom: ^18.2.0
     react-fast-marquee: ^1.3.5
     react-hot-toast: ^2.4.0
-    react-icons: ^4.10.1
     tailwind-scrollbar: ^3.0.4
     tailwindcss: ^3.1.8
     typescript: ^4.9.5
@@ -4209,6 +4210,13 @@ __metadata:
     "@types/node": "*"
     "@types/responselike": ^1.0.0
   checksum: d9b26403fe65ce6b0cb3720b7030104c352bcb37e4fac2a7089a25a97de59c355fa08940658751f2f347a8512aa9d18fdb66ab3ade835975b2f454f2d5befbd9
+  languageName: node
+  linkType: hard
+
+"@types/canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@types/canvas-confetti@npm:1.6.0"
+  checksum: e1bd2bc81e4d6ec6241982a4087ed90a3c21f858390dda7cb68e8aeb1df5573fc7c263ea4272397d2b39f0e78dcd192e8ba4a93c182ff29f80ea74073aaee496
   languageName: node
   linkType: hard
 
@@ -6949,6 +6957,13 @@ __metadata:
   version: 1.0.30001518
   resolution: "caniuse-lite@npm:1.0.30001518"
   checksum: 1b63272f6e3d628ac52e2547e0b75fc477004d4b19b63e34b2c045de7f2e48909f9ea513978fc5a46c4ab5ac6c9daf9cc5e6a78466e90684fb824c3f2105e8f5
+  languageName: node
+  linkType: hard
+
+"canvas-confetti@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "canvas-confetti@npm:1.6.0"
+  checksum: be19e3be736ab28aa8af7b53cba9f4146f5714edadbf4d5a7d7b1899914dc59a8ac5574260fe6b7d9995c51df5787b0b707adfbb72dbacbc61fc03f9f2b25291
   languageName: node
   linkType: hard
 
@@ -15373,15 +15388,6 @@ __metadata:
     react: ">=16"
     react-dom: ">=16"
   checksum: 3e337816db574782454bf09c63a8aca546bf9c5be3f83d0494d24bdcfd97ca2db64d4c151c4ab0184d2342d7a7226403e6812e70caf03c8b55a07787bb4ad0f2
-  languageName: node
-  linkType: hard
-
-"react-icons@npm:^4.10.1":
-  version: 4.10.1
-  resolution: "react-icons@npm:4.10.1"
-  peerDependencies:
-    react: "*"
-  checksum: b6c8d4fe482b112e1041515d93ef7670a0af128855c926052a076b64d0b991cdd4391394b26467100f8da3859db1ebd8f9c6b7614fa5969fde83de45c71031a3
   languageName: node
   linkType: hard
 
