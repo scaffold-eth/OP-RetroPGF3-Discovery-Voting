@@ -129,10 +129,8 @@ export const ProjectHeader = () => {
             src="/assets/project/image 4.png"
             alt="project image"
           />
-
           <div className="ml-[20px] mt-[-50px] flex-wrap">
             <h1 className="pt-20 font-semibold sm:text-xl md:text-2xl  lg:text-4xl  leading-11">Orbiter Finance</h1>
-
             <div className="flex justify-between flex-wrap">
               <>
                 <div className="flex items-center gap-8 flex-wrap">
@@ -166,7 +164,6 @@ export const ProjectHeader = () => {
                   )}
 
                   <div className="h-[18px] border-l-2 border-neutral  mx-[6px] "></div>
-
                   <a href="https://twitter.com" target="_blank">
                     <IconContext.Provider value={{ color: "#1DA1F2", className: "h-7 w-7 " }}>
                       <AiOutlineTwitter />
