@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // import Image from "next/image";
+import Link from "next/link";
 import { useBallot } from "~~/context/BallotContext";
 
 const BallotComponent: React.FC = () => {
@@ -39,7 +40,7 @@ const BallotComponent: React.FC = () => {
               <li key={project.id} className="flex justify-between items-center mb-2">
                 <span className="flex-grow truncate">{project.name}</span>
                 <div className="flex flex-col w-1/4">
-                  <label className="text-xs">Allocated</label> {/* Label added */}
+                  <label className="text-xs">OP Allocated</label> {/* Label added */}
                   <input
                     type="number"
                     value={project.allocation ? project.allocation : 0}
@@ -57,9 +58,11 @@ const BallotComponent: React.FC = () => {
             ))}
           </ul>
           <div className="flex justify-end mt-2">
-            <button onClick={toggleBallot} className="bg-blue-500 text-white p-2 rounded mt-4">
-              Review Ballot
-            </button>
+            <Link href="/ballot-review">
+              <button onClick={toggleBallot} className="bg-blue-500 text-white p-2 rounded mt-4">
+                Review Ballot
+              </button>
+            </Link>
           </div>
         </div>
       )}

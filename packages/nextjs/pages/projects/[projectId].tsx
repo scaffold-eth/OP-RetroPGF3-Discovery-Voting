@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React from "react";
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
@@ -15,9 +15,7 @@ interface Props {
 
 const ProjectDetail: NextPage<Props> = ({ projects }) => {
   const [isLiked, setIsLiked] = React.useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false); // Manage modal state
-  // const [tokenAllocation, setTokenAllocation] = useState(0); // Manage token allocation
-  const { dispatch } = useBallot(); // Access dispatch from ballot context
+  const { dispatch } = useBallot();
 
   const addProjectToBallot = () => {
     dispatch({
@@ -28,8 +26,8 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
         allocation: 0,
       },
     });
-    // setIsModalOpen(false);
   };
+
   return (
     <div className=" mx-auto px-12 mt-12 grid gap-12">
       <div className="">
@@ -62,28 +60,6 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
           <button onClick={() => addProjectToBallot()} className="p-2 bg-blue-500 text-white rounded">
             Add to Ballot
           </button>
-          {/* Modal */}
-          {/* {isModalOpen && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="bg-white p-4 rounded">
-                <h4>Enter Token Allocation</h4>
-                <input
-                  type="number"
-                  value={tokenAllocation}
-                  onChange={e => setTokenAllocation(Number(e.target.value))}
-                  className="border rounded p-1 w-full"
-                />
-                <div className="flex justify-end mt-2">
-                  <button onClick={addProjectToBallot} className="bg-green-500 text-white p-2 rounded">
-                    Add to Ballot
-                  </button>
-                  <button onClick={() => setIsModalOpen(false)} className="text-red-500 ml-2">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </div>
-          )} */}
         </div>
         <div className="mt-16">
           <SuggestProjects />

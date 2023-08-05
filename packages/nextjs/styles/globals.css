@@ -87,3 +87,7 @@ input[type="number"] {
 .shadow-none {
   --tw-shadow: 0 0 #0000;
 }
+
+.bg-smoke-light {
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -77,10 +77,6 @@ export const Header = () => {
           <div className="flex relative">
             <Image alt="OP logo" className="cursor-pointer" height={22} width={160} src="/optimismLogo.png" />
           </div>
-          {/* <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-eth</span>
-            <span className="text-xs">Ethereum dev stack</span>
-          </div> */}
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
@@ -95,13 +91,6 @@ export const Header = () => {
         </label>
       </div>
       <div className="navbar-end w-1/3 flex-grow mr-4">
-        {/* <button
-          type="button"
-          className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-100"
-        >
-          View ballot
-          <div className="badge badge-neutral ml-2 rounded-full px-2 py-3">0</div>
-        </button> */}
         <BallotComponent />
         <RainbowKitCustomConnectButton />
         <SwitchTheme className="pointer-events-auto" />

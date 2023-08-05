@@ -1,10 +1,5 @@
 import React, { ReactNode, createContext, useContext, useReducer } from "react";
 
-// import React, { ReactNode, createContext, useContext, useEffect, useReducer } from "react";
-// import { ethers } from "ethers";
-// import { useAccount } from "wagmi";
-// import { useEthersProvider } from "~~/utils/ethers";
-
 // Define the structure of the project and the ballot state
 interface Project {
   id: string;
@@ -26,7 +21,6 @@ type Action =
   | { type: "ADD_PROJECT"; project: Project; allocation: number }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string };
-//   | { type: "SET_TOTAL_TOKENS"; totalTokens: number };
 
 // Define the context value structure
 interface BallotContextValue {
@@ -71,15 +65,12 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         projects: state.projects.filter(p => p.id !== targetId),
       };
-    // case "SET_TOTAL_TOKENS":
-    //   return { ...state, totalTokens: action.totalTokens };
     // additional cases as needed
     default:
       return state;
   }
 };
 // Create the provider component
-// export const BallotProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 export const BallotProvider: React.FC<BallotProviderProps> = ({ children, totalTokens }) => {
   const [state, dispatch] = useReducer(reducer, { projects: [], totalTokens });
   //   const { address } = useAccount();
