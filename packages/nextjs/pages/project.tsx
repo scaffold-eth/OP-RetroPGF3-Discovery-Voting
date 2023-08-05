@@ -12,7 +12,7 @@ import Sidebar from "~~/components/shared/Sidebar";
 const Project = () => {
   const { isDisconnected } = useAccount();
   const [wallet, setWallet] = useState<boolean | false>(false);
-  const data = [
+  const dataProjects = [
     {
       id: 1,
       name: "List 1",
@@ -191,7 +191,7 @@ const Project = () => {
         </div>
         <div className="">
           <h3 className="font-semibold font-3xl leading-4 pb-4">Included in the following lists</h3>
-          {data.map(project => (
+          {dataProjects.map(project => (
             <Card key={project.id} project={project} />
           ))}
         </div>
