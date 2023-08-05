@@ -237,6 +237,7 @@ export const ProjectHeader = () => {
               edit={() => handleAddOrEditModal(false, true)}
             />
           )}
+
           {editBallot && (
             <EditDistributionModal
               onClose={() => handleAddOrEditModal(true)}
