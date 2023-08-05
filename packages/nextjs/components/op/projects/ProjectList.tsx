@@ -137,15 +137,6 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         <p>Total</p>
         <p>{userData.totalOP.toLocaleString()} OP</p>
       </div>
-      {/* {addBallot && (
-        <AddListToBallotModal
-          onClose={() => handleAddOrEditModal(true)}
-          handleAddBallot={handleAddBallot}
-          userTotal={userData.totalOP}
-          projectList={projectDataHandle}
-          edit={() => handleAddOrEditModal(false, true)}
-        />
-      )} */}
       {addBallot && (
         <AlreadyOnBallotConflictModal
           onClose={() => handleAddOrEditModal(true)}
