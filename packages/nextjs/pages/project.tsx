@@ -137,6 +137,7 @@ const Project = () => {
             </p>
           </section>
         </div>
+
         <IncludedProjects />
       </div>
     </div>
