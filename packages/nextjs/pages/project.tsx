@@ -129,7 +129,6 @@ const Project = () => {
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequasssd
             </p>
-
             <div className="flex items-center py-2 gap-2 flex-wrap">
               <button className="flex items-center rounded-full  border border-neutral px-3 py-1 space-x-2">
                 <AiOutlineGithub />
