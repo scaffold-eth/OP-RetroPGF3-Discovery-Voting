@@ -43,7 +43,7 @@ const Project = () => {
         <div className=" mt-8 mb-8 border-t border-gray-200 w-full"></div>
         <div className="">
           <section id="about">
-            <h3 className="font-medium text-xl leading-7">👨‍💻 About</h3>
+            <h3 className="font-medium text-[#68778D] text-xl leading-7 uppercase">👨‍💻 About</h3>
             <p className="font-normal leading-6  text-based">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -57,7 +57,10 @@ const Project = () => {
           </section>
 
           <section id="categories">
-            <h4 className="font-medium text-xs leading-4 tracking-tighter pt-2  uppercase">Categories</h4>
+            <h4 className="font-medium text-xs text-[#68778D] leading-4 tracking-tighter pt-2  uppercase">
+              Categories
+            </h4>
+
             <div className="flex items-center py-2">
               <span className="px-4 py-2 text-sm text-customGray bg-customWhite rounded-md mr-2"> OP Stack </span>
               <span className="px-4 py-2 text-sm text-customGray bg-customWhite rounded-md mr-2">
@@ -67,7 +70,7 @@ const Project = () => {
           </section>
 
           <section id="contribution">
-            <h3 className="pt-8 font-medium text-xl leading-7">🧬 Contribution</h3>
+            <h3 className="pt-8 font-medium text-xl text-[#68778D] leading-7 uppercase">🧬 Contribution</h3>
             <p className="font-normal leading-6 text-based">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -106,7 +109,7 @@ const Project = () => {
           </section>
 
           <section id="impact">
-            <h3 className="pt-8 mb-4 font-medium text-xl leading-7">📊 Impact</h3>
+            <h3 className="pt-8 mb-4 font-medium text-[#68778D] text-xl leading-7 uppercase">📊 Impact</h3>
             <div className="flex items-center gap-4 mb-8 flex-wrap">
               {impactArray.length > 0 ? (
                 impactArray.map(record => (

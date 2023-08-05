@@ -54,10 +54,17 @@ function IncludedProjects() {
   ];
   return (
     <div>
-      <h3 className="font-semibold font-3xl leading-4 pb-4">Included in the following lists</h3>
-      {dataProjects.map(project => (
-        <Card key={project.id} project={project} />
-      ))}
+      <h3 className="font-semibold bold text-lightBlack text-2xl leading-8 pt-8 pb-4">
+        Included in the following lists
+      </h3>
+      <div className="border rounded-xl border-neutral p-8">
+        {dataProjects.map((project, index) => (
+          <div key={project.id}>
+            <Card project={project} />
+            {index !== dataProjects.length - 1 && <div className="border-t border-neutral py-2"></div>}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

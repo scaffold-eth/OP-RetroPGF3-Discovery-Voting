@@ -143,7 +143,7 @@ export const ProjectHeader = () => {
 
                   {addressCopied ? (
                     <CheckCircleIcon
-                      className="text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer"
+                      className="text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer ml-[6px]"
                       aria-hidden="true"
                     />
                   ) : (
@@ -164,17 +164,17 @@ export const ProjectHeader = () => {
                   )}
 
                   <div className="h-[18px] border-l-2 border-neutral  mx-[6px] "></div>
-                  <a href="https://twitter.com" target="_blank">
+                  <a href="https://twitter.com" target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ color: "#1DA1F2", className: "h-7 w-7 " }}>
                       <AiOutlineTwitter />
                     </IconContext.Provider>
                   </a>
-                  <a href="https://github.com" target="_blank">
+                  <a href="https://github.com" target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ className: "h-6 w-6 " }}>
                       <AiOutlineGithub />
                     </IconContext.Provider>
                   </a>
-                  <a href="https://buidlguidl.com/" target="_blank">
+                  <a href="https://buidlguidl.com/" target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ className: "h-6 w-6 " }}>
                       <BsGlobe />
                     </IconContext.Provider>
@@ -214,7 +214,7 @@ export const ProjectHeader = () => {
 
           {voteAmount ? (
             <button className="rounded-md flex py-2 px-8 items-center  border border-gray-300 text-[#FF0420] font-medium text-base leading-6">
-              <CheckCircleIcon className="text-gray-600 font-semibold  h-10 w-10 text-[#FF0420] mr-4" />
+              <CheckCircleIcon className="font-semibold  h-10 w-10 text-[#FF0420] mr-4" />
               {`${voteAmount} OP allocated`}
             </button>
           ) : (
@@ -222,7 +222,7 @@ export const ProjectHeader = () => {
               onClick={() => setAddVote(true)}
               className="rounded-lg flex  items-center  bg-[#FF0420] text-white py-2 px-8"
             >
-              <FolderIcon className="text-gray-600 font-semibold  h-10 w-10 text-white mr-4" />
+              <FolderIcon className=" font-semibold  h-10 w-10 text-white mr-4" />
               Add to ballot
             </button>
           )}
