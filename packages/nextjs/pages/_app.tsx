@@ -40,7 +40,6 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
     // Fetch balance for the connected wallet address
     const _allocation = await OPTokenContract.getVotes(address);
     const _tokenAllocation = Number(ethers.formatEther(_allocation));
-    console.log("VOTE_TOKENS::", _tokenAllocation);
     return _tokenAllocation;
   };
 

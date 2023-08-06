@@ -10,7 +10,6 @@ import dbConnect from "~~/lib/dbConnect";
 import Project, { ProjectDocument } from "~~/models/Project";
 import { notification } from "~~/utils/scaffold-eth";
 
-
 interface Props {
   projects: ProjectDocument[];
 }
@@ -29,7 +28,6 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
       });
     };
     myFunc();
-    console.log("STATE", state);
   }, [state]);
 
   const addProjectToBallot = () => {

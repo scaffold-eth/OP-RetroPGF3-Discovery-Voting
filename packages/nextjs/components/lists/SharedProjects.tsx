@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
-// import AlreadyOnBallotConflictModal from "~~/components/op/modals/AlreadyOnBallotConflictModal";
 import EditDistributionModal from "~~/components/op/modals/EditDistributionModal";
 import LoadingModal from "~~/components/op/modals/LoadingModal";
 import SuccessModal from "~~/components/op/modals/SuccessModal";
 import { useBallot } from "~~/context/BallotContext";
 import { IList } from "~~/types/list";
-
 
 interface Props {
   list: IList;
@@ -16,88 +14,15 @@ interface Props {
 
 const SharedProjects: React.FC<Props> = ({ list }) => {
   const { projects, populatedProjects } = list;
-  const [addBallot, setAddBallot] = useState(false);
   const [editBallot, setEditBallot] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const { dispatch } = useBallot();
-  const userData = { totalOP: 100000 };
 
-  const projectDataHandle = [
-    {
-      name: "DefiLlama",
-
-      image: "/assets/gradient-bg.png",
-      op: 20416,
-    },
-    {
-      name: "L2BEAT",
-
-      image: "/assets/gradient-bg.png",
-      op: 15416,
-    },
-    {
-      name: "Polynya",
-
-      image: "/assets/gradient-bg.png",
-      op: 12416,
-    },
-    {
-      name: "DefiLlama",
-
-      image: "/assets/gradient-bg.png",
-      op: 20416,
-    },
-    {
-      name: "L2BEAT",
-
-      image: "/assets/gradient-bg.png",
-      op: 15416,
-    },
-    {
-      name: "Polynya",
-
-      image: "/assets/gradient-bg.png",
-      op: 12416,
-    },
-  ];
-
-  // const handleAddBallot = () => {
-  //   setLoadingMessage("Adding selection to ballot");
-  //   setSuccessMessage("Selection added successfully");
-  //   setAddBallot(false);
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     // Spoofed API request to add to ballot
-  //     setIsLoading(false);
-  //     setIsSuccess(true);
-  //     setTimeout(() => {
-  //       // Spoofed response from api
-  //       setIsSuccess(false);
-  //     }, 2000);
-  //   }, 1000);
-  // };
-  const handleSaveBallot = () => {
-    setLoadingMessage("Saving distribution");
-    setSuccessMessage("Distribution changed successfully");
-    setEditBallot(false);
-    setIsLoading(true);
-    setTimeout(() => {
-      // Spoofed API request to save ballot
-      setIsLoading(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        // Spoofed response from api
-        setIsSuccess(false);
-      }, 2000);
-    }, 1000);
-  };
-
-  const handleAddOrEditModal = (close: boolean, edit = false) => {
+  const handleEditModal = (close: boolean, edit = false) => {
     setEditBallot(!close && edit);
-    setAddBallot(!close && !edit);
   };
 
   const addProjectToBallot = () => {
@@ -124,7 +49,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
-              onClick={() => handleAddOrEditModal(false, true)}
+              onClick={() => handleEditModal(false, true)}
               text="Edit distribution"
               customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
             >
@@ -177,23 +102,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         <p>Total</p>
         <p>{projects.reduce((sum, p) => sum + p.votes, 0)} OP</p>
       </div>
-      {/* {addBallot && (
-        <AlreadyOnBallotConflictModal
-          onClose={() => handleAddOrEditModal(true)}
-          handleAddBallot={handleAddBallot}
-          projectList={projectDataHandle}
-          edit={() => handleAddOrEditModal(false, true)}
-        />
-      )} */}
-      {editBallot && (
-        <EditDistributionModal
-          onClose={() => handleAddOrEditModal(true)}
-          handleSaveBallot={handleSaveBallot}
-          userTotal={userData.totalOP}
-          projectList={projectDataHandle}
-          edit={() => handleAddOrEditModal(false, true)}
-        />
-      )}
+      {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal(true, false)} />}
       {isLoading && <LoadingModal message={loadingMessage} />}
       {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
     </div>

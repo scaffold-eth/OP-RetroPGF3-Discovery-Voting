@@ -29,9 +29,10 @@ type Action =
   | { type: "ADD_PROJECT"; project: Project; allocation: number }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
-  | { type: "ADD_LIST"; projects: SharedProject[] };
+  | { type: "ADD_LIST"; projects: SharedProject[] }
+  | { type: "ADD_EDITED_LIST"; projects: SharedProject[] };
 
-// The context value structure
+// The ballot context structure
 interface BallotContextValue {
   state: State;
   dispatch: React.Dispatch<Action>;
@@ -76,15 +77,17 @@ const reducer = (state: State, action: Action): State => {
       };
     case "ADD_LIST":
       const listId = action.projects[0].listId;
-      // Check if the list has already been imported
-      if (state.importedLists.includes(listId)) {
-        return state;
-      }
       const newProjects = [...state.projects];
       const usedAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
       const remainingAllocation = state.totalTokens - usedAllocation;
       const listTotalAllocation = action.projects.reduce((sum, p) => sum + p.votes, 0);
+      // Check if the list has already been imported
+      if (state.importedLists.includes(listId) && state.projects.length >= action.projects.length) {
+        return state;
+      }
       let scalingFactor = 1;
+      // ballot already contains projects with allocation, add new projects based on
+      // the remaining available votes of the delegate else add as is on the list i.e scaling factor = 1
       if (listTotalAllocation > remainingAllocation) scalingFactor = remainingAllocation / listTotalAllocation;
 
       action.projects.forEach(listItem => {
@@ -108,6 +111,34 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         projects: newProjects,
         importedLists: [...state.importedLists, listId],
+      };
+    case "ADD_EDITED_LIST":
+      const previousProjects = [...state.projects];
+      const targetlistId = action.projects[0].listId;
+
+      // Iterate over the projects in the edited list
+      action.projects.forEach(editedProject => {
+        // Find the corresponding project in the ballot
+        const indexInBallot = previousProjects.findIndex(project => project.id === editedProject.id);
+
+        // If found, update its allocation
+        if (indexInBallot !== -1) {
+          previousProjects[indexInBallot].allocation = editedProject.votes;
+        } else {
+          // If it's not found, add it to the ballot
+          previousProjects.push({
+            name: editedProject.name,
+            id: editedProject.id,
+            allocation: editedProject.votes,
+          });
+        }
+      });
+
+      // Return the new state with the updated projects
+      return {
+        ...state,
+        projects: previousProjects,
+        importedLists: [...state.importedLists, targetlistId],
       };
     // additional cases as needed
     default:

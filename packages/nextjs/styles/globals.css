@@ -91,3 +91,6 @@ input[type="number"] {
 .bg-smoke-light {
   background-color: rgba(0, 0, 0, 0.5);
 }
+#custom-modal-dialog {
+  z-index: 1000;
+}
