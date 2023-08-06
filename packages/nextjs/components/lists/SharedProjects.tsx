@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
-import AlreadyOnBallotConflictModal from "~~/components/op/modals/AlreadyOnBallotConflictModal";
+// import AlreadyOnBallotConflictModal from "~~/components/op/modals/AlreadyOnBallotConflictModal";
 import EditDistributionModal from "~~/components/op/modals/EditDistributionModal";
 import LoadingModal from "~~/components/op/modals/LoadingModal";
 import SuccessModal from "~~/components/op/modals/SuccessModal";
-import { IList } from "~~/pages/lists/[listId]";
+import { useBallot } from "~~/context/BallotContext";
+import { IList } from "~~/types/list";
+
 
 interface Props {
   list: IList;
@@ -20,6 +22,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const { dispatch } = useBallot();
   const userData = { totalOP: 100000 };
 
   const projectDataHandle = [
@@ -61,22 +64,21 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
     },
   ];
 
-  const handleAddBallot = () => {
-    setLoadingMessage("Adding selection to ballot");
-    setSuccessMessage("Selection added successfully");
-    setAddBallot(false);
-    setIsLoading(true);
-    setTimeout(() => {
-      // Spoofed API request to add to ballot
-      setIsLoading(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        // Spoofed response from api
-        setIsSuccess(false);
-      }, 2000);
-    }, 1000);
-  };
-
+  // const handleAddBallot = () => {
+  //   setLoadingMessage("Adding selection to ballot");
+  //   setSuccessMessage("Selection added successfully");
+  //   setAddBallot(false);
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     // Spoofed API request to add to ballot
+  //     setIsLoading(false);
+  //     setIsSuccess(true);
+  //     setTimeout(() => {
+  //       // Spoofed response from api
+  //       setIsSuccess(false);
+  //     }, 2000);
+  //   }, 1000);
+  // };
   const handleSaveBallot = () => {
     setLoadingMessage("Saving distribution");
     setSuccessMessage("Distribution changed successfully");
@@ -98,6 +100,20 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
     setAddBallot(!close && !edit);
   };
 
+  const addProjectToBallot = () => {
+    setLoadingMessage("Adding to ballot");
+    setSuccessMessage("Projects added successfully");
+    setIsLoading(true);
+    dispatch({
+      type: "ADD_LIST",
+      projects: populatedProjects,
+    });
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSuccess(true);
+    }, 1000);
+  };
+
   return (
     <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
       <div className="project__header-container min-w-[320px]">
@@ -116,7 +132,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
             </CustomProjectButton>
 
             <CustomProjectButton
-              onClick={() => handleAddOrEditModal(false, false)}
+              onClick={() => addProjectToBallot()}
               text="Add to ballot"
               customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
             >
@@ -161,14 +177,14 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         <p>Total</p>
         <p>{projects.reduce((sum, p) => sum + p.votes, 0)} OP</p>
       </div>
-      {addBallot && (
+      {/* {addBallot && (
         <AlreadyOnBallotConflictModal
           onClose={() => handleAddOrEditModal(true)}
           handleAddBallot={handleAddBallot}
           projectList={projectDataHandle}
           edit={() => handleAddOrEditModal(false, true)}
         />
-      )}
+      )} */}
       {editBallot && (
         <EditDistributionModal
           onClose={() => handleAddOrEditModal(true)}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
@@ -8,6 +8,8 @@ import SuggestProjects from "~~/components/shared/SuggestProjects";
 import { useBallot } from "~~/context/BallotContext";
 import dbConnect from "~~/lib/dbConnect";
 import Project, { ProjectDocument } from "~~/models/Project";
+import { notification } from "~~/utils/scaffold-eth";
+
 
 interface Props {
   projects: ProjectDocument[];
@@ -15,7 +17,20 @@ interface Props {
 
 const ProjectDetail: NextPage<Props> = ({ projects }) => {
   const [isLiked, setIsLiked] = React.useState(false);
-  const { dispatch } = useBallot();
+  const [isAdded, setIsAdded] = useState(false);
+  const { state, dispatch } = useBallot();
+
+  useEffect(() => {
+    if (!state) return;
+    setIsAdded(false);
+    const myFunc = () => {
+      state.projects.forEach(x => {
+        if (x.id === projects[0]._id) setIsAdded(true)
+      });
+    };
+    myFunc();
+    console.log("STATE", state);
+  }, [state]);
 
   const addProjectToBallot = () => {
     dispatch({
@@ -26,8 +41,10 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
         allocation: 0,
       },
     });
+    notification.success("Added to ballot");
   };
 
+  console.log("STATE", state);
   return (
     <div className=" mx-auto px-12 mt-12 grid gap-12">
       <div className="">
@@ -57,8 +74,12 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
         <div className="mt-8">
           <h4 className="text-[#68778D] text-lg">🧑‍💻 Description</h4>
           <p>{projects[0].description}</p>
-          <button onClick={() => addProjectToBallot()} className="p-2 bg-blue-500 text-white rounded">
-            Add to Ballot
+          <button
+            disabled={isAdded}
+            onClick={() => addProjectToBallot()}
+            className="p-2 bg-blue-500 text-white rounded"
+          >
+            {isAdded ? "Added to ballot" : "Add to Ballot"}
           </button>
         </div>
         <div className="mt-16">

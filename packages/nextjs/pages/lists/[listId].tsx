@@ -7,16 +7,9 @@ import YourBallot from "~~/components/op/projects/YourBallot";
 import { Address } from "~~/components/scaffold-eth";
 import SuggestProjects from "~~/components/shared/SuggestProjects";
 import dbConnect from "~~/lib/dbConnect";
-import List, { ListDocument } from "~~/models/List";
-import Project from "~~/models/Project";
-
-interface IProjects {
-  populatedProjects: {
-    name: string;
-    votes: number;
-  }[];
-}
-export type IList =  ListDocument & IProjects;
+import List from "~~/models/List";
+import { IList } from "~~/types/list";
+import { populateListProjects } from "~~/utils/populateListProjects";
 
 interface Props {
   list: IList;
@@ -108,26 +101,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
     await dbConnect();
     const listId = context.query.listId;
     const list = await List.findById(listId);
-    // @dev Function populates shared projects on a list with 
-    // relevant project data for use in components.
-    // Shared projects on lists appear as 'objectIds' from the database 
-    // this helper function helps to get the project's data (name and votes)
-    const populateListProjects = async () => {
-      let x = {};
-      const y = [];
-      for (let i = 0; i < list.projects.length; i++) {
-        const projectId = list.projects[i].project;
-        const p = await Project.findById(projectId);
-        const v = list.projects[i].votes;
-        x = {
-          name: p.name,
-          votes: v,
-        };
-        y.push(x);
-      }
-      return { ...list._doc, populatedProjects: y };
-    };
-    const newList = await populateListProjects();
+    const newList = await populateListProjects(list);
     return { props: { list: JSON.parse(JSON.stringify(newList)) } };
   } catch (e) {
     console.log(e);
