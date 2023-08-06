@@ -126,7 +126,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         </div>
       </div>
       <div
-        className="max-h-[500px] pr-2 overflow-y-auto 
+        className="max-h-[500px] pr-2 overflow-y-auto
       scrollbar-thin
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
@@ -137,15 +137,6 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         <p>Total</p>
         <p>{userData.totalOP.toLocaleString()} OP</p>
       </div>
-      {/* {addBallot && (
-        <AddListToBallotModal
-          onClose={() => handleAddOrEditModal(true)}
-          handleAddBallot={handleAddBallot}
-          userTotal={userData.totalOP}
-          projectList={projectDataHandle}
-          edit={() => handleAddOrEditModal(false, true)}
-        />
-      )} */}
       {addBallot && (
         <AlreadyOnBallotConflictModal
           onClose={() => handleAddOrEditModal(true)}

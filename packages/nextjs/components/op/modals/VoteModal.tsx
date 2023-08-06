@@ -11,10 +11,11 @@ import BaseModal from "./BaseModal";
 // Define an interface for the props that VoteModal component receives
 interface IVoteModal {
   onClose: () => void; // A function to be called when the modal is closed
+  handleAddBallot: () => void;
 }
 
 // Define the VoteModal component as a functional component that receives props of type IVoteModal
-const VoteModal: React.FC<IVoteModal> = ({ onClose }) => {
+const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
   // Return the JSX code representing the VoteModal component
   return (
     <BaseModal onClose={onClose}>
@@ -55,6 +56,7 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose }) => {
         <div className="w-full">
           {/* Render a custom button to add the project to the ballot */}
           <CustomProjectButton
+            onClick={handleAddBallot}
             text="Save" // Button text
             customClassName="bg-[#ff0000] py-4 rounded-lg border-[#ff0000] w-full text-[#ffffff]"
           ></CustomProjectButton>
