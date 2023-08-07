@@ -39,11 +39,11 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
           className="max-h-[400px] pr-2 overflow-y-auto 
       scrollbar-thin
       scrollbar-thumb-rounded-full
-      scrollbar-thumb-[#E2E8F0]"
+      scrollbar-thumb-OPlightgray"
         >
           <ProjectListCard projectData={projectList} />
         </div>
-        <div className="mt-4 rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
+        <div className="mt-4 rounded-2xl bg-OPlightgray px-5 grid grid-flow-col justify-between items-center">
           <p>Total</p>
           <p>{userTotal.toLocaleString()} OP</p>
         </div>
@@ -51,7 +51,7 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
           <CustomProjectButton
             text="Edit distribution"
             onClick={edit}
-            customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+            customClassName="border-OPlightgray py-2 border-2 text-OPblack"
           >
             <AdjustmentsHorizontalIcon className="w-5 h-5" />
           </CustomProjectButton>
@@ -59,7 +59,7 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
           <CustomProjectButton
             onClick={handleAddBallot}
             text="Add to ballot"
-            customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
+            customClassName=" bg-OPred py-2 rounded-lg border-OPred  text-OPwhite"
           >
             <SquaresPlusIcon className="w-5 h-5" />
           </CustomProjectButton>
