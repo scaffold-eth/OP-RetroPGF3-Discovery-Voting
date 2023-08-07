@@ -61,7 +61,7 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
           className="max-h-[400px] pr-2 overflow-y-auto 
       scrollbar-thin
       scrollbar-thumb-rounded-full
-      scrollbar-thumb-[#E2E8F0]"
+      scrollbar-thumb-OPlightgray"
         >
           <ProjectListCardEditable projectData={projectList} emitTotal={checkTotal} />
         </div>
@@ -71,7 +71,7 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
             <p>{userTotal.toLocaleString()} OP</p>
           </div>
         ) : (
-          <div className="mt-4 rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
+          <div className="mt-4 rounded-2xl bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
             <p>Total</p>
             <p>{userTotal.toLocaleString()} OP</p>
           </div>
@@ -80,15 +80,13 @@ const EditDistributionModal: React.FC<IEditDistributionModal> = ({
           <CustomProjectButton
             text="Cancel"
             onClick={edit}
-            customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+            customClassName="border-OPlightgray py-2 border-2 text-OPblack"
           />
 
           <CustomProjectButton
             onClick={handleSaveBallot}
             text="Save"
-            customClassName={
-              "bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]" + showError ? " btn-disabled" : ""
-            }
+            customClassName={"bg-OPred py-2 rounded-lg border-OPred  text-OPwhite" + showError ? " btn-disabled" : ""}
             disabled={showError}
           />
         </div>

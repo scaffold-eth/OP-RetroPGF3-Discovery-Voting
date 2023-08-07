@@ -99,7 +99,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
   };
 
   return (
-    <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
+    <div className=" border-OPgray border-2 rounded-3xl gap-10 grid  px-8 py-10">
       <div className="project__header-container min-w-[320px]">
         <div className="project__header-container--content">
           <h3 className="text-lg sm:text-2xl font-bold   items-center">
@@ -110,7 +110,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             <CustomProjectButton
               onClick={() => handleAddOrEditModal(false, true)}
               text="Edit distribution"
-              customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+              customClassName="border-OPlightgray py-2 border-2 text-OPblack"
             >
               <AdjustmentsHorizontalIcon className="w-5 h-5" />
             </CustomProjectButton>
@@ -118,7 +118,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
             <CustomProjectButton
               onClick={() => handleAddOrEditModal(false, false)}
               text="Add to ballot"
-              customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
+              customClassName=" bg-OPred py-2 rounded-lg border-OPred  text-OPwhite"
             >
               <SquaresPlusIcon className="w-5 h-5" />
             </CustomProjectButton>
@@ -129,11 +129,11 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
         className="max-h-[500px] pr-2 overflow-y-auto
       scrollbar-thin
       scrollbar-thumb-rounded-full
-      scrollbar-thumb-[#E2E8F0]"
+      scrollbar-thumb-OPlightgray"
       >
         <ProjectListCard projectData={projectData} />
       </div>
-      <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
+      <div className="rounded-2xl bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
         <p>{userData.totalOP.toLocaleString()} OP</p>
       </div>
