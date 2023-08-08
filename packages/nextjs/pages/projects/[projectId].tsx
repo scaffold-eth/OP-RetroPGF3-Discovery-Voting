@@ -22,12 +22,12 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
   useEffect(() => {
     if (!state) return;
     setIsAdded(false);
-    const myFunc = () => {
+    const isAddedToBallot = () => {
       state.projects.forEach(x => {
         if (x.id === projects[0]._id) setIsAdded(true)
       });
     };
-    myFunc();
+    isAddedToBallot();
   }, [state]);
 
   const addProjectToBallot = () => {

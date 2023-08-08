@@ -25,11 +25,11 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [totalTokens, setTotalTokens] = useState(0);
   const { isDarkMode } = useDarkMode();
-  // fetch vote token balance
+  // address to fetch vote token balance
   const { address } = useAccount();
   const provider = useEthersProvider();
 
-  // Function to fetch token balance
+  // Function to fetch vote token balance
   const fetchVoteTokensBalance = async (address: any) => {
     if (!address) return 0;
     // Define the contract ABI
@@ -74,7 +74,7 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
         avatar={BlockieAvatar}
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
-        <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}>
+        <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}> 
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="relative flex flex-col flex-1">
