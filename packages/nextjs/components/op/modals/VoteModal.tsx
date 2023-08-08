@@ -25,15 +25,15 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
         <div className="grid gap-6 grid-flow-col items-center justify-between">
           <h3 className="text-lg font-bold ">vote</h3>
           {/* Render a button with an onClick event that calls the onClose function */}
-          <button onClick={onClose} className="text-lg text-[#a2aab6] btn btn-sm btn-circle btn-ghost">
+          <button onClick={onClose} className="text-lg text-OPgray btn btn-sm btn-circle btn-ghost">
             ✕
           </button>
         </div>
-        <p className="text-[#a2aab6] text-sm">
+        <p className="text-OPgray text-sm">
           All the data will be saved locally on this browser until you finalize your vote.
         </p>
 
-        <div className="rounded-xl p-1 bg-[#f0f2f5] mb-3 items-center grid justify-start grid-flow-col gap-4">
+        <div className="rounded-xl p-1 bg-OPoffwhite mb-3 items-center grid justify-start grid-flow-col gap-4">
           <div className="w-[50px]">
             {/* Render an Image component to display an image related to the project */}
             <Image
@@ -48,9 +48,9 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
             <h3 className="font-bold text-lg">Polynya</h3> {/* Display the project name */}
           </div>
         </div>
-        <div className="mb-5 border-[#f0f2f5] border-2 rounded-xl px-4 py-0 grid grid-flow-col justify-between items-center">
+        <div className="mb-5 border-OPoffwhite border-2 rounded-xl px-4 py-0 grid grid-flow-col justify-between items-center">
           <p className="m-0 py-2">35,416</p> {/* Display the number of votes */}
-          <p className="font-bold h-full m-0 border-[#f0f2f5] border-l-2 py-2 pl-4">OP</p> {/* Display a label */}
+          <p className="font-bold h-full m-0 border-OPoffwhite border-l-2 py-2 pl-4">OP</p> {/* Display a label */}
         </div>
 
         <div className="w-full">
@@ -58,7 +58,7 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
           <CustomProjectButton
             onClick={handleAddBallot}
             text="Save" // Button text
-            customClassName="bg-[#ff0000] py-4 rounded-lg border-[#ff0000] w-full text-[#ffffff]"
+            customClassName="bg-OPred py-4 rounded-lg border-OPred w-full text-OPwhite"
           ></CustomProjectButton>
         </div>
       </div>

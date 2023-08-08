@@ -136,7 +136,7 @@ export const ProjectHeader = () => {
                 <div className="flex items-center gap-8 flex-wrap">
                   <a
                     href="#"
-                    className="bg-gradient-to-r from-[#FF0420] to-[#9104FF] inline-block text-transparent bg-clip-text"
+                    className="bg-gradient-to-r from-OPred to-purple inline-block text-transparent bg-clip-text"
                   >
                     @orbiter_finance
                   </a>
@@ -165,7 +165,7 @@ export const ProjectHeader = () => {
 
                   <div className="h-[18px] border-l-2 border-neutral  mx-[6px] "></div>
                   <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                    <IconContext.Provider value={{ color: "#1DA1F2", className: "h-7 w-7 " }}>
+                    <IconContext.Provider value={{ color: "twitterBlue", className: "h-7 w-7 " }}>
                       <AiOutlineTwitter />
                     </IconContext.Provider>
                   </a>
@@ -196,31 +196,31 @@ export const ProjectHeader = () => {
           </button>
 
           {openLikedModal && (
-            <div className="absolute  bg-white rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-[#e5e8ed]">
+            <div className="absolute  bg-white rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite">
               <button onClickCapture={() => setAddVote(true)} className="flex gap-4 items-center">
-                <AdjustmentsHorizontalIcon className="w-6 h-6 text-[#68778D]" />
+                <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
                 <p onClick={() => handleSaveBallot()}>Edit Distribution</p>
               </button>
               <button className="flex gap-4 items-center">
-                <ArrowUturnRightIcon className="w-6 h-6 text-[#68778D]" />
+                <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
                 <p>Share</p>
               </button>
               <button className="flex gap-4 items-center">
-                <FlagIcon className="w-6 h-6 text-[#68778D]" />
+                <FlagIcon className="w-6 h-6 text-OPdarkgray" />
                 <p>Report</p>
               </button>
             </div>
           )}
 
           {voteAmount ? (
-            <button className="rounded-md flex py-2 px-8 items-center  border border-gray-300 text-[#FF0420] font-medium text-base leading-6">
-              <CheckCircleIcon className="font-semibold  h-10 w-10 text-[#FF0420] mr-4" />
+            <button className="rounded-md flex py-2 px-8 items-center  border border-gray-300 text-OPred font-medium text-base leading-6">
+              <CheckCircleIcon className="font-semibold  h-10 w-10 text-OPred mr-4" />
               {`${voteAmount} OP allocated`}
             </button>
           ) : (
             <button
               onClick={() => setAddVote(true)}
-              className="rounded-lg flex  items-center  bg-[#FF0420] text-white py-2 px-8"
+              className="rounded-lg flex  items-center  bg-OPred text-white py-2 px-8"
             >
               <FolderIcon className=" font-semibold  h-10 w-10 text-white mr-4" />
               Add to ballot

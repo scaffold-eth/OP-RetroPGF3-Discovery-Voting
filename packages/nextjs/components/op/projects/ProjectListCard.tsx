@@ -8,7 +8,7 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
       {projectData.map((project: IProjectData, index: number) => (
         <div
           key={index}
-          className={`border-[#ccd2db] py-6 ${
+          className={`border-OPlightgray py-6 ${
             index === projectData.length - 1 ? "" : "border-b-2"
           }  grid grid-flow-col items-center justify-between `}
         >
@@ -24,7 +24,7 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
             </div>
             <div className="">
               <h3 className="font-bold text-lg">{project.name}</h3>
-              {project.handle && <p className="mt-0 text-[1.1rem] text-[#7f97b0]">@{project.handle}</p>}
+              {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">@{project.handle}</p>}
             </div>
           </div>
           <p className="text-lg">{project.op.toLocaleString()} OP</p>

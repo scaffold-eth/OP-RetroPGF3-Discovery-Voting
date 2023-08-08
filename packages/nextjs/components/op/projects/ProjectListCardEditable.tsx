@@ -23,7 +23,7 @@ const ProjectListCardEditable: React.FC<{
       {projectData.map((project: IProjectData, index: number) => (
         <div
           key={index}
-          className={`border-[#ccd2db] py-6 ${
+          className={`border-OPlightgray py-6 ${
             index === projectData.length - 1 ? "" : "border-b-2"
           }  grid grid-flow-col items-center justify-between `}
         >
@@ -39,7 +39,7 @@ const ProjectListCardEditable: React.FC<{
             </div>
             <div className="">
               <h3 className="font-bold text-lg">{project.name}</h3>
-              {project.handle && <p className="mt-0 text-[1.1rem] text-[#7f97b0]">@{project.handle}</p>}
+              {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">@{project.handle}</p>}
             </div>
           </div>
           <div className="flex flex-row">
@@ -51,8 +51,8 @@ const ProjectListCardEditable: React.FC<{
                   return;
                 }}
                 customClassesGroup="mr-2 pointer-events-none"
-                customClassesInput="pointer-events-none text-[#8496AE] bg-[#E2E8F0] border-neutral cursor-default"
-                customClassesSpan="bg-[#E2E8F0] text-[#8496AE] border-neutral pointer-events-none"
+                customClassesInput="pointer-events-none text-OPbluegray bg-customWhite border-neutral cursor-default"
+                customClassesSpan="bg-customWhite text-OPbluegray border-neutral pointer-events-none"
               />
             ) : (
               ""

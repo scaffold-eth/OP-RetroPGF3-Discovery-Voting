@@ -42,7 +42,7 @@ const AlreadyOnBallotConflictModal: React.FC<IAlreadyOnBallotConflictModal> = ({
             </p>
           </div>
         </div>
-        <div className="mt-2 border-b-2 border-[#ccd2db] flex flex-rox text-[#68778D] text-sm">
+        <div className="mt-2 border-b-2 border-OPlightgray flex flex-rox text-OPdarkgray text-sm">
           <span className="w-[49%]">Project</span>
           <span className="w-[22%]">List allocation</span>
           <span className="">Your allocation</span>
@@ -51,7 +51,7 @@ const AlreadyOnBallotConflictModal: React.FC<IAlreadyOnBallotConflictModal> = ({
           className="max-h-[400px] pr-2 overflow-y-auto 
       scrollbar-thin
       scrollbar-thumb-rounded-full
-      scrollbar-thumb-[#E2E8F0]"
+      scrollbar-thumb-OPlightgray"
         >
           <ProjectListCardEditable
             listAllocation={projectList}
@@ -66,13 +66,13 @@ const AlreadyOnBallotConflictModal: React.FC<IAlreadyOnBallotConflictModal> = ({
           <CustomProjectButton
             text="Cancel"
             onClick={edit}
-            customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
+            customClassName="border-OPlightgray py-2 border-2 text-OPblack"
           />
 
           <CustomProjectButton
             onClick={handleAddBallot}
             text="Continue"
-            customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
+            customClassName=" bg-OPred py-2 rounded-lg border-OPred  text-OPwhite"
           />
         </div>
       </div>
