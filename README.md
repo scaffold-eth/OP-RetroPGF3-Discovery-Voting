@@ -17,7 +17,7 @@ Badgeholders (voters in RetroPGF) need to be able to discover and vote on nomina
 - [Google Doc w/ notes from last OP RPGF round](https://docs.google.com/document/d/1ZjjJkVIhOMgEDVRN24uvxVEOREFQeJCQp4I1XPX2_8k/edit)
 
 # Technology
-##  🏗 Scaffold-ETH 2
+## 🏗 Scaffold-ETH 2
 Popular front end tool, Scaffold-ETH 2 has been used for it's easily forkable components designed with interacting with onchain data in mind. Built using NextJS, RainbowKit, Hardhat, Wagmi, and Typescript.
 [Scaffold-ETH 2 Repo](https://github.com/scaffold-eth/scaffold-eth-2)
 
