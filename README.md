@@ -13,8 +13,8 @@ Badgeholders (voters in RetroPGF) need to be able to discover and vote on nomina
 - Ability to share your submission on social media
 
 # Guiding principles and materials
-[RFP: RetroPGF 3 Discovery & Voting ](https://github.com/ethereum-optimism/ecosystem-contributions/issues/104)
-[Extra Reading](https://docs.google.com/document/d/1ZjjJkVIhOMgEDVRN24uvxVEOREFQeJCQp4I1XPX2_8k/edit)
+- [RFP: RetroPGF 3 Discovery & Voting ](https://github.com/ethereum-optimism/ecosystem-contributions/issues/104)
+- [Google Doc w/ notes from last OP RPGF round](https://docs.google.com/document/d/1ZjjJkVIhOMgEDVRN24uvxVEOREFQeJCQp4I1XPX2_8k/edit)
 
 # Technology
 ##  🏗 Scaffold-ETH 2
