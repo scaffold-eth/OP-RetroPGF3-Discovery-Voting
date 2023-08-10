@@ -9,7 +9,6 @@ interface ProjectProps {
 }
 
 const Projects: NextPage<ProjectProps> = ({ projects }) => {
-  console.log("XXXxx", projects.length);
   if (projects.length < 1)
     return (
       <div className="text-center">
