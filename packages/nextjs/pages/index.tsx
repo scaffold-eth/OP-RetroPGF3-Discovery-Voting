@@ -9,6 +9,12 @@ interface ProjectProps {
 }
 
 const Projects: NextPage<ProjectProps> = ({ projects }) => {
+  if (projects.length < 1)
+    return (
+      <div className="text-center">
+        <h1>No projects available...</h1>
+      </div>
+    );
   return (
     <div>
       <AllProjects projects={projects} />
@@ -22,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   try {
     await dbConnect();
     console.log("context", context.query);
-    const projects: ProjectDocument[] = await Project.find({}).limit(10);
+    const projects: ProjectDocument[] = await Project.find({}).limit(12);
     return { props: { projects: JSON.parse(JSON.stringify(projects)) } };
   } catch (e) {
     console.log(e);

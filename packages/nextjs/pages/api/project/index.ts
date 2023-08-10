@@ -1,8 +1,8 @@
 import dbConnect from "../../../lib/dbConnect";
-import { ProjectModel } from "../../../models/Project";
 import { ethers } from "ethers";
 import type { NextApiRequest, NextApiResponse } from "next";
 import slugify from "slugify";
+import { ProjectModel } from "~~/models/Project";
 
 interface CreateProjectBody {
   name?: string;
@@ -25,7 +25,8 @@ interface CreateProjectBody {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
   if (req.method === "GET") {
-    const projects = await ProjectModel.find({}).skip(10).limit(10).lean();
+    // const projects = await ProjectModel.find({}).skip(10).limit(10).lean();
+    const projects = await ProjectModel.find({});
 
     console.log("API GET /api/projects");
 
