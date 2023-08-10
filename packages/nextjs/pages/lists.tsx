@@ -9,6 +9,12 @@ interface ListProps {
 }
 
 const ListsPage: NextPage<ListProps> = ({ lists }) => {
+  if (lists.length < 1)
+    return (
+      <div className="text-center">
+        <h1>No list available...</h1>
+      </div>
+    );
   return (
     <div>
       <AllLists lists={lists} />

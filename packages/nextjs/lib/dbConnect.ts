@@ -1,6 +1,5 @@
+import { seedDatabase } from "../local_database/seedDb";
 import _mongoose, { connect } from "mongoose";
-// import { seedDatabase } from "~~/local_database/importSeed";
-
 
 declare global {
   // eslint-disable-next-line no-var
@@ -28,8 +27,9 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  // seedDatabase();
   console.log("Connecting...");
+  // set to `true` if you want projects data seeded to database
+  await seedDatabase(MONGODB_URI, false);
   if (cached.conn) {
     return cached.conn;
   }

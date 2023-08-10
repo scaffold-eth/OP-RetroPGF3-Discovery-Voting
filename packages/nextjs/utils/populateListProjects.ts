@@ -1,4 +1,4 @@
-import Project from "~~/models/Project";
+import Project from "../models/Project";
 
 // @dev
 // populates shared projects on a list with
