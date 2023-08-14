@@ -11,7 +11,7 @@ interface ListProps {
 const ListsPage: NextPage<ListProps> = ({ lists }) => {
   if (lists.length < 1)
     return (
-      <div className="text-center">
+      <div className="text-center font-bold text-2xl pt-8">
         <h1>No list available...</h1>
       </div>
     );
@@ -24,10 +24,9 @@ const ListsPage: NextPage<ListProps> = ({ lists }) => {
 
 export default ListsPage;
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     await dbConnect();
-    console.log("context", context.query);
     const lists: ListDocument[] = await List.find({}).limit(10);
     return { props: { lists: JSON.parse(JSON.stringify(lists)) } };
   } catch (e) {

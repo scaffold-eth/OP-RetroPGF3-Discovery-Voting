@@ -11,7 +11,7 @@ interface ProjectProps {
 const Projects: NextPage<ProjectProps> = ({ projects }) => {
   if (projects.length < 1)
     return (
-      <div className="text-center">
+      <div className="text-center font-bold text-2xl pt-8">
         <h1>No projects available...</h1>
       </div>
     );
@@ -24,7 +24,7 @@ const Projects: NextPage<ProjectProps> = ({ projects }) => {
 
 export default Projects;
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     await dbConnect();
     const projects: ProjectDocument[] = await Project.find({});
