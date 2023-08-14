@@ -5,7 +5,6 @@ import Pagination from "~~/components/lists/Pagination";
 import Card from "~~/components/projects/Card";
 import { ProjectDocument } from "~~/models/Project";
 
-
 interface Props {
   projects: ProjectDocument[];
 }
@@ -26,11 +25,6 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
   const displayList = (option: string) => {
     setDisplay(option);
   };
-
-  // const handlePageShuffle = (shuffledProjects: ProjectDocument[]): ProjectDocument[] => {
-  //   setAllProjects(shuffledProjects);
-  //   return shuffledProjects;
-  // };
 
   useEffect(() => {
     function filterProjects() {

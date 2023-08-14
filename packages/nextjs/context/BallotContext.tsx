@@ -151,7 +151,7 @@ export const BallotProvider: React.FC<BallotProviderProps> = ({ children, totalT
   return <BallotContext.Provider value={{ state, dispatch }}>{children}</BallotContext.Provider>;
 };
 
-// Custom hook to use the context
+// Hook to use the context
 export const useBallot = () => {
   const context = useContext(BallotContext);
   if (!context) {

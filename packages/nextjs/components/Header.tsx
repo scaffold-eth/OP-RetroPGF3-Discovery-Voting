@@ -2,16 +2,19 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import SearchProjects from "./SearchProjects";
 import { SwitchTheme } from "./SwitchTheme";
-import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import BallotComponent from "./ballot/Ballot";
+// import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { useProjects } from "~~/context/ProjectsContext";
+import { useOutsideClick } from "~~/hooks/scaffold-eth";
+
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();
   const isActive = router.pathname === href;
-
   return (
     <Link
       href={href}
@@ -32,6 +35,8 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
+  const { projects } = useProjects();
+
   useOutsideClick(
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
@@ -81,14 +86,7 @@ export const Header = () => {
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
       <div className="navbar-center w-1/3 flex-grow">
-        <label className="w-full">
-          <MagnifyingGlassIcon className="pointer-events-none absolute mr-2 w-8 h-6 top-4 pl-2 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Search projects or lists"
-            className="input input-info input-bordered bg-secondary border-slate-200 w-full min-w-full pl-10 rounded-md h-10"
-          />
-        </label>
+        <SearchProjects data={projects} />
       </div>
       <div className="navbar-end w-1/3 flex-grow mr-4">
         <BallotComponent />

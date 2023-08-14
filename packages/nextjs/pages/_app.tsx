@@ -10,13 +10,13 @@ import { WagmiConfig, useAccount } from "wagmi";
 import { Header } from "~~/components/Header";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { BallotProvider } from "~~/context/BallotContext";
+import { ProjectsProvider } from "~~/context/ProjectsContext";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { useGlobalState } from "~~/services/store/store";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 import { appChains } from "~~/services/web3/wagmiConnectors";
 import "~~/styles/globals.css";
 import { useEthersProvider } from "~~/utils/ethers";
-
 
 const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const price = useNativeCurrencyPrice();
@@ -50,10 +50,10 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
         const balance = await fetchVoteTokensBalance(address);
         setTotalTokens(balance);
       } catch (e) {
-        console.log("ERR_FETCHING_VOTING_BALANCE:", e)
+        console.log("ERR_FETCHING_VOTING_BALANCE:", e);
       }
     };
-    fetchBalance()
+    fetchBalance();
   }, [address]);
 
   useEffect(() => {
@@ -74,15 +74,17 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
         avatar={BlockieAvatar}
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
-        <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}> 
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="relative flex flex-col flex-1">
-              <Component {...pageProps} />
-            </main>
-            {/* <Footer /> */}
-          </div>
-          <Toaster />
+        <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}>
+          <ProjectsProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="relative flex flex-col flex-1">
+                <Component {...pageProps} />
+              </main>
+              {/* <Footer /> */}
+            </div>
+            <Toaster />
+          </ProjectsProvider>
         </BallotProvider>
       </RainbowKitProvider>
     </WagmiConfig>
