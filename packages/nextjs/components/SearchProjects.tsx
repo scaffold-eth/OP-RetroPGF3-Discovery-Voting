@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import Autosuggest from "react-autosuggest";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ProjectDocument } from "~~/models/Project";
@@ -18,7 +19,11 @@ const renderSuggestion = (suggestion: any) => {
   if (suggestion.isNoMatch) {
     return <div className="text-gray-500">No matches found</div>;
   }
-  return <div>{suggestion.name}</div>;
+  return (
+    <Link href={`projects/${suggestion._id}`}>
+      <div>{suggestion.name}</div>
+    </Link>
+  );
 };
 
 interface Props {
