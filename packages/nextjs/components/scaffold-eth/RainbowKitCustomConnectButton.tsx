@@ -4,6 +4,7 @@ import { ArrowLeftOnRectangleIcon, ArrowsRightLeftIcon, ChevronDownIcon } from "
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { useNetworkColor } from "~~/hooks/scaffold-eth";
 import { getTargetNetwork } from "~~/utils/scaffold-eth";
+import BallotComponent from "../ballot/Ballot";
 
 /**
  * Custom Wagmi Connect Button (watch balance + custom design)
@@ -67,14 +68,7 @@ export const RainbowKitCustomConnectButton = () => {
               return (
                 <div className="px-2 flex justify-end items-center">
                   <div className="flex justify-center items-center border-1 rounded-lg">
-                    <button
-                      // onClick={/* TBD*/}
-                      type="button"
-                      className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-100"
-                    >
-                      View ballot
-                      <div className="badge badge-neutral ml-2 rounded-full px-2 py-3">0</div>
-                    </button>
+                    <BallotComponent />
                     <button
                       onClick={openAccountModal}
                       type="button"

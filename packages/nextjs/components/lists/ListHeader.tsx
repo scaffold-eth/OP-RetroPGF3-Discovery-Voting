@@ -1,11 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
+import { shuffle } from "~~/utils/shuffle";
 
-function ListHeader({ displayList, titleHeader, display }: any) {
+type CategoryInfo = {
+  category: string;
+  projectsCount: number;
+};
+
+function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
   const [active, setActive] = useState("all");
+  const [categories, setCategories] = useState<CategoryInfo[]>([]);
+
   const handleButtonClick = (options: string) => {
     setActive(options);
+    onCategoryChange(options);
   };
+
+  const handleShuffle = () => {
+    const _shuffledProjects = shuffle([...projects]);
+    onShuffleProjects(_shuffledProjects);
+  };
+
+  useEffect(() => {
+    try {
+      function getCategories(projects: any): CategoryInfo[] {
+        const recordedCategories = new Set<string>();
+        const categoryCount: Record<string, number> = {};
+
+        projects.forEach((project: any) => {
+          if (recordedCategories.has(project.category)) {
+            categoryCount[project.category]++;
+          } else {
+            recordedCategories.add(project.category);
+            categoryCount[project.category] = 1;
+          }
+        });
+
+        return Array.from(recordedCategories).map(category => ({
+          category: category,
+          projectsCount: categoryCount[category],
+        }));
+      }
+      setCategories(getCategories(projects));
+    } catch (e) {
+      console.log("ERR_SETTING_CATEGORIES", e);
+    }
+  }, []);
 
   return (
     <div>
@@ -29,11 +69,14 @@ function ListHeader({ displayList, titleHeader, display }: any) {
             <Squares2X2Icon className="w-[24px] h-[24px]" />
           </div>
           <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
-          <button className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite">
+          <button
+            onClick={() => handleShuffle()}
+            className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite"
+          >
             <span className="flex ">
               <ArrowsUpDownIcon className="w-[15px] h-[25px]" />
             </span>
-            Shuffled
+            Shuffle
           </button>
         </div>
       </div>
@@ -65,49 +108,20 @@ function ListHeader({ displayList, titleHeader, display }: any) {
             <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
           </>
         )}
-
-        <button
-          onClick={() => handleButtonClick("OP Stack")}
-          className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-            active == "OP Stack" ? "bg-secondary-content text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
-          }`}
-        >
-          OP Stack
-          <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">168</span>
-        </button>
-        <button
-          onClick={() => handleButtonClick("Collective Governance")}
-          className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-            active == "Collective Governance"
-              ? "bg-secondary-content text-white dark:bg-black"
-              : "bg-customWhite text-customGrayBtn"
-          }`}
-        >
-          Collective Governance
-          <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">33</span>
-        </button>
-        <button
-          onClick={() => handleButtonClick("Developer Ecosystem")}
-          className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-            active == "Developer Ecosystem"
-              ? "bg-secondary-content text-white dark:bg-black"
-              : "bg-customWhite text-customGrayBtn"
-          }`}
-        >
-          Developer Ecosystem
-          <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">111</span>
-        </button>
-        <button
-          onClick={() => handleButtonClick("End user UX")}
-          className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-            active == "End user UX"
-              ? "bg-secondary-content text-white dark:bg-black"
-              : "bg-customWhite text-customGrayBtn"
-          }`}
-        >
-          End user UX
-          <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">88</span>
-        </button>
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            onClick={() => handleButtonClick(`${category.category}`)}
+            className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
+              active == `${category.category}`
+                ? "bg-secondary-content text-white dark:bg-black"
+                : "bg-customWhite text-customGrayBtn"
+            }`}
+          >
+            {category.category}
+            <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
+          </button>
+        ))}
       </div>
     </div>
   );

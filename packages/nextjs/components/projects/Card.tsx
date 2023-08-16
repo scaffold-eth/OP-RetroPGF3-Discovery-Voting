@@ -1,13 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import logo from "~~/public/assets/Logo.png";
+
+// import banner from "~~/public/assets/gradient-bg.png";
 
 const Card = ({ project, display }: any) => {
-  const { name, banner, logo, username, description, category } = project;
+  const { name, username, banner, description, category } = project;
   return (
     <div className="">
       {display === "grids" ? (
-        <div className="border rounded-[1.5rem] border-gray-300  p-4 ">
+        <div className="rounded-[1.5rem] p-4 bg-base-100 ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             <Image
               width={311}
@@ -39,7 +42,10 @@ const Card = ({ project, display }: any) => {
 
           <p className="text-lightGray text-[14px] font-normal leading-5  mt-0 truncate">{description}</p>
           <div className="flex items-center justify-between py-2">
-            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> {category} </span>
+            <span className="px-2 py-1 text-[0.75rem] text-base-content-100 bg-base-200 rounded-md mr-2">
+              {" "}
+              {category}
+            </span>
           </div>
         </div>
       ) : (
