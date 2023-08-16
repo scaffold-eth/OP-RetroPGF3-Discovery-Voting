@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SearchProjects from "./SearchProjects";
 import { SwitchTheme } from "./SwitchTheme";
-import BallotComponent from "./ballot/Ballot";
-// import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useProjects } from "~~/context/ProjectsContext";
@@ -54,7 +52,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2 py-4">
+    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2">
       <div className="navbar-start w-1/3 ">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
@@ -78,7 +76,7 @@ export const Header = () => {
             </ul>
           )}
         </div>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6">
+        <Link href="/projects" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6">
           <div className="flex relative">
             <Image alt="OP logo" className="cursor-pointer" height={22} width={160} src="/optimismLogo.png" />
           </div>
@@ -89,7 +87,6 @@ export const Header = () => {
         <SearchProjects data={projects} />
       </div>
       <div className="navbar-end w-1/3 flex-grow mr-4">
-        <BallotComponent />
         <RainbowKitCustomConnectButton />
         <SwitchTheme className="pointer-events-auto" />
       </div>

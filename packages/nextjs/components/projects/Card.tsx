@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import logo from "~~/public/assets/Logo.png";
 
 // import banner from "~~/public/assets/gradient-bg.png";
@@ -29,7 +30,9 @@ const Card = ({ project, display }: any) => {
 
           <div className="flex items-center">
             <div className="flex-1">
-              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
+              <Link href={`/project/${project.id}`}>
+                <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
+              </Link>
 
               <div className="flex items-center">
                 <p className="font-semibold leading-[0px]  text-sm  ">{username}</p>

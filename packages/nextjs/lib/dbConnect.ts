@@ -39,7 +39,7 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = connect(MONGODB_URI!, opts).then(mongoose => {
+    cached.promise = connect(MONGODB_URI as string, opts).then(mongoose => {
       return mongoose;
     });
   }

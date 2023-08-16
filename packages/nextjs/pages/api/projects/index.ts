@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: "Method not allowed." });
   }
   await dbConnect();
-  const projects: ProjectDocument[] = await Project.find({});  
+  const projects: ProjectDocument[] = await Project.find({});
   console.log("API GET /api/projects");
   return res.status(200).json(projects);
 }

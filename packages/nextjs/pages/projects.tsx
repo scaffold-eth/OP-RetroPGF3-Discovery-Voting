@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import YourBallot from "~~/components/op/projects/YourBallot";
 import AllProjects from "~~/components/projects/AllProjects";
+import Sidebar from "~~/components/shared/Sidebar";
 import { useProjects } from "~~/context/ProjectsContext";
 
 const Projects = () => {
   const { projects } = useProjects();
+  const { isDisconnected } = useAccount();
+  const [wallet, setWallet] = useState<boolean | false>(false);
 
-  if (projects.length < 1)
+  useEffect(() => {
+    setWallet(isDisconnected);
+  }, [isDisconnected]);
+
+  if (projects.length < 1) {
     return (
       <div className="text-center font-bold text-2xl pt-8">
         <h1>No projects available...</h1>
       </div>
     );
+  }
+
   return (
-    <div>
+    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+      {!wallet ? <YourBallot /> : <Sidebar />}
       <AllProjects projects={projects} />
     </div>
   );

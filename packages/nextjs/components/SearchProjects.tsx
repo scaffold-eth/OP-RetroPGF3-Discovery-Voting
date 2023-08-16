@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ProjectDocument } from "~~/models/Project";
 
 const getSuggestions = (value: any, data: any) => {
@@ -38,33 +39,36 @@ const SearchProjects: React.FC<Props> = ({ data }) => {
   };
   return (
     <div className="relative w-full">
-      <Autosuggest
-        theme={theme}
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={({ value }) => {
-          let computedSuggestions = getSuggestions(value, data);
-          if (computedSuggestions.length === 0) {
-            computedSuggestions = [{ isNoMatch: true }];
-          }
-          setSuggestions(computedSuggestions);
-        }}
-        onSuggestionsClearRequested={() => {
-          setSuggestions([]);
-        }}
-        getSuggestionValue={getSuggestionValue}
-        renderSuggestion={renderSuggestion}
-        inputProps={{
-          className: "input input-info input-bordered bg-secondary w-full min-w-full pl-10 rounded-md h-10",
-          placeholder: "Search projects...",
-          value,
-          onChange: (event, { newValue }) => {
-            setValue(newValue);
-            setInputFocused(true);
-            newValue.length === 0 && setInputFocused(false); // hides renderSuggestion styling which causes an anomaly in the UI underneath the search input element
-          },
-          onBlur: () => setInputFocused(false),
-        }}
-      />
+      <label className="w-full">
+        <MagnifyingGlassIcon className="pointer-events-none absolute mr-2 w-8 h-6 top-2 pl-2 text-slate-400" />
+        <Autosuggest
+          theme={theme}
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={({ value }) => {
+            let computedSuggestions = getSuggestions(value, data);
+            if (computedSuggestions.length === 0) {
+              computedSuggestions = [{ isNoMatch: true }];
+            }
+            setSuggestions(computedSuggestions);
+          }}
+          onSuggestionsClearRequested={() => {
+            setSuggestions([]);
+          }}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={{
+            className: "input input-info input-bordered bg-secondary w-full min-w-full pl-10 rounded-md h-10",
+            placeholder: "Search projects...",
+            value,
+            onChange: (event, { newValue }) => {
+              setValue(newValue);
+              setInputFocused(true);
+              newValue.length === 0 && setInputFocused(false); // hides renderSuggestion styling which causes an anomaly in the UI underneath the search input element
+            },
+            onBlur: () => setInputFocused(false),
+          }}
+        />
+      </label>
     </div>
   );
 };
