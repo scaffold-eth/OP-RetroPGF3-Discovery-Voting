@@ -5,6 +5,7 @@ import Pagination from "~~/components/lists/Pagination";
 import Card from "~~/components/projects/Card";
 import { ProjectDocument } from "~~/models/Project";
 
+
 interface Props {
   projects: ProjectDocument[];
 }
@@ -29,7 +30,7 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
   useEffect(() => {
     function filterProjects() {
       const _filteredProjects =
-        selectedCategory === "all" ? allProjects : projects.filter(project => project.category === selectedCategory);
+        selectedCategory === "all" ? allProjects : allProjects.filter(project => project.category === selectedCategory);
       setFilteredProjects(_filteredProjects);
     }
     filterProjects();
