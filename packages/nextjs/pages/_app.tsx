@@ -10,6 +10,7 @@ import { WagmiConfig, useAccount } from "wagmi";
 import { Header } from "~~/components/Header";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { BallotProvider } from "~~/context/BallotContext";
+import { ProjectsProvider } from "~~/context/ProjectsContext";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { useGlobalState } from "~~/services/store/store";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
@@ -68,14 +69,16 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
         <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="relative flex flex-col flex-1">
-              <Component {...pageProps} />
-            </main>
-            {/* <Footer /> */}
-          </div>
-          <Toaster />
+          <ProjectsProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="relative flex flex-col flex-1">
+                <Component {...pageProps} />
+              </main>
+              {/* <Footer /> */}
+            </div>
+            <Toaster />
+          </ProjectsProvider>
         </BallotProvider>
       </RainbowKitProvider>
     </WagmiConfig>

@@ -1,36 +1,33 @@
-import React from "react";
-import type { GetServerSideProps, NextPage } from "next";
+import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import YourBallot from "~~/components/op/projects/YourBallot";
 import AllProjects from "~~/components/projects/AllProjects";
-import dbConnect from "~~/lib/dbConnect";
-import Project, { ProjectDocument } from "~~/models/Project";
+import Sidebar from "~~/components/shared/Sidebar";
+import { useProjects } from "~~/context/ProjectsContext";
 
-interface ProjectProps {
-  projects: ProjectDocument[];
-}
+const Projects = () => {
+  const { projects } = useProjects();
+  const { isDisconnected } = useAccount();
+  const [wallet, setWallet] = useState<boolean | false>(false);
 
-const Projects: NextPage<ProjectProps> = ({ projects }) => {
-  if (projects.length < 1)
+  useEffect(() => {
+    setWallet(isDisconnected);
+  }, [isDisconnected]);
+
+  if (projects.length < 1) {
     return (
-      <div className="text-center">
+      <div className="text-center font-bold text-2xl pt-8">
         <h1>No projects available...</h1>
       </div>
     );
+  }
+
   return (
-    <div>
+    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+      {!wallet ? <YourBallot /> : <Sidebar />}
       <AllProjects projects={projects} />
     </div>
   );
 };
 
 export default Projects;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    await dbConnect();
-    const projects: ProjectDocument[] = await Project.find({});
-    return { props: { projects: JSON.parse(JSON.stringify(projects)) } };
-  } catch (e) {
-    console.log(e);
-    return { props: { projects: [] } }; // returns an empty array if there's an error
-  }
-};

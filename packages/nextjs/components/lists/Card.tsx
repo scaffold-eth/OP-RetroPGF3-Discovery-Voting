@@ -41,28 +41,28 @@ const Card = ({ list, onLike }: any) => {
           <Image
             width={28}
             height={28}
-            className="rounded border border-[#E2E8F0] outline-white "
+            className="rounded border border-OPlightgray outline-white "
             src="/assets/Logo Container.png"
             alt="Avatar"
           />
           <Image
             width={28}
             height={28}
-            className="rounded border border-[#E2E8F0] border-2  outline-white outline-2 z-1 ml-[-5px]"
+            className="rounded border border-OPlightgray border-2  outline-white outline-2 z-1 ml-[-5px]"
             src="/assets/Logo.png"
             alt="Avatar"
           />
           <Image
             width={28}
             height={28}
-            className="rounded border border-[#E2E8F0] border-2  outline-white outline-2 z-2 ml-[-8px]"
+            className="rounded border border-OPlightgray border-2  outline-white outline-2 z-2 ml-[-8px]"
             src="/assets/Logo1.png"
             alt="Avatar"
           />
           <Image
             width={28}
             height={28}
-            className="rounded border border-[#E2E8F0] border-2  outline-white outline-2 z-3 ml-[-10px]"
+            className="rounded border border-OPlightgray border-2  outline-white outline-2 z-3 ml-[-10px]"
             src="/assets/Logo2.png"
             alt="Avatar"
           />

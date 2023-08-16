@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import ListHeader from "~~/components/lists/ListHeader";
 import Pagination from "~~/components/lists/Pagination";
@@ -13,6 +13,9 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
   const [display, setDisplay] = useState("grids");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [allProjects, setAllProjects] = useState<ProjectDocument[]>(projects);
+  const [filteredProjects, setFilteredProjects] = useState<ProjectDocument[]>(projects);
+  const [shuffledProjects, setShuffledProjects] = useState<ProjectDocument[]>(projects);
   const totalPages = 5;
 
   const handlePageChange = (pageNumber: any) => {
@@ -23,8 +26,19 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
     setDisplay(option);
   };
 
-  const filteredProjects =
-    selectedCategory === "all" ? projects : projects.filter(project => project.category === selectedCategory);
+  useEffect(() => {
+    function filterProjects() {
+      const _filteredProjects =
+        selectedCategory === "all" ? allProjects : projects.filter(project => project.category === selectedCategory);
+      setFilteredProjects(_filteredProjects);
+    }
+    filterProjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory, allProjects]);
+
+  useEffect(() => {
+    setAllProjects(shuffledProjects);
+  }, [shuffledProjects]);
 
   return (
     <div>
@@ -34,6 +48,8 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
           titleHeader="Projects"
           display={display}
           onCategoryChange={setSelectedCategory}
+          projects={allProjects}
+          onShuffleProjects={setShuffledProjects}
         />
         <div
           className={`px-4 grid pt-8 gap-4 ${
