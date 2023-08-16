@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SwitchTheme } from "./SwitchTheme";
+import BallotComponent from "./ballot/Ballot";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
-import BallotComponent from "./ballot/Ballot";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const router = useRouter();

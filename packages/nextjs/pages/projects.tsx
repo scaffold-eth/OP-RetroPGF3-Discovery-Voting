@@ -24,7 +24,7 @@ const Projects: NextPage<ProjectProps> = ({ projects }) => {
 
 export default Projects;
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     await dbConnect();
     const projects: ProjectDocument[] = await Project.find({});

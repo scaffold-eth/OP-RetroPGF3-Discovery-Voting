@@ -17,7 +17,6 @@ import { appChains } from "~~/services/web3/wagmiConnectors";
 import "~~/styles/globals.css";
 import { useEthersProvider } from "~~/utils/ethers";
 
-
 const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const price = useNativeCurrencyPrice();
   const setNativeCurrencyPrice = useGlobalState(state => state.setNativeCurrencyPrice);
@@ -29,32 +28,26 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const { address } = useAccount();
   const provider = useEthersProvider();
 
-  // Function to fetch vote token balance
-  const fetchVoteTokensBalance = async (address: any) => {
-    if (!address) return 0;
-    // Define the contract ABI
-    const ABI = ["function getVotes(address account) view returns (uint256)"];
-    // OP Token address
-    const OPToken = "0x4200000000000000000000000000000000000042";
-    const OPTokenContract = new ethers.Contract(OPToken, ABI, provider);
-    // Fetch balance for the connected wallet address
-    const _allocation = await OPTokenContract.getVotes(address);
-    const _tokenAllocation = Number(ethers.formatEther(_allocation));
-    return _tokenAllocation;
-  };
-
   useEffect(() => {
-    // Fetch token balance when wallet address changes
+    // Fetch vote token balance when wallet address changes
     const fetchBalance = async () => {
       try {
-        const balance = await fetchVoteTokensBalance(address);
-        setTotalTokens(balance);
+        if (!address) return 0;
+        // Define the contract ABI
+        const ABI = ["function getVotes(address account) view returns (uint256)"];
+        // OP Token address
+        const OPToken = "0x4200000000000000000000000000000000000042";
+        const OPTokenContract = new ethers.Contract(OPToken, ABI, provider);
+        // Fetch balance for the connected wallet address
+        const _allocation = await OPTokenContract.getVotes(address);
+        const _tokenAllocation = Number(ethers.formatEther(_allocation));
+        setTotalTokens(_tokenAllocation);
       } catch (e) {
-        console.log("ERR_FETCHING_VOTING_BALANCE:", e)
+        console.log("ERR_FETCHING_VOTING_BALANCE:", e);
       }
     };
-    fetchBalance()
-  }, [address]);
+    fetchBalance();
+  }, [address, provider]);
 
   useEffect(() => {
     if (price > 0) {
@@ -74,7 +67,7 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
         avatar={BlockieAvatar}
         theme={isDarkTheme ? darkTheme() : lightTheme()}
       >
-        <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}> 
+        <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}>
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="relative flex flex-col flex-1">

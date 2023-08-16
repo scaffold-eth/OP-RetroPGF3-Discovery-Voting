@@ -24,18 +24,19 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
     setIsAdded(false);
     const isAddedToBallot = () => {
       state.projects.forEach(x => {
-        if (x.id === projects[0]._id) setIsAdded(true)
+        if (x.id === projects[0]._id) setIsAdded(true);
       });
     };
     isAddedToBallot();
-  }, [state]);
+  }, [projects, state]);
 
   const addProjectToBallot = () => {
+    const _name = projects[0].name as string;
     dispatch({
       type: "ADD_PROJECT",
       project: {
         id: projects[0]._id,
-        name: projects[0].name,
+        name: _name,
         allocation: 0,
       },
     });

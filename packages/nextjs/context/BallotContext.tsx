@@ -26,7 +26,7 @@ interface BallotProviderProps {
 }
 
 type Action =
-  | { type: "ADD_PROJECT"; project: Project; allocation: number }
+  | { type: "ADD_PROJECT"; project: Project }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
   | { type: "ADD_LIST"; projects: SharedProject[] }

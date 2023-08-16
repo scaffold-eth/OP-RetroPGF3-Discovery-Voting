@@ -14,7 +14,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
 }
-
+const MONGODB_URI_STRING = MONGODB_URI as string;
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially
@@ -29,7 +29,7 @@ if (!cached) {
 async function dbConnect() {
   console.log("Connecting...");
   // set to `true` if you want projects data seeded to database
-  await seedDatabase(MONGODB_URI, false);
+  await seedDatabase(MONGODB_URI_STRING, false);
   if (cached.conn) {
     return cached.conn;
   }
@@ -39,7 +39,7 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = connect(MONGODB_URI!, opts).then(mongoose => {
+    cached.promise = connect(MONGODB_URI_STRING, opts).then(mongoose => {
       return mongoose;
     });
   }
