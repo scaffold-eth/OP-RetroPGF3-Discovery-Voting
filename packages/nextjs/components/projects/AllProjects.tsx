@@ -5,7 +5,6 @@ import Pagination from "~~/components/lists/Pagination";
 import Card from "~~/components/projects/Card";
 import { ProjectDocument } from "~~/models/Project";
 
-
 interface Props {
   projects: ProjectDocument[];
 }
