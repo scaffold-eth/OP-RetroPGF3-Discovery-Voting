@@ -1,4 +1,5 @@
 import React, { ReactNode, createContext, useContext, useReducer } from "react";
+import { useLocalStorage } from "usehooks-ts";
 
 // Interface for project to be added to the ballot
 interface Project {
@@ -26,6 +27,7 @@ interface BallotProviderProps {
 }
 
 type Action =
+  | { type: "LOAD_STATE"; stateData: State }
   | { type: "ADD_PROJECT"; project: Project }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
@@ -44,6 +46,10 @@ const BallotContext = createContext<BallotContextValue | undefined>(undefined);
 // Reducer function for managing state updates
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case "LOAD_STATE":
+      //return action stateData if it exist else return state
+      return action.stateData ? action.stateData : state;
+
     case "ADD_PROJECT":
       // logic to add project to the ballot
       const { project } = action;
@@ -148,6 +154,19 @@ const reducer = (state: State, action: Action): State => {
 // Provider component
 export const BallotProvider: React.FC<BallotProviderProps> = ({ children, totalTokens }) => {
   const [state, dispatch] = useReducer(reducer, { projects: [], totalTokens, importedLists: [] });
+  const [loadedState, setLoadedState] = useLocalStorage("ballotState", JSON.stringify(state));
+  // Load state from local storage on initial render
+  React.useEffect(() => {
+    if (loadedState) {
+      dispatch({ type: "LOAD_STATE", stateData: JSON.parse(loadedState) });
+    }
+  }, []);
+
+  // Update local storage whenever the state changes
+  React.useEffect(() => {
+    setLoadedState(JSON.stringify(state));
+  }, [state]);
+
   return <BallotContext.Provider value={{ state, dispatch }}>{children}</BallotContext.Provider>;
 };
 
