@@ -43,7 +43,6 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
     notification.success("Added to ballot");
   };
 
-  console.log("STATE", state);
   return (
     <div className=" mx-auto px-12 mt-12 grid gap-12">
       <div className="">

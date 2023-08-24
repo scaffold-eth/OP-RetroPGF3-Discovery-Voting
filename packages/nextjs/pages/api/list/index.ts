@@ -1,8 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "~~/lib/dbConnect";
-import List from "~~/models/List";
+import List, { ListDocument } from "~~/models/List";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Connect to the database
+  await dbConnect();
+  if (req.method === "GET") {
+    const lists: ListDocument[] = await List.find({});
+    return res.status(200).json(lists);
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed." });
   }
@@ -13,8 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
    **/
 
   try {
-    // Connect to the database
-    await dbConnect();
     // get data from request
     const { name, creator, description, impactEvaluation, projects } = req.body;
 
