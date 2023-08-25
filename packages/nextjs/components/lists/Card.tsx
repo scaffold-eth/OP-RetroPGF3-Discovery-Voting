@@ -2,17 +2,21 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Address } from "../scaffold-eth";
+import { useAccount } from "wagmi";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
 
-const Card = ({ list, onLike }: any) => {
-  const { _id, name, creator, projects, likes, description, tags, liked } = list;
+const Card = ({ list, onLike, isLoading }: any) => {
+  const { address } = useAccount();
+  const { name, creator, projects, likes, description, tags } = list;
+  const isLiked = likes.includes(address);
+
   return (
     <div className="w-full">
       <div className="border rounded-lg border-gray-300  p-4 ">
         <div className="flex items-center">
           <div className="flex-1">
-            <Link href="/list">
+            <Link key={list._id} href={`lists/${list._id}`}>
               <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
             </Link>
             {/* <div className="flex items-center">
@@ -25,14 +29,20 @@ const Card = ({ list, onLike }: any) => {
           </div>
 
           <div className="flex items-center">
-            <p className="text-lightGray text-sm leading-4 font-normal text-right  mr-2">{likes}</p>
-            {/*  <HeartIcon className={`w-6 h-6 cursor-pointer ${liked ? "bg-red-500" : ""}`} onClick={() => onLike(id)} /> */}
-            <button onClick={() => onLike(_id)}>
-              {liked ? (
-                <HeartFilledIcon className="w-6 h-6   text-[#ff0000]" />
-              ) : (
-                <HeartIcon className="w-6 h-6 text-[#68778D] " />
-              )}
+            {!isLoading && likes.length > 0 && (
+              <p className="text-lightGray text-sm leading-4 font-normal text-right  mr-2">{likes.length}</p>
+            )}
+            <button
+              className={`${
+                isLoading ? "loading" : ""
+              } btn btn-circle btn-sm bg-transparent border-none shadow-none hover:bg-transparent`}
+              onClick={() => onLike()}
+            >
+              {isLiked && !isLoading ? (
+                <HeartFilledIcon className={`w-6 h-6 text-[#ff0000]`} />
+              ) : !isLiked && !isLoading ? (
+                <HeartIcon className={`w-6 h-6  text-[#68778D]`} />
+              ) : null}
             </button>
           </div>
         </div>

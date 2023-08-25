@@ -5,7 +5,8 @@ export interface ListDocument extends mongoose.Document {
   creator: string;
   description: string;
   impactEvaluation: string;
-  tags: string[];
+  tags?: string[];
+  likes?: string[];
   projects: {
     project: mongoose.Types.ObjectId;
     votes: number;
@@ -30,6 +31,12 @@ const listSchema = new mongoose.Schema<ListDocument>({
   tags: [
     {
       type: String,
+    },
+  ],
+  likes: [
+    {
+      type: String,
+      unique: true,
     },
   ],
   projects: [

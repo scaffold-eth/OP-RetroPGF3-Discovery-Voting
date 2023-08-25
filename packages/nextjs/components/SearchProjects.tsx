@@ -6,18 +6,11 @@ import useSWR from "swr";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ListDocument } from "~~/models/List";
 import { ProjectDocument } from "~~/models/Project";
+import { fetcher } from "~~/utils/fetcher";
 
 interface SearchResult {
   searchData: ProjectDocument[] | ListDocument[];
 }
-
-const fetcher = async (url: string) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Error fetching data.");
-  }
-  return response.json();
-};
 
 const SearchProjects: React.FC = () => {
   const [value, setValue] = useState("");

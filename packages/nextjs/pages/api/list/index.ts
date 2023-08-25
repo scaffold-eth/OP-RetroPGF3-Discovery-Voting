@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // get data from request
-    const { name, creator, description, impactEvaluation, projects } = req.body;
+    const { name, creator, description, impactEvaluation, projects, tags } = req.body;
 
     // Validate the required fields
     if (!name || !creator || !projects) {
@@ -35,6 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       description,
       impactEvaluation,
       projects,
+      tags,
     });
 
     // Save the list to the database
