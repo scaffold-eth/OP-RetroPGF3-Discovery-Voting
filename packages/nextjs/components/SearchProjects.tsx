@@ -41,7 +41,7 @@ const SearchProjects: React.FC = () => {
       return <div className="text-gray-500">No matches found</div>;
     }
     return (
-      <Link href={`${suggestion.type === "project" ? "projects" : "lists"}/${suggestion._id}`}>
+      <Link href={`${suggestion.type === "project" ? "/projects" : "/lists"}/${suggestion._id}`}>
         <div>
           {suggestion.name}
           {suggestion.type === "project" ? (
