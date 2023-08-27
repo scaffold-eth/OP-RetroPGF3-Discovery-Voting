@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import ListHeader from "~~/components/lists/ListHeader";
 import Pagination from "~~/components/lists/Pagination";
 import Card from "~~/components/projects/Card";
@@ -57,9 +56,7 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
           } `}
         >
           {filteredProjects.map(project => (
-            <Link key={project._id} href={`projects/${project._id}`}>
-              <Card project={project} display={display} />
-            </Link>
+            <Card key={project._id} project={project} display={display} />
           ))}
         </div>
 

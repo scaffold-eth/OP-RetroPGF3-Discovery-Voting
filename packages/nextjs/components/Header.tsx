@@ -6,7 +6,6 @@ import SearchProjects from "./SearchProjects";
 import { SwitchTheme } from "./SwitchTheme";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useProjects } from "~~/context/ProjectsContext";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
@@ -32,7 +31,6 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
-  const { projects } = useProjects();
 
   useOutsideClick(
     burgerMenuRef,
@@ -83,7 +81,7 @@ export const Header = () => {
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
       <div className="navbar-center w-1/3 flex-grow">
-        <SearchProjects data={projects} />
+        <SearchProjects />
       </div>
       <div className="navbar-end w-1/3 flex-grow mr-4">
         <RainbowKitCustomConnectButton />

@@ -24,6 +24,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
   useEffect(() => {
     try {
       function getCategories(projects: any): CategoryInfo[] {
+        if (!projects) return [];
         const recordedCategories = new Set<string>();
         const categoryCount: Record<string, number> = {};
 
@@ -109,20 +110,21 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
           </>
         )}
-        {categories.map((category, index) => (
-          <button
-            key={index}
-            onClick={() => handleButtonClick(`${category.category}`)}
-            className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-              active == `${category.category}`
-                ? "bg-secondary-content text-white dark:bg-black"
-                : "bg-customWhite text-customGrayBtn"
-            }`}
-          >
-            {category.category}
-            <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
-          </button>
-        ))}
+        {categories &&
+          categories.map((category, index) => (
+            <button
+              key={index}
+              onClick={() => handleButtonClick(`${category.category}`)}
+              className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
+                active == `${category.category}`
+                  ? "bg-secondary-content text-white dark:bg-black"
+                  : "bg-customWhite text-customGrayBtn"
+              }`}
+            >
+              {category.category}
+              <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
+            </button>
+          ))}
       </div>
     </div>
   );
