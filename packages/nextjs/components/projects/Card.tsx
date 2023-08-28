@@ -12,13 +12,17 @@ const Card = ({ project, display }: any) => {
       {display === "grids" ? (
         <div className="rounded-[1.5rem] p-4 bg-base-100 ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
-            <Image
-              width={311}
-              height={112}
-              className="rounded-t-lg  object-fill w-full h-full"
-              src={banner}
-              alt="banner"
-            />
+            {banner ? (
+              <Image
+                width={311}
+                height={112}
+                className="rounded-t-lg  object-fill w-full h-full"
+                src={banner}
+                alt="banner"
+              />
+            ) : (
+              <div className="flex-shrink-0 w-full  h-[112px] rounded-lg bg-gray-300"></div>
+            )}
             <Image
               width={54}
               height={54}
