@@ -45,27 +45,15 @@ git clone https://github.com/scaffold-eth/OP-RetroPGF3-Discovery-Voting.git
 cd OP-RetroPGF3-Discovery-Voting
 yarn install
 ```
-2. TODO: Set up mongodb connection
+2. Copy the .env.example file and change name to .env.local. Set the MONGO_URI to the database you are using.
 
-3. Run a local network in the first terminal:
-
-```
-yarn chain
-```
-
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
-
-4. On a second terminal, start your NextJS app:
+3. In the terminal, start your the project:
 
 ```
 yarn start
 ```
 
 Visit your app on: `http://localhost:3000`.
-
-5. Give yourself funds
-
-TODO - Will we run a script or... ?
 
 ## Deploying to Vercel
 

@@ -1,6 +1,6 @@
-// TODO: re-enable type checking for file after we wire database to components
+// TODO add type checking to file by removing next line, reliant on fixing EditDistributionModal
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AlreadyOnBallotConflictModal from "../op/modals/AlreadyOnBallotConflictModal";
 import EditDistributionModal from "../op/modals/EditDistributionModal";
@@ -18,13 +18,17 @@ import {
   FolderIcon,
 } from "@heroicons/react/24/outline";
 import { ArrowUturnRightIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
+import { useBallot } from "~~/context/BallotContext";
+import { ProjectDocument } from "~~/models/Project";
 
-export const ProjectHeader = () => {
-  const handle = "@orbiter_finance";
+// TODO: This component is half-using db and half using stubbed data, need point to db for any stubbed data
+const ProjectHeader = ({ projects }: { projects: ProjectDocument[] }) => {
+  const handle =
+    projects[0] && projects[0].twitterLink ? `@${projects[0].twitterLink.replace("https://twitter.com/", "")}` : "";
   const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
   const [openLikedModal, setopenLikedModal] = useState(false);
-  const [voteAmount, setVoteAmount] = useState("");
+  const [voteAmount, setVoteAmount] = useState(0);
   const [addBallot, setAddBallot] = useState(false);
   const [editBallot, setEditBallot] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +81,7 @@ export const ProjectHeader = () => {
     setAddBallot(false);
     setIsLoading(true);
     setAddVote(false);
-    setVoteAmount("35,416");
+    setVoteAmount(0); // TODO: Get from state
     setTimeout(() => {
       // Spoofed API request to add to ballot
       setIsLoading(false);
@@ -90,6 +94,7 @@ export const ProjectHeader = () => {
   };
 
   const handleSaveBallot = () => {
+    // TODO: Need to save input data to state
     setLoadingMessage("Saving distribution");
     setSuccessMessage("Distribution changed successfully");
     setEditBallot(false);
@@ -109,6 +114,19 @@ export const ProjectHeader = () => {
     setEditBallot(!close && edit);
     setAddBallot(!close && !edit);
   };
+
+  const { state } = useBallot();
+
+  useEffect(() => {
+    if (!state) return;
+    setVoteAmount(0);
+    const isAddedToBallot = () => {
+      state.projects.forEach(x => {
+        if (x.id === projects[0]._id) setVoteAmount(x.allocation);
+      });
+    };
+    isAddedToBallot();
+  }, [projects, state]);
 
   return (
     <div className="mx-auto">
@@ -132,7 +150,7 @@ export const ProjectHeader = () => {
             alt="project image"
           />
           <div className="ml-[20px] mt-[-50px] flex-wrap">
-            <h1 className="pt-20 font-semibold sm:text-xl md:text-2xl  lg:text-4xl  leading-11">Orbiter Finance</h1>
+            <h1 className="pt-20 font-semibold sm:text-xl md:text-2xl  lg:text-4xl  leading-11">{projects[0].name}</h1>
             <div className="flex justify-between flex-wrap">
               <>
                 <div className="flex items-center gap-8 flex-wrap">
@@ -140,7 +158,7 @@ export const ProjectHeader = () => {
                     href="#"
                     className="bg-gradient-to-r from-OPred to-purple inline-block text-transparent bg-clip-text"
                   >
-                    @orbiter_finance
+                    {handle}
                   </a>
 
                   {addressCopied ? (
@@ -166,17 +184,17 @@ export const ProjectHeader = () => {
                   )}
 
                   <div className="h-[18px] border-l-2 border-neutral  mx-[6px] "></div>
-                  <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                  <a href={projects[0].twitterLink} target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ color: "twitterBlue", className: "h-7 w-7 " }}>
                       <AiOutlineTwitter />
                     </IconContext.Provider>
                   </a>
-                  <a href="https://github.com" target="_blank" rel="noreferrer">
+                  <a href={projects[0].githubLink} target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ className: "h-6 w-6 " }}>
                       <AiOutlineGithub />
                     </IconContext.Provider>
                   </a>
-                  <a href="https://buidlguidl.com/" target="_blank" rel="noreferrer">
+                  <a href={projects[0].websiteUrl} target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ className: "h-6 w-6 " }}>
                       <BsGlobe />
                     </IconContext.Provider>
@@ -239,11 +257,10 @@ export const ProjectHeader = () => {
               edit={() => handleAddOrEditModal(false, true)}
             />
           )}
-
+          {/* TODO: Fix this EditDistributionModal */}
           {editBallot && (
             <EditDistributionModal
               onClose={() => handleAddOrEditModal(true)}
-              handleSaveBallot={handleSaveBallot}
               userTotal={userData.totalOP}
               projectList={projectDataHandle}
               edit={() => handleAddOrEditModal(false, true)}
@@ -256,3 +273,5 @@ export const ProjectHeader = () => {
     </div>
   );
 };
+
+export default ProjectHeader;

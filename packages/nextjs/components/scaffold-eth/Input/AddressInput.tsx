@@ -5,7 +5,6 @@ import { Address } from "viem";
 import { useEnsAddress, useEnsAvatar, useEnsName } from "wagmi";
 import { CommonInputProps, InputBase } from "~~/components/scaffold-eth";
 
-// ToDo:  move this function to an utility file
 const isENS = (address = "") => address.endsWith(".eth") || address.endsWith(".xyz");
 
 /**
