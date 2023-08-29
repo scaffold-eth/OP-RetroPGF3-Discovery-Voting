@@ -6,6 +6,7 @@ import SharedProjects from "~~/components/lists/SharedProjects";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import { Address } from "~~/components/scaffold-eth";
 import SuggestProjects from "~~/components/shared/SuggestProjects";
+import { useSuggestedProjects } from "~~/hooks/scaffold-eth/useSuggestedProjects";
 import dbConnect from "~~/lib/dbConnect";
 import List from "~~/models/List";
 import { IList } from "~~/types/list";
@@ -18,6 +19,12 @@ interface Props {
 const ListDetail: NextPage<Props> = ({ list }) => {
   const [openLikedModal, setopenLikedModal] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
+  const tempCategory = list.tags ? list?.tags[0] : undefined;
+  // const firstLetter = tempCategory ? tempCategory[0] : undefined;
+  // const category = tempCategory ? tempCategory[0].toUpperCase() : "" + tempCategory ? tempCategory?.slice(1) : "";
+  const category = tempCategory && tempCategory[0]?.toUpperCase() + tempCategory?.slice(1);
+  const currentProjectId = list._id;
+  const { suggestedProjects } = useSuggestedProjects(category, currentProjectId);
   return (
     <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
       <YourBallot />
@@ -87,7 +94,7 @@ const ListDetail: NextPage<Props> = ({ list }) => {
 
         <div className="mt-16">
           <SharedProjects list={list} />
-          <SuggestProjects />
+          <SuggestProjects suggestedProjects={suggestedProjects} />
         </div>
       </div>
     </div>
