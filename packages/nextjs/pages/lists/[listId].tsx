@@ -20,8 +20,6 @@ const ListDetail: NextPage<Props> = ({ list }) => {
   const [openLikedModal, setopenLikedModal] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(false);
   const tempCategory = list.tags ? list?.tags[0] : undefined;
-  // const firstLetter = tempCategory ? tempCategory[0] : undefined;
-  // const category = tempCategory ? tempCategory[0].toUpperCase() : "" + tempCategory ? tempCategory?.slice(1) : "";
   const category = tempCategory && tempCategory[0]?.toUpperCase() + tempCategory?.slice(1);
   const currentProjectId = list._id;
   const { suggestedProjects } = useSuggestedProjects(category, currentProjectId);
