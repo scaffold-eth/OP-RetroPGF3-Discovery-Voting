@@ -6,6 +6,7 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
 import SuggestProjects from "~~/components/shared/SuggestProjects";
 import { useBallot } from "~~/context/BallotContext";
+import { useSuggestedProjects } from "~~/hooks/scaffold-eth/useSuggestedProjects";
 import dbConnect from "~~/lib/dbConnect";
 import Project, { ProjectDocument } from "~~/models/Project";
 import { notification } from "~~/utils/scaffold-eth";
@@ -18,6 +19,9 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
   const [isLiked, setIsLiked] = React.useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const { state, dispatch } = useBallot();
+  const category = projects.length > 0 ? projects[0].category : undefined;
+  const currentProjectId = projects[0]._id;
+  const { suggestedProjects } = useSuggestedProjects(category, currentProjectId);
 
   useEffect(() => {
     if (!state) return;
@@ -81,7 +85,7 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
           </button>
         </div>
         <div className="mt-16">
-          <SuggestProjects />
+          <SuggestProjects suggestedProjects={suggestedProjects} />
         </div>
       </div>
     </div>
