@@ -22,9 +22,8 @@ import { useBallot } from "~~/context/BallotContext";
 import { ProjectDocument } from "~~/models/Project";
 
 // TODO: This component is half-using db and half using stubbed data, need point to db for any stubbed data
-const ProjectHeader = ({ projects }: { projects: ProjectDocument[] }) => {
-  const handle =
-    projects[0] && projects[0].twitterLink ? `@${projects[0].twitterLink.replace("https://twitter.com/", "")}` : "";
+const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
+  const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
   const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
   const [openLikedModal, setopenLikedModal] = useState(false);
@@ -122,11 +121,11 @@ const ProjectHeader = ({ projects }: { projects: ProjectDocument[] }) => {
     setVoteAmount(0);
     const isAddedToBallot = () => {
       state.projects.forEach(x => {
-        if (x.id === projects[0]._id) setVoteAmount(x.allocation);
+        if (x.id === project._id) setVoteAmount(x.allocation);
       });
     };
     isAddedToBallot();
-  }, [projects, state]);
+  }, [project, state]);
 
   return (
     <div className="mx-auto">
@@ -150,7 +149,7 @@ const ProjectHeader = ({ projects }: { projects: ProjectDocument[] }) => {
             alt="project image"
           />
           <div className="ml-[20px] mt-[-50px] flex-wrap">
-            <h1 className="pt-20 font-semibold sm:text-xl md:text-2xl  lg:text-4xl  leading-11">{projects[0].name}</h1>
+            <h1 className="pt-20 font-semibold sm:text-xl md:text-2xl  lg:text-4xl  leading-11">{project.name}</h1>
             <div className="flex justify-between flex-wrap">
               <>
                 <div className="flex items-center gap-8 flex-wrap">
@@ -184,17 +183,17 @@ const ProjectHeader = ({ projects }: { projects: ProjectDocument[] }) => {
                   )}
 
                   <div className="h-[18px] border-l-2 border-neutral  mx-[6px] "></div>
-                  <a href={projects[0].twitterLink} target="_blank" rel="noreferrer">
+                  <a href={project.twitterLink} target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ color: "twitterBlue", className: "h-7 w-7 " }}>
                       <AiOutlineTwitter />
                     </IconContext.Provider>
                   </a>
-                  <a href={projects[0].githubLink} target="_blank" rel="noreferrer">
+                  <a href={project.githubLink} target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ className: "h-6 w-6 " }}>
                       <AiOutlineGithub />
                     </IconContext.Provider>
                   </a>
-                  <a href={projects[0].websiteUrl} target="_blank" rel="noreferrer">
+                  <a href={project.websiteUrl} target="_blank" rel="noreferrer">
                     <IconContext.Provider value={{ className: "h-6 w-6 " }}>
                       <BsGlobe />
                     </IconContext.Provider>

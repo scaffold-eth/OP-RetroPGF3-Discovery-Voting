@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NextPage } from "next";
 import { GetServerSideProps } from "next";
 import { AiOutlineGithub } from "react-icons/ai";
@@ -18,8 +18,7 @@ interface Props {
 }
 
 const ProjectDetail: NextPage<Props> = ({ projects }) => {
-  const { isDisconnected } = useAccount();
-  const [wallet, setWallet] = useState<boolean | false>(false);
+  const { isConnected } = useAccount();
   // TODO: Add these entries to the database for each document and pull from there
   const impactArray = [
     {
@@ -39,21 +38,18 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
     },
   ];
 
-  useEffect(() => {
-    setWallet(isDisconnected);
-  }, [isDisconnected]);
-
+  const project = projects[0];
   return (
     <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4 pb-16">
-      {!wallet ? <YourBallot /> : <Sidebar />}
+      {isConnected ? <YourBallot /> : <Sidebar />}
       <div className="">
-        <ProjectHeader projects={projects} />
+        <ProjectHeader project={project} />
 
         <div className=" mt-8 mb-8 border-t border-gray-200 w-full"></div>
         <div className="">
           <section id="about">
             <h3 className="font-medium text-[#68778D] text-xl leading-7 uppercase">👨‍💻 About</h3>
-            <p className="font-normal leading-6  text-based">{projects[0] ? projects[0].description : ""}</p>
+            <p className="font-normal leading-6  text-based">{project ? project.description : ""}</p>
           </section>
 
           <section id="categories">
@@ -63,7 +59,7 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
             <div className="flex items-center py-2">
               <span className="px-4 py-2 text-sm text-customGray bg-customWhite rounded-md mr-2"> OP Stack </span>
               <span className="px-4 py-2 text-sm text-customGray bg-customWhite rounded-md mr-2">
-                {projects[0].category}
+                {project.category}
                 {/* TODO: need to change db documents to have "categories" array and map them all here */}
               </span>
             </div>
