@@ -17,8 +17,10 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
   };
 
   const handleShuffle = () => {
-    const _shuffledProjects = shuffle([...projects]);
-    onShuffleProjects(_shuffledProjects);
+    if (projects) {
+      const _shuffledProjects = shuffle([...projects]);
+      onShuffleProjects(_shuffledProjects);
+    }
   };
 
   useEffect(() => {

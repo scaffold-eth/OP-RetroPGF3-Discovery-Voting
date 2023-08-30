@@ -62,6 +62,11 @@ const SearchProjects: React.FC = () => {
   const getSuggestionValue = (suggestion: any) => suggestion.name;
 
   const debounceOnSuggestionsFetchRequested = debounce(async ({ value }) => {
+    if (!initialData) {
+      setSuggestions([]);
+      return;
+    }
+
     let computedSuggestions = getSuggestions(value, initialData);
     if (computedSuggestions.length === 0) {
       computedSuggestions = [{ isNoMatch: true, isLoading: true }];
