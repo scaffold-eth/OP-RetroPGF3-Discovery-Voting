@@ -7,9 +7,10 @@ import { IoMdOpen } from "react-icons/io";
 import { useAccount } from "wagmi";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import YourBallot from "~~/components/op/projects/YourBallot";
-import IncludedProjects from "~~/components/project/IncludedProjects";
 import ProjectHeader from "~~/components/project/ProjectHeader";
 import Sidebar from "~~/components/shared/Sidebar";
+import SuggestProjects from "~~/components/shared/SuggestProjects";
+import { useSuggestedProjects } from "~~/hooks/scaffold-eth/useSuggestedProjects";
 import dbConnect from "~~/lib/dbConnect";
 import Project, { ProjectDocument } from "~~/models/Project";
 
@@ -37,6 +38,10 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
       amount: "500",
     },
   ];
+
+  const category = projects.length > 0 ? projects[0].category : undefined;
+  const currentProjectId = projects[0]._id;
+  const { suggestedProjects } = useSuggestedProjects(category, currentProjectId);
 
   const project = projects[0];
   return (
@@ -135,9 +140,10 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
               ea commodo consequasssd
             </p>
           </section>
+          <div className="mt-16">
+            <SuggestProjects suggestedProjects={suggestedProjects} />
+          </div>
         </div>
-        {/* TODO: Pull in SuggestProjects functionality into IncludedProjects. Delete SuggestProjects.  */}
-        <IncludedProjects />
       </div>
     </div>
   );
