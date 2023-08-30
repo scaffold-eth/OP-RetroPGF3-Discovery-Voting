@@ -60,7 +60,6 @@ export const WriteOnlyFunctionForm = ({ abiFunction, onChange, contractAddress }
     setDisplayedTxResult(txResult);
   }, [txResult]);
 
-  // TODO use `useMemo` to optimize also update in ReadOnlyFunctionForm
   const inputs = abiFunction.inputs.map((input, inputIndex) => {
     const key = getFunctionInputKey(abiFunction.name, input, inputIndex);
     return (
