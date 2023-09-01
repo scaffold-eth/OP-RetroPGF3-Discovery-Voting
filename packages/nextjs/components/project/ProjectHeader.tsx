@@ -239,7 +239,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           ) : (
             <button
               onClick={() => setAddVote(true)}
-              className="rounded-lg flex  items-center  bg-OPred text-white py-2 px-8"
+              className="rounded-lg flex  items-center   bg-OPred text-white py-2 px-4 xl:px-8"
             >
               <FolderIcon className=" font-semibold  h-10 w-10 text-white mr-4" />
               Add to ballot

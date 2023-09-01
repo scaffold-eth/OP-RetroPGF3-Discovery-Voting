@@ -13,8 +13,10 @@ import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/
 export interface IProjectData {
   name: string;
   handle?: string;
-  image: string;
-  op: number;
+  image?: string;
+  votes: number;
+  id: string;
+  listId?: string;
 }
 const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
   const [addBallot, setAddBallot] = useState(false);
@@ -29,37 +31,37 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
       name: "DefiLlama",
 
       image: "/assets/gradient-bg.png",
-      op: 20416,
+      votes: 20416,
     },
     {
       name: "L2BEAT",
 
       image: "/assets/gradient-bg.png",
-      op: 15416,
+      votes: 15416,
     },
     {
       name: "Polynya",
 
       image: "/assets/gradient-bg.png",
-      op: 12416,
+      votes: 12416,
     },
     {
       name: "DefiLlama",
 
       image: "/assets/gradient-bg.png",
-      op: 20416,
+      votes: 20416,
     },
     {
       name: "L2BEAT",
 
       image: "/assets/gradient-bg.png",
-      op: 15416,
+      votes: 15416,
     },
     {
       name: "Polynya",
 
       image: "/assets/gradient-bg.png",
-      op: 12416,
+      votes: 12416,
     },
   ];
 
