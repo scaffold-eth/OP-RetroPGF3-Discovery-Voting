@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import AddListToBallotModal from "../op/modals/AddListToBallotModal";
 import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
 import EditDistributionModal from "~~/components/op/modals/EditDistributionModal";
@@ -19,13 +20,16 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isAddListToBallotModal, setIsAddListToBallotModal] = useState(false);
   const { dispatch } = useBallot();
 
   const handleEditModal = (close: boolean, edit = false) => {
+    setIsAddListToBallotModal(false);
     setEditBallot(!close && edit);
   };
 
   const addProjectToBallot = () => {
+    setIsAddListToBallotModal(false);
     setLoadingMessage("Adding to ballot");
     setSuccessMessage("Projects added successfully");
     setIsLoading(true);
@@ -57,9 +61,9 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
             </CustomProjectButton>
 
             <CustomProjectButton
-              onClick={() => addProjectToBallot()}
+              onClick={() => setIsAddListToBallotModal(true)}
               text="Add to ballot"
-              customClassName=" bg-[#ff0000] py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
+              customClassName="bg-red-600 py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
             >
               <SquaresPlusIcon className="w-5 h-5" />
             </CustomProjectButton>
@@ -105,6 +109,15 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal(true, false)} />}
       {isLoading && <LoadingModal message={loadingMessage} />}
       {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
+      {isAddListToBallotModal && (
+        <AddListToBallotModal
+          onClose={() => setIsAddListToBallotModal(false)}
+          handleAddBallot={() => addProjectToBallot()}
+          projectList={populatedProjects}
+          userTotal={projects.reduce((sum, p) => sum + p.votes, 0)}
+          edit={() => handleEditModal(false, true)}
+        />
+      )}
     </div>
   );
 };
