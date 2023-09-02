@@ -35,6 +35,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const userData = { totalOP: 100000 };
+  const { dispatch } = useBallot();
   const projectDataHandle = [
     {
       name: "DefiLlama",
@@ -73,6 +74,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
       op: 12416,
     },
   ];
+  console.log(project);
 
   const handleAddBallot = () => {
     setLoadingMessage("Adding to ballot");
@@ -81,6 +83,17 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
     setIsLoading(true);
     setAddVote(false);
     setVoteAmount(0); // TODO: Get from state
+    dispatch({
+      type: "ADD_LIST",
+      projects: [
+        {
+          id: project._id,
+          name: project.name,
+          listId: project.slug,
+          votes: voteAmount,
+        },
+      ],
+    });
     setTimeout(() => {
       // Spoofed API request to add to ballot
       setIsLoading(false);
