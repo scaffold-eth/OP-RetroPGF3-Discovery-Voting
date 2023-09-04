@@ -88,15 +88,17 @@ const AllLists: React.FC = () => {
       </div>
     );
   return (
-    <div className="">
+    <div className="w-full">
       <ListHeader displayList={displayList} titleHeader="Lists" display={display} onCategoryChange={onCategoryChange} />
       <div
-        className={`px-4 grid pt-8 gap-4 ${
-          display === "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
+        className={`px-4 w-full grid pt-8 gap-4 ${
+          display === "grids" ? "list__container-card_display  " : "grid-rows-1 w-full"
         } `}
       >
         {filteredProjects?.map(list => (
-          <Card key={list._id} list={list} isLoading={isLoading} onLike={() => handleLike(list)} />
+          <div key={list._id} className={`${display === "grids" && "w-fit"}`}>
+            <Card list={list} isLoading={isLoading} onLike={() => handleLike(list)} />
+          </div>
         ))}
       </div>
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />

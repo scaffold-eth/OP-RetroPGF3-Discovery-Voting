@@ -94,3 +94,7 @@ input[type="number"] {
 #custom-modal-dialog {
   z-index: 1000;
 }
+
+.list__container-card_display {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
