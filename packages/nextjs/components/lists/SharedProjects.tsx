@@ -63,7 +63,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
             <CustomProjectButton
               onClick={() => setIsAddListToBallotModal(true)}
               text="Add to ballot"
-              customClassName="bg-red-600 py-2 rounded-lg border-[#ff0000]  text-[#ffffff]"
+              customClassName="bg-OPred py-2 rounded-lg border-OPred  text-[#ffffff]"
             >
               <SquaresPlusIcon className="w-5 h-5" />
             </CustomProjectButton>

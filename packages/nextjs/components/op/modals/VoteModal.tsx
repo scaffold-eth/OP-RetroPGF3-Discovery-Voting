@@ -58,7 +58,7 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
           <CustomProjectButton
             onClick={handleAddBallot}
             text="Save" // Button text
-            customClassName="bg-OPred py-4 rounded-lg border-OPred w-full text-black"
+            customClassName="bg-OPred py-4 rounded-lg border-OPred w-full text-white"
           ></CustomProjectButton>
         </div>
       </div>
