@@ -6,7 +6,7 @@ import { useAccount } from "wagmi";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
 
-const Card = ({ list, onLike, isLoading }: any) => {
+const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const { address } = useAccount();
   const { name, creator, projects, likes, description, tags } = list;
   const isLiked = likes.includes(address);
@@ -28,20 +28,20 @@ const Card = ({ list, onLike, isLoading }: any) => {
         </div>
 
         <div className="flex items-center">
-          {!isLoading && likes.length > 0 && (
+          {likes.length > 0 && (
             <p className="text-lightGray text-sm leading-4 font-normal text-right  mr-2">{likes.length}</p>
           )}
           <button
             className={`${
-              isLoading ? "loading" : ""
+              isLoading && list._id === loadingList ? "loading" : ""
             } btn btn-circle btn-sm bg-transparent border-none shadow-none hover:bg-transparent`}
             onClick={() => onLike()}
           >
-            {isLiked && !isLoading ? (
+            {list._id === loadingList && isLoading ? null : isLiked ? (
               <HeartFilledIcon className={`w-6 h-6 text-[#ff0000]`} />
-            ) : !isLiked && !isLoading ? (
+            ) : (
               <HeartIcon className={`w-6 h-6  text-[#68778D]`} />
-            ) : null}
+            )}
           </button>
         </div>
       </div>
