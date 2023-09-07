@@ -20,6 +20,7 @@ import {
 import { ArrowUturnRightIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
 import { useBallot } from "~~/context/BallotContext";
 import { ProjectDocument } from "~~/models/Project";
+import { notification } from "~~/utils/scaffold-eth";
 
 // TODO: This component is half-using db and half using stubbed data, need point to db for any stubbed data
 const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
@@ -27,7 +28,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
   const [openLikedModal, setopenLikedModal] = useState(false);
-  const [voteAmount, setVoteAmount] = useState(0);
+  // const [voteAmount, setVoteAmount] = useState(0);
   const [addBallot, setAddBallot] = useState(false);
   const [editBallot, setEditBallot] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +36,9 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const userData = { totalOP: 100000 };
-  const { dispatch } = useBallot();
+  const [isAdded, setIsAdded] = useState(false);
+  const { state, dispatch } = useBallot();
+
   const projectDataHandle = [
     {
       name: "DefiLlama",
@@ -76,33 +79,17 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   ];
   console.log(project);
 
-  const handleAddBallot = () => {
-    setLoadingMessage("Adding to ballot");
-    setSuccessMessage("Selection added successfully");
-    setAddBallot(false);
-    setIsLoading(true);
-    setAddVote(false);
-    setVoteAmount(0); // TODO: Get from state
+  const addProjectToBallot = () => {
+    const _name = project.name as string;
     dispatch({
-      type: "ADD_LIST",
-      projects: [
-        {
-          id: project._id,
-          name: project.name,
-          listId: project.slug,
-          votes: voteAmount,
-        },
-      ],
+      type: "ADD_PROJECT",
+      project: {
+        id: project._id,
+        name: _name,
+        allocation: 0,
+      },
     });
-    setTimeout(() => {
-      // Spoofed API request to add to ballot
-      setIsLoading(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        // Spoofed response from api
-        setIsSuccess(false);
-      }, 2000);
-    }, 1000);
+    notification.success("Added to ballot");
   };
 
   const handleSaveBallot = () => {
@@ -127,14 +114,12 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
     setAddBallot(!close && !edit);
   };
 
-  const { state } = useBallot();
-
   useEffect(() => {
     if (!state) return;
-    setVoteAmount(0);
+    setIsAdded(false);
     const isAddedToBallot = () => {
-      state.projects.forEach(x => {
-        if (x.id === project._id) setVoteAmount(x.allocation);
+      state.projects.forEach((x: any) => {
+        if (x.id === project._id) setIsAdded(true);
       });
     };
     isAddedToBallot();
@@ -244,20 +229,14 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
             </div>
           )}
 
-          {voteAmount ? (
-            <button className="rounded-md flex py-2 px-8 items-center  border border-gray-300 text-OPred font-medium text-base leading-6">
-              <CheckCircleIcon className="font-semibold  h-10 w-10 text-OPred mr-4" />
-              {`${voteAmount} OP allocated`}
-            </button>
-          ) : (
-            <button
-              onClick={() => setAddVote(true)}
-              className="rounded-lg flex  items-center   bg-OPred text-white py-2 px-4 xl:px-8"
-            >
-              <FolderIcon className=" font-semibold  h-10 w-10 text-white mr-4" />
-              Add to ballot
-            </button>
-          )}
+          <button
+            onClick={() => addProjectToBallot()}
+            disabled={isAdded}
+            className="rounded-lg flex  items-center   bg-OPred text-white py-2 px-4 xl:px-8"
+          >
+            <FolderIcon className=" font-semibold  h-10 w-10 text-white mr-4" />
+            {isAdded ? "Added to ballot" : "Add to Ballot"}
+          </button>
 
           {addVote && <VoteModal onClose={() => setAddVote(false)} handleAddBallot={() => handleAddBallot()} />}
 

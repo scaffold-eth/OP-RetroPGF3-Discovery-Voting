@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { Spinner } from "../Spinner";
 import CreateList from "../lists/CreateList";
 import CustomProjectButton from "../op/btn/CustomProjectButton";
+import SuccessModal from "../op/modals/SuccessModal";
 import { ShareIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import { useBallot } from "~~/context/BallotContext";
 
 const BallotReview: React.FC = () => {
   const { state } = useBallot();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onClose = () => {
     setIsOpen(false);
@@ -18,10 +24,15 @@ const BallotReview: React.FC = () => {
     // sign ballot
     // send signed data to api
     console.log("submitting votes");
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSuccess(true);
+    }, 3000);
   };
 
   return (
-    <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
+    <div className="relative border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
       <div className="project__header-container min-w-[320px]">
         <div className="project__header-container--content text-center">
           <h3 className="text-lg sm:text-2xl font-bold items-center">Review Ballot</h3>
@@ -82,6 +93,20 @@ const BallotReview: React.FC = () => {
         </CustomProjectButton>
         <CreateList onClose={onClose} isOpen={isOpen} />
       </div>
+      {isLoading && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Spinner />
+        </div>
+      )}
+      {isSuccess && (
+        <SuccessModal
+          message={"Ballot submitted successfully"}
+          onClose={() => {
+            setIsSuccess(false);
+            router.push("/projects");
+          }}
+        />
+      )}
     </div>
   );
 };

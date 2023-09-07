@@ -8,6 +8,7 @@ import Pagination from "~~/components/lists/Pagination";
 import { ListDocument } from "~~/models/List";
 import VerifyOptions from "~~/types/verifyOptions";
 import { fetcher } from "~~/utils/fetcher";
+import { sendLikeRequest } from "~~/utils/like";
 import { notification } from "~~/utils/scaffold-eth";
 import { getSignMessageForId } from "~~/utils/sign";
 
@@ -16,6 +17,7 @@ const AllLists: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingListId, setLoadingListId] = useState<string>("");
   const { data: lists, mutate } = useSWR<ListDocument[]>(`/api/list`, fetcher);
 
   const { signMessageAsync } = useSignMessage({
@@ -41,22 +43,22 @@ const AllLists: React.FC = () => {
     return await signMessageAsync({ message: messageToSign });
   };
 
-  const sendLikeRequest = async (address: string | undefined, signature: string, listId: string) => {
-    const payload = { address, signature, listId };
+  // const sendLikeRequest = async (address: string | undefined, signature: string, listId: string) => {
+  //   const payload = { address, signature, listId };
 
-    const response = await fetch("/api/list/like", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  //   const response = await fetch("/api/list/like", {
+  //     method: "POST",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(payload),
+  //   });
 
-    return response.json();
-  };
+  //   return response.json();
+  // };
 
   const handleLike = async (list: any) => {
     try {
       setIsLoading(true);
-
+      setLoadingListId(list._id);
       const options: VerifyOptions = { address, messageId: "listLike", list };
       const signature = await signMessage(options);
 
@@ -97,7 +99,7 @@ const AllLists: React.FC = () => {
       >
         {filteredProjects?.map(list => (
           <div key={list._id} className={`${display === "grids" && "w-fit"}`}>
-            <Card list={list} isLoading={isLoading} onLike={() => handleLike(list)} />
+            <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
           </div>
         ))}
       </div>
