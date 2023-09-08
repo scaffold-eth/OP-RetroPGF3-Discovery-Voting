@@ -28,7 +28,7 @@ const BallotComponent: React.FC = () => {
       <button
         type="button"
         onClick={toggleBallot}
-        className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-100"
+        className="btn min-w-[120px] flex flex-col btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 hover:bg-slate-500"
       >
         View ballot
         <div className="badge badge-neutral ml-2 rounded-full px-2 py-3">{state.projects.length}</div>
