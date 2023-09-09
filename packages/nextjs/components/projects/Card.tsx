@@ -33,7 +33,7 @@ const Card = ({ project, display }: any) => {
           </div>
 
           <div className="flex items-center">
-            <div className="flex-1">
+            <div className="flex-1 truncate">
               <Link href={`/projects/${project._id}`} className="truncate">
                 <p className="truncate text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
               </Link>

@@ -36,7 +36,6 @@ const listSchema = new mongoose.Schema<ListDocument>({
   likes: [
     {
       type: String,
-      unique: true,
     },
   ],
   projects: [

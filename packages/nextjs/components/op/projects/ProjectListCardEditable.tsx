@@ -10,14 +10,14 @@ const ProjectListCardEditable: React.FC<{
   emitTotal: (total: number) => void;
 }> = ({ projectData, emitTotal, listAllocation = [] }) => {
   const handleChange = (index: number, value: number) => {
-    const total = projectData.reduce((a, b) => a + Number(b.op), 0);
-    const newTotal = total - Number(projectData[index].op) + value;
+    const total = projectData.reduce((a, b) => a + Number(b.votes), 0);
+    const newTotal = total - Number(projectData[index].votes) + value;
     setTotalOP(newTotal);
     // emit the current state
     emitTotal(totalOP);
   };
 
-  const [totalOP, setTotalOP] = useState(projectData.reduce((a, b) => a + Number(b.op), 0));
+  const [totalOP, setTotalOP] = useState(projectData.reduce((a, b) => a + Number(b.votes), 0));
   return (
     <div>
       {projectData.map((project: IProjectData, index: number) => (
@@ -46,7 +46,7 @@ const ProjectListCardEditable: React.FC<{
             {listAllocation[index] ? (
               <OPInput
                 index={index}
-                value={listAllocation[index].op}
+                value={listAllocation[index].votes}
                 handleChange={() => {
                   return;
                 }}
@@ -57,7 +57,7 @@ const ProjectListCardEditable: React.FC<{
             ) : (
               ""
             )}
-            <OPInput index={index} value={project.op} handleChange={handleChange} />
+            <OPInput index={index} value={project.votes} handleChange={handleChange} />
             <button
               onClick={() => {
                 console.log("remove");

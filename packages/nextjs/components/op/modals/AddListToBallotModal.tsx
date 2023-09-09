@@ -59,7 +59,7 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
           <CustomProjectButton
             onClick={handleAddBallot}
             text="Add to ballot"
-            customClassName=" bg-OPred py-2 rounded-lg border-OPred  text-OPwhite"
+            customClassName=" bg-red-600 py-2 rounded-lg border-OPred  text-OPwhite"
           >
             <SquaresPlusIcon className="w-5 h-5" />
           </CustomProjectButton>

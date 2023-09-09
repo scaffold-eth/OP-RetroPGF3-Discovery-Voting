@@ -23,7 +23,7 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
     if (!state) return;
     setIsAdded(false);
     const isAddedToBallot = () => {
-      state.projects.forEach(x => {
+      state.projects.forEach((x: any) => {
         if (x.id === projects[0]._id) setIsAdded(true);
       });
     };
