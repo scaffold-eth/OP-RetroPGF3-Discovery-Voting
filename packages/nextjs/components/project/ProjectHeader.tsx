@@ -238,7 +238,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
             {isAdded ? "Added to ballot" : "Add to Ballot"}
           </button>
 
-          {addVote && <VoteModal onClose={() => setAddVote(false)} handleAddBallot={() => handleAddBallot()} />}
+          {addVote && <VoteModal onClose={() => setAddVote(false)} handleAddBallot={() => handleSaveBallot()} />}
 
           {addBallot && (
             <AlreadyOnBallotConflictModal
