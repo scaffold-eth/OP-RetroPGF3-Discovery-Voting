@@ -27,7 +27,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
   // const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
-  const [openLikedModal, setopenLikedModal] = useState(false);
+  const [openLikedModal, setOpenLikedModal] = useState(false);
   const [newAllocation, setNewAllocation] = useState("");
   // const [addBallot, setAddBallot] = useState(false);
   const [editBallotVote, setEditBallotVote] = useState(false);
@@ -118,6 +118,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
       }, 2000);
     }, 1000);
     setSuccessMessage("Distribution changed successfully");
+    setOpenLikedModal(false);
   };
 
   // const handleAddOrEditModal = (close: boolean, edit = false) => {
@@ -216,7 +217,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         <div className="relative flex md:self-end">
           <button
             onClick={() => {
-              setopenLikedModal(!openLikedModal);
+              setOpenLikedModal(!openLikedModal);
             }}
             className="py-2 px-2 rounded-md flex border border-neutral mr-4"
           >
@@ -224,7 +225,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           </button>
 
           {openLikedModal && (
-            <div className="absolute  bg-white rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite">
+            <div className="absolute  bg-white rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite text-OPblack">
               <button onClickCapture={() => setEditBallotVote(true)} className="flex gap-4 items-center">
                 <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
                 <p>Edit Distribution</p>
