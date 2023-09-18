@@ -1,5 +1,6 @@
 import BallotComponent from "../ballot/Ballot";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useDarkMode } from "usehooks-ts";
 import { useDisconnect, useSwitchNetwork } from "wagmi";
 import { ArrowLeftOnRectangleIcon, ArrowsRightLeftIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
@@ -14,6 +15,7 @@ export const RainbowKitCustomConnectButton = () => {
   const configuredNetwork = getTargetNetwork();
   const { disconnect } = useDisconnect();
   const { switchNetwork } = useSwitchNetwork();
+  const { isDarkMode } = useDarkMode();
 
   return (
     <ConnectButton.Custom>
@@ -72,7 +74,9 @@ export const RainbowKitCustomConnectButton = () => {
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 border-slate-200 hover:bg-slate-100"
+                      className={`btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 border-slate-200 ${
+                        !isDarkMode ? "hover:bg-slate-200" : "hover:bg-slate-500"
+                      }`}
                     >
                       <BlockieAvatar address={account.address} size={7} ensImage={account.ensAvatar} />
                       <span className="ml-2 mr-1">{account.displayName}</span>
