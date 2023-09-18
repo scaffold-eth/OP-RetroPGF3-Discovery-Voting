@@ -41,7 +41,7 @@ const BallotComponent: React.FC = () => {
         <div className="absolute  mt-2.5 right-0 top-full bg-white border p-4 w-[400px] rounded shadow-lg">
           <ul>
             {state.projects.map(project => (
-              <li key={project.id} className="flex justify-between items-center mb-2">
+              <li key={project.id} className="flex justify-between items-center mb-2 text-OPblack">
                 <span className="flex-grow truncate">{project.name}</span>
                 <div className="flex flex-col w-1/4">
                   <label className="text-xs">OP Allocated</label> {/* Label added */}

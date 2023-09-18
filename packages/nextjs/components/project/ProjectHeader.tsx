@@ -40,47 +40,6 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [isAdded, setIsAdded] = useState(false);
   const { state, dispatch } = useBallot();
 
-  {
-    /*should be removed, not needed*/
-  }
-  // const projectDataHandle = [
-  //   {
-  //     name: "DefiLlama",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 20416,
-  //   },
-  //   {
-  //     name: "L2BEAT",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 15416,
-  //   },
-  //   {
-  //     name: "Polynya",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 12416,
-  //   },
-  //   {
-  //     name: "DefiLlama",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 20416,
-  //   },
-  //   {
-  //     name: "L2BEAT",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 15416,
-  //   },
-  //   {
-  //     name: "Polynya",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 12416,
-  //   },
-  // ];
   const addProjectToBallot = () => {
     const _name = project.name as string;
     setNewAllocation(0);
@@ -224,12 +183,12 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           </button>
 
           {openLikedModal && (
-            <div className="absolute  bg-white rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite">
+            <div className="absolute  bg-OPwhite rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite text-OPblack">
               <button onClickCapture={() => setEditBallotVote(true)} className="flex gap-4 items-center">
                 <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
                 <p>Edit Distribution</p>
               </button>
-              <button className="flex gap-4 items-center">
+              <button className="flex gap-4 items-center ">
                 <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
                 <p>Share</p>
               </button>
