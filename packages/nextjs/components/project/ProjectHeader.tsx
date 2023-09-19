@@ -184,7 +184,6 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           </button>
 
           {openLikedModal && (
-
             <div className="absolute  bg-OPwhite rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite text-OPblack">
               <button onClickCapture={() => setEditBallotVote(true)} className="flex gap-4 items-center">
                 <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
