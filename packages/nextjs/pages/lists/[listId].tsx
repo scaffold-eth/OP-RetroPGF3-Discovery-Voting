@@ -25,7 +25,7 @@ interface Props {
 }
 
 const ListDetail: NextPage<Props> = ({ list }) => {
-  const [openLikedModal, setopenLikedModal] = React.useState(false);
+  const [openLikedModal, setOpenLikedModal] = React.useState(false);
   const tempCategory = list.tags ? list?.tags[0] : undefined;
   const category = tempCategory && tempCategory[0]?.toUpperCase() + tempCategory?.slice(1);
   const currentProjectId = list._id;
@@ -79,7 +79,7 @@ const ListDetail: NextPage<Props> = ({ list }) => {
             </div>
             <button
               onClick={() => {
-                setopenLikedModal(!openLikedModal);
+                setOpenLikedModal(!openLikedModal);
               }}
               className={` ${
                 openLikedModal && "bg-gray-200"
