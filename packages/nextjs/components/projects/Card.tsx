@@ -8,25 +8,25 @@ import logo from "~~/public/assets/Logo.png";
 const Card = ({ project, display }: any) => {
   const { name, username, banner, description, category } = project;
   return (
-    <div className="">
+    <div>
       {display === "grids" ? (
-        <div className="rounded-[1.5rem] p-4 bg-base-100 ">
+        <div className="border border-grey-300 rounded-[1.5em] p-2 bg-base-100">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             {banner ? (
               <Image
                 width={311}
                 height={112}
-                className="rounded-t-lg  object-fill w-full h-full"
+                className="rounded-[1.05em] object-fill w-full h-full"
                 src={banner}
                 alt="banner"
               />
             ) : (
-              <div className="flex-shrink-0 w-full  h-[112px] rounded-lg bg-gray-300"></div>
+              <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
             )}
             <Image
               width={54}
               height={54}
-              className="mt-[-22px] ml-[20px]  border-4 border-white  bg-white rounded inline-block "
+              className="mt-[-22px] ml-[20px] border-4 border-white bg-white rounded-[1.05em] inline-block"
               src={logo}
               alt="logo"
             />
