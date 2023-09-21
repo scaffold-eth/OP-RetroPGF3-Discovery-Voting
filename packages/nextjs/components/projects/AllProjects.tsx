@@ -40,7 +40,7 @@ const AllProjects: React.FC<Props> = ({ projects }) => {
   }, [shuffledProjects]);
 
   return (
-    <div>
+    <div className="w-full">
       <div className="container mx-auto">
         <ListHeader
           displayList={displayList}
