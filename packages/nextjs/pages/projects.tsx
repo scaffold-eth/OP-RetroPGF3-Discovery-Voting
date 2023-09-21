@@ -23,7 +23,7 @@ const Projects = () => {
   }
 
   return (
-    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+    <div className="mx-auto w-full px-12 mt-12 flex flex-col md:flex-row gap-4">
       {!wallet ? <YourBallot /> : <Sidebar />}
       <AllProjects projects={projects} />
     </div>
