@@ -22,7 +22,7 @@ const BallotComponent: React.FC = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative pr-2">
       {/* <button onClick={toggleBallot} className="flex items-center">
         <span className="bg-red-500 text-white rounded-full p-2">{state.projects.length}</span>
         <span className="ml-2">Ballot</span>
@@ -30,7 +30,7 @@ const BallotComponent: React.FC = () => {
       <button
         type="button"
         onClick={toggleBallot}
-        className={`btn min-w-[120px] flex flex-col btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 ${
+        className={`btn min-w-[120px] flex flex-col btn-secondary btn-block rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 ${
           !isDarkMode ? "hover:bg-slate-200" : "hover:bg-slate-500"
         }`}
       >
