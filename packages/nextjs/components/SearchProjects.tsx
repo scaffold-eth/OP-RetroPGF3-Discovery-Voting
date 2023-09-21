@@ -81,7 +81,7 @@ const SearchProjects: React.FC = () => {
   const theme = {
     suggestionsContainer: `${
       isInputFocused
-        ? "absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto"
+        ? "absolute z-10 w-full mt-2 bg-white border border-base-400 rounded-md shadow-lg max-h-60 overflow-y-auto"
         : "hidden"
     }`,
     suggestion: "p-2 hover:bg-gray-200 cursor-pointer",
@@ -100,7 +100,7 @@ const SearchProjects: React.FC = () => {
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={{
-            className: "input input-info input-bordered bg-secondary w-full min-w-full pl-10 rounded-md h-10",
+            className: "input input-info input-bordered bg-base-100 w-full min-w-full pl-10 rounded-md h-10",
             placeholder: "Search projects and lists...",
             value,
             onChange: (event, { newValue }) => {

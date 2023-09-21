@@ -35,7 +35,7 @@ const BallotComponent: React.FC = () => {
         }`}
       >
         View ballot
-        <div className="badge badge-neutral ml-2 rounded-full px-2 py-3">{state.projects.length}</div>
+        <div className="badge badge-primary ml-2 rounded-full px-2 py-3">{state.projects.length}</div>
       </button>
       {isOpen && (
         <div className="absolute  mt-2.5 right-0 top-full bg-white border p-4 w-[400px] rounded shadow-lg">

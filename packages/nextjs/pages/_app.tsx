@@ -70,9 +70,9 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
       >
         <BallotProvider totalTokens={totalTokens > 0 ? totalTokens : 100}>
           <ProjectsProvider>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen bg-base-200">
               <Header />
-              <main className="relative flex flex-col flex-1">
+              <main className="relative flex flex-col flex-1 ">
                 <Component {...pageProps} />
               </main>
               {/* <Footer /> */}

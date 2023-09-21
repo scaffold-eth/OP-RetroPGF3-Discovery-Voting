@@ -7,8 +7,8 @@ const YourBallot = () => {
   const { state } = useBallot();
   const { projects } = useProjects();
   return (
-    <div className="border-OPlightgray border-[1px] h-fit px-6 py-10 rounded-xl">
-      <h3 className="text-OPextradarkgray">YOUR BALLOT</h3>
+    <div className="border-OPlightgray border-[1px] h-fit px-6 py-10 rounded-xl bg-base-100">
+      <h3 className="text-md">YOUR BALLOT</h3>
       <div className="mt-5">
         <p className="p-0 m-0 text-sm text-OPbluegray ">Voting ends in</p>
         <span className="font-bold text-lg">3d:12h:30m:24s</span>
@@ -49,8 +49,8 @@ const YourBallot = () => {
       <div className="mt-7 text-OPextradarkgray">
         <p className="text-sm">Some instructional copy for the connected viewers :)</p>
         <div className="text-OPblue grid grid-flow-col justify-start items-center gap-2">
-          <p className="text-bold ">Voting guideline</p>
-          <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+          <p className="text-bold text-primary">Voting guideline</p>
+          <ArrowTopRightOnSquareIcon className="w-4 h-4 text-primary" />
         </div>
       </div>
     </div>

@@ -117,14 +117,16 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             <button
               key={index}
               onClick={() => handleButtonClick(`${category.category}`)}
-              className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
+              className={`border-OPlightgray bg-secondary px-4 py-2 rounded-md font-normal leading-6 font-inter  ${
                 active == `${category.category}`
                   ? "bg-secondary-content text-white dark:bg-black"
                   : "bg-customWhite text-customGrayBtn"
               }`}
             >
               {category.category}
-              <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
+              <span className="px-2 py-1 bg-secondary text-primary font-bold rounded ml-2 ">
+                {category.projectsCount}
+              </span>
             </button>
           ))}
       </div>

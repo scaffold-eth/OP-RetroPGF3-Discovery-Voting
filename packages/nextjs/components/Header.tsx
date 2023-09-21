@@ -16,7 +16,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
       href={href}
       passHref
       className={`${
-        isActive ? "text-black" : "text-slate-400"
+        isActive ? "accent" : "text-slate-400"
       } hover:bg-secondary focus:bg-secondary py-1.5 px-3 text-sm gap-2`}
     >
       {children}
@@ -80,7 +80,7 @@ export const Header = () => {
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
-      <div className="navbar-center w-1/3 flex-grow">
+      <div className="navbar-center w-1/3 flex-grow border-[1px] border-neutral rounded-md">
         <SearchProjects />
       </div>
       <div className="navbar-end w-1/3 flex-grow mr-4">
