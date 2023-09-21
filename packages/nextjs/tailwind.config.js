@@ -58,6 +58,8 @@ module.exports = {
           warning: "#FFCF72",
           error: "#FF8863",
 
+          "--btn-text-case": "none",
+
           "--rounded-btn": "0.75rem",
 
           ".tooltip": {
