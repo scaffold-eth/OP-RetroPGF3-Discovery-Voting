@@ -1,4 +1,5 @@
 import React from "react";
+import CountdownTimer from "./YourBallotCountdown";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import { useBallot } from "~~/context/BallotContext";
 import { useProjects } from "~~/context/ProjectsContext";
@@ -6,12 +7,16 @@ import { useProjects } from "~~/context/ProjectsContext";
 const YourBallot = () => {
   const { state } = useBallot();
   const { projects } = useProjects();
+
+  const fakeTimestamp = 1700453260;
+  const votingDeadline = fakeTimestamp;
+
   return (
     <div className="border-OPlightgray border-[1px] h-fit px-6 py-10 rounded-xl">
       <h3 className="text-OPextradarkgray">YOUR BALLOT</h3>
       <div className="mt-5">
-        <p className="p-0 m-0 text-sm text-OPbluegray ">Voting ends in</p>
-        <span className="font-bold text-lg">3d:12h:30m:24s</span>
+        {/* <p className="p-0 m-0 text-sm text-OPbluegray ">Voting ends in</p> */}
+        <CountdownTimer deadline={votingDeadline} />
       </div>
       <div className="mt-5">
         <p className="p-0 m-0 text-sm text-OPbluegray">Projects added</p>
@@ -39,7 +44,7 @@ const YourBallot = () => {
       </div>
       {state.projects.length === 0 && (
         <div className="mt-5">
-          <button disabled className=" py-3 w-full rounded-lg bg-customWhite text-OPlightgray">
+          <button disabled className=" py-3 w-full rounded-lg bg-gray-400 text-white">
             No Projects added yet
           </button>
         </div>

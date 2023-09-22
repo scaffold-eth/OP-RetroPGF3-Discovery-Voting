@@ -91,7 +91,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             <button
               onClick={() => handleButtonClick("all")}
               className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-                active == "all" ? "bg-secondary-content text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
+                active == "all" ? "bg-[#FF0520] text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
               }`}
             >
               All
@@ -99,9 +99,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             <button
               onClick={() => handleButtonClick("liked")}
               className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-                active == "liked"
-                  ? "bg-secondary-content text-white dark:bg-black"
-                  : "bg-customWhite text-customGrayBtn"
+                active == "liked" ? "bg-[#FF0520] text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
               }`}
             >
               <span className="flex">
