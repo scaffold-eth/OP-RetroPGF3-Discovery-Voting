@@ -12,6 +12,7 @@ const ListsPage: NextPage = () => {
   useEffect(() => {
     setWallet(isDisconnected);
   }, [isDisconnected]);
+
   return (
     <div className="mx-auto w-full px-12 mt-12 flex flex-col md:flex-row gap-4">
       {!wallet ? <YourBallot /> : <Sidebar />}

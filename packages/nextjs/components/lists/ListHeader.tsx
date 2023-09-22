@@ -75,7 +75,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
           <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
           <button
             onClick={() => handleShuffle()}
-            className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite"
+            className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite hover:text-black"
           >
             <span className="flex ">
               <ArrowsUpDownIcon className="w-[15px] h-[25px]" />
@@ -91,7 +91,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             <button
               onClick={() => handleButtonClick("all")}
               className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-                active == "all" ? "bg-secondary-content text-white dark:bg-black" : "bg-customWhite text-customGrayBtn"
+                active == "all" ? "bg-[#FF0520] text-white" : "bg-customWhite text-customGrayBtn"
               }`}
             >
               All
@@ -99,9 +99,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             <button
               onClick={() => handleButtonClick("liked")}
               className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-                active == "liked"
-                  ? "bg-secondary-content text-white dark:bg-black"
-                  : "bg-customWhite text-customGrayBtn"
+                active == "liked" ? "bg-[#FF0520] text-white" : "bg-customWhite text-customGrayBtn"
               }`}
             >
               <span className="flex">
@@ -118,9 +116,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
               key={index}
               onClick={() => handleButtonClick(`${category.category}`)}
               className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-                active == `${category.category}`
-                  ? "bg-[#FF0520] text-white"
-                  : "bg-customWhite dark:bg-slate-700 text-customGrayBtn"
+                active == `${category.category}` ? "bg-[#FF0520] text-white" : "bg-customWhite text-customGrayBtn"
               }`}
             >
               {category.category}

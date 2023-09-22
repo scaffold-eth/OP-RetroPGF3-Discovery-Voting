@@ -74,7 +74,7 @@ export const RainbowKitCustomConnectButton = () => {
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className={`btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-2 border-slate-200 ${
+                      className={`btn btn-secondary rounded-full h-10 btn-sm pl-2 pr-2 border-1 border-slate-200 ${
                         !isDarkMode ? "hover:bg-slate-200" : "hover:bg-slate-500"
                       }`}
                     >
