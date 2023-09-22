@@ -42,10 +42,15 @@ const Pagination: React.FC<IPagination> = ({ currentPage, totalPages, onPageChan
           </button>
         ))}
 
-        {nextPage && (
+        {totalPages > 1 && (
           <button
-            className="px-4 py-2 rounded-md font-normal text-base leading-6 font-inter border border-gray-300  bg-white text-lightBlack hover:bg-customWhite"
-            onClick={() => onPageChange(nextPage)}
+            disabled={!nextPage}
+            className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter border border-gray-300 ${
+              !nextPage
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed hover:bg-gray-300 hover:text-gray-500"
+                : "bg-white text-lightBlack hover:bg-customWhite"
+            }`}
+            onClick={() => onPageChange(nextPage ? nextPage : 1)}
           >
             Next
           </button>
