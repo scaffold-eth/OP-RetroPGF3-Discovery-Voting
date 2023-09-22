@@ -36,51 +36,9 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  // const userData = { totalOP: 100000 };
   const [isAdded, setIsAdded] = useState(false);
   const { state, dispatch } = useBallot();
 
-  {
-    /*should be removed, not needed*/
-  }
-  // const projectDataHandle = [
-  //   {
-  //     name: "DefiLlama",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 20416,
-  //   },
-  //   {
-  //     name: "L2BEAT",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 15416,
-  //   },
-  //   {
-  //     name: "Polynya",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 12416,
-  //   },
-  //   {
-  //     name: "DefiLlama",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 20416,
-  //   },
-  //   {
-  //     name: "L2BEAT",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 15416,
-  //   },
-  //   {
-  //     name: "Polynya",
-
-  //     image: "/assets/gradient-bg.png",
-  //     op: 12416,
-  //   },
-  // ];
   const addProjectToBallot = () => {
     const _name = project.name as string;
     setNewAllocation(0);
