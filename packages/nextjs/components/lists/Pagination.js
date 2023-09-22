@@ -27,7 +27,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             key={page}
             className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
               currentPage === page
-                ? "bg-secondary-content text-white dark:bg-black"
+                ? "bg-[#FF0520] text-white"
                 : "border border-gray-300  bg-white text-lightBlack hover:bg-customWhite"
             }`}
             onClick={() => onPageChange(page)}

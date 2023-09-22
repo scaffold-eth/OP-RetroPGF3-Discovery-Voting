@@ -118,9 +118,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
               key={index}
               onClick={() => handleButtonClick(`${category.category}`)}
               className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
-                active == `${category.category}`
-                  ? "bg-secondary-content text-white dark:bg-black"
-                  : "bg-customWhite text-customGrayBtn"
+                active == `${category.category}` ? "bg-[#FF0520] text-white" : "bg-customWhite text-customGrayBtn"
               }`}
             >
               {category.category}
