@@ -23,6 +23,7 @@ type IProjectsToImport = {
 
 const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const [showError, setShowError] = useState(false);
+
   const [errorMessage, setErrorMessage] = useState("");
   const { populatedProjects } = list;
   const [projectsToImport, setProjectsToImport] = useState(populatedProjects);
@@ -30,10 +31,10 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { state, dispatch } = useBallot();
 
-  const handleAllocationChange = (projectId: string, newAllocation: number) => {
+  const handleAllocationChange = (projectId: string, newAllocation: number | string) => {
     setEditedProjectsToImport(
       editedProjectsToImport.map(project =>
-        project.id === projectId ? { ...project, votes: newAllocation } : project,
+        project.id === projectId ? { ...project, votes: Number(newAllocation) } : project,
       ),
     );
   };
@@ -133,9 +134,13 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
                 <label className={`input-group rounded`}>
                   <input
                     type="number"
-                    onChange={e => handleAllocationChange(project.id, Number(e.target.value))}
+                    onChange={e => handleAllocationChange(project.id, e.target.value)}
                     className={`input input-info input-bordered border-slate-200 border w-[100px] rounded `}
-                    value={editedProjectsToImport[index] && editedProjectsToImport[index]?.votes}
+                    value={
+                      editedProjectsToImport[index] && editedProjectsToImport[index].votes === 0
+                        ? ""
+                        : editedProjectsToImport[index].votes
+                    }
                   />
                   <span className={`rounded bg-secondary border-r border-b border-t border-slate-200`}>OP</span>
                 </label>

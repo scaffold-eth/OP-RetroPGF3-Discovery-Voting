@@ -1,7 +1,13 @@
 import React from "react";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const range = (from, to) => {
+interface IPagination {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+const Pagination: React.FC<IPagination> = ({ currentPage, totalPages, onPageChange }) => {
+  const range = (from: number, to: number) => {
     return Array.from({ length: to - from + 1 }, (_, i) => from + i);
   };
 

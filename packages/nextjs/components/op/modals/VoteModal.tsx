@@ -10,13 +10,21 @@ import BaseModal from "./BaseModal";
 
 // Define an interface for the props that VoteModal component receives
 interface IVoteModal {
+  project: {
+    id: string;
+    name: string;
+    allocation: number;
+  }; // The project to be voted on
+  handleAllocationChange: (value: any) => void;
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
+  allocation: string | number;
 }
 
 // Define the VoteModal component as a functional component that receives props of type IVoteModal
-const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
+const VoteModal: React.FC<IVoteModal> = ({ project, handleAllocationChange, onClose, handleAddBallot, allocation }) => {
   // Return the JSX code representing the VoteModal component
+
   return (
     <BaseModal onClose={onClose}>
       {" "}
@@ -45,11 +53,16 @@ const VoteModal: React.FC<IVoteModal> = ({ onClose, handleAddBallot }) => {
             />
           </div>
           <div className="">
-            <h3 className="font-bold text-lg">Polynya</h3> {/* Display the project name */}
+            <h3 className="font-bold text-lg">{project?.name}</h3> {/* Display the project name */}
           </div>
         </div>
-        <div className="mb-5 border-OPoffwhite border-2 rounded-xl px-4 py-0 grid grid-flow-col justify-between items-center">
-          <p className="m-0 py-2">35,416</p> {/* Display the number of votes */}
+        <div className="mb-5 border-OPoffwhite border-2 rounded-xl pr-4 overflow-hidden py-0 grid grid-flow-col justify-between items-center">
+          <input
+            onChange={e => handleAllocationChange(e.target.value)}
+            className="border-none outline-none p-3 w-full  "
+            value={allocation}
+          />{" "}
+          {/* Display the number of votes */}
           <p className="font-bold h-full m-0 border-OPoffwhite border-l-2 py-2 pl-4">OP</p> {/* Display a label */}
         </div>
 

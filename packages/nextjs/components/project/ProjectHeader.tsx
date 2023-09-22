@@ -2,8 +2,8 @@
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import AlreadyOnBallotConflictModal from "../op/modals/AlreadyOnBallotConflictModal";
-import EditDistributionModal from "../op/modals/EditDistributionModal";
+// import AlreadyOnBallotConflictModal from "../op/modals/AlreadyOnBallotConflictModal";
+// import EditDistributionModal from "../op/modals/EditDistributionModal";
 import LoadingModal from "../op/modals/LoadingModal";
 import SuccessModal from "../op/modals/SuccessModal";
 import VoteModal from "../op/modals/VoteModal";
@@ -25,62 +25,65 @@ import { notification } from "~~/utils/scaffold-eth";
 // TODO: This component is half-using db and half using stubbed data, need point to db for any stubbed data
 const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
-  const [addVote, setAddVote] = useState(false);
+  // const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
   const [openLikedModal, setopenLikedModal] = useState(false);
-  // const [voteAmount, setVoteAmount] = useState(0);
-  const [addBallot, setAddBallot] = useState(false);
-  const [editBallot, setEditBallot] = useState(false);
+  const [newAllocation, setNewAllocation] = useState("");
+  // const [addBallot, setAddBallot] = useState(false);
+  const [editBallotVote, setEditBallotVote] = useState(false);
+  // const [editBallot, setEditBallot] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const userData = { totalOP: 100000 };
+  // const userData = { totalOP: 100000 };
   const [isAdded, setIsAdded] = useState(false);
   const { state, dispatch } = useBallot();
 
-  const projectDataHandle = [
-    {
-      name: "DefiLlama",
+  {
+    /*should be removed, not needed*/
+  }
+  // const projectDataHandle = [
+  //   {
+  //     name: "DefiLlama",
 
-      image: "/assets/gradient-bg.png",
-      op: 20416,
-    },
-    {
-      name: "L2BEAT",
+  //     image: "/assets/gradient-bg.png",
+  //     op: 20416,
+  //   },
+  //   {
+  //     name: "L2BEAT",
 
-      image: "/assets/gradient-bg.png",
-      op: 15416,
-    },
-    {
-      name: "Polynya",
+  //     image: "/assets/gradient-bg.png",
+  //     op: 15416,
+  //   },
+  //   {
+  //     name: "Polynya",
 
-      image: "/assets/gradient-bg.png",
-      op: 12416,
-    },
-    {
-      name: "DefiLlama",
+  //     image: "/assets/gradient-bg.png",
+  //     op: 12416,
+  //   },
+  //   {
+  //     name: "DefiLlama",
 
-      image: "/assets/gradient-bg.png",
-      op: 20416,
-    },
-    {
-      name: "L2BEAT",
+  //     image: "/assets/gradient-bg.png",
+  //     op: 20416,
+  //   },
+  //   {
+  //     name: "L2BEAT",
 
-      image: "/assets/gradient-bg.png",
-      op: 15416,
-    },
-    {
-      name: "Polynya",
+  //     image: "/assets/gradient-bg.png",
+  //     op: 15416,
+  //   },
+  //   {
+  //     name: "Polynya",
 
-      image: "/assets/gradient-bg.png",
-      op: 12416,
-    },
-  ];
-  console.log(project);
-
+  //     image: "/assets/gradient-bg.png",
+  //     op: 12416,
+  //   },
+  // ];
   const addProjectToBallot = () => {
     const _name = project.name as string;
+    setNewAllocation(0);
     dispatch({
       type: "ADD_PROJECT",
       project: {
@@ -91,12 +94,19 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
     });
     notification.success("Added to ballot");
   };
+  const handleAllocationChange = value => {
+    setNewAllocation(value);
+  };
 
-  const handleSaveBallot = () => {
+  const handleEditBallot = () => {
     // TODO: Need to save input data to state
     setLoadingMessage("Saving distribution");
-    setSuccessMessage("Distribution changed successfully");
-    setEditBallot(false);
+    dispatch({
+      type: "UPDATE_ALLOCATION",
+      projectId: project._id,
+      newAllocation,
+    });
+    setEditBallotVote(false);
     setIsLoading(true);
     setTimeout(() => {
       // Spoofed API request to save ballot
@@ -107,12 +117,13 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         setIsSuccess(false);
       }, 2000);
     }, 1000);
+    setSuccessMessage("Distribution changed successfully");
   };
 
-  const handleAddOrEditModal = (close: boolean, edit = false) => {
-    setEditBallot(!close && edit);
-    setAddBallot(!close && !edit);
-  };
+  // const handleAddOrEditModal = (close: boolean, edit = false) => {
+  //   setEditBallot(!close && edit);
+  //   setAddBallot(!close && !edit);
+  // };
 
   useEffect(() => {
     if (!state) return;
@@ -137,7 +148,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         />
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-col md:flex-row gap-4">
         <div className="ml-[30px] flex items-center flex-wrap">
           <Image
             width={500}
@@ -202,7 +213,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           </div>
         </div>
 
-        <div className="relative flex self-end">
+        <div className="relative flex md:self-end">
           <button
             onClick={() => {
               setopenLikedModal(!openLikedModal);
@@ -214,9 +225,9 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
 
           {openLikedModal && (
             <div className="absolute  bg-white rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite">
-              <button onClickCapture={() => setAddVote(true)} className="flex gap-4 items-center">
+              <button onClickCapture={() => setEditBallotVote(true)} className="flex gap-4 items-center">
                 <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
-                <p onClick={() => handleSaveBallot()}>Edit Distribution</p>
+                <p>Edit Distribution</p>
               </button>
               <button className="flex gap-4 items-center">
                 <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
@@ -238,25 +249,33 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
             {isAdded ? "Added to ballot" : "Add to Ballot"}
           </button>
 
-          {addVote && <VoteModal onClose={() => setAddVote(false)} handleAddBallot={() => handleAddBallot()} />}
-
-          {addBallot && (
+          {editBallotVote && (
+            <VoteModal
+              project={state.projects.find(val => val.id === project._id)}
+              onClose={() => setEditBallotVote(false)}
+              allocation={newAllocation}
+              handleAddBallot={() => handleEditBallot()}
+              handleAllocationChange={handleAllocationChange}
+            />
+          )}
+          {/*should be removed, not needed*/}
+          {/* {addBallot && (
             <AlreadyOnBallotConflictModal
               onClose={() => handleAddOrEditModal(true)}
               handleAddBallot={handleAddBallot}
               projectList={projectDataHandle}
               edit={() => handleAddOrEditModal(false, true)}
             />
-          )}
-          {/* TODO: Fix this EditDistributionModal */}
-          {editBallot && (
+          )} */}
+          {/* TODO: should be removed, no longer needed */}
+          {/* {editBallot && (
             <EditDistributionModal
               onClose={() => handleAddOrEditModal(true)}
               userTotal={userData.totalOP}
               projectList={projectDataHandle}
               edit={() => handleAddOrEditModal(false, true)}
             />
-          )}
+          )} */}
           {isLoading && <LoadingModal message={loadingMessage} />}
           {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
         </div>
