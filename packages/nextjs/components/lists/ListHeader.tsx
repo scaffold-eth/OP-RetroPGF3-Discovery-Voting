@@ -75,7 +75,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
           <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
           <button
             onClick={() => handleShuffle()}
-            className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite"
+            className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite hover:text-black"
           >
             <span className="flex ">
               <ArrowsUpDownIcon className="w-[15px] h-[25px]" />

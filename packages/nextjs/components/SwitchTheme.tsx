@@ -21,7 +21,9 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
         checked={isDarkMode}
       /> */}
       <button
-        className={`btn btn-secondary btn-sm h-10 px-1.5 rounded-full border-2 border-slate-200`}
+        className={`btn btn-secondary btn-sm h-10 px-1.5 rounded-full border-1 border-slate-200 ${
+          !isDarkMode ? "hover:bg-slate-200" : "hover:bg-slate-500"
+        }`}
         onClick={toggle}
       >
         {isMounted() && (
