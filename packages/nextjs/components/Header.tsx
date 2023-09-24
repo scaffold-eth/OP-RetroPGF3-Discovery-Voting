@@ -42,7 +42,7 @@ export const Header = () => {
       <li>
         <NavLink href="/projects">Projects</NavLink>
       </li>
-      <li className="dark:text-white">
+      <li className="">
         <NavLink href="/lists">Lists</NavLink>
       </li>
       <li className="flex sm:hidden">
