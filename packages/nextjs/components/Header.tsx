@@ -89,7 +89,7 @@ export const Header = () => {
       <div className="self-center   flex-grow mr-4 max-w-[400px]">
         <SearchProjects />
       </div>
-      <div className="hidden sm:flex self-end   w-fit mr-4">
+      <div className="hidden sm:flex     w-fit mr-4">
         <RainbowKitCustomConnectButton />
         <SwitchTheme className="pointer-events-auto hidden md:block" />
       </div>
