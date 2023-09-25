@@ -42,15 +42,21 @@ export const Header = () => {
       <li>
         <NavLink href="/projects">Projects</NavLink>
       </li>
-      <li>
+      <li className="">
         <NavLink href="/lists">Lists</NavLink>
+      </li>
+      <li className="flex sm:hidden">
+        <RainbowKitCustomConnectButton />
+      </li>
+      <li className="md:hidden">
+        <SwitchTheme className="pointer-events-auto" />
       </li>
     </>
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2">
-      <div className="navbar-start w-1/3 ">
+    <div className=" sticky w-full lg:static top-0 gap-2 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md px-0 sm:px-2">
+      <div className="   ">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
             tabIndex={0}
@@ -64,7 +70,7 @@ export const Header = () => {
           {isDrawerOpen && (
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content flex gap-5 flex-col min-h-[100px] mt-3 pb-3 p-2 shadow bg-base-100 rounded-box w-52 dark:text-white"
               onClick={() => {
                 setIsDrawerOpen(false);
               }}
@@ -80,12 +86,12 @@ export const Header = () => {
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
-      <div className="navbar-center w-1/3 flex-grow">
+      <div className="self-center   flex-grow mr-4 max-w-[400px]">
         <SearchProjects />
       </div>
-      <div className="navbar-end w-1/3 flex-grow mr-4">
+      <div className="hidden sm:flex     w-fit mr-4">
         <RainbowKitCustomConnectButton />
-        <SwitchTheme className="pointer-events-auto" />
+        <SwitchTheme className="pointer-events-auto hidden md:block" />
       </div>
     </div>
   );
