@@ -5,7 +5,7 @@
 @import "tailwindcss/utilities";
 :root,
 [data-theme] {
-  background: #ffffff;
+  background: hsl(var(--b2));
 }
 
 body {

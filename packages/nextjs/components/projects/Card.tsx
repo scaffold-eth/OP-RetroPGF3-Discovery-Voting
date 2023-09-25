@@ -10,7 +10,7 @@ const Card = ({ project, display }: any) => {
   return (
     <div>
       {display === "grids" ? (
-        <div className="border border-grey-300 rounded-[1.5em] p-2 bg-base-100">
+        <div className="rounded-[1.5em] p-2 bg-base-100">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             {banner ? (
               <Image

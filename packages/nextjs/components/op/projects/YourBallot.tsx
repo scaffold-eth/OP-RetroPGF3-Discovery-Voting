@@ -44,7 +44,7 @@ const YourBallot = () => {
       </div>
       {state.projects.length === 0 && (
         <div className="mt-5">
-          <button disabled className=" py-3 w-full rounded-lg bg-customWhite text-OPlightgray">
+          <button disabled className=" py-3 w-full rounded-lg bg-gray-400 text-white">
             No Projects added yet
           </button>
         </div>
