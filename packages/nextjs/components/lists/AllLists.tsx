@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Spinner } from "../Spinner";
+import Pagination from "./Pagination";
 import useSWR from "swr";
 import { useSignMessage } from "wagmi";
 import { useAccount } from "wagmi";
 import Card from "~~/components/lists/Card";
 import ListHeader from "~~/components/lists/ListHeader";
-import Pagination from "~~/components/lists/Pagination";
+import YourBallot from "~~/components/op/projects/YourBallot";
+import Sidebar from "~~/components/shared/Sidebar";
 import { ListDocument } from "~~/models/List";
 import VerifyOptions from "~~/types/verifyOptions";
 import { fetcher } from "~~/utils/fetcher";
@@ -18,7 +21,15 @@ const AllLists: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
   const [loadingListId, setLoadingListId] = useState<string>("");
-  const { data: lists, mutate } = useSWR<ListDocument[]>(`/api/list`, fetcher);
+  const {
+    data: listsData,
+    isLoading: isLoadingList,
+    mutate,
+  } = useSWR(`/api/list?pageQuery=${currentPage}&limit=12`, fetcher);
+  const [totalPages, setTotalPages] = useState(1);
+  const [lists, setLists] = useState<ListDocument[] | undefined>([]);
+  const { isDisconnected } = useAccount();
+  const [wallet, setWallet] = useState<boolean | false>(false);
 
   const { signMessageAsync } = useSignMessage({
     onSettled(data, error) {
@@ -28,7 +39,6 @@ const AllLists: React.FC = () => {
   });
 
   const { address } = useAccount();
-  const totalPages = 5;
 
   const handlePageChange = (pageNumber: any) => {
     setCurrentPage(pageNumber);
@@ -43,17 +53,15 @@ const AllLists: React.FC = () => {
     return await signMessageAsync({ message: messageToSign });
   };
 
-  // const sendLikeRequest = async (address: string | undefined, signature: string, listId: string) => {
-  //   const payload = { address, signature, listId };
+  useEffect(() => {
+    setWallet(isDisconnected);
+  }, [isDisconnected]);
 
-  //   const response = await fetch("/api/list/like", {
-  //     method: "POST",
-  //     headers: { "content-type": "application/json" },
-  //     body: JSON.stringify(payload),
-  //   });
-
-  //   return response.json();
-  // };
+  useEffect(() => {
+    if (!listsData) return;
+    setTotalPages(listsData.totalPages);
+    setLists(listsData.lists);
+  }, [listsData]);
 
   const handleLike = async (list: any) => {
     try {
@@ -83,27 +91,50 @@ const AllLists: React.FC = () => {
   const filteredProjects =
     selectedCategory === "all" ? lists : lists?.filter(list => list?.tags?.includes(selectedCategory));
 
-  if (lists && lists?.length < 1)
+  if (lists && lists.length === 0 && isLoadingList) {
+    return (
+      <div className="flex mt-8 pt-8 justify-center">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (lists && lists.length === 0)
     return (
       <div className="text-center font-bold text-2xl pt-8">
         <h1>No list available...</h1>
       </div>
     );
+
   return (
-    <div className="w-full">
-      <ListHeader displayList={displayList} titleHeader="Lists" display={display} onCategoryChange={onCategoryChange} />
-      <div
-        className={`px-4 w-full grid pt-8 gap-4 ${
-          display === "grids" ? "list__container-card_display  " : "grid-rows-1 w-full"
-        } `}
-      >
-        {filteredProjects?.map(list => (
-          <div key={list._id} className={`${display === "grids" && "w-fit"}`}>
-            <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
+    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+      {!wallet ? <YourBallot /> : <Sidebar />}
+      {isLoadingList ? (
+        <div className="flex mt-8 pt-8 justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="w-full pb-10 mb-5">
+          <ListHeader
+            displayList={displayList}
+            titleHeader="Lists"
+            display={display}
+            onCategoryChange={onCategoryChange}
+          />
+          <div
+            className={`px-4 w-full grid pt-8 gap-4 ${
+              display === "grids" ? "list__container-card_display  " : "grid-rows-1 w-full"
+            } `}
+          >
+            {filteredProjects?.map(list => (
+              <div key={list._id} className={`${display === "grids" && "w-fit"}`}>
+                <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+          <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+        </div>
+      )}
     </div>
   );
 };
