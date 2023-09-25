@@ -36,7 +36,6 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  // const userData = { totalOP: 100000 };
   const [isAdded, setIsAdded] = useState(false);
   const { state, dispatch } = useBallot();
 
