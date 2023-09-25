@@ -28,7 +28,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   // const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
   const [openLikedModal, setOpenLikedModal] = useState(false);
-  const [newAllocation, setNewAllocation] = useState("");
+  const [newAllocation, setNewAllocation] = useState(0);
   // const [addBallot, setAddBallot] = useState(false);
   const [editBallotVote, setEditBallotVote] = useState(false);
   // const [editBallot, setEditBallot] = useState(false);
@@ -41,19 +41,20 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
 
   const addProjectToBallot = () => {
     const _name = project.name as string;
-    setNewAllocation(0);
+    setNewAllocation(1);
     dispatch({
       type: "ADD_PROJECT",
       project: {
         id: project._id,
         name: _name,
-        allocation: 0,
+        allocation: 1,
       },
     });
     notification.success("Added to ballot");
   };
   const handleAllocationChange = value => {
-    setNewAllocation(value);
+    setNewAllocation(Number(value));
+    // state.projects.reduce((sum, p) => sum + p.allocation, value);
   };
 
   const handleEditBallot = () => {
