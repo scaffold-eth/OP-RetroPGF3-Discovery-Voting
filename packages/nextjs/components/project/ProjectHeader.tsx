@@ -17,7 +17,7 @@ import {
   EllipsisHorizontalIcon,
   FolderIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowUturnRightIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
+import { ArrowUturnRightIcon, CheckBadgeIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
 import { useBallot } from "~~/context/BallotContext";
 import { ProjectDocument } from "~~/models/Project";
 import { notification } from "~~/utils/scaffold-eth";
@@ -27,7 +27,6 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
   // const [addVote, setAddVote] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
-  const [openLikedModal, setOpenLikedModal] = useState(false);
   const [newAllocation, setNewAllocation] = useState(0);
   // const [addBallot, setAddBallot] = useState(false);
   const [editBallotVote, setEditBallotVote] = useState(false);
@@ -58,8 +57,14 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   };
 
   const handleEditBallot = () => {
-    // TODO: Need to save input data to state
-    setLoadingMessage("Saving distribution");
+    let message = "Saving distribution";
+    let completedMessage = "Distribution changed successfully";
+    if (!isAdded) {
+      addProjectToBallot();
+      message = "Adding project to ballot";
+      completedMessage = "Successfully added project";
+    }
+    setLoadingMessage(message);
     dispatch({
       type: "UPDATE_ALLOCATION",
       projectId: project._id,
@@ -76,8 +81,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         setIsSuccess(false);
       }, 2000);
     }, 1000);
-    setSuccessMessage("Distribution changed successfully");
-    setOpenLikedModal(false);
+    setSuccessMessage(completedMessage);
   };
 
   // const handleAddOrEditModal = (close: boolean, edit = false) => {
@@ -124,7 +128,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
                 <div className="flex items-center gap-8 flex-wrap">
                   <a
                     href="#"
-                    className="bg-gradient-to-r from-OPred to-purple inline-block text-transparent bg-clip-text"
+                    className="bg-gradient-to-r from-primary to-purple inline-block text-transparent bg-clip-text"
                   >
                     {handle}
                   </a>
@@ -174,39 +178,50 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         </div>
 
         <div className="relative flex md:self-end">
-          <button
-            onClick={() => {
-              setOpenLikedModal(!openLikedModal);
-            }}
-            className="py-2 px-2 rounded-md flex border border-neutral mr-4"
-          >
-            <EllipsisHorizontalIcon className="font-semibold  h-10 w-10 text-neutral-content" />
-          </button>
+          <div className="dropdown">
+            <label tabIndex={0} className="cursor-pointer py-2 px-2 rounded-md flex border border-gray-200 mr-4">
+              <EllipsisHorizontalIcon className="font-semibold  h-10 w-10 text-neutral-content" />
+            </label>
+            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-white rounded-xl rounded-box w-52">
+              {isAdded && (
+                <li
+                  onClickCapture={() => setEditBallotVote(true)}
+                  className="cursor-pointer flex flex-row items-center"
+                >
+                  <div className="w-full py-0">
+                    <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
+                    <p className="text-OPdarkgray">Edit Distribution</p>
+                  </div>
+                </li>
+              )}
+              <li className="cursor-pointer flex flex-row items-center">
+                <div className="w-full py-0">
+                  <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
+                  <p className="text-OPdarkgray">Share</p>
+                </div>
+              </li>
+              <li className="cursor-pointer flex flex-row items-center">
+                <div className="w-full py-0">
+                  <FlagIcon className="w-6 h-6  text-OPdarkgray" />
+                  <p className="text-OPdarkgray">Report</p>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-          {openLikedModal && (
-            <div className="absolute  bg-OPwhite rounded-xl top-16 -left-0 sm:right-0 py-3 px-8  border-[1px] border-OPoffwhite text-OPblack">
-              <button onClickCapture={() => setEditBallotVote(true)} className="flex gap-4 items-center">
-                <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
-                <p>Edit Distribution</p>
-              </button>
-              <button className="flex gap-4 items-center ">
-                <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
-                <p>Share</p>
-              </button>
-              <button className="flex gap-4 items-center">
-                <FlagIcon className="w-6 h-6 text-OPdarkgray" />
-                <p>Report</p>
-              </button>
-            </div>
-          )}
-
           <button
-            onClick={() => addProjectToBallot()}
+            onClick={() => setEditBallotVote(true)}
             disabled={isAdded}
-            className="rounded-lg flex  items-center   bg-OPred text-white py-2 px-4 xl:px-8"
+            className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap ${
+              isAdded ? "border-gray-200 text-primary border-2 whitespace-nowrap bg-white" : "bg-primary text-white"
+            }`}
           >
-            <FolderIcon className=" font-semibold  h-10 w-10 text-white mr-4" />
-            {isAdded ? "Added to ballot" : "Add to Ballot"}
+            {isAdded ? (
+              <CheckBadgeIcon className=" font-semibold  h-6 w-6 text-primary mr-4" />
+            ) : (
+              <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
+            )}
+            {isAdded ? `${newAllocation.toLocaleString()} OP allocated` : "Add to Ballot"}
           </button>
 
           {editBallotVote && (
