@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { NextPage } from "next";
 import { Transaction, TransactionReceipt, formatEther, formatUnits } from "viem";
 import { usePublicClient } from "wagmi";
@@ -11,7 +11,8 @@ const TransactionPage: NextPage = () => {
   const client = usePublicClient({ chainId: hardhat.id });
 
   const router = useRouter();
-  const { txHash } = router.query as { txHash?: `0x${string}` };
+  const searchParams = useSearchParams();
+  const txHash = searchParams.get("txHash") as `0x${string}`;
   const [transaction, setTransaction] = useState<Transaction>();
   const [receipt, setReceipt] = useState<TransactionReceipt>();
   const [functionCalled, setFunctionCalled] = useState<string>();

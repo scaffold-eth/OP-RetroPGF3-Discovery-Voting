@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import fs from "fs";
 import { GetServerSideProps } from "next";
 import path from "path";

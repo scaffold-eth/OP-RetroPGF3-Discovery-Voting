@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import SearchProjects from "./SearchProjects";
 import { SwitchTheme } from "./SwitchTheme";
 import { Bars3Icon } from "@heroicons/react/24/outline";
@@ -9,8 +9,8 @@ import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const router = useRouter();
-  const isActive = router.pathname === href;
+  const pathname = usePathname();
+  const isActive = pathname === href;
   return (
     <Link
       href={href}
