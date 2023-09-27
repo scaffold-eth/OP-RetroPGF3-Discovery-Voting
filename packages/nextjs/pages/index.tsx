@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   // Redirect to projects page
   useEffect(() => {
     push("/projects");
-  }, []);
+  }, [push]);
   return (
     <>
       <MetaHeader />
