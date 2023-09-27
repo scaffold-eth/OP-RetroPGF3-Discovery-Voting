@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { NextPage } from "next";
@@ -5,9 +6,11 @@ import { BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/
 import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
-  const router = useRouter();
+  const { push } = useRouter();
   // Redirect to projects page
-  router.push("/projects");
+  useEffect(() => {
+    push("/projects");
+  }, [push]);
   return (
     <>
       <MetaHeader />

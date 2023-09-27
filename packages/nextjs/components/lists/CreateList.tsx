@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import CreatableSelect from "react-select/creatable";
 import { useAccount } from "wagmi";
 import { useBallot } from "~~/context/BallotContext";
