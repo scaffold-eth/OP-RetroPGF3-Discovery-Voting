@@ -53,7 +53,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
 
   return (
     <div>
-      <div className="flex justify-between px-4">
+      <div className="flex justify-between flex-col xs:flex-row gap-2 px-4">
         <h1 className="font-bold text-2xl leading-8 ">{titleHeader}</h1>
         <div className="flex gap-2 items-center">
           <div
