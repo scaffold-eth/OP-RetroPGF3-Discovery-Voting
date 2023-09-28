@@ -114,13 +114,15 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
 
       <div className="flex justify-between flex-col md:flex-row gap-4">
         <div className="ml-[30px] flex items-center flex-wrap">
-          <Image
-            width={500}
-            height={500}
-            className=" mt-[-20px] w-[134px] h-[134px] rounded-lg shadow-md  "
-            src="/assets/project/image 4.png"
-            alt="project image"
-          />
+          <div className="mt-[-20px] max-w-[134px] w-full h-[134px]">
+            <Image
+              width={500}
+              height={500}
+              className=" w-full  rounded-lg shadow-md  "
+              src="/assets/project/image 4.png"
+              alt="project image"
+            />
+          </div>
           <div className="ml-[20px] mt-[-50px] flex-wrap">
             <h1 className="pt-20 font-semibold sm:text-xl md:text-2xl  lg:text-4xl  leading-11">{project.name}</h1>
             <div className="flex justify-between flex-wrap">

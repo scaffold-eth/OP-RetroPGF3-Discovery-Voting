@@ -127,7 +127,7 @@ const AllLists: React.FC = () => {
             } `}
           >
             {filteredProjects?.map(list => (
-              <div key={list._id} className={`${display === "grids" && "w-fit"}`}>
+              <div key={list._id} className={`${display === "grids" && "max-w-[400px] w-full"}`}>
                 <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
               </div>
             ))}

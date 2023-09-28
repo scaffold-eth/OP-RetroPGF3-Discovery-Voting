@@ -68,7 +68,7 @@ const AllProjects = () => {
   }
 
   return (
-    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4">
+    <div className="mx-auto px-12 mt-12 grid grid-cols-1 lg:grid-cols-[350px,1fr] gap-4">
       {!wallet ? <YourBallot /> : <Sidebar />}
       <div>
         {isLoading ? (
@@ -76,7 +76,7 @@ const AllProjects = () => {
             <Spinner />
           </div>
         ) : (
-          <div className="container mx-auto">
+          <div className="container  mx-auto">
             <ListHeader
               displayList={displayList}
               titleHeader="Projects"
@@ -85,9 +85,10 @@ const AllProjects = () => {
               projects={allProjects}
               onShuffleProjects={setAllProjects}
             />
+
             <div
               className={`px-4 grid pt-8 gap-4 ${
-                display == "grids" ? "lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1" : "grid-rows-1 w-full"
+                display == "grids" ? "w-full grid-cols-1 lg:grid-cols-3 md:grid-cols-2 " : "grid-rows-1 w-full"
               } `}
             >
               {filteredProjects?.map(project => (
