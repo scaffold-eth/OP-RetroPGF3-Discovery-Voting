@@ -102,7 +102,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
           </div>
         ))}
       </div>
-      <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
+      <div className="rounded-2xl bg-[#F1F4F9] text-black px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
         <p>{projects.reduce((sum, p) => sum + p.votes, 0)} OP</p>
       </div>
