@@ -5,6 +5,7 @@ import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 // Import a custom button component
 import BaseModal from "./BaseModal";
+import { useBallot } from "~~/context/BallotContext";
 
 // Import the BaseModal component
 
@@ -19,11 +20,20 @@ interface IVoteModal {
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
   allocation: string | number;
+  isAllocationError: boolean;
 }
 
 // Define the VoteModal component as a functional component that receives props of type IVoteModal
-const VoteModal: React.FC<IVoteModal> = ({ project, handleAllocationChange, onClose, handleAddBallot, allocation }) => {
+const VoteModal: React.FC<IVoteModal> = ({
+  project,
+  handleAllocationChange,
+  onClose,
+  handleAddBallot,
+  allocation,
+  isAllocationError,
+}) => {
   // Return the JSX code representing the VoteModal component
+  const { state } = useBallot();
 
   return (
     <BaseModal onClose={onClose}>
@@ -37,9 +47,16 @@ const VoteModal: React.FC<IVoteModal> = ({ project, handleAllocationChange, onCl
             ✕
           </button>
         </div>
-        <p className="text-OPgray text-sm">
-          All the data will be saved locally on this browser until you finalize your vote.
-        </p>
+        {isAllocationError ? (
+          <p className="bg-warning text-warning-content text-xs p-2">
+            Total allocated OP exceeds your available tokens of {state.totalTokens} OP, allocation have been
+            automatically adjusted
+          </p>
+        ) : (
+          <p className="text-OPgray text-sm">
+            All the data will be saved locally on this browser until you finalize your vote.
+          </p>
+        )}
 
         <div className="rounded-xl p-1 bg-OPoffwhite mb-3 items-center grid justify-start grid-flow-col gap-4">
           <div className="w-[50px]">

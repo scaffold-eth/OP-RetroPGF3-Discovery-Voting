@@ -1,6 +1,6 @@
 // TODO add type checking to file by removing next line, reliant on fixing EditDistributionModal
 // @ts-nocheck
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 // import AlreadyOnBallotConflictModal from "../op/modals/AlreadyOnBallotConflictModal";
 // import EditDistributionModal from "../op/modals/EditDistributionModal";
@@ -26,8 +26,8 @@ import { notification } from "~~/utils/scaffold-eth";
 const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
   // const [addVote, setAddVote] = useState(false);
+  const _project = project;
   const [addressCopied, setAddressCopied] = useState(false);
-  const [newAllocation, setNewAllocation] = useState(0);
   // const [addBallot, setAddBallot] = useState(false);
   const [editBallotVote, setEditBallotVote] = useState(false);
   // const [editBallot, setEditBallot] = useState(false);
@@ -36,24 +36,63 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isAdded, setIsAdded] = useState(false);
+  const [isAllocationError, setIsAllocationError] = useState(false);
   const { state, dispatch } = useBallot();
+  const [prevProjectAllocation] = state.projects.filter(project => project.id === _project._id);
+  const [newAllocation, setNewAllocation] = useState<number>(prevProjectAllocation?.allocation ?? 0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && event.target instanceof Node && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const addProjectToBallot = () => {
     const _name = project.name as string;
-    setNewAllocation(1);
+    setNewAllocation(!Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0);
     dispatch({
       type: "ADD_PROJECT",
       project: {
         id: project._id,
         name: _name,
-        allocation: 1,
+        allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
       },
     });
     notification.success("Added to ballot");
   };
+
   const handleAllocationChange = value => {
-    setNewAllocation(Number(value));
-    // state.projects.reduce((sum, p) => sum + p.allocation, value);
+    setIsAllocationError(false);
+    let currentTotalAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
+    const currentProjectId = project._id;
+    // Ensure value is a number
+    value = Number(value);
+
+    if (isNaN(value)) {
+      value = Number.isNaN(newAllocation) ? 0 : newAllocation;
+    }
+
+    // Deduct the current project's allocation, since we're editing it
+    const currentProjectAllocation = state.projects.find(p => p.id === currentProjectId)?.allocation || 0;
+    currentTotalAllocation -= currentProjectAllocation;
+
+    const projectedTotal = value + currentTotalAllocation;
+
+    if (projectedTotal > state.totalTokens) {
+      value = state.totalTokens - currentTotalAllocation;
+      setIsAllocationError(true);
+    }
+
+    setNewAllocation(value);
   };
 
   const handleEditBallot = () => {
@@ -180,35 +219,44 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         </div>
 
         <div className="relative flex md:self-end">
-          <div className="dropdown">
-            <label tabIndex={0} className="cursor-pointer py-2 px-2 rounded-md flex border border-gray-200 mr-4">
+          <div className="dropdown" ref={dropdownRef}>
+            <label
+              tabIndex={0}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="cursor-pointer py-2 px-2 rounded-md flex border border-gray-200 mr-4"
+            >
               <EllipsisHorizontalIcon className="font-semibold  h-10 w-10 text-neutral-content" />
             </label>
-            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-white rounded-xl rounded-box w-52">
-              {isAdded && (
-                <li
-                  onClickCapture={() => setEditBallotVote(true)}
-                  className="cursor-pointer flex flex-row items-center"
-                >
+            {isDropdownOpen && (
+              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-white rounded-xl rounded-box w-52">
+                {isAdded && (
+                  <li
+                    onClickCapture={() => {
+                      setEditBallotVote(true);
+                      setIsDropdownOpen(false);
+                    }}
+                    className="cursor-pointer flex flex-row items-center"
+                  >
+                    <div className="w-full py-0">
+                      <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
+                      <p className="text-OPdarkgray">Edit Distribution</p>
+                    </div>
+                  </li>
+                )}
+                <li className="cursor-pointer flex flex-row items-center">
                   <div className="w-full py-0">
-                    <AdjustmentsHorizontalIcon className="w-6 h-6 text-OPdarkgray" />
-                    <p className="text-OPdarkgray">Edit Distribution</p>
+                    <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
+                    <p className="text-OPdarkgray">Share</p>
                   </div>
                 </li>
-              )}
-              <li className="cursor-pointer flex flex-row items-center">
-                <div className="w-full py-0">
-                  <ArrowUturnRightIcon className="w-6 h-6 text-OPdarkgray" />
-                  <p className="text-OPdarkgray">Share</p>
-                </div>
-              </li>
-              <li className="cursor-pointer flex flex-row items-center">
-                <div className="w-full py-0">
-                  <FlagIcon className="w-6 h-6  text-OPdarkgray" />
-                  <p className="text-OPdarkgray">Report</p>
-                </div>
-              </li>
-            </ul>
+                <li className="cursor-pointer flex flex-row items-center">
+                  <div className="w-full py-0">
+                    <FlagIcon className="w-6 h-6  text-OPdarkgray" />
+                    <p className="text-OPdarkgray">Report</p>
+                  </div>
+                </li>
+              </ul>
+            )}
           </div>
 
           <button
@@ -223,16 +271,22 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
             ) : (
               <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
             )}
-            {isAdded ? `${newAllocation.toLocaleString()} OP allocated` : "Add to Ballot"}
+            {/* {isAdded ? `${newAllocation.toLocaleString()} OP allocated` : "Add to Ballot"} */}
+            {isAdded && newAllocation > 0
+              ? `${newAllocation} OP allocated`
+              : isAdded && !newAllocation
+              ? "0 OP allocated"
+              : "Add to Ballot"}
           </button>
 
           {editBallotVote && (
             <VoteModal
-              project={state.projects.find(val => val.id === project._id)}
+              project={project}
               onClose={() => setEditBallotVote(false)}
               allocation={newAllocation}
               handleAddBallot={() => handleEditBallot()}
               handleAllocationChange={handleAllocationChange}
+              isAllocationError={isAllocationError}
             />
           )}
           {/*should be removed, not needed*/}
