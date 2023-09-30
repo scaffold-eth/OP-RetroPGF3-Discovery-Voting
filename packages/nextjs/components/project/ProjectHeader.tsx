@@ -262,9 +262,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           <button
             onClick={() => {
               setEditBallotVote(true);
-              // console.log("test");
             }}
-            // disabled={isAdded}
             className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap ${
               isAdded ? "border-gray-200 text-primary border-2 whitespace-nowrap bg-white" : "bg-primary text-white"
             }`}
@@ -274,7 +272,6 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
             ) : (
               <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
             )}
-            {/* {isAdded ? `${newAllocation.toLocaleString()} OP allocated` : "Add to Ballot"} */}
             {isAdded && newAllocation > 0
               ? `${newAllocation} OP allocated`
               : isAdded && !newAllocation
