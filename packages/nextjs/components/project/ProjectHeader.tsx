@@ -260,8 +260,11 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
           </div>
 
           <button
-            onClick={() => setEditBallotVote(true)}
-            disabled={isAdded}
+            onClick={() => {
+              setEditBallotVote(true);
+              // console.log("test");
+            }}
+            // disabled={isAdded}
             className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap ${
               isAdded ? "border-gray-200 text-primary border-2 whitespace-nowrap bg-white" : "bg-primary text-white"
             }`}
