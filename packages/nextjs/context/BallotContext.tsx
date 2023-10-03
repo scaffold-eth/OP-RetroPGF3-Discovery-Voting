@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useContext, useReducer } from "react";
 
 // Interface for project to be added to the ballot
-interface Project {
+export interface Project {
   id: string;
   name: string;
   allocation: number;
@@ -14,7 +14,7 @@ interface SharedProject {
   listId: string;
 }
 // Interface for ballot state
-interface State {
+export interface IState {
   projects: Project[];
   totalTokens: number;
   importedLists: string[];
@@ -26,7 +26,7 @@ interface BallotProviderProps {
 }
 
 type Action =
-  | { type: "LOAD_STATE"; stateData: State }
+  | { type: "LOAD_STATE"; stateData: IState }
   | { type: "ADD_PROJECT"; project: Project }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
@@ -35,7 +35,7 @@ type Action =
 
 // The ballot context structure
 interface BallotContextValue {
-  state: State;
+  state: IState;
   dispatch: React.Dispatch<Action>;
 }
 
@@ -43,7 +43,7 @@ interface BallotContextValue {
 const BallotContext = createContext<BallotContextValue | undefined>(undefined);
 
 // Reducer function for managing state updates
-const reducer = (state: State, action: Action): State => {
+const reducer = (state: IState, action: Action): IState => {
   switch (action.type) {
     case "LOAD_STATE":
       //return action stateData if it exist else return state
@@ -158,7 +158,7 @@ export const BallotProvider: React.FC<BallotProviderProps> = ({ children, totalT
   React.useEffect(() => {
     const localStorageBallot = localStorage.getItem("ballotState");
     if (localStorageBallot) {
-      const ballotData = JSON.parse(localStorageBallot) as State;
+      const ballotData = JSON.parse(localStorageBallot) as IState;
       if (ballotData.projects?.length) {
         dispatch({ type: "LOAD_STATE", stateData: JSON.parse(localStorageBallot) });
       }

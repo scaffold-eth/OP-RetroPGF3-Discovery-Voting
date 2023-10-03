@@ -5,7 +5,7 @@ import useSWR from "swr";
 import { useSignMessage } from "wagmi";
 import { useAccount } from "wagmi";
 import Card from "~~/components/lists/Card";
-import ListHeader from "~~/components/lists/ListHeader";
+import ListsPageHeader from "~~/components/lists/ListsPageHeader";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import Sidebar from "~~/components/shared/Sidebar";
 import { ListDocument } from "~~/models/List";
@@ -89,7 +89,11 @@ const AllLists: React.FC = () => {
   };
 
   const filteredProjects =
-    selectedCategory === "all" ? lists : lists?.filter(list => list?.tags?.includes(selectedCategory));
+    selectedCategory === "all"
+      ? lists
+      : selectedCategory === "liked"
+      ? lists?.filter(list => list?.likes?.length)
+      : lists?.filter(list => list?.tags?.includes(selectedCategory));
 
   if (lists && lists.length === 0 && isLoadingList) {
     return (
@@ -115,11 +119,13 @@ const AllLists: React.FC = () => {
         </div>
       ) : (
         <div className="w-full pb-10 mb-5">
-          <ListHeader
+          <ListsPageHeader
             displayList={displayList}
             titleHeader="Lists"
             display={display}
             onCategoryChange={onCategoryChange}
+            lists={lists}
+            onShuffleLists={setLists}
           />
           <div
             className={`px-4 w-full grid pt-8 gap-4 ${

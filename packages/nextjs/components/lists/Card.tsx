@@ -85,7 +85,11 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
         {tags && tags.length > 0 ? (
           <div className="flex">
             <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> {tags[0]} </span>
-            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> +{tags.length} </span>
+            {tags.length > 1 && (
+              <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+                +{tags.length - 1}
+              </span>
+            )}
           </div>
         ) : (
           ""

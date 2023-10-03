@@ -2,44 +2,26 @@
 // @ts-nocheck
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import AddProjectButton from "../op/btn/AddProjectButton";
 // import AlreadyOnBallotConflictModal from "../op/modals/AlreadyOnBallotConflictModal";
 // import EditDistributionModal from "../op/modals/EditDistributionModal";
-import LoadingModal from "../op/modals/LoadingModal";
-import SuccessModal from "../op/modals/SuccessModal";
-import VoteModal from "../op/modals/VoteModal";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { IconContext } from "react-icons";
 import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
-import {
-  AdjustmentsHorizontalIcon,
-  DocumentDuplicateIcon,
-  EllipsisHorizontalIcon,
-  FolderIcon,
-} from "@heroicons/react/24/outline";
-import { ArrowUturnRightIcon, CheckBadgeIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
+import { AdjustmentsHorizontalIcon, DocumentDuplicateIcon, EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { ArrowUturnRightIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
 import { useBallot } from "~~/context/BallotContext";
 import { ProjectDocument } from "~~/models/Project";
-import { notification } from "~~/utils/scaffold-eth";
+import { isAddedToBallot } from "~~/utils/isAddedToBallot";
 
 // TODO: This component is half-using db and half using stubbed data, need point to db for any stubbed data
 const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
   const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
-  // const [addVote, setAddVote] = useState(false);
-  const _project = project;
   const [addressCopied, setAddressCopied] = useState(false);
-  // const [addBallot, setAddBallot] = useState(false);
-  const [editBallotVote, setEditBallotVote] = useState(false);
-  // const [editBallot, setEditBallot] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [editBallot, setEditBallot] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [isAllocationError, setIsAllocationError] = useState(false);
-  const { state, dispatch } = useBallot();
-  const [prevProjectAllocation] = state.projects.filter(project => project.id === _project._id);
-  const [newAllocation, setNewAllocation] = useState<number>(prevProjectAllocation?.allocation ?? 0);
+  const { state } = useBallot();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -56,87 +38,16 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
     };
   }, []);
 
-  const addProjectToBallot = () => {
-    const _name = project.name as string;
-    setNewAllocation(!Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0);
-    dispatch({
-      type: "ADD_PROJECT",
-      project: {
-        id: project._id,
-        name: _name,
-        allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
-      },
-    });
-    notification.success("Added to ballot");
+  const toggleEditBallotVote = () => {
+    setEditBallot(!editBallot);
+    return editBallot;
   };
-
-  const handleAllocationChange = value => {
-    setIsAllocationError(false);
-    let currentTotalAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
-    const currentProjectId = project._id;
-    // Ensure value is a number
-    value = Number(value);
-
-    if (isNaN(value)) {
-      value = Number.isNaN(newAllocation) ? 0 : newAllocation;
-    }
-
-    // Deduct the current project's allocation, since we're editing it
-    const currentProjectAllocation = state.projects.find(p => p.id === currentProjectId)?.allocation || 0;
-    currentTotalAllocation -= currentProjectAllocation;
-
-    const projectedTotal = value + currentTotalAllocation;
-
-    if (projectedTotal > state.totalTokens) {
-      value = state.totalTokens - currentTotalAllocation;
-      setIsAllocationError(true);
-    }
-
-    setNewAllocation(value);
-  };
-
-  const handleEditBallot = () => {
-    let message = "Saving distribution";
-    let completedMessage = "Distribution changed successfully";
-    if (!isAdded) {
-      addProjectToBallot();
-      message = "Adding project to ballot";
-      completedMessage = "Successfully added project";
-    }
-    setLoadingMessage(message);
-    dispatch({
-      type: "UPDATE_ALLOCATION",
-      projectId: project._id,
-      newAllocation,
-    });
-    setEditBallotVote(false);
-    setIsLoading(true);
-    setTimeout(() => {
-      // Spoofed API request to save ballot
-      setIsLoading(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        // Spoofed response from api
-        setIsSuccess(false);
-      }, 2000);
-    }, 1000);
-    setSuccessMessage(completedMessage);
-  };
-
-  // const handleAddOrEditModal = (close: boolean, edit = false) => {
-  //   setEditBallot(!close && edit);
-  //   setAddBallot(!close && !edit);
-  // };
 
   useEffect(() => {
     if (!state) return;
     setIsAdded(false);
-    const isAddedToBallot = () => {
-      state.projects.forEach((x: any) => {
-        if (x.id === project._id) setIsAdded(true);
-      });
-    };
-    isAddedToBallot();
+    const isProjectInBallot = isAddedToBallot(state, project);
+    setIsAdded(isProjectInBallot);
   }, [project, state]);
 
   return (
@@ -232,7 +143,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
                 {isAdded && (
                   <li
                     onClickCapture={() => {
-                      setEditBallotVote(true);
+                      toggleEditBallotVote();
                       setIsDropdownOpen(false);
                     }}
                     className="cursor-pointer flex flex-row items-center"
@@ -258,57 +169,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
               </ul>
             )}
           </div>
-
-          <button
-            onClick={() => {
-              setEditBallotVote(true);
-            }}
-            className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap ${
-              isAdded ? "border-gray-200 text-primary border-2 whitespace-nowrap bg-white" : "bg-primary text-white"
-            }`}
-          >
-            {isAdded ? (
-              <CheckBadgeIcon className=" font-semibold  h-6 w-6 text-primary mr-4" />
-            ) : (
-              <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
-            )}
-            {isAdded && newAllocation > 0
-              ? `${newAllocation} OP allocated`
-              : isAdded && !newAllocation
-              ? "0 OP allocated"
-              : "Add to Ballot"}
-          </button>
-
-          {editBallotVote && (
-            <VoteModal
-              project={project}
-              onClose={() => setEditBallotVote(false)}
-              allocation={newAllocation}
-              handleAddBallot={() => handleEditBallot()}
-              handleAllocationChange={handleAllocationChange}
-              isAllocationError={isAllocationError}
-            />
-          )}
-          {/*should be removed, not needed*/}
-          {/* {addBallot && (
-            <AlreadyOnBallotConflictModal
-              onClose={() => handleAddOrEditModal(true)}
-              handleAddBallot={handleAddBallot}
-              projectList={projectDataHandle}
-              edit={() => handleAddOrEditModal(false, true)}
-            />
-          )} */}
-          {/* TODO: should be removed, no longer needed */}
-          {/* {editBallot && (
-            <EditDistributionModal
-              onClose={() => handleAddOrEditModal(true)}
-              userTotal={userData.totalOP}
-              projectList={projectDataHandle}
-              edit={() => handleAddOrEditModal(false, true)}
-            />
-          )} */}
-          {isLoading && <LoadingModal message={loadingMessage} />}
-          {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
+          <AddProjectButton project={project} toggleEditModal={editBallot} />
         </div>
       </div>
     </div>

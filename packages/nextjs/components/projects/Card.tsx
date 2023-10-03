@@ -7,6 +7,7 @@ import logo from "~~/public/assets/Logo.png";
 
 const Card = ({ project, display }: any) => {
   const { name, username, banner, description, category } = project;
+
   return (
     <div>
       {display === "grids" ? (

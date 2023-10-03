@@ -7,7 +7,7 @@ type CategoryInfo = {
   projectsCount: number;
 };
 
-function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
+function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
   const [active, setActive] = useState("all");
   const [categories, setCategories] = useState<CategoryInfo[]>([]);
 
@@ -128,4 +128,4 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
   );
 }
 
-export default ListHeader;
+export default ProjectsPageHeader;
