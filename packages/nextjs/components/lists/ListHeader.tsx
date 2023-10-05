@@ -31,6 +31,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
         const categoryCount: Record<string, number> = {};
 
         projects.forEach((project: any) => {
+          console.log("project", project.category);
           if (recordedCategories.has(project.category)) {
             categoryCount[project.category]++;
           } else {
@@ -44,6 +45,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
           projectsCount: categoryCount[category],
         }));
       }
+
       setCategories(getCategories(projects));
     } catch (e) {
       console.log("ERR_SETTING_CATEGORIES", e);

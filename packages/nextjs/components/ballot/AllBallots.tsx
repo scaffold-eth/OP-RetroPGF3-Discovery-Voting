@@ -9,12 +9,12 @@ import ListHeader from "~~/components/lists/ListHeader";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import Sidebar from "~~/components/shared/Sidebar";
 import { useBallot } from "~~/context/BallotContext";
-import { ProjectDocument } from "~~/models/Project";
 import { fetcher } from "~~/utils/fetcher";
 
 interface IBallotProject {
   id: string;
   name: string;
+  category?: string;
   handle: string;
   allocation: number;
   isOpenModal: boolean;
@@ -24,13 +24,13 @@ const AllBallots = () => {
   const { state, dispatch } = useBallot();
   const [wallet, setWallet] = useState<boolean | false>(false);
 
-  const { /*data: projectsData*/ isLoading } = useSWR(`/api/projects?pageQuery=$1&limit=12`, fetcher);
+  const { isLoading } = useSWR(`/api/projects?pageQuery=1&limit=12`, fetcher);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [allProjects, setAllProjects] = useState<ProjectDocument[] | undefined>([]);
-  // const [filteredProjects, setFilteredProjects] = useState<ProjectDocument[] | undefined>([]);
-  // const [totalPages, setTotalPages] = useState(1);
-  // const [openEditModal, setOpenEditModal] = useState(false);
   const [ballotProjects, setBallotProjects] = useState<IBallotProject[]>([]);
+
+  const [filteredBallotProjects, setFilteredBallotProjects] = useState<IBallotProject[] | undefined>([]);
+
+  // const [openEditModal, setOpenEditModal] = useState(false);
   useEffect(() => {
     setBallotProjects([...state.projects.map((project: any) => ({ ...project, isOpenModal: false }))]);
   }, [state]);
@@ -43,21 +43,12 @@ const AllBallots = () => {
   };
   const handleBallotRemoval = (id: string) => {
     handleOpenBallotModal(id);
-    // setBallotProjects(prev => {
-    //   return prev.filter(project => project.id !== id);
-    // });
+
     dispatch({
       type: "REMOVE_PROJECT",
       targetId: id,
     });
   };
-  // const handlePageChange = (pageNumber: any) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
-  // const displayList = (option: string) => {
-  //   setDisplay(option);
-  // };
 
   useEffect(() => {
     setWallet(isDisconnected);
@@ -65,15 +56,15 @@ const AllBallots = () => {
 
   useEffect(() => {
     function filterProjects() {
-      // const _filteredProjects =
-      //   selectedCategory === "all"
-      //     ? allProjects
-      //     : allProjects?.filter(project => project.category === selectedCategory);
-      // setFilteredProjects(_filteredProjects);
+      const _filteredProjects =
+        selectedCategory === "all"
+          ? ballotProjects
+          : ballotProjects?.filter(project => project.category === selectedCategory);
+      setFilteredBallotProjects(_filteredProjects);
     }
     filterProjects();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCategory, allProjects]);
+  }, [selectedCategory, ballotProjects]);
 
   if (isLoading) {
     return (
@@ -90,10 +81,11 @@ const AllBallots = () => {
       <div>
         <div className="container  mx-auto">
           <ListHeader
-            titleHeader="My Ballot"
+            titleHeader="My ballot"
+            display="grids"
             onCategoryChange={setSelectedCategory}
-            projects={allProjects}
-            onShuffleProjects={setAllProjects}
+            projects={ballotProjects}
+            onShuffleProjects={setBallotProjects}
           />
         </div>
 
@@ -110,69 +102,71 @@ const AllBallots = () => {
               </div>
             </div>
           </div>
-          <div
-            className="max-h-[500px] pr-2 overflow-y-auto
+          {filteredBallotProjects && (
+            <div
+              className="max-h-[500px] pr-2 overflow-y-auto
       scrollbar-thin
       scrollbar-thumb-rounded-full
       scrollbar-thumb-OPlightgray"
-          >
-            {ballotProjects.map((project: any, index: number) => (
-              <div
-                key={index}
-                className={`border-OPlightgray py-6 ${
-                  index === ballotProjects.length - 1 ? "" : "border-b-2"
-                }  grid xs:grid-flow-col items-center justify-between `}
-              >
-                <div className={`${!project.handle && "items-center"} grid  grid-flow-col gap-4`}>
-                  <div className={` ${project.handle ? "w-[80px]" : "w-[60px]"}`}>
-                    <Image
-                      alt="project list"
-                      height={"80"}
-                      width={"80"}
-                      src="/assets/gradient-bg.png"
-                      className="w-full rounded-xl"
-                    />
+            >
+              {filteredBallotProjects.map((project: any, index: number) => (
+                <div
+                  key={index}
+                  className={`border-OPlightgray py-6 ${
+                    index === ballotProjects.length - 1 ? "" : "border-b-2"
+                  }  grid xs:grid-flow-col items-center justify-between `}
+                >
+                  <div className={`${!project.handle && "items-center"} grid  grid-flow-col gap-4`}>
+                    <div className={` ${project.handle ? "w-[80px]" : "w-[60px]"}`}>
+                      <Image
+                        alt="project list"
+                        height={"80"}
+                        width={"80"}
+                        src="/assets/gradient-bg.png"
+                        className="w-full rounded-xl"
+                      />
+                    </div>
+                    <div className="">
+                      <h3 className="font-bold text-lg truncate ">{project.name}</h3>
+                      {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">{project.handle}</p>}
+                    </div>
                   </div>
-                  <div className="">
-                    <h3 className="font-bold text-lg truncate ">{project.name}</h3>
-                    {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">@{project.handle}</p>}
+                  <div className="flex items-center gap-2">
+                    <p className="text-lg ">{project.allocation} OP</p>
+                    <div className="relative">
+                      <button
+                        onClick={() => {
+                          handleOpenBallotModal(project.id);
+                        }}
+                        className={` ${
+                          project.isOpenModal && "bg-gray-200"
+                        }  flex items-center rounded-xl p-2 lg:p-3 border-[1px] border-[#CBD5E0]`}
+                      >
+                        <solid.EllipsisHorizontalIcon className="w-6 h-6 " />
+                      </button>
+                      {project.isOpenModal && (
+                        <div className="absolute  bg-white rounded-xl top-16 z-50 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
+                          <button className="flex gap-4 items-center">
+                            <solid.AdjustmentsVerticalIcon className="w-6 h-6 text-[#68778D]" />
+                            <p>Edit</p>
+                          </button>
+                          <button
+                            onClick={() => {
+                              handleBallotRemoval(project.id);
+                            }}
+                            className="flex gap-4 items-center"
+                          >
+                            <solid.TrashIcon className="w-6 h-6 text-[#68778D]" />
+                            <p>Remove</p>
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <p className="text-lg ">{project.allocation} OP</p>
-                  <div className="relative">
-                    <button
-                      onClick={() => {
-                        handleOpenBallotModal(project.id);
-                      }}
-                      className={` ${
-                        project.isOpenModal && "bg-gray-200"
-                      }  flex items-center rounded-xl p-2 lg:p-3 border-[1px] border-[#CBD5E0]`}
-                    >
-                      <solid.EllipsisHorizontalIcon className="w-6 h-6 " />
-                    </button>
-                    {project.isOpenModal && (
-                      <div className="absolute  bg-white rounded-xl top-16 z-50 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
-                        <button className="flex gap-4 items-center">
-                          <solid.AdjustmentsVerticalIcon className="w-6 h-6 text-[#68778D]" />
-                          <p>Edit</p>
-                        </button>
-                        <button
-                          onClick={() => {
-                            handleBallotRemoval(project.id);
-                          }}
-                          className="flex gap-4 items-center"
-                        >
-                          <solid.TrashIcon className="w-6 h-6 text-[#68778D]" />
-                          <p>Remove</p>
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
           <div className="rounded-2xl bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
             <p>Total</p>
             <p>{ballotProjects.reduce((sum, p) => sum + p.allocation, 0)} OP</p>
