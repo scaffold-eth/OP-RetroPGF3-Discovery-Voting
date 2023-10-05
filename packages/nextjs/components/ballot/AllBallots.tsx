@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import SearchProjects from "../SearchProjects";
 import { Spinner } from "../Spinner";
 import LoadingModal from "../op/modals/LoadingModal";
 import SuccessModal from "../op/modals/SuccessModal";
@@ -18,7 +17,7 @@ interface IBallotProject {
   id: string;
   name: string;
   category?: string;
-  handle: string;
+  handle?: string;
   allocation: number;
   isOpenModal: boolean;
 }
@@ -40,7 +39,13 @@ const AllBallots = () => {
   const [newAllocation, setNewAllocation] = useState<number>(0);
   const [selectedBallotProject, setSelectedBallotProject] = useState(state.projects[0]);
   const [isAllocationError, setIsAllocationError] = useState(false);
-
+  const [search, setSearch] = useState("");
+  const handleSearchChange = (e: any) => {
+    setSearch(e.target.value);
+    setFilteredBallotProjects(
+      ballotProjects.filter(project => project.name.toLowerCase().includes(e.target.value.toLowerCase())),
+    );
+  };
   // const [openEditModal, setOpenEditModal] = useState(false);
   useEffect(() => {
     setBallotProjects([...state.projects.map((project: any) => ({ ...project, isOpenModal: false }))]);
@@ -168,8 +173,15 @@ const AllBallots = () => {
                   <span className="text-center rounded-full bg-black w-2 h-2"></span>{" "}
                   <span>{totalAllocatedOp} OP allocated</span>
                 </h3>
-                <div className="">
-                  <SearchProjects />
+                <div className="relative w-full">
+                  <solid.MagnifyingGlassIcon className="pointer-events-none absolute mr-2 w-8 h-6 top-2 pl-2 text-slate-400" />
+                  <input
+                    className="input input-info input-bordered bg-secondary w-full min-w-full pl-10 rounded-md h-10"
+                    name=" search"
+                    value={search}
+                    placeholder="Search for your ballot projects...."
+                    onChange={handleSearchChange}
+                  />
                 </div>
               </div>
             </div>

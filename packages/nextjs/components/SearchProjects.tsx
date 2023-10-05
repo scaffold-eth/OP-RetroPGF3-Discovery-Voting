@@ -41,7 +41,7 @@ const SearchProjects: React.FC = () => {
       return <div className="text-gray-500">No matches found</div>;
     }
     return (
-      <Link className="z-[1000]" href={`${suggestion.type === "project" ? "/projects" : "/lists"}/${suggestion._id}`}>
+      <Link href={`${suggestion.type === "project" ? "/projects" : "/lists"}/${suggestion._id}`}>
         <div>
           {suggestion.name}
           {suggestion.type === "project" ? (
@@ -81,7 +81,7 @@ const SearchProjects: React.FC = () => {
   const theme = {
     suggestionsContainer: `${
       isInputFocused
-        ? "absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto"
+        ? "absolute z-[1000] w-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto"
         : "hidden"
     }`,
     suggestion: "p-2 hover:bg-gray-200 cursor-pointer",
