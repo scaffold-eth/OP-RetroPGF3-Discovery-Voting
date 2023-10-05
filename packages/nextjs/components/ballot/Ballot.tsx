@@ -27,7 +27,7 @@ const BallotComponent: React.FC = () => {
         <span className="bg-red-500 text-white rounded-full p-2">{state.projects.length}</span>
         <span className="ml-2">Ballot</span>
       </button> */}
-      <Link href="/ballot-review">
+      <Link href="/my-ballot">
         <button
           type="button"
           className={`btn min-w-[120px] flex flex-col btn-secondary btn-block rounded-full h-10 btn-sm pl-2 pr-2 border-2 mr-2 border-slate-200 ${

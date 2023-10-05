@@ -4,6 +4,8 @@ import React, { ReactNode, createContext, useContext, useReducer } from "react";
 interface Project {
   id: string;
   name: string;
+  category?: string;
+
   allocation: number;
 }
 // Interface for projects shared via list
@@ -12,6 +14,7 @@ interface SharedProject {
   name: string;
   votes: number;
   listId: string;
+  category?: string;
 }
 // Interface for ballot state
 interface State {
@@ -107,6 +110,7 @@ const reducer = (state: State, action: Action): State => {
           newProjects.push({
             id: listItem.id,
             name: listItem.name,
+            category: listItem.category,
             allocation: additionalVotes,
           });
         }

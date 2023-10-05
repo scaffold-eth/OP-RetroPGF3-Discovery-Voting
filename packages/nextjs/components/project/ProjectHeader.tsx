@@ -64,6 +64,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
       project: {
         id: project._id,
         name: _name,
+        category: project.category,
         allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
       },
     });
