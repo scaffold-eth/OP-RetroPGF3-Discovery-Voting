@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
+import { useBallot } from "~~/context/BallotContext";
 import { shuffle } from "~~/utils/shuffle";
 
 type CategoryInfo = {
@@ -8,6 +9,7 @@ type CategoryInfo = {
 };
 
 function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
+  const { state } = useBallot();
   const [active, setActive] = useState("all");
   const [categories, setCategories] = useState<CategoryInfo[]>([]);
 
@@ -51,7 +53,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
       console.log("ERR_SETTING_CATEGORIES", e);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state, projects]);
 
   return (
     <div>

@@ -5,7 +5,7 @@ interface Project {
   id: string;
   name: string;
   category?: string;
-  handle?: string;
+
   allocation: number;
 }
 // Interface for projects shared via list
@@ -15,7 +15,6 @@ interface SharedProject {
   votes: number;
   listId: string;
   category?: string;
-  handle?: string;
 }
 // Interface for ballot state
 interface State {
@@ -112,7 +111,6 @@ const reducer = (state: State, action: Action): State => {
             id: listItem.id,
             name: listItem.name,
             category: listItem.category,
-            handle: listItem.handle,
             allocation: additionalVotes,
           });
         }
