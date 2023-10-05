@@ -1,42 +1,59 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import SearchProjects from "../SearchProjects";
 import { Spinner } from "../Spinner";
-import CreateList from "../lists/CreateList";
+// import CreateList from "../lists/CreateList";
 import CustomProjectButton from "../op/btn/CustomProjectButton";
+// import EditDistributionModal from "../op/modals/EditDistributionModal";
 import SuccessModal from "../op/modals/SuccessModal";
-import { ShareIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
+import { MinusCircleIcon } from "@heroicons/react/20/solid";
 import { useBallot } from "~~/context/BallotContext";
 
+// import { useProjects } from "~~/context/ProjectsContext";
+
 const BallotReview: React.FC = () => {
-  const { state } = useBallot();
+  const { state, dispatch } = useBallot();
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
+  // const { projects } = useProjects();
 
-  const onClose = () => {
-    setIsOpen(false);
+  // const onClose = () => {
+  //   setIsOpen(false);
+  // };
+
+  // const handleSubmit = () => {
+  //   // Validate ballot
+  //   // sign ballot
+  //   // send signed data to api
+  //   console.log("submitting votes");
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //     setIsSuccess(true);
+  //   }, 3000);
+  // };
+
+  const handleRemoveProject = (projectId: any) => {
+    dispatch({ type: "REMOVE_PROJECT", targetId: projectId });
   };
 
-  const handleSubmit = () => {
-    // Validate ballot
-    // sign ballot
-    // send signed data to api
-    console.log("submitting votes");
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSuccess(true);
-    }, 3000);
-  };
-
+  //- {state.totalTokens} OP allocated
   return (
-    <div className="relative border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
-      <div className="project__header-container min-w-[320px]">
-        <div className="project__header-container--content text-center">
-          <h3 className="text-lg sm:text-2xl font-bold items-center">Review Ballot</h3>
-          <p className="p-0 m-0 text-sm text-[#7f97b0] font-bold items-center">Voting Power: {state.totalTokens} OP</p>
+    <div className="relative border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-24 py-10">
+      <div className="project__header-container min-w-[720px] flex items-center justify-around">
+        <div className="project__header-container--content text-center flex items-center justify-center">
+          {/* <p className="p-0 m-0 text-sm text-[#7f97b0] font-bold">28 Projects - 100 OP allocated</p> */}
+          <span className="font-bold text-lg">{state.projects.length} Projects </span>
+          <span className="font-bold">-</span>
+          <span className="font-bold text-end ">
+            {state.projects.reduce((sum, p) => sum + p.allocation, 0)} OP allocated
+          </span>
+        </div>
+        <div>
+          <SearchProjects />
         </div>
       </div>
       <ul
@@ -50,9 +67,9 @@ const BallotReview: React.FC = () => {
             key={index}
             className={`border-[#ccd2db] py-6 ${
               index === state.projects.length - 1 ? "" : "border-b-2"
-            }  grid grid-flow-col items-center justify-between `}
+            }  grid grid-cols-[1fr,1fr,auto] items-center justify-between `}
           >
-            <div className={`${!project.name && "items-center"} grid  grid-flow-col gap-4`}>
+            <div className={`${!project.name && "items-center"} grid grid-flow-col gap-4`}>
               <div className={` ${project.name ? "w-[80px]" : "w-[60px]"}`}>
                 <Image
                   alt="project list"
@@ -62,19 +79,29 @@ const BallotReview: React.FC = () => {
                   className="w-full rounded-xl"
                 />
               </div>
-              <div className="">
+              <div className="flex flex-col justify-center">
                 <h3 className="font-bold text-lg">{project.name}</h3>
               </div>
             </div>
-            <p className="text-lg">{project.allocation} OP</p>
+            <p className="text-lg ml-36">{project.allocation} OP</p>
+            {/* <button className="text-red-5000 text-lg" onClick={() => handleRemoveProject(project.id)}>
+              Delete
+            </button> */}
+            <CustomProjectButton
+              disabled={!state.projects.length ? true : false}
+              text=""
+              onClick={() => handleRemoveProject(project.id)}
+            >
+              <MinusCircleIcon className="text-red-500 w-6 h-6" />
+            </CustomProjectButton>
           </li>
         ))}
       </ul>
-      <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center">
+      <div className="rounded-2xl bg-[#F1F4F9] px-5 grid grid-flow-col justify-between items-center text-OPblack">
         <p>Total</p>
         <p>{state.projects.reduce((sum, p) => sum + p.allocation, 0)} OP</p>
       </div>
-      <div>
+      {/* <div>
         <CustomProjectButton
           disabled={!state.projects.length ? true : false}
           onClick={() => handleSubmit()}
@@ -92,7 +119,7 @@ const BallotReview: React.FC = () => {
           <ShareIcon className="w-5 h-5" />
         </CustomProjectButton>
         <CreateList onClose={onClose} isOpen={isOpen} />
-      </div>
+      </div> */}
       {isLoading && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Spinner />
