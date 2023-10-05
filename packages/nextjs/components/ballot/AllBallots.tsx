@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import SearchProjects from "../SearchProjects";
 import { Spinner } from "../Spinner";
+import LoadingModal from "../op/modals/LoadingModal";
+import SuccessModal from "../op/modals/SuccessModal";
+import VoteModal from "../op/modals/VoteModal";
 import useSWR from "swr";
 import { useAccount } from "wagmi";
 import * as solid from "@heroicons/react/20/solid";
@@ -24,11 +27,19 @@ const AllBallots = () => {
   const { state, dispatch } = useBallot();
   const [wallet, setWallet] = useState<boolean | false>(false);
 
-  const { isLoading } = useSWR(`/api/projects?pageQuery=1&limit=12`, fetcher);
+  const { isLoading: isFetching } = useSWR(`/api/projects?pageQuery=1&limit=12`, fetcher);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [ballotProjects, setBallotProjects] = useState<IBallotProject[]>([]);
 
   const [filteredBallotProjects, setFilteredBallotProjects] = useState<IBallotProject[] | undefined>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [editBallot, setEditBallot] = useState(false);
+  const [newAllocation, setNewAllocation] = useState<number>(0);
+  const [selectedBallotProject, setSelectedBallotProject] = useState(state.projects[0]);
+  const [isAllocationError, setIsAllocationError] = useState(false);
 
   // const [openEditModal, setOpenEditModal] = useState(false);
   useEffect(() => {
@@ -66,13 +77,69 @@ const AllBallots = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, ballotProjects]);
 
-  if (isLoading) {
+  if (isFetching) {
     return (
       <div className="flex mt-8 pt-8 justify-center">
         <Spinner />
       </div>
     );
   }
+
+  //edit
+  const handleAllocationChange = (value: any) => {
+    setIsAllocationError(false);
+    let currentTotalAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
+    const currentProjectId = selectedBallotProject?.id;
+    // Ensure value is a number
+    value = Number(value);
+
+    if (isNaN(value)) {
+      value = Number.isNaN(newAllocation) ? 0 : newAllocation;
+    }
+
+    // Deduct the current project's allocation, since we're editing it
+    const currentProjectAllocation = state.projects.find(p => p.id === currentProjectId)?.allocation || 0;
+    currentTotalAllocation -= currentProjectAllocation;
+
+    const projectedTotal = value + currentTotalAllocation;
+
+    if (projectedTotal > state.totalTokens) {
+      value = state.totalTokens - currentTotalAllocation;
+      setIsAllocationError(true);
+    }
+
+    setNewAllocation(value);
+  };
+
+  const handleEdit = (project: IBallotProject) => {
+    setNewAllocation(project.allocation);
+    setSelectedBallotProject(project);
+    setEditBallot(true);
+  };
+
+  const handleEditBallot = () => {
+    const message = "Saving distribution";
+    const completedMessage = "Distribution changed successfully";
+
+    setLoadingMessage(message);
+    dispatch({
+      type: "UPDATE_ALLOCATION",
+      projectId: selectedBallotProject.id,
+      newAllocation,
+    });
+    setEditBallot(false);
+    setIsLoading(true);
+    setTimeout(() => {
+      // Spoofed API request to save ballot
+      setIsLoading(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        // Spoofed response from api
+        setIsSuccess(false);
+      }, 2000);
+    }, 1000);
+    setSuccessMessage(completedMessage);
+  };
 
   const totalAllocatedOp = ballotProjects.reduce((sum, p) => sum + p?.allocation, 0);
   return (
@@ -150,7 +217,12 @@ const AllBallots = () => {
                         </button>
                         {project.isOpenModal && (
                           <div className="absolute  bg-white rounded-xl top-16 z-50 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
-                            <button className="flex gap-4 items-center">
+                            <button
+                              onClick={() => {
+                                handleEdit(project);
+                              }}
+                              className="flex gap-4 items-center"
+                            >
                               <solid.AdjustmentsVerticalIcon className="w-6 h-6 text-[#68778D]" />
                               <p>Edit</p>
                             </button>
@@ -177,6 +249,18 @@ const AllBallots = () => {
             </div>
           </div>
         )}
+        {editBallot && (
+          <VoteModal
+            project={selectedBallotProject}
+            onClose={() => setEditBallot(false)}
+            allocation={newAllocation}
+            handleAddBallot={() => handleEditBallot()}
+            handleAllocationChange={handleAllocationChange}
+            isAllocationError={isAllocationError}
+          />
+        )}
+        {isLoading && <LoadingModal message={loadingMessage} />}
+        {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
       </div>
     </div>
   );
