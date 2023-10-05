@@ -14,8 +14,13 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
   const [categories, setCategories] = useState<CategoryInfo[]>([]);
 
   const handleButtonClick = (options: string) => {
-    setActive(options);
-    onCategoryChange(options);
+    if (active === options) {
+      setActive("all");
+      onCategoryChange("all");
+    } else {
+      setActive(options);
+      onCategoryChange(options);
+    }
   };
 
   const handleShuffle = () => {
