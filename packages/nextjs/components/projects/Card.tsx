@@ -17,12 +17,12 @@ const Card = ({ project, display }: any) => {
                 <Image
                   width={311}
                   height={112}
-                  className="rounded-[1.05em] object-fill w-full h-full"
+                  className="rounded-[0.6em] object-fill w-full h-full"
                   src={banner}
                   alt="banner"
                 />
               ) : (
-                <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
+                <div className="flex-shrink-0 w-full h-[112px] rounded-[.6em] bg-gray-300"></div>
               )}
               <Image
                 width={54}
