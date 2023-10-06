@@ -29,6 +29,8 @@ const AddProjectButton: React.FC<IAddProjectButton> = ({ disabled, project, togg
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [toggleInitialized, setToggleInitialized] = useState<boolean | undefined>(undefined);
+  // const modalRef = useRef(null);
 
   useEffect(() => {
     if (!state) return;
@@ -39,7 +41,11 @@ const AddProjectButton: React.FC<IAddProjectButton> = ({ disabled, project, togg
 
   useEffect(() => {
     if (toggleEditModal === undefined) return;
-    setEditBallotVote(true);
+    if (toggleInitialized) {
+      setEditBallotVote(true);
+    }
+    setToggleInitialized(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggleEditModal]);
 
   const addProjectToBallot = () => {

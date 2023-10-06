@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Spinner } from "../Spinner";
+import AddListButton from "../op/btn/AddListButton";
 import { Address } from "../scaffold-eth";
 import { useAccount } from "wagmi";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { ProjectDocument } from "~~/models/Project";
+import { IList } from "~~/types/list";
 
 const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const { address } = useAccount();
   const { name, creator, projects, likes, description, tags } = list;
   const isLiked = likes.includes(address);
+  const [populatedList, setPopulatedList] = useState<IList | undefined>();
+
+  const loadListProjectsData = async () => {
+    const response = await fetch("/api/projects");
+    const _projects = await response.json();
+    let _sharedProject = {};
+    const _populatedSharedProjects = [];
+    for (let i = 0; i < list.projects.length; i++) {
+      const projectId = list.projects[i].project;
+      const [p] = _projects.filter((project: ProjectDocument) => project._id === projectId);
+      const projectVotes = list.projects[i].votes;
+      _sharedProject = {
+        id: p._id,
+        name: p.name,
+        votes: projectVotes,
+        listId: list._id,
+      };
+      _populatedSharedProjects.push(_sharedProject);
+    }
+    return { ...list, populatedProjects: _populatedSharedProjects };
+  };
+
+  useEffect(() => {
+    if (!list) return;
+    const populateList = async () => {
+      const data = await loadListProjectsData();
+      setPopulatedList(data);
+    };
+    populateList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [list]);
 
   return (
     <div className=" w-full border rounded-lg border-gray-300  p-4 ">
@@ -94,6 +129,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
         ) : (
           ""
         )}
+        {populatedList ? <AddListButton list={populatedList} customClass="card-btn" /> : <Spinner />}
       </div>
     </div>
   );

@@ -30,7 +30,6 @@ const AllLists: React.FC = () => {
   const [lists, setLists] = useState<ListDocument[] | undefined>([]);
   const { isDisconnected } = useAccount();
   const [wallet, setWallet] = useState<boolean | false>(false);
-
   const { signMessageAsync } = useSignMessage({
     onSettled(data, error) {
       error && notification.error(`${error}`);

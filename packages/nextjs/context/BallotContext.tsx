@@ -7,7 +7,7 @@ export interface Project {
   allocation: number;
 }
 // Interface for projects shared via list
-interface SharedProject {
+export interface SharedProject {
   id: string;
   name: string;
   votes: number;

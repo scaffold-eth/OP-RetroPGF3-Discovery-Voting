@@ -1,24 +1,25 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AddProjectButton from "../op/btn/AddProjectButton";
 import logo from "~~/public/assets/Logo.png";
 
 // import banner from "~~/public/assets/gradient-bg.png";
 
 const Card = ({ project, display }: any) => {
-  const { name, username, banner, description, category } = project;
+  const { name, username, description, category, projectBannerUrl, projectLogoUrl } = project;
 
   return (
     <div>
       {display === "grids" ? (
         <div className="rounded-[1.5em] p-2 bg-base-100">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
-            {banner ? (
+            {projectBannerUrl ? (
               <Image
                 width={311}
                 height={112}
                 className="rounded-[1.05em] object-fill w-full h-full"
-                src={banner}
+                src={projectBannerUrl}
                 alt="banner"
               />
             ) : (
@@ -28,7 +29,7 @@ const Card = ({ project, display }: any) => {
               width={54}
               height={54}
               className="mt-[-22px] ml-[20px] border-4 border-white bg-white rounded-[1.05em] inline-block"
-              src={logo}
+              src={projectLogoUrl ? projectLogoUrl : logo}
               alt="logo"
             />
           </div>
@@ -51,6 +52,7 @@ const Card = ({ project, display }: any) => {
               {" "}
               {category}
             </span>
+            <AddProjectButton project={project} customClass="card-btn" />
           </div>
         </div>
       ) : (
@@ -68,6 +70,7 @@ const Card = ({ project, display }: any) => {
             <p className="text-lightGray text-[14px] font-normal leading-5 ">{description}</p>
             <div className="flex items-center justify-between py-2">
               <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> {category} </span>
+              <AddProjectButton project={project} customClass="card-btn" />
             </div>
           </div>
         </div>

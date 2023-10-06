@@ -75,7 +75,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
 
   return (
     <BaseModal onClose={onClose}>
-      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-white rounded-xl p-6">
+      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-white rounded-xl p-6 ">
         <div className="grid gap-6  grid-flow-col items-center justify-between">
           <h3 className="text-lg font-bold text-center">Edit distribution</h3>
           <button onClick={onClose} className="text-lg btn btn-sm btn-circle btn-ghost">

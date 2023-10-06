@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import AddListToBallotModal from "../op/modals/AddListToBallotModal";
-import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
+import AddListButton from "../op/btn/AddListButton";
+import { AdjustmentsHorizontalIcon } from "@heroicons/react/20/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
-import EditDistributionModal from "~~/components/op/modals/EditDistributionModal";
-import LoadingModal from "~~/components/op/modals/LoadingModal";
-import SuccessModal from "~~/components/op/modals/SuccessModal";
-import { useBallot } from "~~/context/BallotContext";
 import { IList } from "~~/types/list";
 
 interface Props {
@@ -16,31 +12,9 @@ interface Props {
 const SharedProjects: React.FC<Props> = ({ list }) => {
   const { projects, populatedProjects } = list;
   const [editBallot, setEditBallot] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isAddListToBallotModal, setIsAddListToBallotModal] = useState(false);
-  const { dispatch } = useBallot();
 
-  const handleEditModal = (close: boolean, edit = false) => {
-    setIsAddListToBallotModal(false);
-    setEditBallot(!close && edit);
-  };
-
-  const addProjectToBallot = () => {
-    setIsAddListToBallotModal(false);
-    setLoadingMessage("Adding to ballot");
-    setSuccessMessage("Projects added successfully");
-    setIsLoading(true);
-    dispatch({
-      type: "ADD_LIST",
-      projects: populatedProjects,
-    });
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsSuccess(true);
-    }, 1000);
+  const handleEditModal = () => {
+    setEditBallot(!editBallot);
   };
 
   return (
@@ -53,20 +27,14 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
-              onClick={() => handleEditModal(false, true)}
+              onClick={handleEditModal}
               text="Edit distribution"
               customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
             >
               <AdjustmentsHorizontalIcon className="w-5 h-5" />
             </CustomProjectButton>
 
-            <CustomProjectButton
-              onClick={() => setIsAddListToBallotModal(true)}
-              text="Add to ballot"
-              customClassName="bg-OPred py-2 rounded-lg border-OPred  text-[#ffffff]"
-            >
-              <SquaresPlusIcon className="w-5 h-5" />
-            </CustomProjectButton>
+            <AddListButton list={list} toggleEditModal={editBallot} />
           </div>
         </div>
       </div>
@@ -106,18 +74,6 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         <p>Total</p>
         <p>{projects.reduce((sum, p) => sum + p.votes, 0)} OP</p>
       </div>
-      {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal(true, false)} />}
-      {isLoading && <LoadingModal message={loadingMessage} />}
-      {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
-      {isAddListToBallotModal && (
-        <AddListToBallotModal
-          onClose={() => setIsAddListToBallotModal(false)}
-          handleAddBallot={() => addProjectToBallot()}
-          projectList={populatedProjects}
-          userTotal={projects.reduce((sum, p) => sum + p.votes, 0)}
-          edit={() => handleEditModal(false, true)}
-        />
-      )}
     </div>
   );
 };

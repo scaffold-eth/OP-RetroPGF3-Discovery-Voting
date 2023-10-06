@@ -1,5 +1,5 @@
 // Import required modules and components
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 // Import Image component from Next.js to display images efficiently
 import CustomProjectButton from "../btn/CustomProjectButton";
@@ -34,6 +34,13 @@ const VoteModal: React.FC<IVoteModal> = ({
 }) => {
   // Return the JSX code representing the VoteModal component
   const { state } = useBallot();
+  const allocationInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (!allocationInputRef) return;
+    // focus on input when modal opens
+    allocationInputRef.current?.focus();
+  }, [allocationInputRef]);
 
   return (
     <BaseModal onClose={onClose}>
@@ -75,8 +82,9 @@ const VoteModal: React.FC<IVoteModal> = ({
         </div>
         <div className="mb-5 border-OPoffwhite border-2 rounded-xl pr-4 overflow-hidden py-0 grid grid-flow-col justify-between items-center text-OPblack">
           <input
+            ref={allocationInputRef}
             onChange={e => handleAllocationChange(e.target.value)}
-            className="border-none outline-none p-3 w-full  "
+            className="border-none outline-none p-3 w-full "
             value={allocation}
           />{" "}
           {/* Display the number of votes */}

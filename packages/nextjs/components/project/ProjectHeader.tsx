@@ -40,7 +40,6 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
 
   const toggleEditBallotVote = () => {
     setEditBallot(!editBallot);
-    return editBallot;
   };
 
   useEffect(() => {
