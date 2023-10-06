@@ -186,12 +186,7 @@ const AllBallots = () => {
               </div>
             </div>
             {filteredBallotProjects && (
-              <div
-                className="max-h-[500px] pr-2 overflow-y-auto
-  scrollbar-thin
-  scrollbar-thumb-rounded-full
-  scrollbar-thumb-OPlightgray"
-              >
+              <div className="pr-2">
                 {filteredBallotProjects.map((project: any, index: number) => (
                   <div
                     key={index}
