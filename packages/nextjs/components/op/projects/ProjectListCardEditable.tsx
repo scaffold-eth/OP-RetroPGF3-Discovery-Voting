@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { IProjectData } from "../../../types/list";
 import OPInput from "../input/OPInput";
-import { IProjectData } from "./ProjectList";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 const ProjectListCardEditable: React.FC<{

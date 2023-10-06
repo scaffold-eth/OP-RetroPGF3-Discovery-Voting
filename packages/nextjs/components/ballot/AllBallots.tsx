@@ -190,7 +190,7 @@ const AllBallots = () => {
                 {filteredBallotProjects.map((project: any, index: number) => (
                   <div
                     key={index}
-                    className={`border-OPlightgray py-6 ${
+                    className={`border-OPlightgray py-2 ${
                       index === ballotProjects.length - 1 ? "" : "border-b-2"
                     }  grid xs:grid-flow-col items-center justify-between `}
                   >

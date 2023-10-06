@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { IProjectData } from "./ProjectList";
+import { IProjectData } from "../../../types/list";
 
 const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectData }) => {
   return (
@@ -8,12 +8,12 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
       {projectData.map((project: IProjectData, index: number) => (
         <div
           key={index}
-          className={`border-OPlightgray py-6 ${
+          className={`border-OPlightgray py-2 ${
             index === projectData.length - 1 ? "" : "border-b-2"
           }  grid grid-flow-col items-center justify-between `}
         >
-          <div className={`${!project.handle && "items-center"} grid  grid-flow-col gap-4`}>
-            <div className={` ${project.handle ? "w-[80px]" : "w-[60px]"}`}>
+          <div className={`${!project.name && "items-center"} grid  grid-flow-col gap-4`}>
+            <div className={` ${project.name ? "w-[80px]" : "w-[60px]"}`}>
               <Image
                 alt="project list"
                 height={"80"}
