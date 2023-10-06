@@ -11,7 +11,7 @@ const Card = ({ project, display }: any) => {
     <div>
       <Link href={`/projects/${project._id}`}>
         {display === "grids" ? (
-          <div className="rounded-[1.5em] p-2 bg-base-100">
+          <div className=" p-2 border rounded-[1.05em] border-gray-300 bg-base-100">
             <div className="relative overflow-hidden bg-cover bg-no-repeat">
               {banner ? (
                 <Image
