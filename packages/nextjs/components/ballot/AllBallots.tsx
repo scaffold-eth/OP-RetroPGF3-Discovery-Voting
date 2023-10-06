@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Spinner } from "../Spinner";
+import CreateList from "../lists/CreateList";
+import CustomProjectButton from "../op/btn/CustomProjectButton";
 import LoadingModal from "../op/modals/LoadingModal";
 import SuccessModal from "../op/modals/SuccessModal";
 import VoteModal from "../op/modals/VoteModal";
@@ -24,6 +27,7 @@ interface IBallotProject {
 const AllBallots = () => {
   const { isDisconnected } = useAccount();
   const { state, dispatch } = useBallot();
+  const router = useRouter();
   const [wallet, setWallet] = useState<boolean | false>(false);
 
   const { isLoading: isFetching } = useSWR(`/api/projects?pageQuery=1&limit=12`, fetcher);
@@ -40,6 +44,19 @@ const AllBallots = () => {
   const [selectedBallotProject, setSelectedBallotProject] = useState(state.projects[0]);
   const [isAllocationError, setIsAllocationError] = useState(false);
   const [search, setSearch] = useState("");
+  const [isShareOpen, setIsShareOpen] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
+  const handleSubmit = () => {
+    // Validate ballot
+    // sign ballot
+    // send signed data to api
+    console.log("submitting votes");
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsCreated(true);
+    }, 3000);
+  };
   const handleSearchChange = (e: any) => {
     setSearch(e.target.value);
     setFilteredBallotProjects(
@@ -259,6 +276,44 @@ const AllBallots = () => {
               <p>Total</p>
               <p>{totalAllocatedOp} OP</p>
             </div>
+            <div className="flex justify-end items-center  gap-4">
+              <div>
+                <CustomProjectButton
+                  disabled={!state.projects.length ? true : false}
+                  onClick={() => handleSubmit()}
+                  text="Submit ballot"
+                  customClassName="w-full bg-[#000000] py-2 rounded-lg border-[#000000]  text-[#ffffff]"
+                >
+                  <solid.SquaresPlusIcon className="w-5 h-5" />
+                </CustomProjectButton>
+              </div>
+              <div>
+                <CustomProjectButton
+                  disabled={!state.projects.length ? true : false}
+                  onClick={() => setIsShareOpen(true)}
+                  text="Share as list"
+                  customClassName=" w-full bg-[#008080] py-2 rounded-lg border-[#008080]  text-[#ffffff]"
+                >
+                  <solid.ShareIcon className="w-5 h-5" />
+                </CustomProjectButton>
+              </div>
+            </div>
+            <CreateList
+              onClose={() => {
+                setIsShareOpen(false);
+              }}
+              isOpen={isShareOpen}
+            />
+
+            {isCreated && (
+              <SuccessModal
+                message={"Ballot submitted successfully"}
+                onClose={() => {
+                  setIsCreated(false);
+                  router.push("/projects");
+                }}
+              />
+            )}
           </div>
         )}
         {editBallot && (
