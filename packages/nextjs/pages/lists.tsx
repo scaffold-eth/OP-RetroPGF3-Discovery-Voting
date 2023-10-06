@@ -4,7 +4,7 @@ import AllLists from "~~/components/lists/AllLists";
 
 const ListsPage: NextPage = () => {
   return (
-    <div className="bg-base-100">
+    <div>
       <AllLists />
     </div>
   );

@@ -3,7 +3,7 @@ import AllBallots from "~~/components/ballot/AllBallots";
 
 const MyBallot: NextPage = () => {
   return (
-    <div className="bg-base-100">
+    <div>
       <AllBallots />
     </div>
   );
