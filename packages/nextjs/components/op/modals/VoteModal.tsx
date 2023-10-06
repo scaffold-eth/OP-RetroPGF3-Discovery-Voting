@@ -58,7 +58,7 @@ const VoteModal: React.FC<IVoteModal> = ({
           </p>
         )}
 
-        <div className="rounded-xl p-1 bg-OPoffwhite mb-3 items-center grid justify-start grid-flow-col gap-4">
+        <div className="rounded-xl p-1 bg-OPoffwhite dark:bg-secondary mb-3 items-center grid justify-start grid-flow-col gap-4">
           <div className="w-[50px]">
             {/* Render an Image component to display an image related to the project */}
             <Image

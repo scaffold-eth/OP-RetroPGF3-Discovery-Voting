@@ -272,7 +272,7 @@ const AllBallots = () => {
                 ))}
               </div>
             )}
-            <div className="rounded-2xl text-black bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
+            <div className="rounded-2xl  bg-OPoffwhite dark:bg-secondary px-5 grid grid-flow-col justify-between items-center">
               <p>Total</p>
               <p>{totalAllocatedOp} OP</p>
             </div>

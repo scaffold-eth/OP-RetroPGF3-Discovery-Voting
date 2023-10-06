@@ -162,7 +162,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
             </p>
           </div>
         ) : (
-          <div className="mt-4 rounded-2xl bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
+          <div className="mt-4 rounded-2xl bg-OPoffwhite dark:bg-secondary px-5 grid grid-flow-col justify-between items-center">
             <p>Total</p>
             <p>
               {editedProjectsToImport.reduce((sum, p) => sum + p.votes, 0)}/{state.totalTokens} OP

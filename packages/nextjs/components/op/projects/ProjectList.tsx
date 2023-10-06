@@ -137,7 +137,7 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
       >
         <ProjectListCard projectData={projectData} />
       </div>
-      <div className="rounded-2xl bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
+      <div className="rounded-2xl bg-OPoffwhite dark:bg-secondary px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
         <p>{userData.totalOP.toLocaleString()} OP</p>
       </div>
