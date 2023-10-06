@@ -18,7 +18,7 @@ const LoadingModal: React.FC<ILoadingModal> = ({ message }) => {
         console.log("working"); // This function logs "working" to the console when the modal is closed
       }}
     >
-      <div className="w-fit md:w-[400px] flex flex-col gap-5 items-center justify-center bg-base-100 rounded-xl p-6">
+      <div className="w-fit md:w-[400px] flex flex-col gap-5 items-center justify-center bg-secondary rounded-xl p-6">
         <div className="p-3 w-12 h-12 rounded-xl bg-OPlightblue">
           {/* Render a loading spinner with the class "loading-lg" and the text color "text-info" */}
           <div

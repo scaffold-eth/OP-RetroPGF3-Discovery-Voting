@@ -75,7 +75,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
 
   return (
     <BaseModal onClose={onClose}>
-      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-base-100 rounded-xl p-6">
+      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-secondary rounded-xl p-6">
         <div className="grid gap-6  grid-flow-col items-center justify-between">
           <h3 className="text-lg font-bold text-center">Edit distribution</h3>
           <button onClick={onClose} className="text-lg btn btn-sm btn-circle btn-ghost">
@@ -162,7 +162,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
             </p>
           </div>
         ) : (
-          <div className="mt-4 rounded-2xl bg-OPoffwhite dark:bg-secondary px-5 grid grid-flow-col justify-between items-center">
+          <div className="mt-4 rounded-2xl bg-secondary px-5 grid grid-flow-col justify-between items-center">
             <p>Total</p>
             <p>
               {editedProjectsToImport.reduce((sum, p) => sum + p.votes, 0)}/{state.totalTokens} OP

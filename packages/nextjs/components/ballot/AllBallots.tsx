@@ -245,7 +245,7 @@ const AllBallots = () => {
                           <solid.EllipsisHorizontalIcon className="w-6 h-6 " />
                         </button>
                         {project.isOpenModal && (
-                          <div className="absolute  bg-base-100 rounded-xl top-16 z-50 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
+                          <div className="absolute  bg-secondary rounded-xl top-16 z-50 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
                             <button
                               onClick={() => {
                                 handleEdit(project);
@@ -272,7 +272,7 @@ const AllBallots = () => {
                 ))}
               </div>
             )}
-            <div className="rounded-2xl  bg-OPoffwhite dark:bg-secondary px-5 grid grid-flow-col justify-between items-center">
+            <div className="rounded-2xl  bg-base-300 px-5 grid grid-flow-col justify-between items-center">
               <p>Total</p>
               <p>{totalAllocatedOp} OP</p>
             </div>
