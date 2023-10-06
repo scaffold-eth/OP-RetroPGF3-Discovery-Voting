@@ -3,7 +3,7 @@ import AllProjects from "~~/components/projects/AllProjects";
 
 const Projects = () => {
   return (
-    <div>
+    <div className="bg-base-100">
       <AllProjects />
     </div>
   );
