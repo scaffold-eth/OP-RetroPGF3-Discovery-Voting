@@ -141,7 +141,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
               }`}
             >
               {category.category}
-              <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
+              <span className="px-2 py-1 bg-base-100 text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
             </button>
           ))}
       </div>

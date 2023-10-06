@@ -20,7 +20,7 @@ const ConfirmWalletModal: React.FC<IConfirmWalletModal> = ({ message, onClose, d
     <BaseModal onClose={onClose}>
       {" "}
       {/* Render the BaseModal component and pass the onClose prop */}
-      <div className="relative text-center max-w-[500px] md:w-[500px] flex flex-col gap-5 items-center justify-center bg-white rounded-xl p-8">
+      <div className="relative text-center max-w-[500px] md:w-[500px] flex flex-col gap-5 items-center justify-center bg-base-100 rounded-xl p-8">
         {/* Render an XMarkIcon with an onClick event that calls the onClose function */}
         <XMarkIcon onClick={onClose} className="w-8 h-8 text-OPlightgray cursor-pointer absolute right-6 top-6" />
         <div className="p-2 w-fit rounded-xl bg-OPlightgray">

@@ -34,7 +34,7 @@ const Pagination: React.FC<IPagination> = ({ currentPage, totalPages, onPageChan
             className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter  ${
               currentPage === page
                 ? "bg-[#FF0520] text-white"
-                : "border border-gray-300  bg-white text-lightBlack hover:bg-customWhite"
+                : "border border-gray-300  bg-base-100 text-lightBlack hover:bg-customWhite"
             }`}
             onClick={() => onPageChange(page)}
           >
@@ -48,7 +48,7 @@ const Pagination: React.FC<IPagination> = ({ currentPage, totalPages, onPageChan
             className={`px-4 py-2 rounded-md font-normal text-base leading-6 font-inter border border-gray-300 ${
               !nextPage
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed hover:bg-gray-300 hover:text-gray-500"
-                : "bg-white text-lightBlack hover:bg-customWhite"
+                : "bg-base-100 text-lightBlack hover:bg-customWhite"
             }`}
             onClick={() => onPageChange(nextPage ? nextPage : 1)}
           >
