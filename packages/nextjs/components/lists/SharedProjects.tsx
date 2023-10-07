@@ -48,8 +48,8 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       <div className="project__header-container min-w-[320px]">
         <div className="project__header-container--content">
           <h3 className="text-lg sm:text-2xl font-bold   items-center">
-            <span>{projects.length} projects</span>
-            <span> {projects.reduce((sum, p) => sum + p.votes, 0)} OP allocated</span>
+            <span>{projects?.length} projects</span>
+            <span> {projects?.reduce((sum, p) => sum + p.votes, 0)} OP allocated</span>
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
@@ -76,7 +76,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
       >
-        {populatedProjects.map((project, index: number) => (
+        {populatedProjects?.map((project, index: number) => (
           <div
             key={index}
             className={`border-[#ccd2db] py-6 ${
@@ -104,7 +104,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       </div>
       <div className="rounded-2xl bg-base-300 px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
-        <p>{projects.reduce((sum, p) => sum + p.votes, 0)} OP</p>
+        <p>{projects?.reduce((sum, p) => sum + p.votes, 0)} OP</p>
       </div>
       {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal(true, false)} />}
       {isLoading && <LoadingModal message={loadingMessage} />}
@@ -114,7 +114,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
           onClose={() => setIsAddListToBallotModal(false)}
           handleAddBallot={() => addProjectToBallot()}
           projectList={populatedProjects}
-          userTotal={projects.reduce((sum, p) => sum + p.votes, 0)}
+          userTotal={projects?.reduce((sum, p) => sum + p.votes, 0)}
           edit={() => handleEditModal(false, true)}
         />
       )}

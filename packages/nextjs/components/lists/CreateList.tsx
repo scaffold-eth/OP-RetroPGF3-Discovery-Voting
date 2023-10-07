@@ -106,7 +106,13 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
               <label className="label p-0">
                 <span className="label-text mb-2">Tag list</span>
               </label>
-              <CreatableSelect onChange={handleSelectChange} closeMenuOnSelect={false} isMulti options={tagsData} />
+              <CreatableSelect
+                className="bg-secondary"
+                onChange={handleSelectChange}
+                closeMenuOnSelect={false}
+                isMulti
+                options={tagsData}
+              />
             </div>
             <div className="flex justify-between mt-6">
               <button
