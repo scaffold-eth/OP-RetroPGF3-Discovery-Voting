@@ -43,7 +43,7 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
         >
           <ProjectListCard projectData={projectList} />
         </div>
-        <div className="mt-4 rounded-2xl bg-OPlightgray px-5 grid grid-flow-col justify-between items-center">
+        <div className="mt-4 rounded-2xl bg-base-300 px-5 grid grid-flow-col justify-between items-center">
           <p>Total</p>
           <p>{userTotal.toLocaleString()} OP</p>
         </div>
