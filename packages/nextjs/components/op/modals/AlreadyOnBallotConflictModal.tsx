@@ -1,8 +1,8 @@
 // Import required modules and components
 import React from "react";
+import { IProjectData } from "../../../types/list";
 // Import a custom button component
 import CustomProjectButton from "../btn/CustomProjectButton";
-import { IProjectData } from "../projects/ProjectList";
 import ProjectListCardEditable from "../projects/ProjectListCardEditable";
 // Import the BaseModal component
 import BaseModal from "./BaseModal";
