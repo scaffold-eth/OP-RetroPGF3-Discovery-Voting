@@ -35,7 +35,7 @@ const VoteSuccess = () => {
   }, []);
   return (
     <div className=" mt-8 px-12 mx-auto max-w-[1200px] w-full">
-      <div className="rounded-xl bg-white p-4 sm:p-8 shadow-sm md:flex items-center gap-4 lg:gap-10">
+      <div className="rounded-xl bg-base-100 p-4 sm:p-8 shadow-sm md:flex items-center gap-4 lg:gap-10">
         <div className="flex-1 mb-6">
           <h3 className="text-4xl font-bold">Your vote has been submitted! 🥳</h3>
           <p className="text-[#68778D] mt-2">
@@ -50,9 +50,9 @@ const VoteSuccess = () => {
             <ChevronDownIcon className="h-6 w-6 text-gray-500" />
           </button>
         </div>
-        <div className="flex-1 p-5 bg-white rounded-xl ">
+        <div className="flex-1 p-5 bg-base-100 rounded-xl ">
           <div className="bg-[#F1F4F9] mb-4 p-2 mx-auto rounded-full max-w-[300px] flex gap-2">
-            <button className="bg-white px-4 rounded-full p-2 flex-1">Top projects </button>
+            <button className="bg-base-100 px-4 rounded-full p-2 flex-1">Top projects </button>
             <button className=" px-4 rounded-full p-2 flex-1">Categoties </button>
           </div>
           <div className=" flex items-center text-center flex-col">
@@ -92,7 +92,7 @@ const VoteSuccess = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 rounded-xl bg-white p-4 sm:p-8 shadow-sm">
+      <div className="mt-8 rounded-xl bg-base-100 p-4 sm:p-8 shadow-sm">
         <h3 className="text-lg font-bold"> Heres how you voted!</h3>
         <div className="text-[#68778D] grid grid-flow-col items-center justify-start gap-2">
           <LockClosedIcon className="w-4 h-4 " />
@@ -159,7 +159,7 @@ const VoteSuccess = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 rounded-xl bg-white p-4 sm:p-8 shadow-sm">
+      <div className="mt-8 rounded-xl bg-base-100 p-4 sm:p-8 shadow-sm">
         <h3 className="font-bold text-lg">Help us improve next round of RetroPGF</h3>
         <p className="text-[#68778D]">
           Your anonymized feedback will be influential to help us iterate on Optimisms RetroPGF process.

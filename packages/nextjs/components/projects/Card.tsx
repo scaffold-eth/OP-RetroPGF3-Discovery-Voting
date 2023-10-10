@@ -17,17 +17,17 @@ const Card = ({ project, display }: any) => {
                 <Image
                   width={311}
                   height={112}
-                  className="rounded-[1.05em] object-fill w-full h-full"
+                  className="rounded-[0.6em] object-fill w-full h-full"
                   src={banner}
                   alt="banner"
                 />
               ) : (
-                <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
+                <div className="flex-shrink-0 w-full h-[112px] rounded-[.6em] bg-gray-300"></div>
               )}
               <Image
                 width={54}
                 height={54}
-                className="mt-[-22px] ml-[20px] border-4 border-white bg-white rounded-[1.05em] inline-block"
+                className="mt-[-22px] ml-[20px] border-4 border-white bg-base-100 rounded-[1.05em] inline-block"
                 src={logo}
                 alt="logo"
               />
@@ -54,7 +54,7 @@ const Card = ({ project, display }: any) => {
             <Image
               width={54}
               height={54}
-              className="border-4 border-white  bg-white rounded inline-block w-[54px] h-[54px] "
+              className="border-4 border-white  bg-base-100 rounded inline-block w-[54px] h-[54px] "
               src={logo}
               alt="logo"
             />

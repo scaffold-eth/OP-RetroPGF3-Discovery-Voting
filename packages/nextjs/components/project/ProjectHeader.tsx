@@ -229,7 +229,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
               <EllipsisHorizontalIcon className="font-semibold  h-10 w-10 text-neutral-content" />
             </label>
             {isDropdownOpen && (
-              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-white rounded-xl rounded-box w-52">
+              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-secondary rounded-xl rounded-box w-52">
                 {isAdded && (
                   <li
                     onClickCapture={() => {
@@ -264,12 +264,12 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
             onClick={() => {
               setEditBallotVote(true);
             }}
-            className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap ${
-              isAdded ? "border-gray-200 text-primary border-2 whitespace-nowrap bg-white" : "bg-primary text-white"
+            className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap bg-primary text-white  ${
+              isAdded ? "border-gray-200  border-2 whitespace-nowrap " : "bg-primary text-white "
             }`}
           >
             {isAdded ? (
-              <CheckBadgeIcon className=" font-semibold  h-6 w-6 text-primary mr-4" />
+              <CheckBadgeIcon className=" font-semibold  h-6 w-6  mr-4" />
             ) : (
               <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
             )}
