@@ -79,7 +79,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         {populatedProjects?.map((project, index: number) => (
           <div
             key={index}
-            className={`border-[#ccd2db] py-6 ${
+            className={`border-[#ccd2db] py-2 ${
               index === populatedProjects.length - 1 ? "" : "border-b-2"
             }  grid grid-flow-col items-center justify-between `}
           >
@@ -113,6 +113,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         <AddListToBallotModal
           onClose={() => setIsAddListToBallotModal(false)}
           handleAddBallot={() => addProjectToBallot()}
+          listName={list.name}
           projectList={populatedProjects}
           userTotal={projects?.reduce((sum, p) => sum + p.votes, 0)}
           edit={() => handleEditModal(false, true)}
