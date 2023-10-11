@@ -1,10 +1,13 @@
 import { useEffect } from "react";
-import { useDarkMode, useIsMounted } from "usehooks-ts";
+import {
+  useDarkMode,
+  /*useIsMounted*/
+} from "usehooks-ts";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 
 export const SwitchTheme = ({ className }: { className?: string }) => {
   const { isDarkMode, toggle } = useDarkMode();
-  const isMounted = useIsMounted();
+  // const isMounted = useIsMounted();
 
   useEffect(() => {
     const body = document.body;
@@ -21,17 +24,17 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
         checked={isDarkMode}
       /> */}
       <button
-        className={`btn btn-secondary btn-sm h-10 px-1.5 rounded-full border-1 border-slate-200 ${
+        className={`btn btn-secondary btn-sm h-10 w-10 px-1.5 rounded-full border-1 border-slate-200 ${
           !isDarkMode ? "hover:bg-slate-200" : "hover:bg-slate-500"
         }`}
         onClick={toggle}
       >
-        {isMounted() && (
-          <label htmlFor="theme-toggle" className={`swap swap-rotate ${!isDarkMode ? "swap-active" : ""}`}>
-            <SunIcon className="swap-on h-6 w-6" />
-            <MoonIcon className="swap-off h-6 w-6" />
-          </label>
-        )}
+        {/* {isMounted() && ( */}
+        <label htmlFor="theme-toggle" className={`swap swap-rotate ${!isDarkMode ? "swap-active" : ""}`}>
+          <SunIcon className="swap-on h-6 w-6" />
+          <MoonIcon className=" swap-off h-6 w-6" />
+        </label>
+        {/* )} */}
       </button>
     </div>
   );

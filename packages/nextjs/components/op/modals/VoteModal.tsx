@@ -46,9 +46,9 @@ const VoteModal: React.FC<IVoteModal> = ({
     <BaseModal onClose={onClose}>
       {" "}
       {/* Render the BaseModal component and pass the onClose prop */}
-      <div className="max-w-[400px] bg-white rounded-xl p-6">
+      <div className="max-w-[400px] bg-base-100 rounded-xl p-6">
         <div className="grid gap-6 grid-flow-col items-center justify-between">
-          <h3 className="text-lg font-bold text-OPblack">Vote</h3>
+          <h3 className="text-lg font-bold ">Vote</h3>
           {/* Render a button with an onClick event that calls the onClose function */}
           <button onClick={onClose} className="text-lg text-OPgray btn btn-sm btn-circle btn-ghost">
             ✕
@@ -65,7 +65,7 @@ const VoteModal: React.FC<IVoteModal> = ({
           </p>
         )}
 
-        <div className="rounded-xl p-1 bg-OPoffwhite mb-3 items-center grid justify-start grid-flow-col gap-4">
+        <div className="rounded-xl p-1 bg-secondary mb-3 items-center grid justify-start grid-flow-col gap-4">
           <div className="w-[50px]">
             {/* Render an Image component to display an image related to the project */}
             <Image
@@ -77,14 +77,14 @@ const VoteModal: React.FC<IVoteModal> = ({
             />
           </div>
           <div>
-            <h3 className="font-bold text-lg text-OPblack">{project?.name}</h3> {/* Display the project name */}
+            <h3 className="font-bold text-lg ">{project?.name}</h3> {/* Display the project name */}
           </div>
         </div>
-        <div className="mb-5 border-OPoffwhite border-2 rounded-xl pr-4 overflow-hidden py-0 grid grid-flow-col justify-between items-center text-OPblack">
+        <div className="mb-5 border-OPoffwhite border-2 rounded-xl pr-4 overflow-hidden py-0 grid grid-flow-col justify-between items-center ">
           <input
             ref={allocationInputRef}
             onChange={e => handleAllocationChange(e.target.value)}
-            className="border-none outline-none p-3 w-full "
+            className="border-none bg-transparent outline-none p-3 w-full  "
             value={allocation}
           />{" "}
           {/* Display the number of votes */}
