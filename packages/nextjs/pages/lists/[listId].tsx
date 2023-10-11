@@ -88,7 +88,7 @@ const ListDetail: NextPage<Props> = ({ list }) => {
               <solid.EllipsisHorizontalIcon className="w-6 h-6 " />
             </button>
             {openLikedModal && (
-              <div className="absolute  bg-white rounded-xl top-16 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
+              <div className="absolute  bg-secondary rounded-xl top-16 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
                 <button onClick={() => handleLike(list)} className="flex gap-4 items-center">
                   {isLiked ? (
                     <solid.HeartIcon className="w-6 h-6 text-[#ff0000] " />

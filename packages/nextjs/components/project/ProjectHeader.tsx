@@ -138,7 +138,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
               <EllipsisHorizontalIcon className="font-semibold  h-10 w-10 text-neutral-content" />
             </label>
             {isDropdownOpen && (
-              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-white rounded-xl rounded-box w-52">
+              <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-secondary rounded-xl rounded-box w-52">
                 {isAdded && (
                   <li
                     onClickCapture={() => {

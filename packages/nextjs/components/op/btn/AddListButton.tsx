@@ -85,6 +85,7 @@ const AddListButton: React.FC<IAddListButton> = ({ list, toggleEditModal, custom
       {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal(true, false)} />}
       {isAddListToBallotModal && (
         <AddListToBallotModal
+          listName={list.name}
           onClose={() => setIsAddListToBallotModal(false)}
           handleAddBallot={() => addProjectToBallot()}
           projectList={populatedProjects}

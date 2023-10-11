@@ -22,8 +22,8 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       <div className="project__header-container min-w-[320px]">
         <div className="project__header-container--content">
           <h3 className="text-lg sm:text-2xl font-bold   items-center">
-            <span>{projects.length} projects</span>
-            <span> {projects.reduce((sum, p) => sum + p.votes, 0)} OP allocated</span>
+            <span>{projects?.length} projects</span>
+            <span> {projects?.reduce((sum, p) => sum + p.votes, 0)} OP allocated</span>
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
@@ -44,10 +44,10 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
       >
-        {populatedProjects.map((project, index: number) => (
+        {populatedProjects?.map((project, index: number) => (
           <div
             key={index}
-            className={`border-[#ccd2db] py-6 ${
+            className={`border-[#ccd2db] py-2 ${
               index === populatedProjects.length - 1 ? "" : "border-b-2"
             }  grid grid-flow-col items-center justify-between `}
           >
@@ -70,9 +70,9 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
           </div>
         ))}
       </div>
-      <div className="rounded-2xl bg-[#F1F4F9] text-black px-5 grid grid-flow-col justify-between items-center">
+      <div className="rounded-2xl bg-base-300 px-5 grid grid-flow-col justify-between items-center">
         <p>Total</p>
-        <p>{projects.reduce((sum, p) => sum + p.votes, 0)} OP</p>
+        <p>{projects?.reduce((sum, p) => sum + p.votes, 0)} OP</p>
       </div>
     </div>
   );

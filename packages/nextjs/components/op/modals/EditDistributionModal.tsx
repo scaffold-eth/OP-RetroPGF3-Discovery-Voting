@@ -3,7 +3,7 @@ import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 import OPInput from "../input/OPInput";
 import BaseModal from "./BaseModal";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useBallot } from "~~/context/BallotContext";
 import { IList } from "~~/types/list";
@@ -75,8 +75,8 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
 
   return (
     <BaseModal onClose={onClose}>
-      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-white rounded-xl p-6 ">
-        <div className="grid gap-6  grid-flow-col items-center justify-between">
+      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-secondary rounded-xl p-6">
+        <div className="grid gap-6 grid-flow-col items-center justify-between">
           <h3 className="text-lg font-bold text-center">Edit distribution</h3>
           <button onClick={onClose} className="text-lg btn btn-sm btn-circle btn-ghost">
             ✕
@@ -98,11 +98,11 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
           {projectsToImport.map((project, index) => (
             <div
               key={index}
-              className={`border-[#ccd2db] py-6 ${
+              className={`border-OPlightgray py-2 ${
                 index === projectsToImport.length - 1 ? "" : "border-b-2"
               }  grid grid-flow-col items-center justify-between `}
             >
-              <div className={`${!project.name && "items-center"} grid  grid-flow-col gap-4`}>
+              <div className={`${!project.name && "items-center"} grid grid-flow-col gap-4`}>
                 <div className={` ${project.name ? "w-[80px]" : "w-[60px]"}`}>
                   <Image
                     alt="project list"
@@ -162,7 +162,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
             </p>
           </div>
         ) : (
-          <div className="mt-4 rounded-2xl bg-OPoffwhite px-5 grid grid-flow-col justify-between items-center">
+          <div className="mt-4 rounded-2xl bg-secondary px-5 grid grid-flow-col justify-between items-center">
             <p>Total</p>
             <p>
               {editedProjectsToImport.reduce((sum, p) => sum + p.votes, 0)}/{state.totalTokens} OP
@@ -179,11 +179,11 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
           <CustomProjectButton
             text="Add to ballot"
             onClick={() => handleEditComplete(editedProjectsToImport)}
-            customClassName={`bg-[#000000] py-2 rounded-lg border-[#000000]  text-[#ffffff] ${
-              isLoading ? "loading" : ""
-            }`}
+            customClassName={`bg-red-600 py-2 rounded-lg border-OPred text-OPwhite ${isLoading ? "loading" : ""}`}
             disabled={showError}
-          />
+          >
+            <SquaresPlusIcon className="w-5 h-5" />
+          </CustomProjectButton>
         </div>
       </div>
     </BaseModal>
