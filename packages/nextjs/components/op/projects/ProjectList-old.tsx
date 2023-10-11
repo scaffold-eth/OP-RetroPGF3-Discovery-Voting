@@ -14,7 +14,7 @@ export interface IProjectData {
   name: string;
   handle?: string;
   image?: string;
-  votes: number;
+  allocation: number;
   id: string;
   listId?: string;
 }

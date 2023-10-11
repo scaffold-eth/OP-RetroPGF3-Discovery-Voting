@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
 
 interface IOPInput {
-  index: number;
-  handleChange: (index: number, value: number) => void;
+  index?: number;
+  handleChange: (value: number) => void;
   value: string | number;
   customClassesGroup?: string;
   customClassesInput?: string;
@@ -10,7 +10,6 @@ interface IOPInput {
   disabled?: boolean;
 }
 const OPInput: React.FC<IOPInput> = ({
-  index,
   value,
   handleChange,
   customClassesGroup,
@@ -22,7 +21,7 @@ const OPInput: React.FC<IOPInput> = ({
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
     setCurrentValue(newValue);
-    handleChange(index, newValue);
+    handleChange(newValue);
   };
   return (
     <label className={`input-group rounded ${customClassesGroup}`}>

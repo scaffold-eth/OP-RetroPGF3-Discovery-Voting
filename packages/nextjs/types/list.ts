@@ -4,7 +4,7 @@ interface IProjects {
   populatedProjects: {
     id: string;
     name: string;
-    votes: number;
+    allocation: number;
     listId: string;
   }[];
 }
@@ -14,7 +14,7 @@ export interface IProjectData {
   name: string;
   handle?: string;
   image?: string;
-  votes: number;
+  allocation: number;
   id: string;
   listId?: string;
 }

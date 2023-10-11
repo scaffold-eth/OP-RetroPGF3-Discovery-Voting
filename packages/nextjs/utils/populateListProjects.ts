@@ -4,18 +4,18 @@ import Project from "../models/Project";
 // populates shared projects on a list with
 // relevant project data for use in components.
 // Shared projects on lists appear as 'objectIds' from the database
-// this helper function helps to get the project's data (id, name, and votes)
+// this helper function helps to get the project's data (id, name, and allocation)
 export const populateListProjects = async (list: any) => {
   let x = {};
   const y = [];
   for (let i = 0; i < list.projects.length; i++) {
     const projectId = list.projects[i].project;
     const p = await Project.findById(projectId);
-    const v = list.projects[i].votes;
+    const v = list.projects[i].allocation;
     x = {
       id: p._id,
       name: p.name,
-      votes: v,
+      allocation: v,
       listId: list._id,
     };
     y.push(x);

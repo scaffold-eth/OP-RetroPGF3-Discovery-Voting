@@ -9,7 +9,7 @@ export interface ListDocument extends mongoose.Document {
   likes?: string[];
   projects: {
     project: mongoose.Types.ObjectId;
-    votes: number;
+    allocation: number;
   }[];
 }
 
@@ -45,7 +45,7 @@ const listSchema = new mongoose.Schema<ListDocument>({
         ref: "Project",
         required: true,
       },
-      votes: {
+      allocation: {
         type: Number,
         default: 0,
       },
