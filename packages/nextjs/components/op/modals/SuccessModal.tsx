@@ -25,7 +25,7 @@ const SuccessModal: React.FC<ISuccessModal> = ({ message, onClose }) => {
         <div className="p-2 w-fit rounded-xl bg-OPlightgreen">
           <ShieldCheckIcon className="w-8 h-8 text-OPdarkgreen" /> {/* Render a ShieldCheckIcon */}
         </div>
-        <h3 className="text-lg font-bold ">{message}</h3> {/* Render the success message */}
+        <h3 className="text-lg font-bold text-black">{message}</h3> {/* Render the success message */}
       </div>
     </BaseModal>
   );

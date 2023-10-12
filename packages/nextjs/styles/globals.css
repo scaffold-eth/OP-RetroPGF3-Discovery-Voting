@@ -83,6 +83,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .shadow-none {
@@ -98,4 +99,12 @@ input[type="number"] {
 
 .list__container-card_display {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.card-btn {
+  font-size: 12px;
+  padding: 8px 10px !important;
+}
+.card-btn svg {
+  margin-right: 6px;
 }

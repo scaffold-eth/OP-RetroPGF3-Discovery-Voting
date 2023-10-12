@@ -6,6 +6,8 @@ export interface ProjectDocument extends Document {
   payoutAddress?: string;
   nominationUrl?: string;
   websiteUrl?: string;
+  projectBannerUrl?: string;
+  projectLogoUrl?: string;
   twitterLink?: string;
   githubLink?: string;
   description?: string;
@@ -32,6 +34,12 @@ const projectSchema = new Schema<ProjectDocument>({
     type: String,
   },
   websiteUrl: {
+    type: String,
+  },
+  projectBannerUrl: {
+    type: String,
+  },
+  projectLogoUrl: {
     type: String,
   },
   twitterLink: {
