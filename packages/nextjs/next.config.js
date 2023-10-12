@@ -18,6 +18,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ["github-production-user-asset-6210df.s3.amazonaws.com"],
+  },
 };
 
 module.exports = nextConfig;
