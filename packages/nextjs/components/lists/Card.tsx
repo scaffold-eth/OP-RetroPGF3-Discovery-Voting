@@ -47,12 +47,14 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   }, [list]);
 
   return (
-    <div className=" w-full border rounded-lg border-gray-300  p-4 ">
+    <div className=" w-full h-60 border rounded-lg border-gray-300  p-4 ">
       <div className="flex items-center">
         <div className="flex-1">
-          <Link key={list._id} href={`lists/${list._id}`}>
-            <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
-          </Link>
+          <div>
+            <Link key={list._id} href={`lists/${list._id}`} className="">
+              <p className="text-[18px] w-full max-w-[200px] truncate  font-bold leading-[28px] mb-0 mt-2 ">{name}</p>
+            </Link>
+          </div>
           {/* <div className="flex items-center">
               <Image width={22} height={22} className="mr-2" src={""} alt="Avatar" />
             </div> */}
@@ -115,7 +117,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
           {projects.length} projects
         </p>
       </div>
-      <p className="text-lightGray text-[14px] font-normal leading-5  mt-0">{description}</p>
+      <p className="text-lightGray text-[14px] font-normal leading-5  mt-0 truncate">{description}</p>
       <div className="flex items-center justify-between py-2">
         {tags && tags.length > 0 ? (
           <div className="flex">
