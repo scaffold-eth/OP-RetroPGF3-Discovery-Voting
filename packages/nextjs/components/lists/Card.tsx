@@ -12,7 +12,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const isLiked = likes.includes(address);
 
   return (
-    <div className=" w-full border rounded-lg border-gray-300  p-4 ">
+    <div className=" w-full h-60 border rounded-lg border-gray-300  p-4 ">
       <div className="flex items-center">
         <div className="flex-1">
           <div>
