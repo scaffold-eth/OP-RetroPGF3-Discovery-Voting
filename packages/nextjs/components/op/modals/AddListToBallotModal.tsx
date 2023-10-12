@@ -1,8 +1,8 @@
 // Import required modules and components
 import React from "react";
+import { IProjectData } from "../../../types/list";
 // Import a custom button component
 import CustomProjectButton from "../btn/CustomProjectButton";
-import { IProjectData } from "../projects/ProjectList";
 import ProjectListCard from "../projects/ProjectListCard";
 // Import the BaseModal component
 import BaseModal from "./BaseModal";
@@ -12,6 +12,7 @@ import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/24/
 interface IAddListToBallotModal {
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
+  listName: string;
   userTotal: number;
   projectList: IProjectData[];
   edit: () => void;
@@ -21,6 +22,7 @@ interface IAddListToBallotModal {
 const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
   onClose,
   handleAddBallot,
+  listName,
   userTotal,
   projectList,
   edit,
@@ -28,9 +30,9 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
   // Return the JSX code representing the AddListToBallotModal component
   return (
     <BaseModal onClose={onClose}>
-      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-white rounded-xl p-6">
+      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-secondary rounded-xl p-6">
         <div className="grid gap-6  grid-flow-col items-center justify-between">
-          <h3 className="text-lg font-bold ">Add Solarpunk Utopia Dream to your ballot</h3>
+          <h3 className="text-lg font-bold ">{listName}</h3>
           <button onClick={onClose} className="text-lg btn btn-sm btn-circle btn-ghost">
             ✕
           </button>
@@ -43,7 +45,7 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
         >
           <ProjectListCard projectData={projectList} />
         </div>
-        <div className="mt-4 rounded-2xl bg-OPlightgray px-5 grid grid-flow-col justify-between items-center">
+        <div className="mt-4 rounded-2xl bg-base-300 px-5 grid grid-flow-col justify-between items-center">
           <p>Total</p>
           <p>{userTotal.toLocaleString()} OP</p>
         </div>
@@ -59,7 +61,7 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
           <CustomProjectButton
             onClick={handleAddBallot}
             text="Add to ballot"
-            customClassName=" bg-red-600 py-2 rounded-lg border-OPred  text-OPwhite"
+            customClassName="bg-red-600 py-2 rounded-lg border-OPred text-OPwhite"
           >
             <SquaresPlusIcon className="w-5 h-5" />
           </CustomProjectButton>

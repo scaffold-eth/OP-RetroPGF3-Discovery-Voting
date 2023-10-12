@@ -45,7 +45,7 @@ const ProjectDetail: NextPage<Props> = ({ projects }) => {
 
   const project = projects[0];
   return (
-    <div className="mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4 pb-16">
+    <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-4 pb-16">
       {isConnected ? <YourBallot /> : <Sidebar />}
       <div className="">
         <ProjectHeader project={project} />

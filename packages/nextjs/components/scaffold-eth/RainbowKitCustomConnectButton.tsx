@@ -68,8 +68,8 @@ export const RainbowKitCustomConnectButton = () => {
               }
 
               return (
-                <div className="sm:px-2 flex sm:justify-end sm:items-center">
-                  <div className="flex  sm:justify-center gap-1 flex-col sm:flex-row sm:items-center border-1 rounded-lg">
+                <div className="p-0 sm:px-2 flex sm:justify-end sm:items-center">
+                  <div className="flex  sm:justify-center gap-4 sm:gap-1 flex-col sm:flex-row sm:items-center border-1 rounded-lg">
                     <BallotComponent />
                     <button
                       onClick={openAccountModal}

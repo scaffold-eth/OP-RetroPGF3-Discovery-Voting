@@ -49,7 +49,7 @@ export const Header = () => {
         <RainbowKitCustomConnectButton />
       </li>
       <li className="md:hidden">
-        <SwitchTheme className="pointer-events-auto" />
+        <SwitchTheme className="p-0 pointer-events-auto" />
       </li>
     </>
   );

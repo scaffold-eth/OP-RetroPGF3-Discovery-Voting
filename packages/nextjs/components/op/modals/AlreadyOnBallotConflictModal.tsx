@@ -1,8 +1,8 @@
 // Import required modules and components
 import React from "react";
+import { IProjectData } from "../../../types/list";
 // Import a custom button component
 import CustomProjectButton from "../btn/CustomProjectButton";
-import { IProjectData } from "../projects/ProjectList";
 import ProjectListCardEditable from "../projects/ProjectListCardEditable";
 // Import the BaseModal component
 import BaseModal from "./BaseModal";
@@ -26,7 +26,7 @@ const AlreadyOnBallotConflictModal: React.FC<IAlreadyOnBallotConflictModal> = ({
   // Return the JSX code representing the AlreadyOnBallotConflictModal component
   return (
     <BaseModal onClose={onClose}>
-      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-white rounded-xl p-6">
+      <div className=" w-fit md:w-[600px] lg:w-[800px] bg-secondary rounded-xl p-6">
         <div className="grid gap-6  grid-flow-col items-center justify-between">
           <h3 className="text-lg font-bold ">Add Solarpunk Utopia Dream to your ballot</h3>
           <button onClick={onClose} className="text-lg btn btn-sm btn-circle btn-ghost">
