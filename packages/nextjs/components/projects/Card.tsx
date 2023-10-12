@@ -63,7 +63,7 @@ const Card = ({ project, display }: any) => {
             src={logo}
             alt="logo"
           />
-          <div className="ml-6">
+          <div className="ml-6 w-full">
             <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
 
             <p className="text-lightGray text-[14px] font-normal leading-5 ">{description}</p>
