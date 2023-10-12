@@ -105,7 +105,7 @@ const AllLists: React.FC = () => {
   if (lists && lists.length === 0)
     return (
       <div className="text-center font-bold text-2xl pt-8">
-        <h1 className="text-neutral text-xl p2">There are no lists yet.</h1>
+        <h1 className="text-neutral text-xl m-4">There are no lists yet.</h1>
       </div>
     );
 
@@ -131,11 +131,15 @@ const AllLists: React.FC = () => {
               display === "grids" ? "list__container-card_display  " : "grid-rows-1 w-full"
             } `}
           >
-            {filteredProjects?.map(list => (
-              <div key={list._id} className={`${display === "grids" && "max-w-[400px] w-full"}`}>
-                <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
-              </div>
-            ))}
+            {filteredProjects?.length === 0 ? (
+              <h1 className="text-neutral text-xl m-4">You have not liked any lists yet.</h1>
+            ) : (
+              filteredProjects?.map(list => (
+                <div key={list._id} className={`${display === "grids" && "max-w-[400px] w-full"}`}>
+                  <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
+                </div>
+              ))
+            )}
           </div>
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
         </div>
