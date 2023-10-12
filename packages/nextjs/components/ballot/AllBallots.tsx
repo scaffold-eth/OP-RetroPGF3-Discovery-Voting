@@ -108,12 +108,6 @@ const AllBallots = () => {
     // Ensure value is a number
     newAllocation = !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0;
 
-    dispatch({ type: "UPDATE_ALLOCATION", projectId, newAllocation });
-    setBallotProjects(
-      ballotProjects.map(project =>
-        project.id === projectId ? { ...project, allocation: Number(newAllocation) } : project,
-      ),
-    );
     // Deduct the current project's allocation, since we're editing it
     const currentProjectAllocation = state.projects.find(p => p.id === projectId)?.allocation || 0;
     currentTotalAllocation -= currentProjectAllocation;
@@ -122,8 +116,8 @@ const AllBallots = () => {
 
     if (projectedTotal > state.totalTokens) {
       newAllocation = state.totalTokens - currentTotalAllocation;
-      setIsAllocationError(true);
     }
+    dispatch({ type: "UPDATE_ALLOCATION", projectId, newAllocation });
   };
 
   const totalAllocatedOp = ballotProjects.reduce((sum, p) => sum + p?.allocation, 0);
