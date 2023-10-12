@@ -12,7 +12,7 @@ const Card = ({ project, display }: any) => {
   return (
     <div>
       {display === "grids" ? (
-        <div className="rounded-[1.5em] p-2 bg-base-100">
+        <div className="rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             {projectBannerUrl ? (
               <Image
@@ -55,7 +55,7 @@ const Card = ({ project, display }: any) => {
           </div>
         </div>
       ) : (
-        <div className="flex border rounded-[1.5rem] border-gray-300  p-4 ">
+        <div className="flex border rounded-[1.5rem] border-gray-300   p-4 ">
           <Image
             width={54}
             height={54}
