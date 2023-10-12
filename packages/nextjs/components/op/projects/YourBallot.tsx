@@ -28,7 +28,9 @@ const YourBallot = () => {
       <div className="mt-5">
         <div className="grid grid-cols-2 justify-between">
           <p className="p-0 m-0 text-sm text-OPbluegray">OP allocated </p>
-          <span className="font-bold text-end ">{state.projects.reduce((sum, p) => sum + p.allocation, 0)} OP</span>
+          <span className="font-bold text-end ">
+            {state.projects.reduce((sum, p) => sum + p.allocation, 0).toFixed(2)} OP
+          </span>
         </div>
         <div>
           <progress

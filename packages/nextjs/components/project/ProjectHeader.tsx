@@ -58,14 +58,17 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
 
   const addProjectToBallot = () => {
     const _name = project.name as string;
-    setNewAllocation(!Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0);
+    // setNewAllocation(!Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0);
+    const allocation = !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0;
+
+    const roundedAllocation = parseFloat(allocation.toFixed(2));
     dispatch({
       type: "ADD_PROJECT",
       project: {
         id: project._id,
         name: _name,
         category: project.category,
-        allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
+        allocation: roundedAllocation,
       },
     });
     notification.success("Added to ballot");
@@ -274,7 +277,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
               <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
             )}
             {isAdded && newAllocation > 0
-              ? `${newAllocation} OP allocated`
+              ? `${newAllocation.toFixed(2)} OP allocated`
               : isAdded && !newAllocation
               ? "0 OP allocated"
               : "Add to Ballot"}

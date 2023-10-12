@@ -78,6 +78,8 @@ const VoteModal: React.FC<IVoteModal> = ({
             onChange={e => handleAllocationChange(e.target.value)}
             className="border-none outline-none p-3 w-full  "
             value={allocation}
+            type="number"
+            step="0.01"
           />{" "}
           {/* Display the number of votes */}
           <p className="font-bold h-full m-0 border-OPoffwhite border-l-2 py-2 pl-4">OP</p> {/* Display a label */}

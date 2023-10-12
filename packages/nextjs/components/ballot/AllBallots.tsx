@@ -114,9 +114,12 @@ const AllBallots = () => {
     const currentProjectId = selectedBallotProject?.id;
     // Ensure value is a number
     value = Number(value);
+    // value = parseFloat(value).toFixed(2);
 
     if (isNaN(value)) {
       value = Number.isNaN(newAllocation) ? 0 : newAllocation;
+    } else {
+      value = parseFloat(value.toFixed(2));
     }
 
     // Deduct the current project's allocation, since we're editing it
@@ -126,7 +129,7 @@ const AllBallots = () => {
     const projectedTotal = value + currentTotalAllocation;
 
     if (projectedTotal > state.totalTokens) {
-      value = state.totalTokens - currentTotalAllocation;
+      value = (state.totalTokens - currentTotalAllocation).toFixed(2);
       setIsAllocationError(true);
     }
 
@@ -163,7 +166,7 @@ const AllBallots = () => {
     setSuccessMessage(completedMessage);
   };
 
-  const totalAllocatedOp = ballotProjects.reduce((sum, p) => sum + p?.allocation, 0);
+  const totalAllocatedOp = ballotProjects.reduce((sum, p) => sum + p?.allocation, 0).toFixed(2);
   return (
     <div className="mx-auto px-12 mt-12 pb-12 grid grid-cols-1 lg:grid-cols-[350px,1fr]  gap-8">
       {!wallet ? <YourBallot /> : <Sidebar />}
@@ -232,7 +235,7 @@ const AllBallots = () => {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <p className="text-lg ">{project.allocation} OP</p>
+                      <p className="text-lg ">{project.allocation.toFixed(2)} OP</p>
                       <div className="relative">
                         <button
                           onClick={() => {
