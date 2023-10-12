@@ -91,7 +91,7 @@ const AllLists: React.FC = () => {
     selectedCategory === "all"
       ? lists
       : selectedCategory === "liked"
-      ? lists?.filter(list => list?.likes?.length)
+      ? lists?.filter(list => list?.likes?.includes(String(address)))
       : lists?.filter(list => list?.tags?.includes(selectedCategory));
 
   if (lists && lists.length === 0 && isLoadingList) {
@@ -105,7 +105,7 @@ const AllLists: React.FC = () => {
   if (lists && lists.length === 0)
     return (
       <div className="text-center font-bold text-2xl pt-8">
-        <h1>No list available...</h1>
+        <h1 className="text-neutral text-xl p2">There are no lists yet.</h1>
       </div>
     );
 
