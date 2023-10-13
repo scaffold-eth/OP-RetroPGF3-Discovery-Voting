@@ -121,6 +121,11 @@ const AllBallots = () => {
   };
 
   const totalAllocatedOp = ballotProjects.reduce((sum, p) => sum + p?.allocation, 0);
+
+  const getMaximum = (project: IBallotProject) => {
+    const totalExcluding = ballotProjects.filter(p => p.id != project.id).reduce((sum, p) => sum + p?.allocation, 0);
+    return state.totalTokens - totalExcluding;
+  };
   return (
     <div className="mx-auto px-12 mt-12 pb-12 grid grid-cols-1 lg:grid-cols-[350px,1fr]  gap-8">
       {!wallet ? <YourBallot /> : <Sidebar />}
@@ -170,7 +175,7 @@ const AllBallots = () => {
                   >
                     <ProjectRowEditable
                       project={project}
-                      maximum={totalAllocatedOp - state.totalTokens}
+                      maximum={getMaximum(project)}
                       handleChange={handleAllocationChange}
                       handleRemove={handleBallotRemoval}
                     />
