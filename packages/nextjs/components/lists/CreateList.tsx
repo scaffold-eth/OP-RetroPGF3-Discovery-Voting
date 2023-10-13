@@ -37,7 +37,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
       tags,
       projects: state.projects.map(project => ({
         project: project.id,
-        votes: project.allocation,
+        allocation: project.allocation,
       })),
     };
     // Save the list to the database

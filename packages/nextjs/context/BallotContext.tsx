@@ -12,7 +12,7 @@ export interface Project {
 export interface SharedProject {
   id: string;
   name: string;
-  votes: number;
+  allocation: number;
   listId: string;
   category?: string;
 }
@@ -88,7 +88,7 @@ const reducer = (state: IState, action: Action): IState => {
       const newProjects = [...state.projects];
       const usedAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
       const remainingAllocation = state.totalTokens - usedAllocation;
-      const listTotalAllocation = action.projects.reduce((sum, p) => sum + p.votes, 0);
+      const listTotalAllocation = action.projects.reduce((sum, p) => sum + p.allocation, 0);
       // Check if the list has already been imported
       if (state.importedLists.includes(listId) && state.projects.length >= action.projects.length) {
         return state;
@@ -100,7 +100,7 @@ const reducer = (state: IState, action: Action): IState => {
 
       action.projects.forEach(listItem => {
         const existingProjectIndex = newProjects.findIndex(project => project.id === listItem.id);
-        const additionalVotes = Math.round(listItem.votes * scalingFactor);
+        const additionalVotes = Math.round(listItem.allocation * scalingFactor);
 
         if (existingProjectIndex !== -1) {
           // If project already exists, update its allocation.
@@ -132,13 +132,13 @@ const reducer = (state: IState, action: Action): IState => {
 
         // If found, update its allocation
         if (indexInBallot !== -1) {
-          previousProjects[indexInBallot].allocation = editedProject.votes;
+          previousProjects[indexInBallot].allocation = editedProject.allocation;
         } else {
           // If it's not found, add it to the ballot
           previousProjects.push({
             name: editedProject.name,
             id: editedProject.id,
-            allocation: editedProject.votes,
+            allocation: editedProject.allocation,
           });
         }
       });

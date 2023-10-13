@@ -14,7 +14,7 @@ export interface IProjectData {
   name: string;
   handle?: string;
   image?: string;
-  votes: number;
+  allocation: number;
   id: string;
   listId?: string;
 }
@@ -26,44 +26,6 @@ const ProjectList = ({ projectData }: { projectData: IProjectData[] }) => {
   const [loadingMessage, setLoadingMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const userData = { totalOP: 100000 };
-  // const projectDataHandle = [
-  //   {
-  //     name: "DefiLlama",
-
-  //     image: "/assets/gradient-bg.png",
-  //     votes: 20416,
-  //   },
-  //   {
-  //     name: "L2BEAT",
-
-  //     image: "/assets/gradient-bg.png",
-  //     votes: 15416,
-  //   },
-  //   {
-  //     name: "Polynya",
-
-  //     image: "/assets/gradient-bg.png",
-  //     votes: 12416,
-  //   },
-  //   {
-  //     name: "DefiLlama",
-
-  //     image: "/assets/gradient-bg.png",
-  //     votes: 20416,
-  //   },
-  //   {
-  //     name: "L2BEAT",
-
-  //     image: "/assets/gradient-bg.png",
-  //     votes: 15416,
-  //   },
-  //   {
-  //     name: "Polynya",
-
-  //     image: "/assets/gradient-bg.png",
-  //     votes: 12416,
-  //   },
-  // ];
 
   const handleAddBallot = () => {
     setLoadingMessage("Adding selection to ballot");

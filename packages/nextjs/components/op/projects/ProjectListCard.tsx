@@ -27,7 +27,7 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
               {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">@{project.handle}</p>}
             </div>
           </div>
-          <p className="text-lg">{project.votes.toLocaleString()} OP</p>
+          <p className="text-lg">{project.allocation.toLocaleString()} OP</p>
         </div>
       ))}
     </div>

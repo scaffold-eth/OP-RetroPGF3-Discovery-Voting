@@ -24,11 +24,11 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
     for (let i = 0; i < list.projects.length; i++) {
       const projectId = list.projects[i].project;
       const [p] = _projects.filter((project: ProjectDocument) => project._id === projectId);
-      const projectVotes = list.projects[i].votes;
+      const projectAllocation = list.projects[i].allocation;
       _sharedProject = {
         id: p._id,
         name: p.name,
-        votes: projectVotes,
+        allocation: projectAllocation,
         listId: list._id,
       };
       _populatedSharedProjects.push(_sharedProject);

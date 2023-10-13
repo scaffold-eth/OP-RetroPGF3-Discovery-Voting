@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
-import OPInput from "../input/OPInput";
 import BaseModal from "./BaseModal";
 import { ArrowPathIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import ProjectRowEditable from "~~/components/shared/ProjectRowEditable";
 import { useBallot } from "~~/context/BallotContext";
 import { IList } from "~~/types/list";
 import { notification } from "~~/utils/scaffold-eth";
@@ -17,7 +15,7 @@ interface Props {
 type IProjectsToImport = {
   name: string;
   id: string;
-  votes: number;
+  allocation: number;
   listId: string;
 }[];
 
@@ -30,11 +28,12 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const [editedProjectsToImport, setEditedProjectsToImport] = useState<IProjectsToImport>(projectsToImport);
   const [isLoading, setIsLoading] = useState(false);
   const { state, dispatch } = useBallot();
+  const [resetCounter, setResetCounter] = useState(0);
 
   const handleAllocationChange = (projectId: string, newAllocation: number | string) => {
     setEditedProjectsToImport(
       editedProjectsToImport.map(project =>
-        project.id === projectId ? { ...project, votes: Number(newAllocation) } : project,
+        project.id === projectId ? { ...project, allocation: Number(newAllocation) } : project,
       ),
     );
   };
@@ -43,7 +42,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
     const checkTotalTokenAllocation = () => {
       setShowError(false);
       setErrorMessage("");
-      const allocatedTokens = editedProjectsToImport.reduce((sum, p) => sum + p.votes, 0);
+      const allocatedTokens = editedProjectsToImport.reduce((sum, p) => sum + p.allocation, 0);
       if (allocatedTokens > state.totalTokens) {
         setShowError(true);
         setErrorMessage(`Exceeded your total OP tokens`);
@@ -70,7 +69,9 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   }
 
   const resetDistribution = () => {
+    setProjectsToImport(populatedProjects);
     setEditedProjectsToImport(populatedProjects);
+    setResetCounter(resetCounter + 1);
   };
 
   return (
@@ -102,55 +103,13 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
                 index === projectsToImport.length - 1 ? "" : "border-b-2"
               }  grid grid-flow-col items-center justify-between `}
             >
-              <div className={`${!project.name && "items-center"} grid grid-flow-col gap-4`}>
-                <div className={` ${project.name ? "w-[80px]" : "w-[60px]"}`}>
-                  <Image
-                    alt="project list"
-                    height={"80"}
-                    width={"80"}
-                    src="/assets/gradient-bg.png"
-                    className="w-full rounded-xl"
-                  />
-                </div>
-                <div className="">
-                  <h3 className="font-bold text-lg">{project.name}</h3>
-                </div>
-              </div>
-              <div className="flex flex-row">
-                {project.votes ? (
-                  <OPInput
-                    index={index}
-                    value={project.votes}
-                    handleChange={() => {
-                      return;
-                    }}
-                    customClassesGroup="mr-2 pointer-events-none"
-                    customClassesInput="pointer-events-none text-[#8496AE] bg-[#E2E8F0] border-neutral cursor-default"
-                    customClassesSpan="bg-[#E2E8F0] text-[#8496AE] border-neutral pointer-events-none"
-                  />
-                ) : (
-                  ""
-                )}
-                <label className={`input-group rounded`}>
-                  <input
-                    type="number"
-                    onChange={e => handleAllocationChange(project.id, e.target.value)}
-                    className={`input input-info input-bordered border-slate-200 border w-[100px] rounded `}
-                    value={
-                      editedProjectsToImport[index] && editedProjectsToImport[index].votes === 0
-                        ? ""
-                        : editedProjectsToImport[index].votes
-                    }
-                  />
-                  <span className={`rounded bg-secondary border-r border-b border-t border-slate-200`}>OP</span>
-                </label>
-                <button
-                  onClick={() => handleRemoveProject(project.id)}
-                  className={`ml-2 btn-md flex items-center rounded-xl p-3 border-[1px] border-slate-200`}
-                >
-                  <TrashIcon className="w-6 h-6 " />
-                </button>
-              </div>
+              <ProjectRowEditable
+                project={project}
+                showOriginalAllocation
+                resetCounter={resetCounter}
+                handleChange={handleAllocationChange}
+                handleRemove={handleRemoveProject}
+              />
             </div>
           ))}
         </div>
@@ -158,14 +117,14 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
           <div className="mt-4 rounded-2xl bg-warning text-warning-content px-5 grid grid-flow-col justify-between items-center">
             <p>{errorMessage}</p>
             <p>
-              {editedProjectsToImport.reduce((sum, p) => sum + p.votes, 0)}/{state.totalTokens} OP
+              {editedProjectsToImport.reduce((sum, p) => sum + p.allocation, 0)}/{state.totalTokens} OP
             </p>
           </div>
         ) : (
           <div className="mt-4 rounded-2xl bg-secondary px-5 grid grid-flow-col justify-between items-center">
             <p>Total</p>
             <p>
-              {editedProjectsToImport.reduce((sum, p) => sum + p.votes, 0)}/{state.totalTokens} OP
+              {editedProjectsToImport.reduce((sum, p) => sum + p.allocation, 0)}/{state.totalTokens} OP
             </p>
           </div>
         )}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Spinner } from "../Spinner";
 import CreateList from "../lists/CreateList";
 import CustomProjectButton from "../op/btn/CustomProjectButton";
 import LoadingModal from "../op/modals/LoadingModal";
 import SuccessModal from "../op/modals/SuccessModal";
-import VoteModal from "../op/modals/VoteModal";
+import ProjectRowEditable from "../shared/ProjectRowEditable";
 import useSWR from "swr";
 import { useAccount } from "wagmi";
 import * as solid from "@heroicons/react/20/solid";
@@ -36,12 +35,7 @@ const AllBallots = () => {
 
   const [filteredBallotProjects, setFilteredBallotProjects] = useState<IBallotProject[] | undefined>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [editBallot, setEditBallot] = useState(false);
-  const [newAllocation, setNewAllocation] = useState<number>(0);
-  const [selectedBallotProject, setSelectedBallotProject] = useState(state.projects[0]);
   const [isAllocationError, setIsAllocationError] = useState(false);
   const [search, setSearch] = useState("");
   const [isShareOpen, setIsShareOpen] = useState(false);
@@ -51,6 +45,7 @@ const AllBallots = () => {
     // sign ballot
     // send signed data to api
     console.log("submitting votes");
+    setLoadingMessage("Submitting your ballot");
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -63,7 +58,6 @@ const AllBallots = () => {
       ballotProjects.filter(project => project.name.toLowerCase().includes(e.target.value.toLowerCase())),
     );
   };
-  // const [openEditModal, setOpenEditModal] = useState(false);
   useEffect(() => {
     setBallotProjects([...state.projects.map((project: any) => ({ ...project, isOpenModal: false }))]);
   }, [state]);
@@ -108,62 +102,30 @@ const AllBallots = () => {
   }
 
   //edit
-  const handleAllocationChange = (value: any) => {
+  const handleAllocationChange = (projectId: string, newAllocation: any) => {
     setIsAllocationError(false);
     let currentTotalAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
-    const currentProjectId = selectedBallotProject?.id;
     // Ensure value is a number
-    value = Number(value);
-
-    if (isNaN(value)) {
-      value = Number.isNaN(newAllocation) ? 0 : newAllocation;
-    }
+    newAllocation = !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0;
 
     // Deduct the current project's allocation, since we're editing it
-    const currentProjectAllocation = state.projects.find(p => p.id === currentProjectId)?.allocation || 0;
+    const currentProjectAllocation = state.projects.find(p => p.id === projectId)?.allocation || 0;
     currentTotalAllocation -= currentProjectAllocation;
 
-    const projectedTotal = value + currentTotalAllocation;
+    const projectedTotal = newAllocation + currentTotalAllocation;
 
     if (projectedTotal > state.totalTokens) {
-      value = state.totalTokens - currentTotalAllocation;
-      setIsAllocationError(true);
+      newAllocation = state.totalTokens - currentTotalAllocation;
     }
-
-    setNewAllocation(value);
-  };
-
-  const handleEdit = (project: IBallotProject) => {
-    setNewAllocation(project.allocation);
-    setSelectedBallotProject(project);
-    setEditBallot(true);
-  };
-
-  const handleEditBallot = () => {
-    const message = "Saving distribution";
-    const completedMessage = "Distribution changed successfully";
-
-    setLoadingMessage(message);
-    dispatch({
-      type: "UPDATE_ALLOCATION",
-      projectId: selectedBallotProject.id,
-      newAllocation,
-    });
-    setEditBallot(false);
-    setIsLoading(true);
-    setTimeout(() => {
-      // Spoofed API request to save ballot
-      setIsLoading(false);
-      setIsSuccess(true);
-      setTimeout(() => {
-        // Spoofed response from api
-        setIsSuccess(false);
-      }, 2000);
-    }, 1000);
-    setSuccessMessage(completedMessage);
+    dispatch({ type: "UPDATE_ALLOCATION", projectId, newAllocation });
   };
 
   const totalAllocatedOp = ballotProjects.reduce((sum, p) => sum + p?.allocation, 0);
+
+  const getMaximum = (project: IBallotProject) => {
+    const totalExcluding = ballotProjects.filter(p => p.id != project.id).reduce((sum, p) => sum + p?.allocation, 0);
+    return state.totalTokens - totalExcluding;
+  };
   return (
     <div className="mx-auto px-12 mt-12 pb-12 grid grid-cols-1 lg:grid-cols-[350px,1fr]  gap-8">
       {!wallet ? <YourBallot /> : <Sidebar />}
@@ -211,66 +173,31 @@ const AllBallots = () => {
                       index === ballotProjects.length - 1 ? "" : "border-b-2"
                     }  grid xs:grid-flow-col items-center justify-between `}
                   >
-                    <div className={`${!project.handle && "items-center"} grid  grid-flow-col gap-4`}>
-                      <div className={` ${project.handle ? "w-[80px]" : "w-[60px]"}`}>
-                        <Image
-                          alt="project list"
-                          height={"80"}
-                          width={"80"}
-                          src="/assets/gradient-bg.png"
-                          className="w-full rounded-xl"
-                        />
-                      </div>
-                      <div className="">
-                        <h3 className="font-bold text-lg truncate ">{project.name}</h3>
-                        {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">{project.handle}</p>}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <p className="text-lg ">{project.allocation} OP</p>
-                      <div className="relative">
-                        <button
-                          onClick={() => {
-                            handleOpenBallotModal(project.id);
-                          }}
-                          className={` ${
-                            project.isOpenModal && "bg-base-100"
-                          }  flex items-center rounded-xl p-2 lg:p-3 border-[1px] border-[#CBD5E0]`}
-                        >
-                          <solid.EllipsisHorizontalIcon className="w-6 h-6 " />
-                        </button>
-                        {project.isOpenModal && (
-                          <div className="absolute  bg-secondary rounded-xl top-16 z-50 -right-16 sm:right-0 w-[200px] py-3 px-8  border-[1px] border-[#e5e8ed]">
-                            <button
-                              onClick={() => {
-                                handleEdit(project);
-                              }}
-                              className="flex gap-4 items-center"
-                            >
-                              <solid.AdjustmentsVerticalIcon className="w-6 h-6 text-[#68778D]" />
-                              <p>Edit</p>
-                            </button>
-                            <button
-                              onClick={() => {
-                                handleBallotRemoval(project.id);
-                              }}
-                              className="flex gap-4 items-center"
-                            >
-                              <solid.TrashIcon className="w-6 h-6 text-[#68778D]" />
-                              <p>Remove</p>
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                    <ProjectRowEditable
+                      project={project}
+                      maximum={getMaximum(project)}
+                      handleChange={handleAllocationChange}
+                      handleRemove={handleBallotRemoval}
+                    />
                   </div>
                 ))}
               </div>
             )}
-            <div className="rounded-2xl  bg-base-300 px-5 grid grid-flow-col justify-between items-center">
-              <p>Total</p>
-              <p>{totalAllocatedOp} OP</p>
-            </div>
+            {isAllocationError ? (
+              <div className="mt-4 rounded-2xl bg-warning text-warning-content px-5 grid grid-flow-col justify-between items-center">
+                <p>Exceeded your total OP tokens</p>
+                <p>
+                  {totalAllocatedOp}/{state.totalTokens} OP
+                </p>
+              </div>
+            ) : (
+              <div className="mt-4 rounded-2xl bg-secondary px-5 grid grid-flow-col justify-between items-center">
+                <p>Total</p>
+                <p>
+                  {totalAllocatedOp}/{state.totalTokens} OP
+                </p>
+              </div>
+            )}
             <div className="flex justify-end items-center  gap-4">
               <div>
                 <CustomProjectButton
@@ -311,18 +238,7 @@ const AllBallots = () => {
             )}
           </div>
         )}
-        {editBallot && (
-          <VoteModal
-            project={selectedBallotProject}
-            onClose={() => setEditBallot(false)}
-            allocation={newAllocation}
-            handleAddBallot={() => handleEditBallot()}
-            handleAllocationChange={handleAllocationChange}
-            isAllocationError={isAllocationError}
-          />
-        )}
         {isLoading && <LoadingModal message={loadingMessage} />}
-        {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
       </div>
     </div>
   );
