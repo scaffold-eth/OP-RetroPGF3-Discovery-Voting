@@ -109,7 +109,7 @@ function ListsPageHeader({ displayList, titleHeader, display, onCategoryChange, 
                 Liked
               </span>
             </button>
-            <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
+            {categories.length > 0 && <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>}
           </>
         )}
         {categories &&
