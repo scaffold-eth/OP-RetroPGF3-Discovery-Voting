@@ -170,6 +170,7 @@ const AllBallots = () => {
                   >
                     <ProjectRowEditable
                       project={project}
+                      maximum={totalAllocatedOp - state.totalTokens}
                       handleChange={handleAllocationChange}
                       handleRemove={handleBallotRemoval}
                     />

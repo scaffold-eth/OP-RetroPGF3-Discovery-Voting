@@ -2,24 +2,30 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import OPInput from "../op/input/OPInput";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { TrashIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { IProjectData } from "../../types/list";
+import { useTimeout } from "usehooks-ts";
 
 interface Props {
   project: IProjectData;
   showOriginalAllocation?: boolean;
   resetCounter?: number;
+  maximum?: number;
   handleChange: (id: string, allocation: number) => void;
   handleRemove: (id: string) => void;
 }
 
-const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, resetCounter, handleChange, handleRemove }) => {
+const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, resetCounter, maximum, handleChange, handleRemove }) => {
   const [originalValue] = useState(project.allocation);
   const [newAllocation, setNewAllocation] = useState(project.allocation);
+  const [showOverMax, setShowOverMax] = useState(false);
 
-  const handleAllocationChange = ( newAllocation: number | string) => {
-    setNewAllocation(Number(newAllocation));
-    handleChange(project.id, Number(newAllocation));
+  const handleAllocationChange = ( value: number | string) => {
+    if (maximum != undefined && Number(value) > maximum) {
+      setShowOverMax(true);
+    }
+    setNewAllocation(Number(value));
+    handleChange(project.id, Number(value));
   };
 
   useEffect(() => {
@@ -60,6 +66,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
         ) : (
           ""
         )}
+        {showOverMax ? (<Message delay={3000} setShowOverMax={setShowOverMax}/>) :""}
         <label className={`input-group rounded`}>
           <input
             type="string"
@@ -73,7 +80,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
           onClick={() => handleRemove(project.id)}
           className={`ml-2 btn-md flex items-center rounded-xl p-3 border-[1px] border-slate-200`}
         >
-          <TrashIcon className="w-6 h-6 " />
+          <TrashIcon className="w-6 h-6" />
         </button>
       </div>
     </>
@@ -81,3 +88,17 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
 };
 
 export default ProjectRowEditable;
+
+interface MessageProps {
+  delay: number;
+  setShowOverMax: (show: boolean) => void;
+}
+const Message:React.FC<MessageProps> = ({delay, setShowOverMax}) => {
+  
+  useTimeout(() => {setShowOverMax(false)}, delay);
+  return (<>
+    <p className="p-2 mx-2 my-0 rounded-2xl bg-warning text-warning-content whitespace-nowrap align-middle leading-8 flex flex-row items-center">
+      <InformationCircleIcon className="w-6 h-6 mr-1"/> Exceeded Max
+    </p>
+  </>);
+}
