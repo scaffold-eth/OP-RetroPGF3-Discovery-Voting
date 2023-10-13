@@ -1,28 +1,12 @@
 import React, { useEffect, useState } from "react";
-// import React, { useState } from "react";
 import { SquaresPlusIcon } from "@heroicons/react/20/solid";
-// import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
 import AddListToBallotModal from "~~/components/op/modals/AddListToBallotModal";
 import EditDistributionModal from "~~/components/op/modals/EditDistributionModal";
 import LoadingModal from "~~/components/op/modals/LoadingModal";
 import SuccessModal from "~~/components/op/modals/SuccessModal";
-// import VoteModal from "~~/components/op/modals/VoteModal";
 import { useBallot } from "~~/context/BallotContext";
-// import { SharedProject as IList } from "~~/context/BallotContext";
-// import { ListDocument } from "~~/models/List";
 import { IList } from "~~/types/list";
-
-// import { isAddedToBallot } from "~~/utils/isAddedToBallot";
-
-// type PopulatedProjects = {
-//   populatedProjects: {
-//     id: string;
-//     name: string;
-//     votes: number;
-//     listId: string;
-//   }[];
-// };
 
 interface IAddListButton {
   //   list: IList & ListDocument & PopulatedProjects;
@@ -89,7 +73,7 @@ const AddListButton: React.FC<IAddListButton> = ({ list, toggleEditModal, custom
           onClose={() => setIsAddListToBallotModal(false)}
           handleAddBallot={() => addProjectToBallot()}
           projectList={populatedProjects}
-          userTotal={projects.reduce((sum, p) => sum + p.votes, 0)}
+          userTotal={projects.reduce((sum, p) => sum + p.allocation, 0)}
           edit={() => handleEditModal(false, true)}
         />
       )}
