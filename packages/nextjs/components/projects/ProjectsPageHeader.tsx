@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
-import { useBallot } from "~~/context/BallotContext";
 import { shuffle } from "~~/utils/shuffle";
 
 type CategoryInfo = {
@@ -8,19 +7,13 @@ type CategoryInfo = {
   projectsCount: number;
 };
 
-function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
-  const { state } = useBallot();
+function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
   const [active, setActive] = useState("all");
   const [categories, setCategories] = useState<CategoryInfo[]>([]);
 
   const handleButtonClick = (options: string) => {
-    if (active === options) {
-      setActive("all");
-      onCategoryChange("all");
-    } else {
-      setActive(options);
-      onCategoryChange(options);
-    }
+    setActive(options);
+    onCategoryChange(options);
   };
 
   const handleShuffle = () => {
@@ -38,7 +31,6 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
         const categoryCount: Record<string, number> = {};
 
         projects.forEach((project: any) => {
-          console.log("project", project.category);
           if (recordedCategories.has(project.category)) {
             categoryCount[project.category]++;
           } else {
@@ -52,48 +44,35 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
           projectsCount: categoryCount[category],
         }));
       }
-
       setCategories(getCategories(projects));
     } catch (e) {
       console.log("ERR_SETTING_CATEGORIES", e);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, projects]);
+  }, []);
 
   return (
     <div>
       <div className="flex justify-between flex-col xs:flex-row gap-2 px-4">
         <h1 className="font-bold text-2xl leading-8 ">{titleHeader}</h1>
-        {displayList ? (
-          <div className="flex gap-2 items-center">
-            <div
-              className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
-                display === "colums" ? "bg-customWhite text-black" : ""
-              }`}
-              onClick={() => displayList("colums")}
-            >
-              <ListBulletIcon className="w-[24px] h-[24px]" />
-            </div>
-            <div
-              className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
-                display === "grids" ? "bg-customWhite text-black" : ""
-              }`}
-              onClick={() => displayList("grids")}
-            >
-              <Squares2X2Icon className="w-[24px] h-[24px]" />
-            </div>
-            <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
-            <button
-              onClick={() => handleShuffle()}
-              className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite hover:text-black"
-            >
-              <span className="flex ">
-                <ArrowsUpDownIcon className="w-[15px] h-[25px]" />
-              </span>
-              Shuffle
-            </button>
+        <div className="flex gap-2 items-center">
+          <div
+            className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
+              display === "colums" ? "bg-customWhite text-black" : ""
+            }`}
+            onClick={() => displayList("colums")}
+          >
+            <ListBulletIcon className="w-[24px] h-[24px]" />
           </div>
-        ) : (
+          <div
+            className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
+              display === "grids" ? "bg-customWhite text-black" : ""
+            }`}
+            onClick={() => displayList("grids")}
+          >
+            <Squares2X2Icon className="w-[24px] h-[24px]" />
+          </div>
+          <div className="h-[18px] border-l-2 border-neutral  mx-[12px] "></div>
           <button
             onClick={() => handleShuffle()}
             className="flex items-center justify-center px-4 py-2  rounded border-neutral border-[1px] gap-2 cursor-pointer hover:bg-customWhite hover:text-black"
@@ -103,7 +82,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
             </span>
             Shuffle
           </button>
-        )}
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-3 px-4 pt-8">
@@ -141,13 +120,7 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
               }`}
             >
               {category.category}
-              <span
-                className={`${
-                  category.category ? "text-OPblack" : ""
-                } px-2 py-1 bg-base-300  text-OPdarkgray  font-bold rounded ml-2`}
-              >
-                <span className=" ">{category.projectsCount}</span>
-              </span>
+              <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
             </button>
           ))}
       </div>
@@ -155,4 +128,4 @@ function ListHeader({ displayList, titleHeader, display, onCategoryChange, onShu
   );
 }
 
-export default ListHeader;
+export default ProjectsPageHeader;

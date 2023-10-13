@@ -25,7 +25,8 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
     return null; // Return null instead of false
   }
 
-  const shareAsList = async () => {
+  const shareAsList = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
     // Code to package the ballot as a list
     const listData = {
@@ -81,11 +82,12 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
           </span>
           <h3 className="text-center mt-5 text-4xl">Share your vote</h3>
           <p className="text-center mt-4 mb-5">Create a list of the projects in your ballot</p>
-          <div className="flex flex-col">
+          <form onSubmit={shareAsList} className="flex flex-col">
             <input
               className="input input-bordered w-full"
               type="text"
               value={listName}
+              maxLength={75}
               onChange={e => setListName(e.target.value)}
               placeholder="List name"
             />
@@ -93,12 +95,14 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
             <textarea
               className="textarea textarea-bordered textarea-sm w-full mt-3"
               value={description}
+              maxLength={1000}
               onChange={e => setDescription(e.target.value)}
               placeholder="List description"
             />
             <textarea
               className="textarea textarea-bordered textarea-sm w-full mt-3"
               value={impactEvaluation}
+              maxLength={1000}
               onChange={e => setImpactEvaluation(e.target.value)}
               placeholder="Describe the impact evolution"
             />
@@ -122,7 +126,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
                 Cancel
               </button>
               <button
-                onClick={shareAsList}
+                type="submit"
                 className={`btn bg-blue-500 px-10 rounded-full text-white capitalize font-normal font-white flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
                   isLoading ? "loading " : ""
                 }`}
@@ -130,7 +134,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
                 Share List
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     )

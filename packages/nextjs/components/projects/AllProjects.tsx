@@ -3,9 +3,9 @@ import { Spinner } from "../Spinner";
 import Pagination from "../lists/Pagination";
 import useSWR from "swr";
 import { useAccount } from "wagmi";
-import ListHeader from "~~/components/lists/ListHeader";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import Card from "~~/components/projects/Card";
+import ProjectsPageHeader from "~~/components/projects/ProjectsPageHeader";
 import Sidebar from "~~/components/shared/Sidebar";
 import { ProjectDocument } from "~~/models/Project";
 import { fetcher } from "~~/utils/fetcher";
@@ -77,7 +77,7 @@ const AllProjects = () => {
           </div>
         ) : (
           <div className="container  mx-auto">
-            <ListHeader
+            <ProjectsPageHeader
               displayList={displayList}
               titleHeader="Projects"
               display={display}

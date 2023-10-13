@@ -22,7 +22,7 @@ const BaseModal: React.FC<IBaseModal> = ({ onClose, children }) => {
     <div
       id="custom-modal-dialog" // Assign the id "custom-modal-dialog" to the main div of the modal
       onClick={handleOnClose} // Attach the handleOnClose function to the onClick event of the main div
-      className="fixed inset-0 px-4 bg-black bg-opacity-30 backdrop-blur-sm grid justify-center items-center"
+      className="fixed inset-0 px-4 bg-black bg-opacity-30 backdrop-blur grid justify-center items-center"
     >
       {children} {/* Render the content passed as children inside the modal */}
     </div>

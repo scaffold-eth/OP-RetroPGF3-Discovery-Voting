@@ -1,23 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Spinner } from "../Spinner";
+import AddListButton from "../op/btn/AddListButton";
 import { Address } from "../scaffold-eth";
 import { useAccount } from "wagmi";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { ProjectDocument } from "~~/models/Project";
+import { IList } from "~~/types/list";
 
 const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const { address } = useAccount();
   const { name, creator, projects, likes, description, tags } = list;
   const isLiked = likes.includes(address);
+  const [populatedList, setPopulatedList] = useState<IList | undefined>();
+
+  const loadListProjectsData = async () => {
+    const response = await fetch("/api/projects");
+    const _projects = await response.json();
+    let _sharedProject = {};
+    const _populatedSharedProjects = [];
+    for (let i = 0; i < list.projects.length; i++) {
+      const projectId = list.projects[i].project;
+      const [p] = _projects.filter((project: ProjectDocument) => project._id === projectId);
+      const projectVotes = list.projects[i].votes;
+      _sharedProject = {
+        id: p._id,
+        name: p.name,
+        votes: projectVotes,
+        listId: list._id,
+      };
+      _populatedSharedProjects.push(_sharedProject);
+    }
+    return { ...list, populatedProjects: _populatedSharedProjects };
+  };
+
+  useEffect(() => {
+    if (!list) return;
+    const populateList = async () => {
+      const data = await loadListProjectsData();
+      setPopulatedList(data);
+    };
+    populateList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [list]);
 
   return (
-    <div className=" w-full border rounded-lg border-gray-300  p-4 ">
+    <div className=" w-full h-60 border rounded-lg border-gray-300  p-4 ">
       <div className="flex items-center">
         <div className="flex-1">
-          <Link key={list._id} href={`lists/${list._id}`}>
-            <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
-          </Link>
+          <div>
+            <Link key={list._id} href={`lists/${list._id}`} className="">
+              <p className="text-[18px] w-full max-w-[200px] truncate  font-bold leading-[28px] mb-0 mt-2 ">{name}</p>
+            </Link>
+          </div>
           {/* <div className="flex items-center">
               <Image width={22} height={22} className="mr-2" src={""} alt="Avatar" />
             </div> */}
@@ -80,16 +117,21 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
           {projects.length} projects
         </p>
       </div>
-      <p className="text-lightGray text-[14px] font-normal leading-5  mt-0">{description}</p>
+      <p className="text-lightGray text-[14px] font-normal leading-5  mt-0 truncate">{description}</p>
       <div className="flex items-center justify-between py-2">
         {tags && tags.length > 0 ? (
           <div className="flex">
             <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> {tags[0]} </span>
-            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> +{tags.length} </span>
+            {tags.length > 1 && (
+              <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+                +{tags.length - 1}
+              </span>
+            )}
           </div>
         ) : (
           ""
         )}
+        {populatedList ? <AddListButton list={populatedList} customClass="card-btn" /> : <Spinner />}
       </div>
     </div>
   );

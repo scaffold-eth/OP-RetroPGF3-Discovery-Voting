@@ -9,8 +9,8 @@ import ProjectRowEditable from "../shared/ProjectRowEditable";
 import useSWR from "swr";
 import { useAccount } from "wagmi";
 import * as solid from "@heroicons/react/20/solid";
-import ListHeader from "~~/components/lists/ListHeader";
 import YourBallot from "~~/components/op/projects/YourBallot";
+import ProjectsPageHeader from "~~/components/projects/ProjectsPageHeader";
 import Sidebar from "~~/components/shared/Sidebar";
 import { useBallot } from "~~/context/BallotContext";
 import { fetcher } from "~~/utils/fetcher";
@@ -126,7 +126,7 @@ const AllBallots = () => {
       {!wallet ? <YourBallot /> : <Sidebar />}
       <div>
         <div className="container  mx-auto">
-          <ListHeader
+          <ProjectsPageHeader
             titleHeader="My ballot"
             display="grids"
             onCategoryChange={setSelectedCategory}
