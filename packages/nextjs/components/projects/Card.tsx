@@ -15,23 +15,27 @@ const Card = ({ project, display }: any) => {
         <div className="rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             {projectBannerUrl ? (
-              <Image
-                width={311}
-                height={112}
-                className="rounded-[1.05em] object-fill w-full h-full"
-                src={projectBannerUrl}
-                alt="banner"
-              />
+              <div className="max-h-[112px] rounded-[1.05em] overflow-hidden">
+                <Image
+                  width={311}
+                  height={112}
+                  className="rounded-[1.05em] object-contain w-full h-full"
+                  src={projectBannerUrl}
+                  alt="banner"
+                />
+              </div>
             ) : (
               <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
             )}
-            <Image
-              width={54}
-              height={54}
-              className="mt-[-22px] ml-[20px] border-4 border-white bg-white rounded-[1.05em] inline-block"
-              src={projectLogoUrl ? projectLogoUrl : logo}
-              alt="logo"
-            />
+            <div className="mt-[-22px] ml-[20px] border-4 border-white rounded-[1.05em] w-fit max-h-[70px] overflow-hidden h-full bg-white">
+              <Image
+                width={54}
+                height={54}
+                className="object-contain rounded-[1.05em] inline-block"
+                src={projectLogoUrl ? projectLogoUrl : logo}
+                alt="logo"
+              />
+            </div>
           </div>
 
           <div className="flex items-center">
@@ -56,13 +60,15 @@ const Card = ({ project, display }: any) => {
         </div>
       ) : (
         <div className="flex border rounded-[1.5rem] border-gray-300   p-4 ">
-          <Image
-            width={54}
-            height={54}
-            className="border-4 border-white  bg-white rounded inline-block w-[54px] h-[54px] "
-            src={logo}
-            alt="logo"
-          />
+          <div>
+            <Image
+              width={54}
+              height={54}
+              className="border-4 border-white  bg-white rounded inline-block w-[54px] h-[54px] object-contain "
+              src={projectLogoUrl ? projectLogoUrl : logo}
+              alt="logo"
+            />
+          </div>
           <div className="ml-6 w-full">
             <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
 
