@@ -4,113 +4,127 @@
 @import "tailwindcss/utilities";
 :root,
 [data-theme] {
-    background: hsl(var(--b2));
+  background: hsl(var(--b2));
 }
 
 body {
-    min-height: 100vh;
-    font-family: "Inter", "Open Sans", sans-serif;
+  min-height: 100vh;
+  font-family: "Inter", "Open Sans", sans-serif;
 }
 
 h1,
 h2,
 h3,
 h4 {
-    margin-bottom: 0.5rem;
-    line-height: 1;
+  margin-bottom: 0.5rem;
+  line-height: 1;
 }
 
 p {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
 
 .btn {
-    @apply shadow-md;
+  @apply shadow-md;
 }
 
 .btn.btn-ghost {
-    @apply shadow-none;
+  @apply shadow-none;
 }
 
 .project__header-container {
-    container: projectlist / inline-size;
+  container: projectlist / inline-size;
 }
 
 .project__header-container--content {
-    display: grid;
-    gap: 1rem;
+  display: grid;
+  gap: 1rem;
 }
 
 @container projectlist (min-width: 668px) {
-    .project__header-container--content {
-        grid-auto-flow: column;
-    }
+  .project__header-container--content {
+    grid-auto-flow: column;
+  }
 }
 
 .custom__progress::-moz-progress-bar {
-    background: red !important;
+  background: red !important;
 }
 
 .custom__progress::-webkit-progress-value {
-    background: red !important;
+  background: red !important;
 }
 
 .custom__progress {
-    color: red !important;
+  color: red !important;
 }
 
 .active-nav {
-    background: hsl(var(--p));
-    width: 100%;
-    height: 4px;
-    display: block;
-    position: absolute;
-    top: 40px;
-    left: 0px;
-    border-radius: 30px 30px 0 0;
+  background: hsl(var(--p));
+  width: 100%;
+  height: 4px;
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  border-radius: 30px 30px 0 0;
 }
 
-
 /* Remove increment buttons on number inputs*/
-
 
 /* Chrome, Safari, Edge, Opera */
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
-
 
 /* Firefox */
 
 input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .shadow-none {
-    --tw-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
 }
 
 .bg-smoke-light {
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #custom-modal-dialog {
-    z-index: 1000;
+  z-index: 1000;
 }
 
 .list__container-card_display {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 }
 
 .card-btn {
-    font-size: 12px;
-    padding: 8px 10px !important;
+  font-size: 12px;
+  padding: 8px 10px !important;
 }
 
 .card-btn svg {
-    margin-right: 6px;
+  margin-right: 6px;
+}
+
+.project__card-container {
+  container: projectGridCard / inline-size;
+}
+
+.project__card-container_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@container projectGridCard (max-width: 250px) {
+  .project__card-container_btn {
+    flex-direction: column;
+    align-items: start;
+  }
 }

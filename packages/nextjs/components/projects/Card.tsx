@@ -12,7 +12,7 @@ const Card = ({ project, display }: any) => {
   return (
     <div>
       {display === "grids" ? (
-        <div className="rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
+        <div className="project__card-container rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             {projectBannerUrl ? (
               <div className="max-h-[112px] rounded-[1.05em] overflow-hidden">
@@ -27,11 +27,11 @@ const Card = ({ project, display }: any) => {
             ) : (
               <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
             )}
-            <div className="mt-[-22px] ml-[20px] border-4 border-white rounded-[1.05em] w-fit max-h-[70px] overflow-hidden h-full bg-white">
+            <div className="mt-[-22px] ml-[20px] border-4 border-white rounded-[1.05em] w-fit h-[70px]  bg-white">
               <Image
                 width={54}
                 height={54}
-                className="object-contain rounded-[1.05em] inline-block"
+                className=" rounded-[1.05em] inline-block"
                 src={projectLogoUrl ? projectLogoUrl : logo}
                 alt="logo"
               />
@@ -50,7 +50,7 @@ const Card = ({ project, display }: any) => {
           </div>
 
           <p className="text-lightGray text-[14px] font-normal leading-5  mt-0 truncate">{description}</p>
-          <div className="flex items-center justify-between py-2">
+          <div className=" project__card-container_btn py-2">
             <span className="px-2 py-1 text-[0.75rem] text-base-content-100 bg-base-200 rounded-md mr-2">
               {" "}
               {category}
