@@ -27,15 +27,14 @@ const Card = ({ project, display }: any) => {
             ) : (
               <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
             )}
-            <div className="mt-[-22px] ml-[20px] border-4 border-white rounded-[1.05em] w-fit h-[70px]  bg-white">
-              <Image
-                width={54}
-                height={54}
-                className=" rounded-[1.05em] inline-block"
-                src={projectLogoUrl ? projectLogoUrl : logo}
-                alt="logo"
-              />
-            </div>
+
+            <Image
+              width={54}
+              height={54}
+              className="mt-[-22px] object-contain ml-[20px] border-4 w-[54px] h-[54px] bg-white border-white  rounded-[1.05em] inline-block   "
+              src={projectLogoUrl ? projectLogoUrl : logo}
+              alt="logo"
+            />
           </div>
 
           <div className="flex items-center">
