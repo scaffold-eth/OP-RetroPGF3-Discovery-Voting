@@ -12,23 +12,26 @@ const Card = ({ project, display }: any) => {
   return (
     <div>
       {display === "grids" ? (
-        <div className="rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
+        <div className="project__card-container rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
             {projectBannerUrl ? (
-              <Image
-                width={311}
-                height={112}
-                className="rounded-[1.05em] object-fill w-full h-full"
-                src={projectBannerUrl}
-                alt="banner"
-              />
+              <div className="max-h-[112px] rounded-[1.05em] overflow-hidden">
+                <Image
+                  width={311}
+                  height={112}
+                  className="rounded-[1.05em] object-contain w-full h-full"
+                  src={projectBannerUrl}
+                  alt="banner"
+                />
+              </div>
             ) : (
               <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
             )}
+
             <Image
               width={54}
               height={54}
-              className="mt-[-22px] ml-[20px] border-4 border-white bg-white rounded-[1.05em] inline-block"
+              className="mt-[-22px] object-contain ml-[20px] border-4 w-[54px] h-[54px] bg-white border-white  rounded-[1.05em] inline-block   "
               src={projectLogoUrl ? projectLogoUrl : logo}
               alt="logo"
             />
@@ -46,7 +49,7 @@ const Card = ({ project, display }: any) => {
           </div>
 
           <p className="text-lightGray text-[14px] font-normal leading-5  mt-0 truncate">{description}</p>
-          <div className="flex items-center justify-between py-2">
+          <div className=" project__card-container_btn py-2">
             <span className="px-2 py-1 text-[0.75rem] text-base-content-100 bg-base-200 rounded-md mr-2">
               {" "}
               {category}
@@ -56,13 +59,15 @@ const Card = ({ project, display }: any) => {
         </div>
       ) : (
         <div className="flex border rounded-[1.5rem] border-gray-300   p-4 ">
-          <Image
-            width={54}
-            height={54}
-            className="border-4 border-white  bg-white rounded inline-block w-[54px] h-[54px] "
-            src={logo}
-            alt="logo"
-          />
+          <div>
+            <Image
+              width={54}
+              height={54}
+              className="border-4 border-white  bg-white rounded inline-block w-[54px] h-[54px] object-contain "
+              src={projectLogoUrl ? projectLogoUrl : logo}
+              alt="logo"
+            />
+          </div>
           <div className="ml-6 w-full">
             <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
 
