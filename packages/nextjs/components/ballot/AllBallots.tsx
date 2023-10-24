@@ -10,7 +10,6 @@ import useSWR from "swr";
 import { useAccount } from "wagmi";
 import * as solid from "@heroicons/react/20/solid";
 import YourBallot from "~~/components/op/projects/YourBallot";
-import ProjectsPageHeader from "~~/components/projects/ProjectsPageHeader";
 import Sidebar from "~~/components/shared/Sidebar";
 import { useBallot } from "~~/context/BallotContext";
 import { fetcher } from "~~/utils/fetcher";
@@ -28,11 +27,8 @@ const AllBallots = () => {
   const { state, dispatch } = useBallot();
   const router = useRouter();
   const [wallet, setWallet] = useState<boolean | false>(false);
-
   const { isLoading: isFetching } = useSWR(`/api/projects?pageQuery=1&limit=12`, fetcher);
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [ballotProjects, setBallotProjects] = useState<IBallotProject[]>([]);
-
   const [filteredBallotProjects, setFilteredBallotProjects] = useState<IBallotProject[] | undefined>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
@@ -59,7 +55,9 @@ const AllBallots = () => {
     );
   };
   useEffect(() => {
-    setBallotProjects([...state.projects.map((project: any) => ({ ...project, isOpenModal: false }))]);
+    const _ballotProjects = [...state.projects.map((project: any) => ({ ...project, isOpenModal: false }))];
+    setBallotProjects(_ballotProjects);
+    setFilteredBallotProjects(_ballotProjects);
   }, [state]);
   const handleOpenBallotModal = (id: string) => {
     setBallotProjects(prev => {
@@ -80,18 +78,6 @@ const AllBallots = () => {
   useEffect(() => {
     setWallet(isDisconnected);
   }, [isDisconnected]);
-
-  useEffect(() => {
-    function filterProjects() {
-      const _filteredProjects =
-        selectedCategory === "all"
-          ? ballotProjects
-          : ballotProjects?.filter(project => project.category === selectedCategory);
-      setFilteredBallotProjects(_filteredProjects);
-    }
-    filterProjects();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCategory, ballotProjects]);
 
   if (isFetching) {
     return (
@@ -130,15 +116,7 @@ const AllBallots = () => {
     <div className="mx-auto px-12 mt-12 pb-12 grid grid-cols-1 lg:grid-cols-[350px,1fr]  gap-8">
       {!wallet ? <YourBallot /> : <Sidebar />}
       <div>
-        <div className="container  mx-auto">
-          <ProjectsPageHeader
-            titleHeader="My ballot"
-            display="grids"
-            onCategoryChange={setSelectedCategory}
-            projects={ballotProjects}
-            onShuffleProjects={setBallotProjects}
-          />
-        </div>
+        <h1 className="font-bold text-2xl leading-8 pl-3 ">My ballot</h1>
         {ballotProjects.length === 0 ? (
           <div className="text-center mt-12">
             <p>You have no projects in your ballot</p>
