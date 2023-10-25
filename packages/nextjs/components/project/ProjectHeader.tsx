@@ -51,24 +51,24 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
 
   return (
     <div className="mx-auto">
-      <div className="max-w-full mx-auto">
+      <div className="max-w-full mx-auto lg:h-[480px] md:h-[350px] sm:h-[250px] rounded-3xl overflow-hidden">
         <Image
           width={1000}
-          height={1000}
-          src="/assets/project/image 3.png"
+          height={480}
+          src={project.projectBannerUrl ? project.projectBannerUrl : "/assets/project/image 3.png"}
           alt="project image"
-          className="block w-full"
+          className=" w-full h-full object-cover"
         />
       </div>
 
       <div className="flex justify-between flex-col md:flex-row gap-4">
         <div className="ml-[30px] flex items-center flex-wrap">
-          <div className="mt-[-20px] max-w-[134px] w-full h-[134px]">
+          <div className="mt-[-20px] w-[134px] h-[134px]">
             <Image
-              width={500}
-              height={500}
-              className=" w-full  rounded-lg shadow-md  "
-              src="/assets/project/image 4.png"
+              width={134}
+              height={134}
+              className="rounded-3xl shadow-md w-full h-full bg-white"
+              src={project?.projectLogoUrl ? project?.projectLogoUrl : "/assets/project/image 4.png"}
               alt="project image"
             />
           </div>
