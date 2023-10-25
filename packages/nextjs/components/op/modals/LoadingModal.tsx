@@ -26,7 +26,7 @@ const LoadingModal: React.FC<ILoadingModal> = ({ message }) => {
                     border-4 border-solid border-OPblue border-t-transparent"
           ></div>
         </div>
-        <h3 className={`text-lg font-bold text-black}`}>{message}</h3> {/* Render the loading message */}
+        <h3 className={"text-lg font-bold"}>{message}</h3> {/* Render the loading message */}
       </div>
     </BaseModal>
   );
