@@ -7,7 +7,7 @@ import { Address } from "../scaffold-eth";
 import { useAccount } from "wagmi";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { ProjectDocument } from "~~/models/Project";
+import { Project } from "~~/models/Project";
 import { IList } from "~~/types/list";
 
 const Card = ({ list, onLike, isLoading, loadingList }: any) => {
@@ -23,7 +23,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
     const _populatedSharedProjects = [];
     for (let i = 0; i < list.projects.length; i++) {
       const projectId = list.projects[i].project;
-      const [p] = _projects.filter((project: ProjectDocument) => project._id === projectId);
+      const [p] = _projects.filter((project: Project) => project._id === projectId);
       const projectAllocation = list.projects[i].allocation;
       _sharedProject = {
         id: p._id,

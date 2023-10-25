@@ -1,4 +1,3 @@
-import { seedDatabase } from "../local_database/seedDb";
 import _mongoose, { connect } from "mongoose";
 
 declare global {
@@ -28,8 +27,6 @@ if (!cached) {
 
 async function dbConnect() {
   console.log("Connecting...");
-  // set to `true` if you want projects data seeded to database
-  await seedDatabase(MONGODB_URI_STRING, false);
   if (cached.conn) {
     return cached.conn;
   }
