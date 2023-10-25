@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
+import { Project } from "~~/models/Project";
 import { shuffle } from "~~/utils/shuffle";
 
 type CategoryInfo = {
@@ -25,17 +26,19 @@ function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChang
 
   useEffect(() => {
     try {
-      function getCategories(projects: any): CategoryInfo[] {
+      function getCategories(projects: Project[]): CategoryInfo[] {
         if (!projects) return [];
         const recordedCategories = new Set<string>();
         const categoryCount: Record<string, number> = {};
 
-        projects.forEach((project: any) => {
-          if (recordedCategories.has(project.category)) {
-            categoryCount[project.category]++;
-          } else {
-            recordedCategories.add(project.category);
-            categoryCount[project.category] = 1;
+        projects.forEach((project: Project) => {
+          for (const category of project.impactCategory) {
+            if (recordedCategories.has(category)) {
+              categoryCount[category]++;
+            } else {
+              recordedCategories.add(category);
+              categoryCount[category] = 1;
+            }
           }
         });
 

@@ -5,12 +5,11 @@ import LoadingModal from "~~/components/op/modals/LoadingModal";
 import SuccessModal from "~~/components/op/modals/SuccessModal";
 import VoteModal from "~~/components/op/modals/VoteModal";
 import { useBallot } from "~~/context/BallotContext";
-import { Project as IProject } from "~~/context/BallotContext";
-import { ProjectDocument } from "~~/models/Project";
+import { Project } from "~~/models/Project";
 import { isAddedToBallot } from "~~/utils/isAddedToBallot";
 
 interface IAddProjectButton {
-  project: IProject & ProjectDocument;
+  project: Project;
   disabled?: boolean;
   toggleEditModal?: boolean;
   customClass?: string;

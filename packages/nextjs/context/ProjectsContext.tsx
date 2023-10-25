@@ -1,9 +1,9 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import { ProjectDocument } from "~~/models/Project";
+import { Project } from "~~/context/BallotContext";
 
 interface ProjectsContextValue {
-  projects: ProjectDocument[];
-  setProjects: React.Dispatch<React.SetStateAction<ProjectDocument[]>>;
+  projects: Project[];
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 const ProjectsContext = createContext<ProjectsContextValue | undefined>(undefined);
 interface ProjectsProviderProps {
@@ -18,7 +18,7 @@ export const useProjects = () => {
 };
 
 export const ProjectsProvider: React.FC<ProjectsProviderProps> = ({ children }) => {
-  const [projects, setProjects] = useState<ProjectDocument[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   useEffect(() => {
     fetch("/api/projects")
       .then(response => response.json())

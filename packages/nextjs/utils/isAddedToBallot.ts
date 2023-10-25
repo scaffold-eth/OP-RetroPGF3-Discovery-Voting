@@ -1,7 +1,7 @@
 import { IState } from "~~/context/BallotContext";
-import { ProjectDocument } from "~~/models/Project";
+import { Project } from "~~/models/Project";
 
-export const isAddedToBallot = (state: IState, project: ProjectDocument): boolean => {
+export const isAddedToBallot = (state: IState, project: Project): boolean => {
   let isAdded = false;
   state.projects.forEach((item: any) => {
     if (item.id === project._id) isAdded = true;

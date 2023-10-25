@@ -7,7 +7,7 @@ import YourBallot from "~~/components/op/projects/YourBallot";
 import Card from "~~/components/projects/Card";
 import ProjectsPageHeader from "~~/components/projects/ProjectsPageHeader";
 import Sidebar from "~~/components/shared/Sidebar";
-import { ProjectDocument } from "~~/models/Project";
+import { Project } from "~~/context/BallotContext";
 import { fetcher } from "~~/utils/fetcher";
 
 const AllProjects = () => {
@@ -17,11 +17,11 @@ const AllProjects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data: projectsData, isLoading } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=12`, fetcher);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [allProjects, setAllProjects] = useState<ProjectDocument[] | undefined>([]);
-  const [filteredProjects, setFilteredProjects] = useState<ProjectDocument[] | undefined>([]);
+  const [allProjects, setAllProjects] = useState<Project[] | undefined>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Project[] | undefined>([]);
   const [totalPages, setTotalPages] = useState(1);
 
-  const handlePageChange = (pageNumber: any) => {
+  const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
@@ -38,7 +38,7 @@ const AllProjects = () => {
       const _filteredProjects =
         selectedCategory === "all"
           ? allProjects
-          : allProjects?.filter(project => project.category === selectedCategory);
+          : allProjects?.filter(project => project.impactCategory.includes(selectedCategory));
       setFilteredProjects(_filteredProjects);
     }
     filterProjects();
