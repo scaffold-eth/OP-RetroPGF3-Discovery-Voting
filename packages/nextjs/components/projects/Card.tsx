@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AddProjectButton from "../op/btn/AddProjectButton";
-import { Project } from "~~/models/Project";
+import { IProject } from "~~/models/Project";
 import logo from "~~/public/assets/Logo.png";
 
 // import banner from "~~/public/assets/gradient-bg.png";
 
-const Card = ({ project, display }: { project: Project; display: any }) => {
+const Card = ({ project, display }: { project: IProject; display: any }) => {
   const { name, ownerName, bio, impactCategory, bannerImageUrl, profileImageUrl } = project;
 
   return (
@@ -62,23 +62,25 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
         <div className="flex border rounded-[1.5rem] border-gray-300   p-4 ">
           <div>
             <Image
-              width={54}
-              height={54}
-              className="border-4 border-white  bg-white rounded inline-block w-[54px] h-[54px] object-contain "
+              width={74}
+              height={74}
+              className="border-4 border-white  bg-white rounded inline-block w-[74px] h-[74px] object-contain "
               src={profileImageUrl ? profileImageUrl : logo}
               alt="logo"
             />
           </div>
           <div className="ml-6 w-full">
-            <p className="text-[18px] font-bold leading-[28px] mb-0 mt-2">{name}</p>
+            <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0">{name}</p>
 
-            <p className="text-lightGray text-[14px] font-normal leading-5 ">{bio}</p>
-            <div className="flex items-center justify-between py-2">
-              <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+            <p className="text-lightGray text-[14px] font-normal leading-5 my-0 ">{bio} Web3 Explorer</p>
+            <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-1 ">
+              <span className="w-fit px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
                 {" "}
-                {impactCategory[0]}{" "}
+                {impactCategory[0]} Collective Govenaces
               </span>
-              <AddProjectButton project={project} customClass="card-btn" />
+              <div className="w-fit">
+                <AddProjectButton project={project} customClass="card-btn" />
+              </div>
             </div>
           </div>
         </div>
