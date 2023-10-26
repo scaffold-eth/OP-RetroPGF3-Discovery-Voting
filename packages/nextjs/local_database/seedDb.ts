@@ -28,7 +28,7 @@ export async function seedDatabase(uri: string | undefined, isSeeding: boolean) 
   try {
     await client.connect();
     console.log("Connected correctly to server");
-    const db = client.db("project-voting"); // set to YOUR_DATABASE_NAME if different
+    const db = client.db("project-voting-staging"); // set to YOUR_DATABASE_NAME if different
     const collection = db.collection("projects"); // set to YOUR_COLLECTION_NAME if different
     console.log("Checking database...");
 
