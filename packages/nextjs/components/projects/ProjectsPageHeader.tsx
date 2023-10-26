@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
 import { IProject } from "~~/models/Project";
+import { humanize } from "~~/utils/humanize";
 import { shuffle } from "~~/utils/shuffle";
 
 type CategoryInfo = {
@@ -122,7 +123,7 @@ function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChang
                 active == `${category.category}` ? "bg-[#FF0520] text-white" : "bg-customWhite text-customGrayBtn"
               }`}
             >
-              {category.category}
+              {humanize(category.category)}
               <span className="px-2 py-1 bg-white text-black font-bold rounded ml-2 ">{category.projectsCount}</span>
             </button>
           ))}
