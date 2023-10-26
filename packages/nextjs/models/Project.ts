@@ -46,7 +46,6 @@ export interface IProject {
 export type ProjectDocument = IProject & Document;
 
 export const projectSchema = new Schema<ProjectDocument>({
-  _id: String,
   name: String,
   url: String,
   profileImageUrl: String,

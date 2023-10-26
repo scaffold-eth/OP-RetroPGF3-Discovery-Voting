@@ -21,10 +21,6 @@ const nextConfig = {
   images: {
     domains: ["github-production-user-asset-6210df.s3.amazonaws.com", "content.optimism.io"],
   },
-  experimental: {
-    esmExternals: "loose", // <-- add this
-    serverComponentsExternalPackages: ["mongoose"], // <-- and this
-  },
 };
 
 module.exports = nextConfig;
