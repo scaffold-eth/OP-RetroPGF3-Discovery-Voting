@@ -25,7 +25,7 @@
     "daisyui": "^2.31.0",
     "ethers": "^6.6.7",
     "mongoose": "^7.4.1",
-    "next": "^13.1.6",
+    "next": "^13.5.0",
     "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-autosuggest": "^10.1.0",
