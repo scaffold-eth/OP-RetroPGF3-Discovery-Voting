@@ -2,12 +2,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AddProjectButton from "../op/btn/AddProjectButton";
-import { IProject } from "~~/models/Project";
+import VoteModal from "../op/modals/VoteModal";
+import { Project } from "~~/context/BallotContext";
 import logo from "~~/public/assets/Logo.png";
 
 // import banner from "~~/public/assets/gradient-bg.png";
 
-const Card = ({ project, display }: { project: IProject; display: any }) => {
+const Card = ({ project, display }: { project: Project; display: any }) => {
   const { name, ownerName, bio, impactCategory, bannerImageUrl, profileImageUrl } = project;
 
   return (
@@ -55,7 +56,7 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
               {" "}
               {impactCategory[0]}
             </span>
-            <AddProjectButton project={project} customClass="card-btn" />
+            <AddProjectButton project={project} customClass="card-btn " />
           </div>
         </div>
       ) : (

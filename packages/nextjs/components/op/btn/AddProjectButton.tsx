@@ -21,7 +21,7 @@ const AddProjectButton: React.FC<IAddProjectButton> = ({ disabled, project, togg
   const [editBallotVote, setEditBallotVote] = useState(false);
   const [isAllocationError, setIsAllocationError] = useState(false);
 
-  const [prevProjectAllocation] = state.projects.filter(item => item.id === project._id);
+  const [prevProjectAllocation] = state.projects.filter(item => item._id === project._id);
   const [newAllocation, setNewAllocation] = useState<number>(prevProjectAllocation?.allocation ?? 0);
 
   const [loadingMessage, setLoadingMessage] = useState("");
