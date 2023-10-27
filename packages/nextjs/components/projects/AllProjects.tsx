@@ -88,7 +88,7 @@ const AllProjects = () => {
 
             <div
               className={`px-4 grid pt-8 gap-4 ${
-                display == "grids" ? "w-full grid-cols-1 lg:grid-cols-3 md:grid-cols-2 " : "grid-rows-1 w-full"
+                display == "grids" ? "w-full project__card-container " : "grid-rows-1 w-full"
               } `}
             >
               {filteredProjects?.map(project => (
