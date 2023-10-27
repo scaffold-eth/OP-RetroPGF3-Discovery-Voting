@@ -95,7 +95,7 @@ const AllBallots = () => {
     newAllocation = !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0;
 
     // Deduct the current project's allocation, since we're editing it
-    const currentProjectAllocation = state.projects.find(p => p.id === projectId)?.allocation || 0;
+    const currentProjectAllocation = state.projects.find(p => p._id === projectId)?.allocation || 0;
     currentTotalAllocation -= currentProjectAllocation;
 
     const projectedTotal = newAllocation + currentTotalAllocation;
