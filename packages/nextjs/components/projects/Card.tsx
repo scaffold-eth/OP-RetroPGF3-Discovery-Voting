@@ -115,27 +115,29 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
       {display === "grids" ? (
         <div className="project__card-container rounded-[1.5em] p-2 bg-base-100 border-gray-300 border ">
           <div className="relative overflow-hidden bg-cover bg-no-repeat">
-            {bannerImageUrl ? (
-              <div className="max-h-[112px] rounded-[1.05em] overflow-hidden">
-                <Image
-                  width={311}
-                  height={112}
-                  className="rounded-[1.05em] object-contain w-full h-full"
-                  src={bannerImageUrl}
-                  alt="banner"
-                />
-              </div>
-            ) : (
-              <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
-            )}
+            <Link href={`/projects/${project._id}`} className="truncate">
+              {bannerImageUrl ? (
+                <div className="max-h-[112px] rounded-[1.05em] overflow-hidden">
+                  <Image
+                    width={311}
+                    height={112}
+                    className="rounded-[1.05em] object-contain object-center w-full h-full"
+                    src={bannerImageUrl}
+                    alt="banner"
+                  />
+                </div>
+              ) : (
+                <div className="flex-shrink-0 w-full h-[112px] rounded-[1.05em] bg-gray-300"></div>
+              )}
 
-            <Image
-              width={54}
-              height={54}
-              className="mt-[-22px] object-contain ml-[20px] border-4 w-[54px] h-[54px] bg-white border-white  rounded-[1.05em] inline-block   "
-              src={profileImageUrl ? profileImageUrl : logo}
-              alt="logo"
-            />
+              <Image
+                width={54}
+                height={54}
+                className="mt-[-22px] object-contain ml-[20px] border-4 w-[54px] h-[54px] bg-white border-white  rounded-[1.05em] inline-block   "
+                src={profileImageUrl ? profileImageUrl : logo}
+                alt="logo"
+              />
+            </Link>
           </div>
 
           <div className="flex items-center">
@@ -165,7 +167,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
         </div>
       ) : (
         <div className="flex border rounded-[1.5rem] border-gray-300   p-4 ">
-          <div>
+          <Link href={`/projects/${project._id}`} className="truncate">
             <Image
               width={74}
               height={74}
@@ -173,16 +175,19 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
               src={profileImageUrl ? profileImageUrl : logo}
               alt="logo"
             />
-          </div>
+          </Link>
           <div className="ml-6 w-full">
-            <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0">{name}</p>
-
-            <p className="text-lightGray text-[14px] font-normal leading-5 my-0 ">{bio} Web3 Explorer</p>
+            <Link href={`/projects/${project._id}`} className="truncate">
+              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0">{name}</p>
+              <p className="text-lightGray text-[14px] font-normal leading-5 my-0 ">{bio} Web3 Explorer</p>
+            </Link>
             <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-1 ">
-              <span className="w-fit px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
-                {" "}
-                {impactCategory[0]} Collective Govenaces
-              </span>
+              <Link href={`/projects/${project._id}`} className="truncate">
+                <span className="w-fit px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+                  {" "}
+                  {impactCategory[0]}
+                </span>
+              </Link>
               <div className="w-fit">
                 <AddProjectButton
                   isAdded={isAdded}
