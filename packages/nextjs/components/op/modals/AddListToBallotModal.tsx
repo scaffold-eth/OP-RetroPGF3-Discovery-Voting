@@ -1,6 +1,6 @@
 // Import required modules and components
 import React from "react";
-import { IProjectData } from "../../../types/list";
+import { IProjectList } from "../../../types/list";
 // Import a custom button component
 import CustomProjectButton from "../btn/CustomProjectButton";
 import ProjectListCard from "../projects/ProjectListCard";
@@ -14,7 +14,7 @@ interface IAddListToBallotModal {
   handleAddBallot: () => void;
   listName: string;
   userTotal: number;
-  projectList: IProjectData[];
+  projectList: IProjectList[];
   edit: () => void;
 }
 

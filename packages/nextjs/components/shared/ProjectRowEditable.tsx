@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import OPInput from "../op/input/OPInput";
 import { TrashIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
-import { IProjectData } from "../../types/list";
+import { IProjectList } from "../../types/list";
 import { useTimeout } from "usehooks-ts";
 
 interface Props {
-  project: IProjectData;
+  project: IProjectList;
   showOriginalAllocation?: boolean;
   resetCounter?: number;
   maximum?: number;
@@ -25,7 +25,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
       setShowOverMax(true);
     }
     setNewAllocation(Number(value));
-    handleChange(project.id, Number(value));
+    handleChange(project._id, Number(value));
   };
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
           <span className={`rounded bg-secondary border-r border-b border-t border-slate-200`}>OP</span>
         </label>
         <button
-          onClick={() => handleRemove(project.id)}
+          onClick={() => handleRemove(project._id)}
           className={`ml-2 btn-md flex items-center rounded-xl p-3 border-[1px] border-slate-200`}
         >
           <TrashIcon className="w-6 h-6" />

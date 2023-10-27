@@ -26,8 +26,6 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [toggleInitialized, setToggleInitialized] = useState<boolean | undefined>(undefined);
-  const [toggleEditModal, setToggleEditModal] = useState<boolean>(false);
   useEffect(() => {
     if (!state) return;
     setIsAdded(false);
@@ -35,22 +33,13 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
     setIsAdded(isProjectInBallot);
   }, [project, state]);
 
-  // useEffect(() => {
-  //   if (toggleEditModal === undefined) return;
-  //   if (toggleInitialized) {
-  //     setEditBallotVote(true);
-  //   }
-  //   setToggleInitialized(true);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [toggleEditModal]);
-
   const addProjectToBallot = () => {
     const _name = project.name as string;
     setNewAllocation(!Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0);
     dispatch({
       type: "ADD_PROJECT",
       project: {
-        id: project._id,
+        _id: project._id,
         name: _name,
         allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
       },
@@ -69,7 +58,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
     }
 
     // Deduct the current project's allocation, since we're editing it
-    const currentProjectAllocation = state.projects.find(p => p.id === currentProjectId)?.allocation || 0;
+    const currentProjectAllocation = state.projects.find(p => p._id === currentProjectId)?.allocation || 0;
     currentTotalAllocation -= currentProjectAllocation;
 
     const projectedTotal = value + currentTotalAllocation;

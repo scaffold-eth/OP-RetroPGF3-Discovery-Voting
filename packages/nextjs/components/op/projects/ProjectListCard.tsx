@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import { IProjectData } from "../../../types/list";
+import { IProjectList } from "../../../types/list";
 
-const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectData }) => {
+const ProjectListCard: React.FC<{ projectData: IProjectList[] }> = ({ projectData }) => {
   return (
     <div>
-      {projectData.map((project: IProjectData, index: number) => (
+      {projectData.map((project: IProjectList, index: number) => (
         <div
           key={index}
           className={`border-OPlightgray py-2 ${
@@ -24,7 +24,6 @@ const ProjectListCard: React.FC<{ projectData: IProjectData[] }> = ({ projectDat
             </div>
             <div className="">
               <h3 className="font-bold text-lg">{project.name}</h3>
-              {project.handle && <p className="mt-0 text-[1.1rem] text-OPbluegray">@{project.handle}</p>}
             </div>
           </div>
           <p className="text-lg">{project.allocation.toLocaleString()} OP</p>

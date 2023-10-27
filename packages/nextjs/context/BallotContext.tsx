@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext, useReducer } from "react";
 import { IProject } from "~~/models/Project";
+import { IProjectList } from "~~/types/list";
 
 // Interface for project to be added to the ballot
 export interface ProjectExtensions {
@@ -7,11 +8,13 @@ export interface ProjectExtensions {
   listId: string;
 }
 
+export type ProjectState = Pick<Project, "_id" | "name" | "allocation">;
+
 export type Project = IProject & ProjectExtensions;
 
 // Interface for ballot state
 export interface IState {
-  projects: Project[];
+  projects: ProjectState[];
   totalTokens: number;
   importedLists: string[];
 }
@@ -23,11 +26,11 @@ interface BallotProviderProps {
 
 type Action =
   | { type: "LOAD_STATE"; stateData: IState }
-  | { type: "ADD_PROJECT"; project: Project }
+  | { type: "ADD_PROJECT"; project: ProjectState }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
-  | { type: "ADD_LIST"; projects: Project[] }
-  | { type: "ADD_EDITED_LIST"; projects: Project[] };
+  | { type: "ADD_LIST"; projects: IProjectList[] }
+  | { type: "ADD_EDITED_LIST"; projects: IProjectList[] };
 
 // The ballot context structure
 interface BallotContextValue {

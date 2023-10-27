@@ -4,7 +4,7 @@ import BaseModal from "./BaseModal";
 import { ArrowPathIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import ProjectRowEditable from "~~/components/shared/ProjectRowEditable";
 import { useBallot } from "~~/context/BallotContext";
-import { IList } from "~~/types/list";
+import { IList, IProjectList } from "~~/types/list";
 import { notification } from "~~/utils/scaffold-eth";
 
 interface Props {
@@ -12,20 +12,13 @@ interface Props {
   onClose: () => void;
 }
 
-type IProjectsToImport = {
-  name: string;
-  id: string;
-  allocation: number;
-  listId: string;
-}[];
-
 const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const [showError, setShowError] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
   const { populatedProjects } = list;
   const [projectsToImport, setProjectsToImport] = useState(populatedProjects);
-  const [editedProjectsToImport, setEditedProjectsToImport] = useState<IProjectsToImport>(projectsToImport);
+  const [editedProjectsToImport, setEditedProjectsToImport] = useState<IProjectList[]>(projectsToImport);
   const [isLoading, setIsLoading] = useState(false);
   const { state, dispatch } = useBallot();
   const [resetCounter, setResetCounter] = useState(0);
@@ -33,7 +26,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const handleAllocationChange = (projectId: string, newAllocation: number | string) => {
     setEditedProjectsToImport(
       editedProjectsToImport.map(project =>
-        project.id === projectId ? { ...project, allocation: Number(newAllocation) } : project,
+        project._id === projectId ? { ...project, allocation: Number(newAllocation) } : project,
       ),
     );
   };
@@ -51,7 +44,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
     checkTotalTokenAllocation();
   }, [editedProjectsToImport, state]);
 
-  const handleEditComplete = (newProjects: IProjectsToImport) => {
+  const handleEditComplete = (newProjects: IProjectList[]) => {
     setIsLoading(true);
     dispatch({ type: "ADD_EDITED_LIST", projects: newProjects });
     notification.success("Added successfully");
@@ -63,7 +56,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
 
   function handleRemoveProject(projectId: string) {
     const myObj = [...projectsToImport];
-    const editedObj = myObj.filter(project => project.id !== projectId);
+    const editedObj = myObj.filter(project => project._id !== projectId);
     setProjectsToImport(editedObj);
     setEditedProjectsToImport(editedObj);
   }
