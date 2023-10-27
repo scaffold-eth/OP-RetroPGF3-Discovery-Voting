@@ -7,6 +7,7 @@ import SuccessModal from "../op/modals/SuccessModal";
 import VoteModal from "../op/modals/VoteModal";
 import { Project, useBallot } from "~~/context/BallotContext";
 import logo from "~~/public/assets/Logo.png";
+import { humanize } from "~~/utils/humanize";
 import { isAddedToBallot } from "~~/utils/isAddedToBallot";
 
 // import banner from "~~/public/assets/gradient-bg.png";
@@ -185,7 +186,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
               <Link href={`/projects/${project._id}`} className="truncate">
                 <span className="w-fit px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
                   {" "}
-                  {impactCategory[0]}
+                  {humanize(impactCategory[0])}
                 </span>
               </Link>
               <div className="w-fit">

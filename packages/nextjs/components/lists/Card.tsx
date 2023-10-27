@@ -9,6 +9,7 @@ import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { IProject } from "~~/models/Project";
 import { IList } from "~~/types/list";
+import { humanize } from "~~/utils/humanize";
 
 const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const { address } = useAccount();
@@ -121,7 +122,10 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
       <div className="flex items-center justify-between py-2">
         {tags && tags.length > 0 ? (
           <div className="flex">
-            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> {tags[0]} </span>
+            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+              {" "}
+              {humanize(tags[0])}{" "}
+            </span>
             {tags.length > 1 && (
               <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
                 +{tags.length - 1}

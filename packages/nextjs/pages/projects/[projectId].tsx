@@ -14,6 +14,7 @@ import SuggestProjects from "~~/components/shared/SuggestProjects";
 import { useSuggestedProjects } from "~~/hooks/scaffold-eth/useSuggestedProjects";
 import dbConnect from "~~/lib/dbConnect";
 import Project, { IProject } from "~~/models/Project";
+import { humanize } from "~~/utils/humanize";
 
 interface Props {
   project: IProject;
@@ -46,7 +47,7 @@ const ProjectDetail: NextPage<Props> = ({ project }) => {
             <div className="flex items-center py-2">
               {project.impactCategory.map((c: string, i: number) => (
                 <span key={i} className="px-4 py-2 text-sm text-customGray bg-customWhite rounded-md mr-2">
-                  {c}
+                  {humanize(c)}
                 </span>
               ))}
             </div>
