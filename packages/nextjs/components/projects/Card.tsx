@@ -156,7 +156,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
           <div className=" project__card-container_btn py-2">
             <span className="px-2 py-1 text-[0.75rem] text-base-content-100 bg-base-200 rounded-md mr-2">
               {" "}
-              {impactCategory[0]}
+              {humanize(impactCategory[0])}
             </span>
             <AddProjectButton
               isAdded={isAdded}
@@ -167,7 +167,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
           </div>
         </div>
       ) : (
-        <div className="flex border rounded-[1.5rem] border-gray-300   p-4 ">
+        <div className="flex border items-center rounded-[1.5rem] border-gray-300   p-4 ">
           <Link href={`/projects/${project._id}`} className="truncate">
             <Image
               width={74}
