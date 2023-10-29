@@ -12,11 +12,11 @@ import { BsGlobe } from "react-icons/bs";
 import { AdjustmentsHorizontalIcon, DocumentDuplicateIcon, EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import { ArrowUturnRightIcon, CheckCircleIcon, FlagIcon } from "@heroicons/react/24/solid";
 import { useBallot } from "~~/context/BallotContext";
-import { ProjectDocument } from "~~/models/Project";
+import { Project } from "~~/models/Project";
 import { isAddedToBallot } from "~~/utils/isAddedToBallot";
 
 // TODO: This component is half-using db and half using stubbed data, need point to db for any stubbed data
-const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
+const ProjectHeader = ({ project }: { project: Project }) => {
   const handle = project && project.twitterLink ? `@${project.twitterLink.replace("https://twitter.com/", "")}` : "";
   const [addressCopied, setAddressCopied] = useState(false);
   const [editBallot, setEditBallot] = useState(false);
@@ -55,7 +55,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
         <Image
           width={1000}
           height={480}
-          src={project.projectBannerUrl ? project.projectBannerUrl : "/assets/project/image 3.png"}
+          src={project.bannerImageUrl ? project.bannerImageUrl : "/assets/project/image 3.png"}
           alt="project image"
           className=" w-full h-full object-cover"
         />
@@ -68,7 +68,7 @@ const ProjectHeader = ({ project }: { project: ProjectDocument }) => {
               width={134}
               height={134}
               className="rounded-3xl shadow-md w-full h-full bg-white"
-              src={project?.projectLogoUrl ? project?.projectLogoUrl : "/assets/project/image 4.png"}
+              src={project?.profileImageUrl ? project?.profileImageUrl : "/assets/project/image 4.png"}
               alt="project image"
             />
           </div>

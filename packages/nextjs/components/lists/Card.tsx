@@ -7,8 +7,9 @@ import { Address } from "../scaffold-eth";
 import { useAccount } from "wagmi";
 import { HeartIcon as HeartFilledIcon } from "@heroicons/react/20/solid";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { ProjectDocument } from "~~/models/Project";
+import { IProject } from "~~/models/Project";
 import { IList } from "~~/types/list";
+import { humanize } from "~~/utils/humanize";
 
 const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const { address } = useAccount();
@@ -23,7 +24,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
     const _populatedSharedProjects = [];
     for (let i = 0; i < list.projects.length; i++) {
       const projectId = list.projects[i].project;
-      const [p] = _projects.filter((project: ProjectDocument) => project._id === projectId);
+      const [p] = _projects.filter((project: IProject) => project._id === projectId);
       const projectAllocation = list.projects[i].allocation;
       _sharedProject = {
         id: p._id,
@@ -121,7 +122,10 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
       <div className="flex items-center justify-between py-2">
         {tags && tags.length > 0 ? (
           <div className="flex">
-            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2"> {tags[0]} </span>
+            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+              {" "}
+              {humanize(tags[0])}{" "}
+            </span>
             {tags.length > 1 && (
               <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
                 +{tags.length - 1}

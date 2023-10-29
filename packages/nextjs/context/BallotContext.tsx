@@ -1,24 +1,20 @@
 import React, { ReactNode, createContext, useContext, useReducer } from "react";
+import { IProject } from "~~/models/Project";
+import { IProjectList } from "~~/types/list";
 
 // Interface for project to be added to the ballot
-export interface Project {
-  id: string;
-  name: string;
-  category?: string;
-
-  allocation: number;
-}
-// Interface for projects shared via list
-export interface SharedProject {
-  id: string;
-  name: string;
+export interface ProjectExtensions {
   allocation: number;
   listId: string;
-  category?: string;
 }
+
+export type ProjectState = Pick<Project, "_id" | "name" | "allocation">;
+
+export type Project = IProject & ProjectExtensions;
+
 // Interface for ballot state
 export interface IState {
-  projects: Project[];
+  projects: ProjectState[];
   totalTokens: number;
   importedLists: string[];
 }
@@ -30,11 +26,11 @@ interface BallotProviderProps {
 
 type Action =
   | { type: "LOAD_STATE"; stateData: IState }
-  | { type: "ADD_PROJECT"; project: Project }
+  | { type: "ADD_PROJECT"; project: ProjectState }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
-  | { type: "ADD_LIST"; projects: SharedProject[] }
-  | { type: "ADD_EDITED_LIST"; projects: SharedProject[] };
+  | { type: "ADD_LIST"; projects: IProjectList[] }
+  | { type: "ADD_EDITED_LIST"; projects: IProjectList[] };
 
 // The ballot context structure
 interface BallotContextValue {
@@ -55,7 +51,7 @@ const reducer = (state: IState, action: Action): IState => {
     case "ADD_PROJECT":
       // logic to add project to the ballot
       const { project } = action;
-      if (state.projects.some(p => p.id === project.id)) {
+      if (state.projects.some(p => p._id === project._id)) {
         // Project already exists in the ballot
         return state;
       }
@@ -67,21 +63,21 @@ const reducer = (state: IState, action: Action): IState => {
     case "UPDATE_ALLOCATION":
       // logic to update the token allocation for a project
       const { projectId, newAllocation } = action;
-      const otherProjectsTotal = state.projects.reduce((sum, p) => (p.id !== projectId ? sum + p.allocation : sum), 0);
+      const otherProjectsTotal = state.projects.reduce((sum, p) => (p._id !== projectId ? sum + p.allocation : sum), 0);
       if (newAllocation + otherProjectsTotal > state.totalTokens) {
         // New allocation exceeds total tokens
         return state;
       }
       return {
         ...state,
-        projects: state.projects.map(p => (p.id === projectId ? { ...p, allocation: newAllocation } : p)),
+        projects: state.projects.map(p => (p._id === projectId ? { ...p, allocation: newAllocation } : p)),
       };
     case "REMOVE_PROJECT":
       // logic to remove a project from the ballot
       const { targetId } = action;
       return {
         ...state,
-        projects: state.projects.filter(p => p.id !== targetId),
+        projects: state.projects.filter(p => p._id !== targetId),
       };
     case "ADD_LIST":
       const listId = action.projects[0].listId;
@@ -99,7 +95,7 @@ const reducer = (state: IState, action: Action): IState => {
       if (listTotalAllocation > remainingAllocation) scalingFactor = remainingAllocation / listTotalAllocation;
 
       action.projects.forEach(listItem => {
-        const existingProjectIndex = newProjects.findIndex(project => project.id === listItem.id);
+        const existingProjectIndex = newProjects.findIndex(project => project._id === listItem._id);
         const additionalVotes = Math.round(listItem.allocation * scalingFactor);
 
         if (existingProjectIndex !== -1) {
@@ -107,12 +103,11 @@ const reducer = (state: IState, action: Action): IState => {
           newProjects[existingProjectIndex].allocation += additionalVotes;
         } else {
           // If project does not exist, add it to the ballot.
-          newProjects.push({
-            id: listItem.id,
-            name: listItem.name,
-            category: listItem.category,
-            allocation: additionalVotes,
-          });
+          newProjects.push(
+            Object.assign(listItem, {
+              allocation: additionalVotes,
+            }),
+          );
         }
       });
 
@@ -128,18 +123,18 @@ const reducer = (state: IState, action: Action): IState => {
       // Iterate over the projects in the edited list
       action.projects.forEach(editedProject => {
         // Find the corresponding project in the ballot
-        const indexInBallot = previousProjects.findIndex(project => project.id === editedProject.id);
+        const indexInBallot = previousProjects.findIndex(project => project._id === editedProject._id);
 
         // If found, update its allocation
         if (indexInBallot !== -1) {
           previousProjects[indexInBallot].allocation = editedProject.allocation;
         } else {
           // If it's not found, add it to the ballot
-          previousProjects.push({
-            name: editedProject.name,
-            id: editedProject.id,
-            allocation: editedProject.allocation,
-          });
+          previousProjects.push(
+            Object.assign(editedProject, {
+              allocation: editedProject.allocation,
+            }),
+          );
         }
       });
 

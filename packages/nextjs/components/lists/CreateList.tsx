@@ -36,7 +36,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
       impactEvaluation,
       tags,
       projects: state.projects.map(project => ({
-        project: project.id,
+        project: project._id,
         allocation: project.allocation,
       })),
     };

@@ -5,11 +5,11 @@ import Autosuggest from "react-autosuggest";
 import useSWR from "swr";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { ListDocument } from "~~/models/List";
-import { ProjectDocument } from "~~/models/Project";
+import { IProject } from "~~/models/Project";
 import { fetcher } from "~~/utils/fetcher";
 
 interface SearchResult {
-  searchData: ProjectDocument[] | ListDocument[];
+  searchData: IProject[] | ListDocument[];
 }
 
 const SearchProjects: React.FC = () => {

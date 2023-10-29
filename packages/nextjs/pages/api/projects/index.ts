@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "~~/lib/dbConnect";
-import Project, { ProjectDocument } from "~~/models/Project";
+import Project, { IProject } from "~~/models/Project";
 
 // Todo Api Middleware
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -26,14 +26,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const skip = (page - 1) * pageSize;
 
     // Fetch the projects for the current page
-    const projects: ProjectDocument[] = await Project.find().skip(skip).limit(pageSize).exec();
+    const projects: IProject[] = await Project.find().skip(skip).limit(pageSize).exec();
 
     console.log(`API GET /api/projects?pageQuery=${page}`);
 
     return res.status(200).json({ projects, totalPages });
   } else {
     // Fetch all projects if pageQuery isn't provided
-    const projects: ProjectDocument[] = await Project.find({});
+    const projects: IProject[] = await Project.find({});
 
     console.log("API GET /api/projects");
 
