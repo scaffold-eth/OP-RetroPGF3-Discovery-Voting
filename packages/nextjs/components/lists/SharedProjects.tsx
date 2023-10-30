@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AddListButton from "../op/btn/AddListButton";
+import AddListToBallotModal from "../op/modals/AddListToBallotModal";
 import EditDistributionModal from "../op/modals/EditDistributionModal";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/20/solid";
+import LoadingModal from "../op/modals/LoadingModal";
+import SuccessModal from "../op/modals/SuccessModal";
+import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/20/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
+import { useBallot } from "~~/context/BallotContext";
 import { IList } from "~~/types/list";
 
 interface Props {
@@ -12,12 +16,37 @@ interface Props {
 
 const SharedProjects: React.FC<Props> = ({ list }) => {
   const { projects, populatedProjects } = list;
+  const { dispatch } = useBallot();
+
   const [editBallot, setEditBallot] = useState(false);
+  const [addBallot, setAddBallot] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleEditModal = () => {
     setEditBallot(!editBallot);
   };
-  console.log(list);
+
+  const handleModal = (close = false, edit = false) => {
+    setEditBallot(!close && edit);
+    setAddBallot(false);
+  };
+  const addProjectToBallot = () => {
+    setAddBallot(false);
+    setLoadingMessage("Adding to ballot");
+    setSuccessMessage("Projects added successfully");
+    setIsLoading(true);
+    dispatch({
+      type: "ADD_LIST",
+      projects: populatedProjects,
+    });
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSuccess(true);
+    }, 1000);
+  };
 
   return (
     <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
@@ -36,7 +65,13 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
               <AdjustmentsHorizontalIcon className="w-5 h-5" />
             </CustomProjectButton>
 
-            <AddListButton list={list} toggleEditModal={editBallot} />
+            <CustomProjectButton
+              onClick={() => setAddBallot(true)}
+              text="Add to ballot"
+              customClassName={`bg-OPred py-2 rounded-lg border-OPred  text-[#ffffff] `}
+            >
+              <SquaresPlusIcon className="w-5 h-5" />
+            </CustomProjectButton>
           </div>
         </div>
       </div>
@@ -77,7 +112,19 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         <p>{projects?.reduce((sum, p) => sum + p.allocation, 0)} OP</p>
       </div>
 
-      {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal()} />}
+      {addBallot && (
+        <AddListToBallotModal
+          listName={list.name}
+          onClose={() => setAddBallot(false)}
+          handleAddBallot={() => addProjectToBallot()}
+          projectList={populatedProjects}
+          userTotal={projects.reduce((sum, p) => sum + p.allocation, 0)}
+          edit={() => handleModal()}
+        />
+      )}
+      {editBallot && <EditDistributionModal list={list} onClose={() => handleModal(false, false)} />}
+      {isLoading && <LoadingModal message={loadingMessage} />}
+      {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
     </div>
   );
 };
