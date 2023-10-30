@@ -1,12 +1,12 @@
 /* eslint-disable  @typescript-eslint/no-unused-vars */
 // TODO: Currently not using this component. Need to incorperate with new logic
 import React, { useState } from "react";
-import { IProjectData } from "../../../types/list";
+import { IProjectList } from "../../../types/list";
 import ProjectRowEditable from "~~/components/shared/ProjectRowEditable";
 
 const ProjectListCardEditable: React.FC<{
-  projectData: IProjectData[];
-  listAllocation?: IProjectData[];
+  projectData: IProjectList[];
+  listAllocation?: IProjectList[];
   emitTotal: (total: number) => void;
 }> = ({ projectData, emitTotal }) => {
   const handleChange = (projectId: string, value: number) => {
@@ -27,7 +27,7 @@ const ProjectListCardEditable: React.FC<{
   const [totalOP, setTotalOP] = useState(projectData.reduce((a, b) => a + Number(b.allocation), 0));
   return (
     <div>
-      {projectData.map((project: IProjectData, index: number) => (
+      {projectData.map((project: IProjectList, index: number) => (
         <div
           key={index}
           className={`border-OPlightgray py-6 ${

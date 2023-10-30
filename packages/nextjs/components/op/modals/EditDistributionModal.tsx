@@ -4,7 +4,7 @@ import BaseModal from "./BaseModal";
 import { ArrowPathIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
 import ProjectRowEditable from "~~/components/shared/ProjectRowEditable";
 import { useBallot } from "~~/context/BallotContext";
-import { IList } from "~~/types/list";
+import { IList, IProjectList } from "~~/types/list";
 import { notification } from "~~/utils/scaffold-eth";
 
 interface Props {
@@ -20,13 +20,14 @@ type IProjectsToImport = {
   profileImageUrl?: string;
 }[];
 
+
 const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const [showError, setShowError] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
   const { populatedProjects } = list;
   const [projectsToImport, setProjectsToImport] = useState(populatedProjects);
-  const [editedProjectsToImport, setEditedProjectsToImport] = useState<IProjectsToImport>(projectsToImport);
+  const [editedProjectsToImport, setEditedProjectsToImport] = useState<IProjectList[]>(projectsToImport);
   const [isLoading, setIsLoading] = useState(false);
   const { state, dispatch } = useBallot();
   const [resetCounter, setResetCounter] = useState(0);
@@ -52,7 +53,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
     checkTotalTokenAllocation();
   }, [editedProjectsToImport, state]);
 
-  const handleEditComplete = (newProjects: IProjectsToImport) => {
+  const handleEditComplete = (newProjects: IProjectList[]) => {
     setIsLoading(true);
     dispatch({ type: "ADD_EDITED_LIST", projects: newProjects });
     notification.success("Added successfully");

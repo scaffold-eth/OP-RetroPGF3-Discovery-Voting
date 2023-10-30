@@ -28,8 +28,6 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [toggleInitialized, setToggleInitialized] = useState<boolean | undefined>(undefined);
-  const [toggleEditModal, setToggleEditModal] = useState<boolean>(false);
   useEffect(() => {
     if (!state) return;
 
@@ -38,15 +36,6 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
 
     setIsAdded(isProjectInBallot);
   }, [project, state]);
-
-  // useEffect(() => {
-  //   if (toggleEditModal === undefined) return;
-  //   if (toggleInitialized) {
-  //     setEditBallotVote(true);
-  //   }
-  //   setToggleInitialized(true);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [toggleEditModal]);
 
   const addProjectToBallot = () => {
     const _name = project.name as string;

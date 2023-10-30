@@ -5,18 +5,20 @@ import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 // Import a custom button component
 import BaseModal from "./BaseModal";
-import { useBallot } from "~~/context/BallotContext";
+import { ProjectState, useBallot } from "~~/context/BallotContext";
 
 // Import the BaseModal component
 
 // Define an interface for the props that VoteModal component receives
 interface IVoteModal {
+
   project: {
     _id: string;
     name: string;
     allocation: number;
     profileImageUrl?: string;
   }; // The project to be voted on
+
   handleAllocationChange: (value: any) => void;
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
