@@ -21,6 +21,7 @@ interface IBallotProject {
   handle?: string;
   allocation: number;
   isOpenModal: boolean;
+  profileImageUrl?: string;
 }
 const AllBallots = () => {
   const { isDisconnected } = useAccount();
@@ -95,7 +96,7 @@ const AllBallots = () => {
     newAllocation = !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0;
 
     // Deduct the current project's allocation, since we're editing it
-    const currentProjectAllocation = state.projects.find(p => p.id === projectId)?.allocation || 0;
+    const currentProjectAllocation = state.projects.find(p => p._id === projectId)?.allocation || 0;
     currentTotalAllocation -= currentProjectAllocation;
 
     const projectedTotal = newAllocation + currentTotalAllocation;
@@ -112,6 +113,7 @@ const AllBallots = () => {
     const totalExcluding = ballotProjects.filter(p => p.id != project.id).reduce((sum, p) => sum + p?.allocation, 0);
     return state.totalTokens - totalExcluding;
   };
+  console.log(filteredBallotProjects);
   return (
     <div className="mx-auto px-12 mt-12 pb-12 grid grid-cols-1 lg:grid-cols-[350px,1fr]  gap-8">
       {!wallet ? <YourBallot /> : <Sidebar />}

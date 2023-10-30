@@ -8,6 +8,7 @@ import Card from "~~/components/projects/Card";
 import ProjectsPageHeader from "~~/components/projects/ProjectsPageHeader";
 import Sidebar from "~~/components/shared/Sidebar";
 import { Project } from "~~/context/BallotContext";
+import { IProject } from "~~/models/Project";
 import { fetcher } from "~~/utils/fetcher";
 
 const AllProjects = () => {
@@ -17,8 +18,8 @@ const AllProjects = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data: projectsData, isLoading } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=12`, fetcher);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [allProjects, setAllProjects] = useState<Project[] | undefined>([]);
-  const [filteredProjects, setFilteredProjects] = useState<Project[] | undefined>([]);
+  const [allProjects, setAllProjects] = useState<IProject[] | undefined>([]);
+  const [filteredProjects, setFilteredProjects] = useState<IProject[] | undefined>([]);
   const [totalPages, setTotalPages] = useState(1);
 
   const handlePageChange = (pageNumber: number) => {

@@ -6,6 +6,7 @@ interface IProjects {
     name: string;
     allocation: number;
     listId: string;
+    profileImageUrl?: string;
   }[];
 }
 export type IList = ListDocument & IProjects;
@@ -15,6 +16,7 @@ export interface IProjectData {
   handle?: string;
   image?: string;
   allocation: number;
-  id: string;
+  _id: string;
   listId?: string;
+  profileImageUrl?: string;
 }

@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import OPInput from "../op/input/OPInput";
-import { TrashIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { IProjectData } from "../../types/list";
+import OPInput from "../op/input/OPInput";
 import { useTimeout } from "usehooks-ts";
+import { InformationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 interface Props {
   project: IProjectData;
@@ -15,17 +15,24 @@ interface Props {
   handleRemove: (id: string) => void;
 }
 
-const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, resetCounter, maximum, handleChange, handleRemove }) => {
+const ProjectRowEditable: React.FC<Props> = ({
+  project,
+  showOriginalAllocation,
+  resetCounter,
+  maximum,
+  handleChange,
+  handleRemove,
+}) => {
   const [originalValue] = useState(project.allocation);
   const [newAllocation, setNewAllocation] = useState(project.allocation);
   const [showOverMax, setShowOverMax] = useState(false);
 
-  const handleAllocationChange = ( value: number | string) => {
+  const handleAllocationChange = (value: number | string) => {
     if (maximum != undefined && Number(value) > maximum) {
       setShowOverMax(true);
     }
     setNewAllocation(Number(value));
-    handleChange(project.id, Number(value));
+    handleChange(project._id, Number(value));
   };
 
   useEffect(() => {
@@ -44,7 +51,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
             alt="project list"
             height={"80"}
             width={"80"}
-            src="/assets/gradient-bg.png"
+            src={`${project.profileImageUrl ? project.profileImageUrl : "/assets/gradient-bg.png"} `}
             className="w-full rounded-xl"
           />
         </div>
@@ -66,7 +73,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
         ) : (
           ""
         )}
-        {showOverMax ? (<Message delay={3000} setShowOverMax={setShowOverMax}/>) :""}
+        {showOverMax ? <Message delay={3000} setShowOverMax={setShowOverMax} /> : ""}
         <label className={`input-group rounded`}>
           <input
             type="string"
@@ -77,7 +84,7 @@ const ProjectRowEditable: React.FC<Props> = ({ project, showOriginalAllocation, 
           <span className={`rounded bg-secondary border-r border-b border-t border-slate-200`}>OP</span>
         </label>
         <button
-          onClick={() => handleRemove(project.id)}
+          onClick={() => handleRemove(project._id)}
           className={`ml-2 btn-md flex items-center rounded-xl p-3 border-[1px] border-slate-200`}
         >
           <TrashIcon className="w-6 h-6" />
@@ -93,12 +100,15 @@ interface MessageProps {
   delay: number;
   setShowOverMax: (show: boolean) => void;
 }
-const Message:React.FC<MessageProps> = ({delay, setShowOverMax}) => {
-  
-  useTimeout(() => {setShowOverMax(false)}, delay);
-  return (<>
-    <p className="p-2 mx-2 my-0 rounded-2xl bg-warning text-warning-content whitespace-nowrap align-middle leading-8 flex flex-row items-center">
-      <InformationCircleIcon className="w-6 h-6 mr-1"/> Exceeded Max
-    </p>
-  </>);
-}
+const Message: React.FC<MessageProps> = ({ delay, setShowOverMax }) => {
+  useTimeout(() => {
+    setShowOverMax(false);
+  }, delay);
+  return (
+    <>
+      <p className="p-2 mx-2 my-0 rounded-2xl bg-warning text-warning-content whitespace-nowrap align-middle leading-8 flex flex-row items-center">
+        <InformationCircleIcon className="w-6 h-6 mr-1" /> Exceeded Max
+      </p>
+    </>
+  );
+};

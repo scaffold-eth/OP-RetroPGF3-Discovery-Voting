@@ -3,11 +3,14 @@ import { IProject } from "~~/models/Project";
 
 // Interface for project to be added to the ballot
 export interface ProjectExtensions {
+  _id: string;
+  name: string;
   allocation: number;
   listId: string;
+  profileImageUrl?: string;
 }
 
-export type Project = IProject & ProjectExtensions;
+export type Project = ProjectExtensions;
 
 // Interface for ballot state
 export interface IState {

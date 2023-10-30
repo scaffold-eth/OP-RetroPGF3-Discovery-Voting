@@ -12,9 +12,10 @@ import { useBallot } from "~~/context/BallotContext";
 // Define an interface for the props that VoteModal component receives
 interface IVoteModal {
   project: {
-    id: string;
+    _id: string;
     name: string;
     allocation: number;
+    profileImageUrl?: string;
   }; // The project to be voted on
   handleAllocationChange: (value: any) => void;
   onClose: () => void; // A function to be called when the modal is closed
@@ -72,7 +73,7 @@ const VoteModal: React.FC<IVoteModal> = ({
               alt="project list"
               height={"80"}
               width={"80"}
-              src="/assets/gradient-bg.png"
+              src={`${project?.profileImageUrl ? project.profileImageUrl : "/assets/gradient-bg.png"}`}
               className="w-full rounded-xl"
             />
           </div>
