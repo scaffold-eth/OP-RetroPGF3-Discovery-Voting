@@ -6,12 +6,13 @@ export interface ProjectExtensions {
   _id: string;
   name: string;
   allocation: number;
-  listId: string;
   profileImageUrl?: string;
 }
 
 export type Project = ProjectExtensions;
-
+export type ListProject = {
+  listId: string;
+} & ProjectExtensions;
 // Interface for ballot state
 export interface IState {
   projects: Project[];
@@ -29,8 +30,8 @@ type Action =
   | { type: "ADD_PROJECT"; project: Project }
   | { type: "UPDATE_ALLOCATION"; projectId: string; newAllocation: number }
   | { type: "REMOVE_PROJECT"; targetId: string }
-  | { type: "ADD_LIST"; projects: Project[] }
-  | { type: "ADD_EDITED_LIST"; projects: Project[] };
+  | { type: "ADD_LIST"; projects: ListProject[] }
+  | { type: "ADD_EDITED_LIST"; projects: ListProject[] };
 
 // The ballot context structure
 interface BallotContextValue {

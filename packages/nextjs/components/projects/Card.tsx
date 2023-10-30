@@ -56,7 +56,6 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
       project: {
         _id: project._id,
         name: _name,
-        listId: project._id, //this should be changed
         profileImageUrl,
         allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
       },
