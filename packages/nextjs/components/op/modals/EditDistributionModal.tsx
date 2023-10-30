@@ -14,9 +14,10 @@ interface Props {
 
 type IProjectsToImport = {
   name: string;
-  id: string;
+  _id: string;
   allocation: number;
   listId: string;
+  profileImageUrl?: string;
 }[];
 
 const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
@@ -33,7 +34,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const handleAllocationChange = (projectId: string, newAllocation: number | string) => {
     setEditedProjectsToImport(
       editedProjectsToImport.map(project =>
-        project.id === projectId ? { ...project, allocation: Number(newAllocation) } : project,
+        project._id === projectId ? { ...project, allocation: Number(newAllocation) } : project,
       ),
     );
   };
@@ -63,7 +64,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
 
   function handleRemoveProject(projectId: string) {
     const myObj = [...projectsToImport];
-    const editedObj = myObj.filter(project => project.id !== projectId);
+    const editedObj = myObj.filter(project => project._id !== projectId);
     setProjectsToImport(editedObj);
     setEditedProjectsToImport(editedObj);
   }

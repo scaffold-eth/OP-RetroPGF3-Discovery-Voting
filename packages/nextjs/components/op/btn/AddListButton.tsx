@@ -66,7 +66,7 @@ const AddListButton: React.FC<IAddListButton> = ({ list, toggleEditModal, custom
       >
         <SquaresPlusIcon className="w-5 h-5" />
       </CustomProjectButton>
-      {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal(true, false)} />}
+
       {isAddListToBallotModal && (
         <AddListToBallotModal
           listName={list.name}

@@ -2,7 +2,7 @@ import { ListDocument } from "~~/models/List";
 
 interface IProjects {
   populatedProjects: {
-    id: string;
+    _id: string;
     name: string;
     allocation: number;
     listId: string;

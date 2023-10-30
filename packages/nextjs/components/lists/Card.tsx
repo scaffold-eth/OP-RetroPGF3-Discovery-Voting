@@ -20,6 +20,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   const loadListProjectsData = async () => {
     const response = await fetch("/api/projects");
     const _projects = await response.json();
+
     let _sharedProject = {};
     const _populatedSharedProjects = [];
     for (let i = 0; i < list.projects.length; i++) {
@@ -29,6 +30,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
       _sharedProject = {
         id: p._id,
         name: p.name,
+
         allocation: projectAllocation,
         listId: list._id,
       };
@@ -41,6 +43,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
     if (!list) return;
     const populateList = async () => {
       const data = await loadListProjectsData();
+
       setPopulatedList(data);
     };
     populateList();

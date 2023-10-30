@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import AddListButton from "../op/btn/AddListButton";
+import EditDistributionModal from "../op/modals/EditDistributionModal";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/20/solid";
 import CustomProjectButton from "~~/components/op/btn/CustomProjectButton";
 import { IList } from "~~/types/list";
@@ -16,6 +17,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
   const handleEditModal = () => {
     setEditBallot(!editBallot);
   };
+  console.log(list);
 
   return (
     <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
@@ -57,7 +59,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
                   alt="project list"
                   height={"80"}
                   width={"80"}
-                  src="/assets/gradient-bg.png"
+                  src={`${project?.profileImageUrl ? project.profileImageUrl : "/assets/gradient-bg.png"}`}
                   className="w-full rounded-xl"
                 />
               </div>
@@ -74,6 +76,8 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         <p>Total</p>
         <p>{projects?.reduce((sum, p) => sum + p.allocation, 0)} OP</p>
       </div>
+
+      {editBallot && <EditDistributionModal list={list} onClose={() => handleEditModal()} />}
     </div>
   );
 };
