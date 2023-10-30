@@ -19,7 +19,7 @@ const ProjectListCardEditable: React.FC<{
 
   function handleRemoveProject(projectId: string) {
     const myObj = [...projectData];
-    const editedObj = myObj.filter(project => project.id !== projectId);
+    const editedObj = myObj.filter(project => project._id !== projectId);
     // setProjectsToImport(editedObj);
     // setEditedProjectsToImport(editedObj);
   }
