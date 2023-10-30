@@ -35,7 +35,7 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
 
     setIsAdded(false);
     const isProjectInBallot = isAddedToBallot(state, project);
-    console.log("is preject added", isProjectInBallot);
+
     setIsAdded(isProjectInBallot);
   }, [project, state]);
 
@@ -56,7 +56,7 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
       project: {
         _id: project._id,
         name: _name,
-        listId: "",
+        listId: project._id, //this should be changed
         profileImageUrl,
         allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
       },
