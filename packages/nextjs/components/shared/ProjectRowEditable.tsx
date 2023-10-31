@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { IProjectData } from "../../types/list";
+import { IProjectList } from "../../types/list";
 import OPInput from "../op/input/OPInput";
 import { useTimeout } from "usehooks-ts";
 import { InformationCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 interface Props {
-  project: IProjectData;
+  project: IProjectList;
   showOriginalAllocation?: boolean;
   resetCounter?: number;
   maximum?: number;

@@ -6,6 +6,5 @@ export const isAddedToBallot = (state: IState, project: IProject): boolean => {
   state.projects.forEach((item: ProjectExtensions) => {
     if (item._id === project._id) isAdded = true;
   });
-
   return isAdded;
 };

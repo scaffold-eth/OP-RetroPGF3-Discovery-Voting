@@ -1,6 +1,6 @@
 // Import required modules and components
 import React from "react";
-import { IProjectData } from "../../../types/list";
+import { IProjectList } from "../../../types/list";
 // Import a custom button component
 import CustomProjectButton from "../btn/CustomProjectButton";
 import ProjectListCardEditable from "../projects/ProjectListCardEditable";
@@ -12,7 +12,7 @@ import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 interface IAlreadyOnBallotConflictModal {
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
-  projectList: IProjectData[];
+  projectList: IProjectList[];
   edit: () => void;
 }
 

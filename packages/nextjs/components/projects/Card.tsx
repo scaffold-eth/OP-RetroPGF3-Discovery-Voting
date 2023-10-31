@@ -26,7 +26,6 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
   useEffect(() => {
     if (!state) return;
 

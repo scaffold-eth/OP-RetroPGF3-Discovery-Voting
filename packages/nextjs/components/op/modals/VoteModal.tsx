@@ -17,6 +17,7 @@ interface IVoteModal {
     allocation: number;
     profileImageUrl?: string;
   }; // The project to be voted on
+
   handleAllocationChange: (value: any) => void;
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
