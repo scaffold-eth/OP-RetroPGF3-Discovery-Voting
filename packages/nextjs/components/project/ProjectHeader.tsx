@@ -24,14 +24,14 @@ const ProjectHeader = ({ project }: { project: Project }) => {
   const { state } = useBallot();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const [isAllocationError, setIsAllocationError] = useState(false);
+  // const [isAllocationError, setIsAllocationError] = useState(false);
   const [prevProjectAllocation] = state.projects.filter(item => item._id === project._id);
-  const [newAllocation, setNewAllocation] = useState<number>(prevProjectAllocation?.allocation ?? 0);
+  const [newAllocation /*setNewAllocation */] = useState<number>(prevProjectAllocation?.allocation ?? 0);
 
-  const [loadingMessage, setLoadingMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  // const [loadingMessage, setLoadingMessage] = useState("");
+  // const [successMessage, setSuccessMessage] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && event.target instanceof Node && !dropdownRef.current.contains(event.target)) {
@@ -53,7 +53,6 @@ const ProjectHeader = ({ project }: { project: Project }) => {
     if (!state) return;
     setIsAdded(false);
     const isProjectInBallot = isAddedToBallot(state, project);
-    console.log("is aded", isProjectInBallot);
     setIsAdded(isProjectInBallot);
   }, [project, state]);
 
