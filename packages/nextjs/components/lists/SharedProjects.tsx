@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import AddListButton from "../op/btn/AddListButton";
 import AddListToBallotModal from "../op/modals/AddListToBallotModal";
 import EditDistributionModal from "../op/modals/EditDistributionModal";
 import LoadingModal from "../op/modals/LoadingModal";
