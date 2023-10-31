@@ -48,7 +48,7 @@ const AllProjects = () => {
 
   useEffect(() => {
     if (!projectsData) return;
-    console.log("projectsData", projectsData);
+
     setTotalPages(projectsData.totalPages);
     setAllProjects(projectsData.projects);
   }, [projectsData]);

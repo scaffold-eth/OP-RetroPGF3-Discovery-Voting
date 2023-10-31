@@ -5,13 +5,11 @@ import AddProjectButton from "../op/btn/AddProjectButton";
 import LoadingModal from "../op/modals/LoadingModal";
 import SuccessModal from "../op/modals/SuccessModal";
 import VoteModal from "../op/modals/VoteModal";
-import { Project, useBallot } from "~~/context/BallotContext";
+import { useBallot } from "~~/context/BallotContext";
 import { IProject } from "~~/models/Project";
 import logo from "~~/public/assets/Logo.png";
 import { humanize } from "~~/utils/humanize";
 import { isAddedToBallot } from "~~/utils/isAddedToBallot";
-
-// import banner from "~~/public/assets/gradient-bg.png";
 
 const Card = ({ project, display }: { project: IProject; display: any }) => {
   const { name, ownerName, bio, impactCategory, bannerImageUrl, profileImageUrl } = project;
@@ -28,8 +26,7 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [toggleInitialized, setToggleInitialized] = useState<boolean | undefined>(undefined);
-  const [toggleEditModal, setToggleEditModal] = useState<boolean>(false);
+
   useEffect(() => {
     if (!state) return;
 
@@ -38,15 +35,6 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
 
     setIsAdded(isProjectInBallot);
   }, [project, state]);
-
-  // useEffect(() => {
-  //   if (toggleEditModal === undefined) return;
-  //   if (toggleInitialized) {
-  //     setEditBallotVote(true);
-  //   }
-  //   setToggleInitialized(true);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [toggleEditModal]);
 
   const addProjectToBallot = () => {
     const _name = project.name as string;
@@ -94,9 +82,7 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
       message = "Adding project to ballot";
       completedMessage = "Successfully added project";
       addProjectToBallot();
-      console.log("hit add");
     } else {
-      console.log("hit edit");
       dispatch({
         type: "UPDATE_ALLOCATION",
         projectId: project._id,
