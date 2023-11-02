@@ -161,8 +161,8 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
         <div className="flex border items-center rounded-[1.5rem] border-gray-300 p-4 resize-none">
           <Link href={`/projects/${project._id}`} className="truncate">
             <Image
-              width={74}
-              height={74}
+              width={94}
+              height={94}
               className="border-2 border-gray-300 rounded-xl w-[94px] h-[86px] bg-white object-cover"
               src={profileImageUrl ? profileImageUrl : logo}
               alt="logo"
