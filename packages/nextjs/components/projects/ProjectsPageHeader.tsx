@@ -62,9 +62,9 @@ function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChang
         <div className="flex gap-2 items-center">
           <div
             className={`w-fit border-[1px] border-neutral p-2 rounded cursor-pointer hover:bg-customWhite hover:text-black ${
-              display === "colums" ? "bg-customWhite text-black" : ""
+              display === "rows" ? "bg-customWhite text-black" : ""
             }`}
-            onClick={() => displayList("colums")}
+            onClick={() => displayList("rows")}
           >
             <ListBulletIcon className="w-[24px] h-[24px]" />
           </div>
