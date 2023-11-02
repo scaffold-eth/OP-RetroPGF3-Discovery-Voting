@@ -128,9 +128,9 @@ const AllBallots = () => {
             <div className="project__header-container md:min-w-[320px]">
               <div className="project__header-container--content">
                 <h3 className="text-lg sm:text-2xl font-bold   items-center">
-                  <span>{ballotProjects?.length} projects</span>{" "}
+                  <span>{ballotProjects?.length} Projects -</span>{" "}
                   <span className="text-center rounded-full bg-black w-2 h-2"></span>{" "}
-                  <span>{totalAllocatedOp} OP allocated</span>
+                  <span>{totalAllocatedOp} OP Allocated</span>
                 </h3>
                 <div className="relative w-full">
                   <solid.MagnifyingGlassIcon className="pointer-events-none absolute mr-2 w-8 h-6 top-2 pl-2 text-slate-400" />
@@ -183,7 +183,7 @@ const AllBallots = () => {
                 <CustomProjectButton
                   disabled={!state.projects.length ? true : false}
                   onClick={() => handleSubmit()}
-                  text="Submit ballot"
+                  text="Submit Ballot"
                   customClassName="w-full bg-[#000000] py-2 rounded-lg border-[#000000]  text-[#ffffff]"
                 >
                   <solid.SquaresPlusIcon className="w-5 h-5" />
@@ -193,7 +193,7 @@ const AllBallots = () => {
                 <CustomProjectButton
                   disabled={!state.projects.length ? true : false}
                   onClick={() => setIsShareOpen(true)}
-                  text="Share as list"
+                  text="Share as List"
                   customClassName=" w-full bg-[#008080] py-2 rounded-lg border-[#008080]  text-[#ffffff]"
                 >
                   <solid.ShareIcon className="w-5 h-5" />

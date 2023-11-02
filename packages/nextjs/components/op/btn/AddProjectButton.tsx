@@ -32,9 +32,9 @@ const AddProjectButton: React.FC<IAddProjectButtonProps> = ({
           <FolderIcon className=" font-semibold  h-6 w-6 text-white mr-4" />
         )}
         {isAdded && newAllocation > 0
-          ? `${newAllocation} OP allocated`
+          ? `${newAllocation} OP Allocated`
           : isAdded && !newAllocation
-          ? "0 OP allocated"
+          ? "0 OP Allocated"
           : "Add to Ballot"}
       </button>
     </>

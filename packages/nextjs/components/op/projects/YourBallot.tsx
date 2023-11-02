@@ -19,7 +19,7 @@ const YourBallot = () => {
         <CountdownTimer deadline={votingDeadline} />
       </div>
       <div className="mt-5">
-        <p className="p-0 m-0 text-sm text-OPbluegray">Projects added</p>
+        <p className="p-0 m-0 text-sm text-OPbluegray">Projects Added</p>
         <p className="p-0 m-0">
           <span className="font-bold text-lg">{state.projects.length}</span>
           <span className="text-OPbluegray">/{projects.length}</span>
@@ -27,7 +27,7 @@ const YourBallot = () => {
       </div>
       <div className="mt-5">
         <div className="grid grid-cols-2 justify-between">
-          <p className="p-0 m-0 text-sm text-OPbluegray">OP allocated </p>
+          <p className="p-0 m-0 text-sm text-OPbluegray">OP Allocated </p>
           <span className="font-bold text-end ">{state.projects.reduce((sum, p) => sum + p.allocation, 0)} OP</span>
         </div>
         <div>

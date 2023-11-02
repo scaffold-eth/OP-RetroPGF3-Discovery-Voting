@@ -52,13 +52,13 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
       <div className="project__header-container min-w-[320px]">
         <div className="project__header-container--content">
           <h3 className="text-lg sm:text-2xl font-bold   items-center">
-            <span>{projects?.length} projects</span>
-            <span> {projects?.reduce((sum, p) => sum + p.allocation, 0)} OP allocated</span>
+            <span>{projects?.length} Projects -</span>
+            <span> {projects?.reduce((sum, p) => sum + p.allocation, 0)} OP Allocated</span>
           </h3>
           <div className="grid grid-flow-col gap-3 sm:gap-6">
             <CustomProjectButton
               onClick={handleEditModal}
-              text="Edit distribution"
+              text="Edit Distribution"
               customClassName="border-[#d3dde7] py-2 border-2 text-[#4d4f52]"
             >
               <AdjustmentsHorizontalIcon className="w-5 h-5" />
@@ -66,7 +66,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
 
             <CustomProjectButton
               onClick={() => setAddBallot(true)}
-              text="Add to ballot"
+              text="Add to Ballot"
               customClassName={`bg-OPred py-2 rounded-lg border-OPred  text-[#ffffff] `}
             >
               <SquaresPlusIcon className="w-5 h-5" />

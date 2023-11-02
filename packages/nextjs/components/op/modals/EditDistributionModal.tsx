@@ -71,7 +71,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
     <BaseModal onClose={onClose}>
       <div className=" w-fit md:w-[600px] lg:w-[800px] bg-secondary rounded-xl p-6">
         <div className="grid gap-6 grid-flow-col items-center justify-between">
-          <h3 className="text-lg font-bold text-center">Edit distribution</h3>
+          <h3 className="text-lg font-bold text-center">Edit Distribution</h3>
           <button onClick={onClose} className="text-lg btn btn-sm btn-circle btn-ghost">
             ✕
           </button>
@@ -129,7 +129,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
           />
 
           <CustomProjectButton
-            text="Add to ballot"
+            text="Add to Ballot"
             onClick={() => handleEditComplete(editedProjectsToImport)}
             customClassName={`bg-red-600 py-2 rounded-lg border-OPred text-OPwhite ${isLoading ? "loading" : ""}`}
             disabled={showError}

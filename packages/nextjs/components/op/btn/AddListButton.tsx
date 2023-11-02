@@ -61,7 +61,7 @@ const AddListButton: React.FC<IAddListButton> = ({ list, toggleEditModal, custom
     <>
       <CustomProjectButton
         onClick={() => setIsAddListToBallotModal(true)}
-        text="Add to ballot"
+        text="Add to Ballot"
         customClassName={`bg-OPred py-2 rounded-lg border-OPred  text-[#ffffff] ${customClass}`}
       >
         <SquaresPlusIcon className="w-5 h-5" />

@@ -78,7 +78,7 @@ const BallotReview: React.FC = () => {
         <CustomProjectButton
           disabled={!state.projects.length ? true : false}
           onClick={() => handleSubmit()}
-          text="Submit ballot"
+          text="Submit Ballot"
           customClassName="w-full bg-[#000000] py-2 rounded-lg border-[#000000]  text-[#ffffff]"
         >
           <SquaresPlusIcon className="w-5 h-5" />
@@ -86,7 +86,7 @@ const BallotReview: React.FC = () => {
         <CustomProjectButton
           disabled={!state.projects.length ? true : false}
           onClick={() => setIsOpen(true)}
-          text="Share as list"
+          text="Share as List"
           customClassName="mt-4 w-full bg-[#008080] py-2 rounded-lg border-[#008080]  text-[#ffffff]"
         >
           <ShareIcon className="w-5 h-5" />

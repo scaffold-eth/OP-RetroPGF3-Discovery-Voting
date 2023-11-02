@@ -44,7 +44,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ deadline }) => {
       };
     } else {
       return {
-        message: "Voting ends in",
+        message: "Voting Ends In",
       };
     }
   };
