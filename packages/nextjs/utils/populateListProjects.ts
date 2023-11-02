@@ -16,6 +16,7 @@ export const populateListProjects = async (list: any) => {
       id: p._id,
       name: p.name,
       allocation: v,
+      profileImageUrl: p.profileImageUrl,
       listId: list._id,
     };
     y.push(x);
