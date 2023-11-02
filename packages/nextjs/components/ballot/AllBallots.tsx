@@ -21,6 +21,7 @@ interface IBallotProject {
   handle?: string;
   allocation: number;
   isOpenModal: boolean;
+  profileImageUrl?: string;
 }
 const AllBallots = () => {
   const { isDisconnected } = useAccount();
@@ -40,7 +41,7 @@ const AllBallots = () => {
     // Validate ballot
     // sign ballot
     // send signed data to api
-    console.log("submitting votes");
+
     setLoadingMessage("Submitting your ballot");
     setIsLoading(true);
     setTimeout(() => {
@@ -112,6 +113,7 @@ const AllBallots = () => {
     const totalExcluding = ballotProjects.filter(p => p.id != project.id).reduce((sum, p) => sum + p?.allocation, 0);
     return state.totalTokens - totalExcluding;
   };
+
   return (
     <div className="mx-auto px-12 mt-12 pb-12 grid grid-cols-1 lg:grid-cols-[350px,1fr]  gap-8">
       {!wallet ? <YourBallot /> : <Sidebar />}

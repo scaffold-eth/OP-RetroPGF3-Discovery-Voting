@@ -18,7 +18,7 @@ const ProjectListCard: React.FC<{ projectData: IProjectList[] }> = ({ projectDat
                 alt="project list"
                 height={"80"}
                 width={"80"}
-                src="/assets/gradient-bg.png"
+                src={`${project.profileImageUrl ? project.profileImageUrl : "/assets/gradient-bg.png"}`}
                 className="w-full rounded-xl"
               />
             </div>

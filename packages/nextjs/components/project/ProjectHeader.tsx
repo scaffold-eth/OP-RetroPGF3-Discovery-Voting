@@ -3,8 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import AddProjectButton from "../op/btn/AddProjectButton";
-// import AlreadyOnBallotConflictModal from "../op/modals/AlreadyOnBallotConflictModal";
-// import EditDistributionModal from "../op/modals/EditDistributionModal";
+import LoadingModal from "../op/modals/LoadingModal";
+import SuccessModal from "../op/modals/SuccessModal";
+import VoteModal from "../op/modals/VoteModal";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { IconContext } from "react-icons";
 import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai";
@@ -21,10 +22,17 @@ const ProjectHeader = ({ project }: { project: Project }) => {
   const [addressCopied, setAddressCopied] = useState(false);
   const [editBallot, setEditBallot] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const { state } = useBallot();
+  const { state, dispatch } = useBallot();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [isAllocationError, setIsAllocationError] = useState(false);
+  const [prevProjectAllocation] = state.projects.filter(item => item._id === project._id);
+  const [newAllocation, setNewAllocation] = useState<number>(prevProjectAllocation?.allocation ?? 0);
 
+  const [loadingMessage, setLoadingMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && event.target instanceof Node && !dropdownRef.current.contains(event.target)) {
@@ -48,6 +56,73 @@ const ProjectHeader = ({ project }: { project: Project }) => {
     const isProjectInBallot = isAddedToBallot(state, project);
     setIsAdded(isProjectInBallot);
   }, [project, state]);
+
+  const addProjectToBallot = () => {
+    const _name = project.name as string;
+    setNewAllocation(!Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0);
+    dispatch({
+      type: "ADD_PROJECT",
+      project: {
+        _id: project._id,
+        name: _name,
+        profileImageUrl: project.profileImageUrl,
+        allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
+      },
+    });
+  };
+
+  const handleAllocationChange = (value: any) => {
+    setIsAllocationError(false);
+    let currentTotalAllocation = state.projects.reduce((sum, p) => sum + p.allocation, 0);
+    const currentProjectId = project._id;
+    // Ensure value is a number
+    value = Number(value);
+
+    if (isNaN(value)) {
+      value = Number.isNaN(newAllocation) ? 0 : newAllocation;
+    }
+
+    // Deduct the current project's allocation, since we're editing it
+    const currentProjectAllocation = state.projects.find(p => p._id === currentProjectId)?.allocation || 0;
+    currentTotalAllocation -= currentProjectAllocation;
+
+    const projectedTotal = value + currentTotalAllocation;
+
+    if (projectedTotal > state.totalTokens) {
+      value = state.totalTokens - currentTotalAllocation;
+      setIsAllocationError(true);
+    }
+
+    setNewAllocation(value);
+  };
+
+  const handleAddBallot = () => {
+    let message = "Saving distribution";
+    let completedMessage = "Distribution changed successfully";
+    if (!isAdded) {
+      message = "Adding project to ballot";
+      completedMessage = "Successfully added project";
+      addProjectToBallot();
+    } else {
+      dispatch({
+        type: "UPDATE_ALLOCATION",
+        projectId: project._id,
+        newAllocation,
+      });
+    }
+    setLoadingMessage(message);
+    setEditBallot(false);
+    setIsLoading(true);
+    // using setTimeout on loading and success modals for better UX
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 2000);
+    }, 1000);
+    setSuccessMessage(completedMessage);
+  };
 
   return (
     <div className="mx-auto">
@@ -168,9 +243,27 @@ const ProjectHeader = ({ project }: { project: Project }) => {
               </ul>
             )}
           </div>
-          <AddProjectButton project={project} toggleEditModal={editBallot} />
+          <AddProjectButton
+            isAdded={isAdded}
+            newAllocation={newAllocation}
+            setEditBallotVote={setEditBallot}
+            customClass="card-btn"
+          />
         </div>
       </div>
+
+      {editBallot && (
+        <VoteModal
+          project={{ allocation: 0, name: project.name, _id: project._id, profileImageUrl: project.profileImageUrl }}
+          onClose={() => setEditBallot(false)}
+          allocation={newAllocation}
+          handleAddBallot={() => handleAddBallot()}
+          handleAllocationChange={handleAllocationChange}
+          isAllocationError={isAllocationError}
+        />
+      )}
+      {isLoading && <LoadingModal message={loadingMessage} />}
+      {isSuccess && <SuccessModal message={successMessage} onClose={() => setIsSuccess(false)} />}
     </div>
   );
 };

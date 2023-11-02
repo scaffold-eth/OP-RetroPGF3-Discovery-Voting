@@ -5,14 +5,13 @@ import AddProjectButton from "../op/btn/AddProjectButton";
 import LoadingModal from "../op/modals/LoadingModal";
 import SuccessModal from "../op/modals/SuccessModal";
 import VoteModal from "../op/modals/VoteModal";
-import { Project, useBallot } from "~~/context/BallotContext";
+import { useBallot } from "~~/context/BallotContext";
+import { IProject } from "~~/models/Project";
 import logo from "~~/public/assets/Logo.png";
 import { humanize } from "~~/utils/humanize";
 import { isAddedToBallot } from "~~/utils/isAddedToBallot";
 
-// import banner from "~~/public/assets/gradient-bg.png";
-
-const Card = ({ project, display }: { project: Project; display: any }) => {
+const Card = ({ project, display }: { project: IProject; display: any }) => {
   const { name, ownerName, bio, impactCategory, bannerImageUrl, profileImageUrl } = project;
 
   const [isAdded, setIsAdded] = useState(false);
@@ -29,8 +28,10 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     if (!state) return;
+
     setIsAdded(false);
     const isProjectInBallot = isAddedToBallot(state, project);
+
     setIsAdded(isProjectInBallot);
   }, [project, state]);
 
@@ -42,6 +43,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
       project: {
         _id: project._id,
         name: _name,
+        profileImageUrl,
         allocation: !Number.isNaN(newAllocation) && newAllocation > 0 ? newAllocation : 0,
       },
     });
@@ -157,11 +159,11 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
         </div>
       ) : (
         <div className="flex border items-center rounded-[1.5rem] border-gray-300   p-4 ">
-          <Link href={`/projects/${project._id}`} className="truncate">
+          <Link href={`/projects/${project._id}`} className="truncate ">
             <Image
               width={74}
               height={74}
-              className="border-4 border-white  bg-white rounded inline-block w-[74px] h-[74px] object-contain "
+              className="border-4 border-white rounded-xl w-[74px]  h-[74px]  bg-white object-cover "
               src={profileImageUrl ? profileImageUrl : logo}
               alt="logo"
             />
@@ -193,7 +195,7 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
 
       {editBallotVote && (
         <VoteModal
-          project={project}
+          project={{ allocation: 0, name: project.name, _id: project._id, profileImageUrl }}
           onClose={() => setEditBallotVote(false)}
           allocation={newAllocation}
           handleAddBallot={() => handleAddBallot()}

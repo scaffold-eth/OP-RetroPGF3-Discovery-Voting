@@ -6,7 +6,7 @@ import CustomProjectButton from "../btn/CustomProjectButton";
 import ProjectListCard from "../projects/ProjectListCard";
 // Import the BaseModal component
 import BaseModal from "./BaseModal";
-import { AdjustmentsHorizontalIcon, SquaresPlusIcon } from "@heroicons/react/24/outline";
+import { SquaresPlusIcon } from "@heroicons/react/24/outline";
 
 // Define an interface for the props that VoteModal component receives
 interface IAddListToBallotModal {
@@ -25,7 +25,6 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
   listName,
   userTotal,
   projectList,
-  edit,
 }) => {
   // Return the JSX code representing the AddListToBallotModal component
   return (
@@ -51,12 +50,10 @@ const AddListToBallotModal: React.FC<IAddListToBallotModal> = ({
         </div>
         <div className="mt-6 grid sm:grid-flow-col gap-3 sm:gap-6">
           <CustomProjectButton
-            text="Edit distribution"
-            onClick={edit}
+            text="Cancel"
+            onClick={onClose}
             customClassName="border-OPlightgray py-2 border-2 text-OPblack"
-          >
-            <AdjustmentsHorizontalIcon className="w-5 h-5" />
-          </CustomProjectButton>
+          ></CustomProjectButton>
 
           <CustomProjectButton
             onClick={handleAddBallot}

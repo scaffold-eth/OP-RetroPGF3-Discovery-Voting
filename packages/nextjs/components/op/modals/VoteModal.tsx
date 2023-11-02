@@ -5,13 +5,19 @@ import Image from "next/image";
 import CustomProjectButton from "../btn/CustomProjectButton";
 // Import a custom button component
 import BaseModal from "./BaseModal";
-import { ProjectState, useBallot } from "~~/context/BallotContext";
+import { useBallot } from "~~/context/BallotContext";
 
 // Import the BaseModal component
 
 // Define an interface for the props that VoteModal component receives
 interface IVoteModal {
-  project: ProjectState; // The project to be voted on
+  project: {
+    _id: string;
+    name: string;
+    allocation: number;
+    profileImageUrl?: string;
+  }; // The project to be voted on
+
   handleAllocationChange: (value: any) => void;
   onClose: () => void; // A function to be called when the modal is closed
   handleAddBallot: () => void;
@@ -68,7 +74,7 @@ const VoteModal: React.FC<IVoteModal> = ({
               alt="project list"
               height={"80"}
               width={"80"}
-              src="/assets/gradient-bg.png"
+              src={`${project?.profileImageUrl ? project.profileImageUrl : "/assets/gradient-bg.png"}`}
               className="w-full rounded-xl"
             />
           </div>

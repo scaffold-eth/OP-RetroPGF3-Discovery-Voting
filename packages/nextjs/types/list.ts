@@ -1,14 +1,29 @@
 import { ListDocument } from "~~/models/List";
 
 interface IProjects {
-  populatedProjects: IProjectList[];
+  populatedProjects: {
+    _id: string;
+    name: string;
+    allocation: number;
+    listId: string;
+    profileImageUrl?: string;
+  }[];
 }
 
 export interface IProjectList {
-  _id: string;
   name: string;
   allocation: number;
-  listId: string;
+  _id: string;
+  listId?: string;
+  profileImageUrl?: string;
 }
 
 export type IList = ListDocument & IProjects;
+export interface IProjectData {
+  name: string;
+  handle?: string;
+  allocation: number;
+  _id: string;
+  listId?: string;
+  profileImageUrl?: string;
+}
