@@ -16,19 +16,12 @@ const AllProjects = () => {
   const [display, setDisplay] = useState("grids");
   const [currentPage, setCurrentPage] = useState(1);
   const { data: projectsData, isLoading } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=12`, fetcher);
-  // const { data: allProjectsDataContent, isLoading: isFettchingAll } = useSWR(`/api/projects`, fetcher);
-  // const [allProjectsData, setAllProjectsData] = useState<Project[]>([]);
+
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [allProjects, setAllProjects] = useState<IProject[] | undefined>([]);
   const [filteredProjects, setFilteredProjects] = useState<IProject[] | undefined>([]);
   const [totalPages, setTotalPages] = useState(1);
 
-  // useEffect(() => {
-  //   if (allProjectsDataContent) {
-  //     console.log(allProjectsDataContent);
-  //     setAllProjectsData(allProjectsDataContent);
-  //   }
-  // }, [isFettchingAll, allProjectsDataContent]);
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };

@@ -12,14 +12,6 @@ interface Props {
   onClose: () => void;
 }
 
-// type IProjectsToImport = {
-//   name: string;
-//   _id: string;
-//   allocation: number;
-//   listId: string;
-//   profileImageUrl?: string;
-// }[];
-
 const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
   const [showError, setShowError] = useState(false);
 
