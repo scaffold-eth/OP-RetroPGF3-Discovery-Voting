@@ -158,27 +158,27 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
           </div>
         </div>
       ) : (
-        <div className="flex border items-center rounded-[1.5rem] border-gray-300 p-4 resize-none">
-          <Link href={`/projects/${project._id}`} className="truncate">
+        <div className="flex border items-center rounded-[1.5rem] border-gray-300 p-2 sm:p-4">
+          <Link href={`/projects/${project._id}`} className="truncate w-[94px] h-[84px]  ">
             <Image
-              width={94}
-              height={94}
-              className="border-2 border-gray-300 rounded-xl w-[94px] h-[86px] bg-white object-cover"
+              width={84}
+              height={84}
+              className="  object-cover  w-full h-full rounded-xl border-2 border-gray-300 bg-white"
               src={profileImageUrl ? profileImageUrl : logo}
               alt="logo"
             />
           </Link>
           <div className="ml-6 w-full">
             <Link href={`/projects/${project._id}`} className="truncate">
-              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0">{name}</p>
-              <p className="text-lightGray text-[14px] font-normal leading-5 my-0 ">{bio} Web3 Explorer</p>
+              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0 truncate  w-[120px] sm:w-fit">{name}</p>
+              <p className="text-lightGray text-[14px] font-normal leading-5 my-0 truncate">{bio} Web3 Explorer</p>
             </Link>
             <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-1 ">
-              <Link href={`/projects/${project._id}`} className="truncate">
-                <span className="w-fit px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
-                  {" "}
-                  {humanize(impactCategory[0])}
-                </span>
+              <Link
+                href={`/projects/${project._id}`}
+                className="truncate w-fit text-customGray bg-customWhite rounded-md"
+              >
+                <span className=" px-2 py-1 text-sm t mr-2"> {humanize(impactCategory[0])}</span>
               </Link>
               <div className="w-fit">
                 <AddProjectButton
