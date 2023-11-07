@@ -99,6 +99,8 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
     }, 1000);
     setSuccessMessage(completedMessage);
   };
+  const nameTruncate = name?.length > 150 ? `${name?.slice(0, 150)}...` : name;
+  const bioTruncate = bio?.length > 150 ? `${bio?.slice(0, 180)}...` : bio;
 
   return (
     <div>
@@ -156,25 +158,26 @@ const Card = ({ project, display }: { project: Project; display: any }) => {
           </div>
         </div>
       ) : (
-        <div className="flex border items-center rounded-[1.5rem] border-gray-300   p-4 ">
-          <Link href={`/projects/${project._id}`} className="truncate">
-            <Image
-              width={74}
-              height={74}
-              className="border-4 border-white  bg-white rounded inline-block w-[74px] h-[74px] object-contain "
-              src={profileImageUrl ? profileImageUrl : logo}
-              alt="logo"
-            />
-          </Link>
-          <div className="ml-6 w-full">
-            <Link href={`/projects/${project._id}`} className="truncate">
-              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0">{name}</p>
-              <p className="text-lightGray text-[14px] font-normal leading-5 my-0 ">{bio} Web3 Explorer</p>
+        <div className="flex border rounded-[1.5rem] border-gray-300 p-4">
+          <div className="w-1/8 mr-4">
+            <Link href={`/projects/${project._id}`} className="">
+              <Image
+                width={74}
+                height={74}
+                className="border-4 border-white  bg-white rounded inline-block w-[74px] h-[74px] object-contain hidden sm:block "
+                src={profileImageUrl ? profileImageUrl : logo}
+                alt="logo"
+              />
             </Link>
+          </div>
+          <div className="flex-grow">
+            <Link href={`/projects/${project._id}`}>
+              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0 truncate-paragraph">{nameTruncate}</p>
+            </Link>
+            <p className="truncate-paragraph my-0">{bioTruncate}</p>
             <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-1 ">
               <Link href={`/projects/${project._id}`} className="truncate">
                 <span className="w-fit px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
-                  {" "}
                   {humanize(impactCategory[0])}
                 </span>
               </Link>

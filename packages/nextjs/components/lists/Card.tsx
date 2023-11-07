@@ -48,7 +48,7 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
   }, [list]);
 
   return (
-    <div className=" w-full h-60 border rounded-lg border-gray-300  p-4 ">
+    <div className=" w-full h-60 border rounded-lg border-gray-300 p-4">
       <div className="flex items-center">
         <div className="flex-1">
           <div>
@@ -56,9 +56,6 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
               <p className="text-[18px] w-full max-w-[200px] truncate  font-bold leading-[28px] mb-0 mt-2 ">{name}</p>
             </Link>
           </div>
-          {/* <div className="flex items-center">
-              <Image width={22} height={22} className="mr-2" src={""} alt="Avatar" />
-            </div> */}
           <div className="flex items-center">
             <p className="font-semibold leading-[0px] text-sm mr-4">Creator: </p>
             <Address address={creator} />
