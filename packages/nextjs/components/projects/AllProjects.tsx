@@ -89,7 +89,7 @@ const AllProjects = () => {
             />
 
             <div
-              className={`px-4 grid pt-8 gap-4 ${
+              className={`px-4 sm:px-0 grid pt-8 gap-4 ${
                 display == "grids" ? "w-full project__card-container " : "grid-rows-1 w-full"
               } `}
             >

@@ -102,6 +102,9 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
     setSuccessMessage(completedMessage);
   };
 
+  const nameTruncate = name?.length > 150 ? `${name?.slice(0, 150)}...` : name;
+  const bioTruncate = bio?.length > 180 ? `${bio?.slice(0, 18)}...` : bio;
+
   return (
     <div>
       {display === "grids" ? (
@@ -158,20 +161,20 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
           </div>
         </div>
       ) : (
-        <div className="flex border items-center rounded-[1.5rem] border-gray-300 p-2 sm:p-4">
-          <Link href={`/projects/${project._id}`} className="truncate w-[94px] h-[84px]  ">
+        <div className="flex border rounded-[1.5rem] border-gray-300 p-2 sm:p-4">
+          <Link href={`/projects/${project._id}`} className="w-1/8 mr-4">
             <Image
               width={84}
               height={84}
-              className="  object-cover  w-full h-full rounded-xl border-2 border-gray-300 bg-white"
+              className="object-cover rounded-xl border-2 border-gray-300 bg-white w-[84px] h-[84px]  hidden sm:block"
               src={profileImageUrl ? profileImageUrl : logo}
               alt="logo"
             />
           </Link>
-          <div className="ml-6 w-full">
+          <div className="flex-grow">
             <Link href={`/projects/${project._id}`} className="truncate">
-              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0 truncate  w-[120px] sm:w-fit">{name}</p>
-              <p className="text-lightGray text-[14px] font-normal leading-5 my-0 truncate">{bio} Web3 Explorer</p>
+              <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0 truncate-paragraph">{nameTruncate}</p>
+              <p className="truncate-paragraph my-0">{bioTruncate}</p>
             </Link>
             <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-1 ">
               <Link
