@@ -52,7 +52,7 @@ const ProjectRowEditable: React.FC<Props> = ({
             height={"80"}
             width={"80"}
             src={`${project.profileImageUrl ? project.profileImageUrl : "/assets/gradient-bg.png"} `}
-            className="w-full rounded-xl"
+            className="w-full rounded-xl border-2 border-gray-300"
           />
         </div>
         <div className="">
