@@ -135,7 +135,10 @@ const AllLists: React.FC = () => {
               <h1 className="text-neutral m-4">You have not liked any lists yet.</h1>
             ) : (
               filteredProjects?.map(list => (
-                <div key={list._id} className={`${display === "grids" && "max-w-[400px] w-full"}`}>
+                <div
+                  key={list._id}
+                  className={`${display === "grids" ? "max-w-[400px] w-full" : "truncate-paragraph"}`}
+                >
                   <Card list={list} isLoading={isLoading} loadingList={loadingListId} onLike={() => handleLike(list)} />
                 </div>
               ))
