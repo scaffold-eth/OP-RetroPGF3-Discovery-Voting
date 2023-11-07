@@ -174,7 +174,7 @@ const Card = ({ project, display }: { project: IProject; display: any }) => {
           <div className="flex-grow">
             <Link href={`/projects/${project._id}`} className="truncate">
               <p className="text-[18px] font-bold leading-[28px] mb-0 mt-0 truncate-paragraph">{nameTruncate}</p>
-              <p className="truncate-paragraph my-0">{bioTruncate}</p>
+              <p className="text-lightGray text-[14px] font-normal leading-5 my-0 truncate-paragraph">{bioTruncate}</p>
             </Link>
             <div className="flex sm:items-center justify-between flex-col sm:flex-row gap-1 ">
               <Link
