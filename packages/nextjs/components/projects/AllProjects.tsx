@@ -23,6 +23,14 @@ const AllProjects = () => {
     isLoading,
     mutate,
   } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=${pageSize}&isShuffle=${isShuffle}`, fetcher);
+  const [isShuffle, setIsShuffle] = useState(false);
+  const pageSize = 12;
+
+  const {
+    data: projectsData,
+    isLoading,
+    mutate,
+  } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=${pageSize}&isShuffle=${isShuffle}`, fetcher);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [allProjects, setAllProjects] = useState<IProject[] | undefined>([]);
