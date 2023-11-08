@@ -42,6 +42,7 @@ const AllProjects = () => {
     setWallet(isDisconnected);
   }, [isDisconnected]);
 
+  // useEffect hook to set filtered projects
   useEffect(() => {
     function filterProjects() {
       try {
@@ -58,6 +59,7 @@ const AllProjects = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, allProjects]);
 
+  // useEffect hook to set `allProjects` to the shuffled projects
   useEffect(() => {
     if (!projectsData) return;
     if (isShuffle) {
@@ -69,6 +71,7 @@ const AllProjects = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectsData, isShuffle]);
 
+  // useEffect hook to set projects when page change request is made via pagination component
   useEffect(() => {
     if (!projectsData) return;
     if (!shuffledProjects || !isShuffle) {
@@ -78,6 +81,7 @@ const AllProjects = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
+  // useEffect hook to set all projects whenever a request to server is made i.e `isLoading` changes
   useEffect(() => {
     if (isLoading) return;
     setAllProjects(projectsData.projects);
@@ -85,6 +89,7 @@ const AllProjects = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
+  // Display spinner if `isLoading === true` or no projects found
   if ((!allProjects && !shuffledProjects) || (allProjects && isLoading && !isShuffle)) {
     return (
       <div className="flex mt-8 pt-8 justify-center">
@@ -92,7 +97,7 @@ const AllProjects = () => {
       </div>
     );
   }
-
+  // Display this if no projects are found
   if (allProjects && allProjects.length === 0 && !shuffledProjects) {
     return (
       <div className="text-center font-bold text-2xl pt-8">
