@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import useSWR from "swr";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
 import { IProject } from "~~/models/Project";
+import { fetcher } from "~~/utils/fetcher";
 import { humanize } from "~~/utils/humanize";
 import { shuffle } from "~~/utils/shuffle";
 
@@ -9,20 +11,53 @@ type CategoryInfo = {
   projectsCount: number;
 };
 
-function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
+function ProjectsPageHeader({
+  displayList,
+  titleHeader,
+  display,
+  onCategoryChange,
+  onShuffleProjects,
+  onIsShuffle,
+  projects,
+  currentPage,
+  pageSize,
+}: any) {
   const [active, setActive] = useState("all");
   const [categories, setCategories] = useState<CategoryInfo[]>([]);
+
+  const { data: fetchAllProjects } = useSWR(`/api/projects/`, fetcher, {
+    revalidateIfStale: false,
+  });
+  const [fetchedProjects, setFetchedProjects] = useState<IProject[] | undefined>([]);
+
+  useEffect(() => {
+    const readyFetchedProjects = () => {
+      setFetchedProjects(fetchAllProjects);
+    };
+    readyFetchedProjects();
+  }, [fetchAllProjects]);
+
+  function shuffleProjects() {
+    try {
+      if (!fetchedProjects) return;
+      const shuffledProjects = shuffle(fetchedProjects);
+      const skip = (currentPage - 1) * pageSize;
+      // Apply pagination to the shuffled projects and limit the results to pageSize
+      const paginatedProjects = shuffledProjects.slice(skip, skip + pageSize).slice(0, pageSize);
+      onShuffleProjects(paginatedProjects);
+    } catch (e) {
+      console.log("shuffleProjects::ERR", e);
+    }
+  }
 
   const handleButtonClick = (options: string) => {
     setActive(options);
     onCategoryChange(options);
   };
 
-  const handleShuffle = () => {
-    if (projects) {
-      const _shuffledProjects = shuffle([...projects]);
-      onShuffleProjects(_shuffledProjects);
-    }
+  const handleShuffle = async () => {
+    onIsShuffle(true);
+    shuffleProjects();
   };
 
   useEffect(() => {
