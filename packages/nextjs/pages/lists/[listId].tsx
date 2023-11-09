@@ -57,7 +57,7 @@ const ListDetail: NextPage<Props> = ({ list }) => {
   };
 
   return (
-    <div className="mx-auto sm:px-1 md:px-12  mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
+    <div className="container mx-auto sm:px-1 md:px-12  mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
       <YourBallot />
       <div className="w-full">
         <div className="grid mb-3 sm:grid-flow-col items-center">
