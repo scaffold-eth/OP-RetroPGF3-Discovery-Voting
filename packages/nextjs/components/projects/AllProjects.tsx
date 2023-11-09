@@ -23,14 +23,6 @@ const AllProjects = () => {
     isLoading,
     mutate,
   } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=${pageSize}&isShuffle=${isShuffle}`, fetcher);
-  const [isShuffle, setIsShuffle] = useState(false);
-  const pageSize = 12;
-
-  const {
-    data: projectsData,
-    isLoading,
-    mutate,
-  } = useSWR(`/api/projects?pageQuery=${currentPage}&limit=${pageSize}&isShuffle=${isShuffle}`, fetcher);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [allProjects, setAllProjects] = useState<IProject[] | undefined>([]);
@@ -40,7 +32,7 @@ const AllProjects = () => {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    mutate(`/api/projects?pageQuery=${pageNumber}&limit=${pageSize}`);
+    mutate(`/api/projects?pageQuery=${pageNumber}&limit=${pageSize}&isShuffle=${false}`);
   };
   const displayList = (option: string) => {
     setDisplay(option);
@@ -57,7 +49,7 @@ const AllProjects = () => {
         const _filteredProjects =
           selectedCategory === "all"
             ? allProjects
-            : allProjects?.filter(project => project.impactCategory.includes(selectedCategory));
+            : allProjects?.filter((project: IProject) => project.impactCategory.includes(selectedCategory));
         setFilteredProjects(_filteredProjects);
       } catch (e) {
         console.log("ERR::filterProjects::", e);
@@ -69,17 +61,15 @@ const AllProjects = () => {
 
   // useEffect hook to set `allProjects` to the shuffled projects
   useEffect(() => {
-    if (!projectsData) return;
     if (isShuffle) {
       setTimeout(() => {
         setIsShuffle(false);
         setAllProjects(shuffledProjects);
       }, 2000);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projectsData, isShuffle]);
+  }, [shuffledProjects, isShuffle]);
 
-  // useEffect hook to set projects when page change request is made via pagination component
+  // useEffect hook to set projects when a page change request is made via pagination component
   useEffect(() => {
     if (!projectsData) return;
     if (!shuffledProjects || !isShuffle) {
@@ -105,6 +95,7 @@ const AllProjects = () => {
       </div>
     );
   }
+
   // Display this if no projects are found
   if (allProjects && allProjects.length === 0 && !shuffledProjects) {
     return (
@@ -125,7 +116,6 @@ const AllProjects = () => {
               titleHeader="Projects"
               display={display}
               onCategoryChange={setSelectedCategory}
-              projects={allProjects}
               currentPage={currentPage}
               pageSize={pageSize}
               onShuffleProjects={setShuffledProjects}
@@ -142,7 +132,6 @@ const AllProjects = () => {
               titleHeader="Projects"
               display={display}
               onCategoryChange={setSelectedCategory}
-              projects={allProjects}
               currentPage={currentPage}
               pageSize={pageSize}
               onShuffleProjects={setShuffledProjects}

@@ -18,7 +18,6 @@ function ProjectsPageHeader({
   onCategoryChange,
   onShuffleProjects,
   onIsShuffle,
-  projects,
   currentPage,
   pageSize,
 }: any) {
@@ -40,19 +39,22 @@ function ProjectsPageHeader({
   function shuffleProjects() {
     try {
       if (!fetchedProjects) return;
+      onCategoryChange("all");
       const shuffledProjects = shuffle(fetchedProjects);
       const skip = (currentPage - 1) * pageSize;
       // Apply pagination to the shuffled projects and limit the results to pageSize
-      const paginatedProjects = shuffledProjects.slice(skip, skip + pageSize).slice(0, pageSize);
-      onShuffleProjects(paginatedProjects);
+      const paginatedShuffledProjects = shuffledProjects.slice(skip, skip + pageSize).slice(0, pageSize);
+      onShuffleProjects(paginatedShuffledProjects);
     } catch (e) {
       console.log("shuffleProjects::ERR", e);
     }
   }
 
   const handleButtonClick = (options: string) => {
-    setActive(options);
-    onCategoryChange(options);
+    let selectedOption = options;
+    if (active === options) selectedOption = "all";
+    setActive(selectedOption);
+    onCategoryChange(selectedOption);
   };
 
   const handleShuffle = async () => {
@@ -83,12 +85,19 @@ function ProjectsPageHeader({
           projectsCount: categoryCount[category],
         }));
       }
-      setCategories(getCategories(projects));
+      setCategories(getCategories(fetchAllProjects));
     } catch (e) {
       console.log("ERR_SETTING_CATEGORIES", e);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // useEffect hook to reset selected category when page changes
+  useEffect(() => {
+    onCategoryChange("all");
+    setActive("all");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   return (
     <div>
