@@ -126,7 +126,7 @@ const AllProjects = () => {
             </div>
           </div>
         ) : (
-          <div className="container  mx-auto">
+          <div className="w-full">
             <ProjectsPageHeader
               displayList={displayList}
               titleHeader="Projects"
