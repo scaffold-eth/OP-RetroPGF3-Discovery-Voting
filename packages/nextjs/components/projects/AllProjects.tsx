@@ -78,7 +78,7 @@ const AllProjects = () => {
             <Spinner />
           </div>
         ) : (
-          <div className="container  mx-auto">
+          <div className="w-full">
             <ProjectsPageHeader
               displayList={displayList}
               titleHeader="Projects"

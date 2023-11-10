@@ -48,14 +48,14 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
   };
 
   return (
-    <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
-      <div className="project__header-container min-w-[320px]">
+    <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10 ">
+      <div className="project__header-container min-w-[300px] sm:py-1 ">
         <div className="project__header-container--content">
           <h3 className="text-lg sm:text-2xl font-bold   items-center">
             <span>{projects?.length} Projects -</span>
             <span> {projects?.reduce((sum, p) => sum + p.allocation, 0)} OP Allocated</span>
           </h3>
-          <div className="grid grid-flow-col gap-3 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <CustomProjectButton
               onClick={handleEditModal}
               text="Edit Distribution"
@@ -75,7 +75,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
         </div>
       </div>
       <div
-        className="max-h-[500px] pr-2 overflow-y-auto 
+        className="max-h-[500px] pr-2 overflow-y-auto
       scrollbar-thin
       scrollbar-thumb-rounded-full
       scrollbar-thumb-[#E2E8F0]"
