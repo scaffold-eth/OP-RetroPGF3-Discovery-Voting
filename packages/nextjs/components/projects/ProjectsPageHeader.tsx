@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import useSWR from "swr";
 import { ArrowsUpDownIcon, HeartIcon, ListBulletIcon, Squares2X2Icon } from "@heroicons/react/24/outline";
 import { IProject } from "~~/models/Project";
+import { fetcher } from "~~/utils/fetcher";
 import { humanize } from "~~/utils/humanize";
 import { shuffle } from "~~/utils/shuffle";
 
@@ -9,20 +11,55 @@ type CategoryInfo = {
   projectsCount: number;
 };
 
-function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChange, onShuffleProjects, projects }: any) {
+function ProjectsPageHeader({
+  displayList,
+  titleHeader,
+  display,
+  onCategoryChange,
+  onShuffleProjects,
+  onIsShuffle,
+  currentPage,
+  pageSize,
+}: any) {
   const [active, setActive] = useState("all");
   const [categories, setCategories] = useState<CategoryInfo[]>([]);
 
+  const { data: fetchAllProjects } = useSWR(`/api/projects/`, fetcher, {
+    revalidateIfStale: false,
+  });
+  const [fetchedProjects, setFetchedProjects] = useState<IProject[] | undefined>([]);
+
+  useEffect(() => {
+    const readyFetchedProjects = () => {
+      setFetchedProjects(fetchAllProjects);
+    };
+    readyFetchedProjects();
+  }, [fetchAllProjects]);
+
+  function shuffleProjects() {
+    try {
+      if (!fetchedProjects) return;
+      onCategoryChange("all");
+      const shuffledProjects = shuffle(fetchedProjects);
+      const skip = (currentPage - 1) * pageSize;
+      // Apply pagination to the shuffled projects and limit the results to pageSize
+      const paginatedShuffledProjects = shuffledProjects.slice(skip, skip + pageSize).slice(0, pageSize);
+      onShuffleProjects(paginatedShuffledProjects);
+    } catch (e) {
+      console.log("shuffleProjects::ERR", e);
+    }
+  }
+
   const handleButtonClick = (options: string) => {
-    setActive(options);
-    onCategoryChange(options);
+    let selectedOption = options;
+    if (active === options) selectedOption = "all";
+    setActive(selectedOption);
+    onCategoryChange(selectedOption);
   };
 
-  const handleShuffle = () => {
-    if (projects) {
-      const _shuffledProjects = shuffle([...projects]);
-      onShuffleProjects(_shuffledProjects);
-    }
+  const handleShuffle = async () => {
+    onIsShuffle(true);
+    shuffleProjects();
   };
 
   useEffect(() => {
@@ -48,12 +85,19 @@ function ProjectsPageHeader({ displayList, titleHeader, display, onCategoryChang
           projectsCount: categoryCount[category],
         }));
       }
-      setCategories(getCategories(projects));
+      setCategories(getCategories(fetchAllProjects));
     } catch (e) {
       console.log("ERR_SETTING_CATEGORIES", e);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // useEffect hook to reset selected category when page changes
+  useEffect(() => {
+    onCategoryChange("all");
+    setActive("all");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   return (
     <div>

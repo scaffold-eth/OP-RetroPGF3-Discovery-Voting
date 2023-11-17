@@ -84,7 +84,7 @@ const EditDistributionModal: React.FC<Props> = ({ list, onClose }) => {
           <ArrowPathIcon className="h-3 w-3" />
         </CustomProjectButton>
         <div
-          className="max-h-[400px] pr-2 overflow-y-auto 
+          className="max-h-[400px] pr-2 overflow-y-auto
       scrollbar-thin
       scrollbar-thumb-rounded-full
       scrollbar-thumb-OPlightgray"

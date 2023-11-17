@@ -8,8 +8,6 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import SharedProjects from "~~/components/lists/SharedProjects";
 import YourBallot from "~~/components/op/projects/YourBallot";
 import { Address } from "~~/components/scaffold-eth";
-import SuggestProjects from "~~/components/shared/SuggestProjects";
-import { useSuggestedProjects } from "~~/hooks/scaffold-eth/useSuggestedProjects";
 import dbConnect from "~~/lib/dbConnect";
 import List from "~~/models/List";
 import { IList } from "~~/types/list";
@@ -26,10 +24,6 @@ interface Props {
 
 const ListDetail: NextPage<Props> = ({ list }) => {
   const [openLikedModal, setOpenLikedModal] = React.useState(false);
-  const tempCategory = list.tags ? list?.tags[0] : undefined;
-  const category = tempCategory && tempCategory[0]?.toUpperCase() + tempCategory?.slice(1);
-  const currentProjectId = list._id;
-  const { suggestedProjects } = useSuggestedProjects(category, currentProjectId);
   const { likes } = list;
   const { address } = useAccount();
   const isLiked = likes?.includes(address ?? "");
@@ -63,7 +57,7 @@ const ListDetail: NextPage<Props> = ({ list }) => {
   };
 
   return (
-    <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
+    <div className="container mx-auto sm:px-1 md:px-12  mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
       <YourBallot />
       <div className="w-full">
         <div className="grid mb-3 sm:grid-flow-col items-center">
@@ -114,25 +108,16 @@ const ListDetail: NextPage<Props> = ({ list }) => {
           <Address address={list.creator} />
         </div>
         <div className="mt-8">
-          <h4 className="text-[#68778D] text-lg">🧑‍💻 DESCRIPTION</h4>
-          <p>{list.description}</p>
+          <h4 className="text-[#68778D] text-lg ">🧑‍💻 DESCRIPTION</h4>
+          <p className="px-3 text-justify">{list.description}</p>
         </div>
         <div className="mt-8">
           <h4 className="text-[#68778D] text-lg">📊 IMPACT EVALUATION</h4>
-          <p>{list.impactEvaluation}</p>
-          {/* <button className="grid grid-flow-col w-fit items-center rounded-full px-4 gap-2 border-[1px] border-[#CBD5E0] ">
-            <div className="rounded-full p-1 bg-[#E2E8F0]">
-              <DocumentIcon className="w-6 h-6 text-[#68778D]" />
-            </div>
-            <p className=" ">impact Evaluation</p>
-            <ArrowTopRightOnSquareIcon className="text-[#68778D] w-6 h-6" />
-          </button> */}
+          <p className="px-3 text-justify">{list.impactEvaluation}</p>
         </div>
 
-        <div className="mt-16 w-full">
+        <div className="mt-16 mb-32">
           <SharedProjects list={list} />
-          <div></div>
-          <SuggestProjects suggestedProjects={suggestedProjects} />
         </div>
       </div>
     </div>
