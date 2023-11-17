@@ -45,7 +45,7 @@ const ProjectDetail: NextPage<Props> = ({ project }) => {
               Categories
             </h4>
             <div className="flex items-center py-2">
-              {project.impactCategory.map((c: string, i: number) => (
+              {project?.impactCategory.map((c: string, i: number) => (
                 <span key={i} className="px-4 py-2 text-sm text-customGray bg-customWhite rounded-md mr-2">
                   {humanize(c)}
                 </span>
