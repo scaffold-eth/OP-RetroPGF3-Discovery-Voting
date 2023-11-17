@@ -48,7 +48,7 @@ const SharedProjects: React.FC<Props> = ({ list }) => {
   };
 
   return (
-    <div className=" border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
+    <div className="w-full border-[#a2aab6] border-2 rounded-3xl gap-10 grid  px-8 py-10">
       <div className="project__header-container min-w-[320px]">
         <div className="project__header-container--content">
           <h3 className="text-lg sm:text-2xl font-bold   items-center">

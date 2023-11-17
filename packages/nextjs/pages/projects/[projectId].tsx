@@ -98,13 +98,11 @@ const ProjectDetail: NextPage<Props> = ({ project }) => {
               {project.impactMetrics.length > 0 ? (
                 project.impactMetrics.map((record, i: number) => (
                   <div className="border rounded-xl border-gray-300 sm:w-[163px] w-full p-1 " key={i}>
-                    <div className="flex items-center justify-center space-x-2 mb-[px]">
-                      <p className="font-medium text-xs leading-4 uppercase">{record.description}</p>
+                    <div className="flex items-center justify-center flex-col gap-1  text-center mb-2">
+                      <p className="font-medium text-xs leading-4 uppercase  m-0">{record.description}</p>
                       <ArrowTopRightOnSquareIcon className="w-[20px]" />
                     </div>
-                    <p className="flex items-center justify-center  font-semibold text-lg leading-7 mt-[-10px] ">
-                      {record.number}
-                    </p>
+                    <p className=" text-center font-semibold text-lg  m-0  ">{record.number}234</p>
                   </div>
                 ))
               ) : (

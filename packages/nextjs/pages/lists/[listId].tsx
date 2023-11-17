@@ -65,7 +65,7 @@ const ListDetail: NextPage<Props> = ({ list }) => {
   return (
     <div className=" mx-auto px-12 mt-12 grid lg:grid-cols-[350px,1fr] gap-12">
       <YourBallot />
-      <div className="">
+      <div className="w-full">
         <div className="grid mb-3 sm:grid-flow-col items-center">
           <h3 className="text-2xl font-bold">{list.name}</h3>
           <div className="grid grid-flow-col gap-4 w-fit sm:w-full sm:justify-end relative">
@@ -129,8 +129,9 @@ const ListDetail: NextPage<Props> = ({ list }) => {
           </button> */}
         </div>
 
-        <div className="mt-16">
+        <div className="mt-16 w-full">
           <SharedProjects list={list} />
+          <div></div>
           <SuggestProjects suggestedProjects={suggestedProjects} />
         </div>
       </div>
