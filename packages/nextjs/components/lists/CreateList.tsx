@@ -11,6 +11,12 @@ interface Props {
   onClose: () => void;
 }
 
+interface Errors {
+  listName?: string;
+  description?: string;
+  impactEvaluation?: string;
+}
+
 const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
   const router = useRouter();
   const [listName, setListName] = useState("");
@@ -20,47 +26,67 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
   const { address } = useAccount();
   const { state } = useBallot();
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<Errors>({});
 
   if (!isOpen) {
     return null; // Return null instead of false
   }
 
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors: Errors = {};
+
+    if (!listName.trim()) {
+      newErrors.listName = "List name is required";
+      isValid = false;
+    }
+
+    if (!description.trim()) {
+      newErrors.description = "Description is required";
+      isValid = false;
+    }
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const shareAsList = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    // Code to package the ballot as a list
-    const listData = {
-      name: listName,
-      creator: address,
-      description,
-      impactEvaluation,
-      tags,
-      projects: state.projects.map(project => ({
-        project: project._id,
-        allocation: project.allocation,
-      })),
-    };
-    // Save the list to the database
-    try {
-      const response = await fetch("/api/list", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(listData),
-      });
-      if (response.ok) {
-        // Handle confirmation and navigation
+    if (validateForm()) {
+      setIsLoading(true);
+      // Code to package the ballot as a list
+      const listData = {
+        name: listName,
+        creator: address,
+        description,
+        impactEvaluation,
+        tags,
+        projects: state.projects.map(project => ({
+          project: project._id,
+          allocation: project.allocation,
+        })),
+      };
+      // Save the list to the database
+      try {
+        const response = await fetch("/api/list", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(listData),
+        });
+        if (response.ok) {
+          // Handle confirmation and navigation
+          setIsLoading(false);
+          notification.success("List created successfully") && router.push(`/lists/`);
+        } else {
+          // Handle any errors
+          setIsLoading(false);
+          notification.error("Error creating list.");
+        }
+      } catch (e) {
+        console.log("ERR_SHARING_LIST::", e);
         setIsLoading(false);
-        notification.success("List created successfully") && router.push(`/lists/`);
-      } else {
-        // Handle any errors
-        setIsLoading(false);
-        notification.error("Error creating list.");
       }
-    } catch (e) {
-      console.log("ERR_SHARING_LIST::", e);
-      setIsLoading(false);
     }
   };
 
@@ -91,6 +117,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
               onChange={e => setListName(e.target.value)}
               placeholder="List name"
             />
+            {errors.listName && <p className="text-red-600 my-1  ml-2 ">{errors.listName}</p>}
 
             <textarea
               className="textarea textarea-bordered textarea-sm w-full mt-3"
@@ -99,6 +126,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
               onChange={e => setDescription(e.target.value)}
               placeholder="List description"
             />
+            {errors.description && <p className="text-red-600 my-1  ml-2 ">{errors.description}</p>}
             <textarea
               className="textarea textarea-bordered textarea-sm w-full mt-3"
               value={impactEvaluation}
