@@ -184,7 +184,7 @@ const AllBallots = () => {
                   disabled={!state.projects.length ? true : false}
                   onClick={() => handleSubmit()}
                   text="Submit Ballot"
-                  customClassName="w-full bg-[#000000] py-2 rounded-lg border-[#000000]  text-[#ffffff]"
+                  customClassName="w-full  bg-OPgray py-2 rounded-lg border-none  text-white"
                 >
                   <solid.SquaresPlusIcon className="w-5 h-5" />
                 </CustomProjectButton>
@@ -194,7 +194,7 @@ const AllBallots = () => {
                   disabled={!state.projects.length ? true : false}
                   onClick={() => setIsShareOpen(true)}
                   text="Share as List"
-                  customClassName=" w-full bg-[#008080] py-2 rounded-lg border-[#008080]  text-[#ffffff]"
+                  customClassName=" w-full bg-OPred py-2 rounded-lg border-none  text-[#ffffff]"
                 >
                   <solid.ShareIcon className="w-5 h-5" />
                 </CustomProjectButton>
