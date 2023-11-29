@@ -127,13 +127,13 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
             <div className="flex justify-between mt-6">
               <button
                 onClick={onClose}
-                className={`btn btn-primary px-10 rounded-full capitalize font-normal font-white flex items-center gap-1 hover:gap-2 transition-all tracking-widest`}
+                className={`btn bg-OPred text-white border-none px-10 rounded-full capitalize  flex items-center gap-1 hover:gap-2 transition-all tracking-widest`}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className={`btn bg-blue-500 px-10 rounded-full text-white capitalize font-normal font-white flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
+                className={`btn bg-OPgray border-none px-10 rounded-full text-white capitalize  flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
                   isLoading ? "loading " : ""
                 }`}
               >
