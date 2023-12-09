@@ -124,20 +124,20 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
                 options={tagsData}
               />
             </div>
-            <div className="flex justify-between mt-6">
-              <button
-                onClick={onClose}
-                className={`btn bg-OPred text-white border-none px-10 rounded-full capitalize  flex items-center gap-1 hover:gap-2 transition-all tracking-widest`}
-              >
-                Cancel
-              </button>
+            <div className="flex gap-4 justify-end   mt-6">
               <button
                 type="submit"
-                className={`btn bg-OPgray border-none px-10 rounded-full text-white capitalize  flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
+                className={`btn bg-black border-none px-10 rounded-lg text-white capitalize  ${
                   isLoading ? "loading " : ""
                 }`}
               >
                 Share List
+              </button>
+              <button
+                onClick={onClose}
+                className={`btn bg-OPred hover:bg-red-600 text-white border-none px-10 rounded-lg capitalize `}
+              >
+                Cancel
               </button>
             </div>
           </form>
