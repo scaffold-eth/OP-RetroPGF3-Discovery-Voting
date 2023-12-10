@@ -126,18 +126,18 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
             </div>
             <div className="flex gap-4 justify-end   mt-6">
               <button
+                onClick={onClose}
+                className={`btn bg-OPred hover:bg-red-600 text-white border-none px-10 rounded-lg capitalize `}
+              >
+                Cancel
+              </button>
+              <button
                 type="submit"
                 className={`btn bg-black border-none px-10 rounded-lg text-white capitalize  ${
                   isLoading ? "loading " : ""
                 }`}
               >
                 Share List
-              </button>
-              <button
-                onClick={onClose}
-                className={`btn bg-OPred hover:bg-red-600 text-white border-none px-10 rounded-lg capitalize `}
-              >
-                Cancel
               </button>
             </div>
           </form>
