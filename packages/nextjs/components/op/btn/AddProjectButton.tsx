@@ -23,7 +23,9 @@ const AddProjectButton: React.FC<IAddProjectButtonProps> = ({
         }}
         disabled={disabled}
         className={`rounded-lg flex items-center py-2 px-4 xl:px-8 whitespace-nowrap ${
-          isAdded ? "border-gray-200 text-primary border-2 whitespace-nowrap bg-white" : "bg-primary text-white"
+          isAdded
+            ? "border-gray-200 hover:bg-gray-200 text-primary border-2 whitespace-nowrap bg-white"
+            : "bg-primary hover:bg-red-700 text-white"
         } ${customClass}`}
       >
         {isAdded ? (

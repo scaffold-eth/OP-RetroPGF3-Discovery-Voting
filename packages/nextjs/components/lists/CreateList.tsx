@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { IoMdClose } from "react-icons/io";
 import CreatableSelect from "react-select/creatable";
 import { useAccount } from "wagmi";
 import { useBallot } from "~~/context/BallotContext";
@@ -102,15 +103,20 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     isOpen && (
       <div className="fixed inset-0 z-50 overflow-auto bg-smoke-light flex ">
-        <div className="modal-box relative p-8 bg-base-100 w-full max-w-md m-auto flex-col flex">
-          <span className="absolute top-0 right-0 p-4 cursor-pointer" onClick={onClose}>
-            X
+        <div
+          className="overflow-y-auto
+      scrollbar-thin
+      scrollbar-thumb-rounded-full
+      scrollbar-thumb-[#d4d8de] modal-box relative p-8 bg-base-100 w-full max-w-md m-auto flex-col flex"
+        >
+          <span className="absolute top-0 right-0  m-4 cursor-pointer" onClick={onClose}>
+            <IoMdClose size={28} />
           </span>
-          <h3 className="text-center mt-5 text-4xl">Share your vote</h3>
-          <p className="text-center mt-4 mb-5">Create a list of the projects in your ballot</p>
+          <h3 className="text-center mt-5 font-bold text-4xl leading-8">Share your vote</h3>
+          <p className="text-center font-semibold text-lg  mt-4 mb-5">Create a list of the projects in your ballot</p>
           <form onSubmit={shareAsList} className="flex flex-col">
             <input
-              className="input input-bordered w-full"
+              className="input placeholder:text-lg input-info input-bordered border-slate-200 border w-full"
               type="text"
               value={listName}
               maxLength={75}
@@ -120,7 +126,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
             {errors.listName && <p className="text-red-600 my-1  ml-2 ">{errors.listName}</p>}
 
             <textarea
-              className="textarea textarea-bordered textarea-sm w-full mt-3"
+              className="textarea placeholder:text-lg textarea-bordered textarea-sm w-full mt-3 border-slate-200"
               value={description}
               maxLength={1000}
               onChange={e => setDescription(e.target.value)}
@@ -128,7 +134,7 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
             />
             {errors.description && <p className="text-red-600 my-1  ml-2 ">{errors.description}</p>}
             <textarea
-              className="textarea textarea-bordered textarea-sm w-full mt-3"
+              className="textarea placeholder:text-lg textarea-bordered textarea-sm w-full mt-3 border-slate-200"
               value={impactEvaluation}
               maxLength={1000}
               onChange={e => setImpactEvaluation(e.target.value)}
@@ -136,26 +142,26 @@ const CreateList: React.FC<Props> = ({ isOpen, onClose }) => {
             />
             <div className="form-control w-full mt-3">
               <label className="label p-0">
-                <span className="label-text mb-2">Tag list</span>
+                <span className="label-text text-lg mb-2 font-semibold">Tag list</span>
               </label>
               <CreatableSelect
-                className="bg-secondary"
+                className="bg-secondary text-black"
                 onChange={handleSelectChange}
                 closeMenuOnSelect={false}
                 isMulti
                 options={tagsData}
               />
             </div>
-            <div className="flex justify-between mt-6">
+            <div className="flex gap-4 justify-end   mt-6">
               <button
                 onClick={onClose}
-                className={`btn btn-primary px-10 rounded-full capitalize font-normal font-white flex items-center gap-1 hover:gap-2 transition-all tracking-widest`}
+                className={`btn bg-OPred hover:bg-red-600 text-white border-none px-10 rounded-lg capitalize `}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className={`btn bg-blue-500 px-10 rounded-full text-white capitalize font-normal font-white flex items-center gap-1 hover:gap-2 transition-all tracking-widest ${
+                className={`btn bg-black border-none px-10 rounded-lg text-white capitalize  ${
                   isLoading ? "loading " : ""
                 }`}
               >
