@@ -119,23 +119,27 @@ const Card = ({ list, onLike, isLoading, loadingList }: any) => {
         </p>
       </div>
       <p className="text-lightGray text-[14px] font-normal leading-5  mt-0 truncate">{description}</p>
-      <div className="flex items-center justify-between py-2">
-        {tags && tags.length > 0 ? (
-          <div className="flex">
-            <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
-              {" "}
-              {humanize(tags[0])}{" "}
-            </span>
-            {tags.length > 1 && (
+      <div className="grid grid-cols-4 gap-4 py-2">
+        <div className="col-span-2 flex items-center ">
+          {tags && tags.length > 0 ? (
+            <div className="flex">
               <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
-                +{tags.length - 1}
+                {" "}
+                {humanize(tags[0])}{" "}
               </span>
-            )}
-          </div>
-        ) : (
-          ""
-        )}
-        {populatedList ? <AddListButton list={populatedList} customClass="card-btn" /> : <Spinner />}
+              {tags.length > 1 && (
+                <span className="px-2 py-1 text-sm text-customGray bg-customWhite rounded-md mr-2">
+                  +{tags.length - 1}
+                </span>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="col-span-2 flex items-center justify-end ">
+          {populatedList ? <AddListButton list={populatedList} customClass="card-btn" /> : <Spinner />}
+        </div>
       </div>
     </div>
   );
